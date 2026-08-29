@@ -1,7 +1,11 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { RadarChart } from "./RadarChart";
+import { usePopoverPosition } from "./popoverPosition";
+
+const WIDTH = 156; // 140px Chart + Padding
 
 export function HoverRadar({
   axes,
@@ -17,23 +21,35 @@ export function HoverRadar({
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const { triggerRef, pos, update } = usePopoverPosition(WIDTH);
+
+  function show() {
+    update();
+    setOpen(true);
+  }
 
   return (
-    <span
-      className="relative inline-block"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      onTouchStart={() => setOpen((o) => !o)}
-    >
-      {children}
-      {open && (
-        <div
-          className="absolute z-50 left-1/2 -translate-x-1/2 bottom-full mb-2 p-2 rounded-lg shadow-xl"
-          style={{ background: "var(--bg-deep)", border: "1px solid var(--border-mid)" }}
-        >
-          <RadarChart axes={axes} values={values} tips={tips} color={color} />
-        </div>
-      )}
-    </span>
+    <>
+      <span ref={triggerRef} onMouseEnter={show} onMouseLeave={() => setOpen(false)} onTouchStart={() => (open ? setOpen(false) : show())}>
+        {children}
+      </span>
+      {open &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="fixed z-[9999] p-2 rounded-lg shadow-xl"
+            style={{
+              top: pos.top,
+              left: pos.left,
+              transform: "translate(-50%, -100%)",
+              background: "var(--bg-deep)",
+              border: "1px solid var(--border-mid)",
+            }}
+          >
+            <RadarChart axes={axes} values={values} tips={tips} color={color} />
+          </div>,
+          document.body
+        )}
+    </>
   );
 }
