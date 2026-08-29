@@ -8,8 +8,11 @@ import rawPlayers from "@/data/players.json";
 // Draft (150 Picks) mit Puffer ab. 39 Spieler tragen zusätzlich echte,
 // handgeschriebene Scouting-Notizen (Feld `curated: true`); der Rest hat
 // automatisch berechnete proj/floor/upside/radar-Werte (`curated: false`).
-// Bye-Wochen sind für die nicht-kuratierten Spieler noch nicht erfasst (bye=0)
-// statt erfunden — siehe README für den Nachpflege-Hinweis.
+// Bye-Wochen und Team-Zugehörigkeit wurden am 29.08.2026 gegen die aktuellen
+// ESPN-Team-Rosters und den offiziellen 2026-Bye-Week-Spielplan abgeglichen
+// und korrigiert (z.B. A.J. Brown PHI→NE nach dessen Trade im Juni 2026).
+// Kein Live-Sync danach — bei künftigen Trades/Roster-Moves kann das erneut
+// veralten; einfach denselben Abgleich wiederholen (siehe Chat-Historie).
 //
 // getPlayerPool() erzeugt darüber hinaus generische Replacement-Level-Spieler
 // für Ränge >207, damit der Draft auch in einem Extremfall nie hängen bleibt.

@@ -14,16 +14,18 @@ weiterdraften, wo du am Laptop aufgehört hast.
   Echtzeit über alle Geräte, auf denen du die App öffnest. Ohne Supabase läuft
   die App lokal im Browser (localStorage) — funktioniert, aber ohne Sync.
 
-## Bekannte Lücken (ehrlich, für den nächsten Ausbauschritt)
+## Bekannte Lücken (ehrlich)
 
-1. **Bye-Wochen** sind für 168 der 207 Spieler noch nicht erfasst (`bye: 0`
-   in `data/players.json`) — die Quelle, aus der der Datensatz stammt, hat
-   keine Bye-Woche mitgeliefert. Die 39 ursprünglichen Spieler haben echte
-   Werte.
-2. **Team-Zuordnung bei Trades/Signings während der laufenden Saison** kann
-   sich ändern — der Datensatz ist ein Schnappschuss vom 26.08.2026.
-3. **Season-Engine** (Matchups, Scoring, Standings) und **Waiver/Trades**
-   sind noch nicht gebaut (Phase 2/3).
+1. **Team-Zuordnung/Bye-Wochen** wurden am 29.08.2026 gegen aktuelle
+   ESPN-Rosters und den offiziellen Bye-Week-Spielplan korrigiert (z.B. A.J.
+   Brown war fälschlich noch als PHI statt NE gelistet). Das ist ein
+   Schnappschuss, kein Live-Sync — spätere Trades/Cuts während der Saison
+   werden nicht automatisch nachgezogen. Bei Bedarf denselben Abgleich
+   wiederholen (Team-Roster + Bye-Plan von ESPN/NFL.com ziehen, siehe
+   `lib/players.ts`-Kommentar).
+2. Zwei Spieler (Kenneth Gainwell, Nick Singleton) matchen nicht automatisch
+   gegen die ESPN-Rosters, weil dort ihre Rufnamen (Kenny/Nicholas)
+   hinterlegt sind — Team/Bye bei denen ggf. manuell prüfen.
 
 ## Datenquelle
 
@@ -188,4 +190,3 @@ supabase/
 - Trade-Center mit KI-Verhandlung pro Persönlichkeit
 - Optional: Anthropic API für dynamische Kommissar-Kommentare/Trade-Talk
   statt der statischen Zitate in `lib/teams.ts`
-- Bye-Wochen für die 168 nicht-kuratierten Spieler nachpflegen

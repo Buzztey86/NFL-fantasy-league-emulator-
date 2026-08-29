@@ -9,7 +9,7 @@
     "proj": 295,
     "floor": 20,
     "upside": 42,
-    "bye": 14,
+    "bye": 6,
     "radar": [
       88,
       90,
@@ -37,7 +37,7 @@
     "proj": 310,
     "floor": 22,
     "upside": 40,
-    "bye": 7,
+    "bye": 11,
     "radar": [
       95,
       82,
@@ -65,7 +65,7 @@
     "proj": 288,
     "floor": 22,
     "upside": 42,
-    "bye": 10,
+    "bye": 6,
     "radar": [
       95,
       88,
@@ -93,7 +93,7 @@
     "proj": 268,
     "floor": 19,
     "upside": 39,
-    "bye": 7,
+    "bye": 11,
     "radar": [
       92,
       86,
@@ -121,7 +121,7 @@
     "proj": 275,
     "floor": 20,
     "upside": 40,
-    "bye": 5,
+    "bye": 11,
     "radar": [
       90,
       92,
@@ -149,7 +149,7 @@
     "proj": 285,
     "floor": 24,
     "upside": 38,
-    "bye": 13,
+    "bye": 8,
     "radar": [
       90,
       97,
@@ -177,7 +177,7 @@
     "proj": 258,
     "floor": 20,
     "upside": 36,
-    "bye": 14,
+    "bye": 6,
     "radar": [
       88,
       90,
@@ -205,7 +205,7 @@
     "proj": 255,
     "floor": 18,
     "upside": 36,
-    "bye": 10,
+    "bye": 13,
     "radar": [
       85,
       65,
@@ -232,7 +232,7 @@
     "proj": 245,
     "floor": 19,
     "upside": 36,
-    "bye": 8,
+    "bye": 6,
     "radar": [
       84,
       82,
@@ -260,7 +260,7 @@
     "proj": 250,
     "floor": 18,
     "upside": 38,
-    "bye": 7,
+    "bye": 14,
     "radar": [
       86,
       84,
@@ -288,7 +288,7 @@
     "proj": 242,
     "floor": 17,
     "upside": 35,
-    "bye": 12,
+    "bye": 7,
     "radar": [
       82,
       78,
@@ -315,7 +315,7 @@
     "proj": 235,
     "floor": 18,
     "upside": 33,
-    "bye": 5,
+    "bye": 10,
     "radar": [
       80,
       72,
@@ -371,7 +371,7 @@
     "proj": 238,
     "floor": 17,
     "upside": 37,
-    "bye": 7,
+    "bye": 11,
     "radar": [
       82,
       80,
@@ -399,7 +399,7 @@
     "proj": 224,
     "floor": 16,
     "upside": 36,
-    "bye": 14,
+    "bye": 8,
     "radar": [
       80,
       78,
@@ -427,7 +427,7 @@
     "proj": 185,
     "floor": 13,
     "upside": 30,
-    "bye": 11,
+    "bye": 13,
     "radar": [
       90,
       60,
@@ -455,7 +455,7 @@
     "proj": 225,
     "floor": 16,
     "upside": 34,
-    "bye": 14,
+    "bye": 13,
     "radar": [
       88,
       45,
@@ -483,7 +483,7 @@
     "proj": 260,
     "floor": 18,
     "upside": 38,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       86,
       84,
@@ -492,7 +492,7 @@
       97,
       84
     ],
-    "note": "RB9 · Overall-Rang 18 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB9 · Overall-Rang 18 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -509,7 +509,7 @@
     "proj": 255,
     "floor": 18,
     "upside": 37,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       80,
       93,
@@ -518,7 +518,7 @@
       81,
       83
     ],
-    "note": "RB10 · Overall-Rang 19 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB10 · Overall-Rang 19 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -529,13 +529,13 @@
     "rank": 20,
     "pos": "WR",
     "name": "A.J. Brown",
-    "team": "PHI",
+    "team": "NE",
     "age": 25,
     "adp": 20,
     "proj": 255,
     "floor": 18,
     "upside": 37,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       90,
       94,
@@ -544,7 +544,7 @@
       92,
       93
     ],
-    "note": "WR9 · Overall-Rang 20 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR9 · Overall-Rang 20 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -561,7 +561,7 @@
     "proj": 228,
     "floor": 15,
     "upside": 39,
-    "bye": 9,
+    "bye": 8,
     "radar": [
       82,
       80,
@@ -589,7 +589,7 @@
     "proj": 232,
     "floor": 16,
     "upside": 37,
-    "bye": 11,
+    "bye": 5,
     "radar": [
       85,
       82,
@@ -617,7 +617,7 @@
     "proj": 243,
     "floor": 17,
     "upside": 35,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       90,
       89,
@@ -626,7 +626,7 @@
       94,
       82
     ],
-    "note": "WR12 · Overall-Rang 23 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR12 · Overall-Rang 23 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -643,7 +643,7 @@
     "proj": 250,
     "floor": 18,
     "upside": 36,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       87,
       86,
@@ -652,7 +652,7 @@
       89,
       85
     ],
-    "note": "RB11 · Overall-Rang 24 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB11 · Overall-Rang 24 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -669,7 +669,7 @@
     "proj": 195,
     "floor": 14,
     "upside": 30,
-    "bye": 5,
+    "bye": 14,
     "radar": [
       88,
       72,
@@ -697,7 +697,7 @@
     "proj": 239,
     "floor": 17,
     "upside": 35,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       91,
       90,
@@ -706,7 +706,7 @@
       85,
       95
     ],
-    "note": "WR13 · Overall-Rang 26 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR13 · Overall-Rang 26 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -723,7 +723,7 @@
     "proj": 244,
     "floor": 17,
     "upside": 35,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       80,
       86,
@@ -732,7 +732,7 @@
       89,
       94
     ],
-    "note": "RB12 · Overall-Rang 27 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB12 · Overall-Rang 27 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -749,7 +749,7 @@
     "proj": 239,
     "floor": 17,
     "upside": 35,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       83,
       85,
@@ -758,7 +758,7 @@
       87,
       78
     ],
-    "note": "RB13 · Overall-Rang 28 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB13 · Overall-Rang 28 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -775,7 +775,7 @@
     "proj": 220,
     "floor": 14,
     "upside": 38,
-    "bye": 11,
+    "bye": 13,
     "radar": [
       80,
       65,
@@ -803,7 +803,7 @@
     "proj": 400,
     "floor": 28,
     "upside": 52,
-    "bye": 12,
+    "bye": 7,
     "radar": [
       95,
       92,
@@ -831,7 +831,7 @@
     "proj": 229,
     "floor": 16,
     "upside": 33,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       78,
       90,
@@ -840,7 +840,7 @@
       86,
       82
     ],
-    "note": "RB15 · Overall-Rang 31 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB15 · Overall-Rang 31 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -857,7 +857,7 @@
     "proj": 225,
     "floor": 16,
     "upside": 33,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       83,
       82,
@@ -866,7 +866,7 @@
       82,
       81
     ],
-    "note": "RB16 · Overall-Rang 32 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB16 · Overall-Rang 32 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -883,7 +883,7 @@
     "proj": 235,
     "floor": 16,
     "upside": 34,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       89,
       86,
@@ -892,7 +892,7 @@
       84,
       96
     ],
-    "note": "WR14 · Overall-Rang 33 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR14 · Overall-Rang 33 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -909,7 +909,7 @@
     "proj": 168,
     "floor": 11,
     "upside": 28,
-    "bye": 7,
+    "bye": 10,
     "radar": [
       78,
       58,
@@ -937,7 +937,7 @@
     "proj": 231,
     "floor": 16,
     "upside": 33,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       85,
       82,
@@ -946,7 +946,7 @@
       79,
       86
     ],
-    "note": "WR15 · Overall-Rang 35 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR15 · Overall-Rang 35 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -963,7 +963,7 @@
     "proj": 220,
     "floor": 15,
     "upside": 32,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       84,
       82,
@@ -972,7 +972,7 @@
       83,
       76
     ],
-    "note": "RB17 · Overall-Rang 36 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB17 · Overall-Rang 36 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -989,7 +989,7 @@
     "proj": 228,
     "floor": 16,
     "upside": 33,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       83,
       87,
@@ -998,7 +998,7 @@
       88,
       88
     ],
-    "note": "WR16 · Overall-Rang 37 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR16 · Overall-Rang 37 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1015,7 +1015,7 @@
     "proj": 230,
     "floor": 17,
     "upside": 32,
-    "bye": 9,
+    "bye": 11,
     "radar": [
       82,
       60,
@@ -1042,7 +1042,7 @@
     "proj": 224,
     "floor": 16,
     "upside": 32,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       82,
       87,
@@ -1051,7 +1051,7 @@
       83,
       87
     ],
-    "note": "WR17 · Overall-Rang 39 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR17 · Overall-Rang 39 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1068,7 +1068,7 @@
     "proj": 221,
     "floor": 15,
     "upside": 32,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       83,
       89,
@@ -1077,7 +1077,7 @@
       89,
       85
     ],
-    "note": "WR18 · Overall-Rang 40 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR18 · Overall-Rang 40 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1094,7 +1094,7 @@
     "proj": 211,
     "floor": 15,
     "upside": 31,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       77,
       75,
@@ -1103,7 +1103,7 @@
       86,
       85
     ],
-    "note": "RB19 · Overall-Rang 41 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB19 · Overall-Rang 41 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1120,7 +1120,7 @@
     "proj": 206,
     "floor": 14,
     "upside": 30,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       80,
       76,
@@ -1129,7 +1129,7 @@
       80,
       77
     ],
-    "note": "RB20 · Overall-Rang 42 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB20 · Overall-Rang 42 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1146,7 +1146,7 @@
     "proj": 217,
     "floor": 15,
     "upside": 31,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       81,
       86,
@@ -1155,7 +1155,7 @@
       82,
       84
     ],
-    "note": "WR19 · Overall-Rang 43 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR19 · Overall-Rang 43 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1172,7 +1172,7 @@
     "proj": 202,
     "floor": 14,
     "upside": 29,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       83,
       86,
@@ -1181,7 +1181,7 @@
       77,
       81
     ],
-    "note": "RB21 · Overall-Rang 44 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB21 · Overall-Rang 44 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1198,7 +1198,7 @@
     "proj": 197,
     "floor": 14,
     "upside": 29,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       85,
       80,
@@ -1207,7 +1207,7 @@
       72,
       85
     ],
-    "note": "RB22 · Overall-Rang 45 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB22 · Overall-Rang 45 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1224,7 +1224,7 @@
     "proj": 355,
     "floor": 24,
     "upside": 47,
-    "bye": 14,
+    "bye": 13,
     "radar": [
       85,
       98,
@@ -1252,7 +1252,7 @@
     "proj": 214,
     "floor": 15,
     "upside": 31,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       89,
       81,
@@ -1261,7 +1261,7 @@
       76,
       80
     ],
-    "note": "WR20 · Overall-Rang 47 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR20 · Overall-Rang 47 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1278,7 +1278,7 @@
     "proj": 193,
     "floor": 14,
     "upside": 28,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       74,
       79,
@@ -1287,7 +1287,7 @@
       79,
       81
     ],
-    "note": "RB23 · Overall-Rang 48 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB23 · Overall-Rang 48 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1304,7 +1304,7 @@
     "proj": 210,
     "floor": 15,
     "upside": 30,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       88,
       89,
@@ -1313,7 +1313,7 @@
       78,
       89
     ],
-    "note": "WR21 · Overall-Rang 49 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR21 · Overall-Rang 49 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1330,7 +1330,7 @@
     "proj": 207,
     "floor": 14,
     "upside": 30,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       85,
       76,
@@ -1339,7 +1339,7 @@
       83,
       84
     ],
-    "note": "WR22 · Overall-Rang 50 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR22 · Overall-Rang 50 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1356,7 +1356,7 @@
     "proj": 188,
     "floor": 13,
     "upside": 27,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       80,
       83,
@@ -1365,7 +1365,7 @@
       75,
       73
     ],
-    "note": "RB24 · Overall-Rang 51 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB24 · Overall-Rang 51 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1382,7 +1382,7 @@
     "proj": 184,
     "floor": 13,
     "upside": 27,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       80,
       74,
@@ -1391,7 +1391,7 @@
       81,
       80
     ],
-    "note": "RB25 · Overall-Rang 52 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB25 · Overall-Rang 52 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1408,7 +1408,7 @@
     "proj": 204,
     "floor": 14,
     "upside": 30,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       80,
       76,
@@ -1417,7 +1417,7 @@
       86,
       83
     ],
-    "note": "WR23 · Overall-Rang 53 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR23 · Overall-Rang 53 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1434,7 +1434,7 @@
     "proj": 180,
     "floor": 13,
     "upside": 26,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       80,
       69,
@@ -1443,7 +1443,7 @@
       79,
       80
     ],
-    "note": "RB26 · Overall-Rang 54 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB26 · Overall-Rang 54 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1460,7 +1460,7 @@
     "proj": 201,
     "floor": 14,
     "upside": 29,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       86,
       86,
@@ -1469,7 +1469,7 @@
       83,
       84
     ],
-    "note": "WR24 · Overall-Rang 55 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR24 · Overall-Rang 55 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -1486,7 +1486,7 @@
     "proj": 197,
     "floor": 14,
     "upside": 29,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       76,
       81,
@@ -1495,7 +1495,7 @@
       84,
       81
     ],
-    "note": "WR25 · Overall-Rang 56 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR25 · Overall-Rang 56 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1512,7 +1512,7 @@
     "proj": 175,
     "floor": 12,
     "upside": 28,
-    "bye": 10,
+    "bye": 13,
     "radar": [
       82,
       65,
@@ -1540,7 +1540,7 @@
     "proj": 194,
     "floor": 14,
     "upside": 28,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       72,
       82,
@@ -1549,7 +1549,7 @@
       78,
       85
     ],
-    "note": "WR26 · Overall-Rang 58 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR26 · Overall-Rang 58 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1566,7 +1566,7 @@
     "proj": 375,
     "floor": 25,
     "upside": 50,
-    "bye": 14,
+    "bye": 7,
     "radar": [
       82,
       95,
@@ -1594,7 +1594,7 @@
     "proj": 191,
     "floor": 13,
     "upside": 28,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       77,
       75,
@@ -1603,7 +1603,7 @@
       85,
       83
     ],
-    "note": "WR27 · Overall-Rang 60 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR27 · Overall-Rang 60 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1620,7 +1620,7 @@
     "proj": 188,
     "floor": 13,
     "upside": 27,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       85,
       75,
@@ -1629,7 +1629,7 @@
       79,
       79
     ],
-    "note": "WR28 · Overall-Rang 61 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR28 · Overall-Rang 61 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1646,7 +1646,7 @@
     "proj": 185,
     "floor": 13,
     "upside": 27,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       82,
       82,
@@ -1655,7 +1655,7 @@
       83,
       86
     ],
-    "note": "WR29 · Overall-Rang 62 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR29 · Overall-Rang 62 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1672,7 +1672,7 @@
     "proj": 182,
     "floor": 13,
     "upside": 26,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       84,
       80,
@@ -1681,7 +1681,7 @@
       79,
       82
     ],
-    "note": "WR30 · Overall-Rang 63 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR30 · Overall-Rang 63 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1698,7 +1698,7 @@
     "proj": 342,
     "floor": 22,
     "upside": 44,
-    "bye": 10,
+    "bye": 6,
     "radar": [
       90,
       58,
@@ -1726,7 +1726,7 @@
     "proj": 176,
     "floor": 12,
     "upside": 26,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       73,
       72,
@@ -1735,7 +1735,7 @@
       78,
       72
     ],
-    "note": "RB27 · Overall-Rang 65 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB27 · Overall-Rang 65 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1752,7 +1752,7 @@
     "proj": 360,
     "floor": 22,
     "upside": 48,
-    "bye": 14,
+    "bye": 11,
     "radar": [
       78,
       85,
@@ -1780,7 +1780,7 @@
     "proj": 172,
     "floor": 12,
     "upside": 25,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       75,
       65,
@@ -1789,7 +1789,7 @@
       78,
       75
     ],
-    "note": "RB28 · Overall-Rang 67 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB28 · Overall-Rang 67 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1806,7 +1806,7 @@
     "proj": 179,
     "floor": 13,
     "upside": 26,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       78,
       84,
@@ -1815,7 +1815,7 @@
       70,
       74
     ],
-    "note": "WR31 · Overall-Rang 68 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR31 · Overall-Rang 68 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1832,7 +1832,7 @@
     "proj": 176,
     "floor": 12,
     "upside": 26,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       76,
       84,
@@ -1841,7 +1841,7 @@
       84,
       81
     ],
-    "note": "WR32 · Overall-Rang 69 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR32 · Overall-Rang 69 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1858,7 +1858,7 @@
     "proj": 173,
     "floor": 12,
     "upside": 25,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       80,
       71,
@@ -1867,7 +1867,7 @@
       68,
       76
     ],
-    "note": "WR33 · Overall-Rang 70 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR33 · Overall-Rang 70 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1884,7 +1884,7 @@
     "proj": 158,
     "floor": 11,
     "upside": 23,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       88,
       94,
@@ -1893,7 +1893,7 @@
       83,
       85
     ],
-    "note": "TE5 · Overall-Rang 71 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE5 · Overall-Rang 71 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -1910,7 +1910,7 @@
     "proj": 168,
     "floor": 12,
     "upside": 24,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       69,
       66,
@@ -1919,7 +1919,7 @@
       74,
       68
     ],
-    "note": "RB29 · Overall-Rang 72 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB29 · Overall-Rang 72 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1936,7 +1936,7 @@
     "proj": 170,
     "floor": 12,
     "upside": 25,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       77,
       79,
@@ -1945,7 +1945,7 @@
       69,
       74
     ],
-    "note": "WR34 · Overall-Rang 73 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR34 · Overall-Rang 73 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1962,7 +1962,7 @@
     "proj": 164,
     "floor": 11,
     "upside": 24,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       67,
       78,
@@ -1971,7 +1971,7 @@
       64,
       65
     ],
-    "note": "RB30 · Overall-Rang 74 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB30 · Overall-Rang 74 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -1988,7 +1988,7 @@
     "proj": 159,
     "floor": 11,
     "upside": 23,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       67,
       67,
@@ -1997,7 +1997,7 @@
       74,
       75
     ],
-    "note": "RB31 · Overall-Rang 75 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB31 · Overall-Rang 75 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2014,7 +2014,7 @@
     "proj": 155,
     "floor": 11,
     "upside": 22,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       62,
       73,
@@ -2023,7 +2023,7 @@
       65,
       75
     ],
-    "note": "RB32 · Overall-Rang 76 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB32 · Overall-Rang 76 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2040,7 +2040,7 @@
     "proj": 167,
     "floor": 12,
     "upside": 24,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       67,
       80,
@@ -2049,7 +2049,7 @@
       74,
       71
     ],
-    "note": "WR35 · Overall-Rang 77 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR35 · Overall-Rang 77 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2066,7 +2066,7 @@
     "proj": 152,
     "floor": 11,
     "upside": 22,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       65,
       74,
@@ -2075,7 +2075,7 @@
       66,
       75
     ],
-    "note": "RB33 · Overall-Rang 78 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB33 · Overall-Rang 78 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2092,7 +2092,7 @@
     "proj": 148,
     "floor": 10,
     "upside": 21,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       68,
       75,
@@ -2101,7 +2101,7 @@
       66,
       66
     ],
-    "note": "RB34 · Overall-Rang 79 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB34 · Overall-Rang 79 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2118,7 +2118,7 @@
     "proj": 348,
     "floor": 23,
     "upside": 45,
-    "bye": 5,
+    "bye": 10,
     "radar": [
       82,
       90,
@@ -2146,7 +2146,7 @@
     "proj": 151,
     "floor": 11,
     "upside": 22,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       84,
       83,
@@ -2155,7 +2155,7 @@
       77,
       93
     ],
-    "note": "TE6 · Overall-Rang 81 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE6 · Overall-Rang 81 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -2172,7 +2172,7 @@
     "proj": 164,
     "floor": 11,
     "upside": 24,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       75,
       70,
@@ -2181,7 +2181,7 @@
       80,
       78
     ],
-    "note": "WR36 · Overall-Rang 82 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR36 · Overall-Rang 82 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2198,7 +2198,7 @@
     "proj": 315,
     "floor": 22,
     "upside": 46,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       80,
       87,
@@ -2207,7 +2207,7 @@
       90,
       79
     ],
-    "note": "QB7 · Overall-Rang 83 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB7 · Overall-Rang 83 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -2224,7 +2224,7 @@
     "proj": 161,
     "floor": 11,
     "upside": 23,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       76,
       72,
@@ -2233,7 +2233,7 @@
       69,
       72
     ],
-    "note": "WR37 · Overall-Rang 84 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR37 · Overall-Rang 84 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2250,7 +2250,7 @@
     "proj": 303,
     "floor": 21,
     "upside": 44,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       87,
       82,
@@ -2259,7 +2259,7 @@
       84,
       84
     ],
-    "note": "QB8 · Overall-Rang 85 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB8 · Overall-Rang 85 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 1"
     ],
@@ -2276,7 +2276,7 @@
     "proj": 292,
     "floor": 20,
     "upside": 42,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       77,
       78,
@@ -2285,7 +2285,7 @@
       85,
       83
     ],
-    "note": "QB9 · Overall-Rang 86 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB9 · Overall-Rang 86 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -2302,7 +2302,7 @@
     "proj": 144,
     "floor": 10,
     "upside": 21,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       67,
       66,
@@ -2311,7 +2311,7 @@
       69,
       72
     ],
-    "note": "RB35 · Overall-Rang 87 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB35 · Overall-Rang 87 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2328,7 +2328,7 @@
     "proj": 152,
     "floor": 10,
     "upside": 26,
-    "bye": 14,
+    "bye": 6,
     "radar": [
       76,
       58,
@@ -2356,7 +2356,7 @@
     "proj": 281,
     "floor": 20,
     "upside": 41,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       68,
       79,
@@ -2365,7 +2365,7 @@
       80,
       73
     ],
-    "note": "QB10 · Overall-Rang 89 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB10 · Overall-Rang 89 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -2382,7 +2382,7 @@
     "proj": 158,
     "floor": 11,
     "upside": 23,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       75,
       71,
@@ -2391,7 +2391,7 @@
       68,
       76
     ],
-    "note": "WR38 · Overall-Rang 90 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR38 · Overall-Rang 90 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2408,7 +2408,7 @@
     "proj": 155,
     "floor": 11,
     "upside": 22,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       64,
       74,
@@ -2417,7 +2417,7 @@
       68,
       76
     ],
-    "note": "WR39 · Overall-Rang 91 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR39 · Overall-Rang 91 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2434,7 +2434,7 @@
     "proj": 152,
     "floor": 11,
     "upside": 22,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       70,
       71,
@@ -2443,7 +2443,7 @@
       79,
       70
     ],
-    "note": "WR40 · Overall-Rang 92 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR40 · Overall-Rang 92 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2460,7 +2460,7 @@
     "proj": 149,
     "floor": 10,
     "upside": 22,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       63,
       73,
@@ -2469,7 +2469,7 @@
       67,
       70
     ],
-    "note": "WR41 · Overall-Rang 93 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR41 · Overall-Rang 93 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2486,7 +2486,7 @@
     "proj": 140,
     "floor": 10,
     "upside": 20,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       71,
       72,
@@ -2495,7 +2495,7 @@
       71,
       70
     ],
-    "note": "RB36 · Overall-Rang 94 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB36 · Overall-Rang 94 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2512,7 +2512,7 @@
     "proj": 160,
     "floor": 10,
     "upside": 30,
-    "bye": 7,
+    "bye": 11,
     "radar": [
       80,
       62,
@@ -2540,7 +2540,7 @@
     "proj": 136,
     "floor": 10,
     "upside": 20,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       59,
       66,
@@ -2549,7 +2549,7 @@
       60,
       65
     ],
-    "note": "RB37 · Overall-Rang 96 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB37 · Overall-Rang 96 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2566,7 +2566,7 @@
     "proj": 132,
     "floor": 9,
     "upside": 19,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       64,
       62,
@@ -2575,7 +2575,7 @@
       65,
       70
     ],
-    "note": "RB38 · Overall-Rang 97 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB38 · Overall-Rang 97 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2592,7 +2592,7 @@
     "proj": 270,
     "floor": 19,
     "upside": 39,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       72,
       69,
@@ -2601,7 +2601,7 @@
       75,
       77
     ],
-    "note": "QB11 · Overall-Rang 98 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB11 · Overall-Rang 98 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -2618,7 +2618,7 @@
     "proj": 147,
     "floor": 10,
     "upside": 21,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       67,
       63,
@@ -2627,7 +2627,7 @@
       66,
       71
     ],
-    "note": "WR42 · Overall-Rang 99 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR42 · Overall-Rang 99 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2644,7 +2644,7 @@
     "proj": 144,
     "floor": 10,
     "upside": 21,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       75,
       76,
@@ -2653,7 +2653,7 @@
       67,
       66
     ],
-    "note": "WR43 · Overall-Rang 100 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR43 · Overall-Rang 100 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2670,7 +2670,7 @@
     "proj": 128,
     "floor": 9,
     "upside": 19,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       67,
       68,
@@ -2679,7 +2679,7 @@
       59,
       62
     ],
-    "note": "RB39 · Overall-Rang 101 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB39 · Overall-Rang 101 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2696,7 +2696,7 @@
     "proj": 125,
     "floor": 9,
     "upside": 18,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       57,
       64,
@@ -2705,7 +2705,7 @@
       54,
       64
     ],
-    "note": "RB40 · Overall-Rang 102 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB40 · Overall-Rang 102 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2722,7 +2722,7 @@
     "proj": 141,
     "floor": 10,
     "upside": 20,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       69,
       75,
@@ -2731,7 +2731,7 @@
       70,
       60
     ],
-    "note": "WR44 · Overall-Rang 103 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR44 · Overall-Rang 103 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2748,7 +2748,7 @@
     "proj": 138,
     "floor": 10,
     "upside": 20,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       72,
       70,
@@ -2757,7 +2757,7 @@
       62,
       75
     ],
-    "note": "WR45 · Overall-Rang 104 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR45 · Overall-Rang 104 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2774,7 +2774,7 @@
     "proj": 136,
     "floor": 10,
     "upside": 20,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       60,
       64,
@@ -2783,7 +2783,7 @@
       66,
       59
     ],
-    "note": "WR46 · Overall-Rang 105 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR46 · Overall-Rang 105 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2800,7 +2800,7 @@
     "proj": 260,
     "floor": 18,
     "upside": 38,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       74,
       65,
@@ -2809,7 +2809,7 @@
       78,
       69
     ],
-    "note": "QB12 · Overall-Rang 106 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB12 · Overall-Rang 106 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -2826,7 +2826,7 @@
     "proj": 249,
     "floor": 17,
     "upside": 36,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       68,
       77,
@@ -2835,7 +2835,7 @@
       68,
       63
     ],
-    "note": "QB13 · Overall-Rang 107 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB13 · Overall-Rang 107 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -2852,7 +2852,7 @@
     "proj": 133,
     "floor": 9,
     "upside": 19,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       61,
       73,
@@ -2861,7 +2861,7 @@
       66,
       60
     ],
-    "note": "WR47 · Overall-Rang 108 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR47 · Overall-Rang 108 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2878,7 +2878,7 @@
     "proj": 121,
     "floor": 8,
     "upside": 18,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       59,
       56,
@@ -2887,7 +2887,7 @@
       66,
       59
     ],
-    "note": "RB41 · Overall-Rang 109 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB41 · Overall-Rang 109 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2904,7 +2904,7 @@
     "proj": 117,
     "floor": 8,
     "upside": 17,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       65,
       61,
@@ -2913,7 +2913,7 @@
       52,
       54
     ],
-    "note": "RB42 · Overall-Rang 110 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB42 · Overall-Rang 110 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2930,7 +2930,7 @@
     "proj": 130,
     "floor": 9,
     "upside": 19,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       59,
       60,
@@ -2939,7 +2939,7 @@
       69,
       63
     ],
-    "note": "WR48 · Overall-Rang 111 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR48 · Overall-Rang 111 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2956,7 +2956,7 @@
     "proj": 127,
     "floor": 9,
     "upside": 18,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       63,
       59,
@@ -2965,7 +2965,7 @@
       71,
       59
     ],
-    "note": "WR49 · Overall-Rang 112 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR49 · Overall-Rang 112 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -2982,7 +2982,7 @@
     "proj": 240,
     "floor": 17,
     "upside": 35,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       74,
       63,
@@ -2991,7 +2991,7 @@
       63,
       65
     ],
-    "note": "QB14 · Overall-Rang 113 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB14 · Overall-Rang 113 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3008,7 +3008,7 @@
     "proj": 113,
     "floor": 8,
     "upside": 16,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       53,
       65,
@@ -3017,7 +3017,7 @@
       57,
       57
     ],
-    "note": "RB43 · Overall-Rang 114 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB43 · Overall-Rang 114 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3034,7 +3034,7 @@
     "proj": 130,
     "floor": 9,
     "upside": 19,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       77,
       77,
@@ -3043,7 +3043,7 @@
       73,
       71
     ],
-    "note": "TE9 · Overall-Rang 115 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE9 · Overall-Rang 115 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3060,7 +3060,7 @@
     "proj": 110,
     "floor": 8,
     "upside": 16,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       56,
       51,
@@ -3069,7 +3069,7 @@
       55,
       61
     ],
-    "note": "RB44 · Overall-Rang 116 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB44 · Overall-Rang 116 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3086,7 +3086,7 @@
     "proj": 230,
     "floor": 16,
     "upside": 33,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       66,
       59,
@@ -3095,7 +3095,7 @@
       65,
       57
     ],
-    "note": "QB15 · Overall-Rang 117 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB15 · Overall-Rang 117 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3112,7 +3112,7 @@
     "proj": 125,
     "floor": 9,
     "upside": 18,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       70,
       62,
@@ -3121,7 +3121,7 @@
       63,
       65
     ],
-    "note": "WR50 · Overall-Rang 118 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR50 · Overall-Rang 118 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3138,7 +3138,7 @@
     "proj": 123,
     "floor": 9,
     "upside": 18,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       76,
       79,
@@ -3147,7 +3147,7 @@
       72,
       69
     ],
-    "note": "TE10 · Overall-Rang 119 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE10 · Overall-Rang 119 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3164,7 +3164,7 @@
     "proj": 117,
     "floor": 8,
     "upside": 17,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       75,
       75,
@@ -3173,7 +3173,7 @@
       70,
       72
     ],
-    "note": "TE11 · Overall-Rang 120 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE11 · Overall-Rang 120 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3190,7 +3190,7 @@
     "proj": 122,
     "floor": 9,
     "upside": 18,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       71,
       63,
@@ -3199,7 +3199,7 @@
       56,
       69
     ],
-    "note": "WR51 · Overall-Rang 121 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR51 · Overall-Rang 121 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3216,7 +3216,7 @@
     "proj": 220,
     "floor": 15,
     "upside": 32,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       56,
       55,
@@ -3225,7 +3225,7 @@
       61,
       58
     ],
-    "note": "QB16 · Overall-Rang 122 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB16 · Overall-Rang 122 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3242,7 +3242,7 @@
     "proj": 119,
     "floor": 8,
     "upside": 17,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       65,
       69,
@@ -3251,7 +3251,7 @@
       64,
       57
     ],
-    "note": "WR52 · Overall-Rang 123 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR52 · Overall-Rang 123 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3268,7 +3268,7 @@
     "proj": 211,
     "floor": 15,
     "upside": 31,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       60,
       59,
@@ -3277,7 +3277,7 @@
       61,
       61
     ],
-    "note": "QB17 · Overall-Rang 124 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB17 · Overall-Rang 124 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3294,7 +3294,7 @@
     "proj": 111,
     "floor": 8,
     "upside": 16,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       64,
       68,
@@ -3303,7 +3303,7 @@
       77,
       72
     ],
-    "note": "TE12 · Overall-Rang 125 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE12 · Overall-Rang 125 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3320,7 +3320,7 @@
     "proj": 202,
     "floor": 14,
     "upside": 29,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       51,
       54,
@@ -3329,7 +3329,7 @@
       52,
       60
     ],
-    "note": "QB18 · Overall-Rang 126 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB18 · Overall-Rang 126 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3346,7 +3346,7 @@
     "proj": 117,
     "floor": 8,
     "upside": 17,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       60,
       66,
@@ -3355,7 +3355,7 @@
       70,
       64
     ],
-    "note": "WR53 · Overall-Rang 127 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR53 · Overall-Rang 127 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3372,7 +3372,7 @@
     "proj": 105,
     "floor": 7,
     "upside": 15,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       65,
       76,
@@ -3381,7 +3381,7 @@
       74,
       66
     ],
-    "note": "TE13 · Overall-Rang 128 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE13 · Overall-Rang 128 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3398,7 +3398,7 @@
     "proj": 106,
     "floor": 7,
     "upside": 15,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       53,
       65,
@@ -3407,7 +3407,7 @@
       54,
       62
     ],
-    "note": "RB45 · Overall-Rang 129 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB45 · Overall-Rang 129 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3424,7 +3424,7 @@
     "proj": 102,
     "floor": 7,
     "upside": 15,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       54,
       59,
@@ -3433,7 +3433,7 @@
       58,
       65
     ],
-    "note": "RB46 · Overall-Rang 130 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB46 · Overall-Rang 130 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3450,7 +3450,7 @@
     "proj": 192,
     "floor": 13,
     "upside": 28,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       59,
       55,
@@ -3459,7 +3459,7 @@
       56,
       61
     ],
-    "note": "QB19 · Overall-Rang 131 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB19 · Overall-Rang 131 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3476,7 +3476,7 @@
     "proj": 99,
     "floor": 7,
     "upside": 14,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       65,
       72,
@@ -3485,7 +3485,7 @@
       67,
       67
     ],
-    "note": "TE14 · Overall-Rang 132 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE14 · Overall-Rang 132 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 2"
     ],
@@ -3496,13 +3496,13 @@
     "rank": 133,
     "pos": "WR",
     "name": "Deebo Samuel",
-    "team": "FA",
+    "team": "SF",
     "age": 25,
     "adp": 133,
     "proj": 114,
     "floor": 8,
     "upside": 17,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       67,
       65,
@@ -3511,7 +3511,7 @@
       69,
       63
     ],
-    "note": "WR54 · Overall-Rang 133 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR54 · Overall-Rang 133 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3528,7 +3528,7 @@
     "proj": 111,
     "floor": 8,
     "upside": 16,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       66,
       64,
@@ -3537,7 +3537,7 @@
       59,
       65
     ],
-    "note": "WR55 · Overall-Rang 134 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR55 · Overall-Rang 134 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3554,7 +3554,7 @@
     "proj": 99,
     "floor": 7,
     "upside": 14,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       52,
       51,
@@ -3563,7 +3563,7 @@
       56,
       52
     ],
-    "note": "RB47 · Overall-Rang 135 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB47 · Overall-Rang 135 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3580,7 +3580,7 @@
     "proj": 95,
     "floor": 7,
     "upside": 14,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       57,
       57,
@@ -3589,7 +3589,7 @@
       51,
       58
     ],
-    "note": "RB48 · Overall-Rang 136 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB48 · Overall-Rang 136 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3606,7 +3606,7 @@
     "proj": 109,
     "floor": 8,
     "upside": 16,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       56,
       55,
@@ -3615,7 +3615,7 @@
       65,
       56
     ],
-    "note": "WR56 · Overall-Rang 137 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR56 · Overall-Rang 137 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3632,7 +3632,7 @@
     "proj": 106,
     "floor": 7,
     "upside": 15,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       57,
       52,
@@ -3641,7 +3641,7 @@
       56,
       55
     ],
-    "note": "WR57 · Overall-Rang 138 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR57 · Overall-Rang 138 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3658,7 +3658,7 @@
     "proj": 92,
     "floor": 6,
     "upside": 13,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       51,
       50,
@@ -3667,7 +3667,7 @@
       53,
       60
     ],
-    "note": "RB49 · Overall-Rang 139 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB49 · Overall-Rang 139 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3684,7 +3684,7 @@
     "proj": 104,
     "floor": 7,
     "upside": 15,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       62,
       53,
@@ -3693,7 +3693,7 @@
       62,
       51
     ],
-    "note": "WR58 · Overall-Rang 140 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR58 · Overall-Rang 140 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3710,7 +3710,7 @@
     "proj": 183,
     "floor": 13,
     "upside": 27,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       47,
       59,
@@ -3719,7 +3719,7 @@
       50,
       56
     ],
-    "note": "QB20 · Overall-Rang 141 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB20 · Overall-Rang 141 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3736,7 +3736,7 @@
     "proj": 175,
     "floor": 12,
     "upside": 25,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       45,
       49,
@@ -3745,7 +3745,7 @@
       50,
       47
     ],
-    "note": "QB21 · Overall-Rang 142 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB21 · Overall-Rang 142 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3762,7 +3762,7 @@
     "proj": 101,
     "floor": 7,
     "upside": 15,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       53,
       53,
@@ -3771,7 +3771,7 @@
       59,
       65
     ],
-    "note": "WR59 · Overall-Rang 143 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR59 · Overall-Rang 143 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3788,7 +3788,7 @@
     "proj": 93,
     "floor": 7,
     "upside": 13,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       59,
       68,
@@ -3797,7 +3797,7 @@
       70,
       66
     ],
-    "note": "TE15 · Overall-Rang 144 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE15 · Overall-Rang 144 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3814,7 +3814,7 @@
     "proj": 98,
     "floor": 7,
     "upside": 14,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       56,
       58,
@@ -3823,7 +3823,7 @@
       60,
       54
     ],
-    "note": "WR60 · Overall-Rang 145 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR60 · Overall-Rang 145 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3840,7 +3840,7 @@
     "proj": 88,
     "floor": 6,
     "upside": 13,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       57,
       55,
@@ -3849,7 +3849,7 @@
       59,
       53
     ],
-    "note": "RB50 · Overall-Rang 146 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB50 · Overall-Rang 146 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3866,7 +3866,7 @@
     "proj": 85,
     "floor": 6,
     "upside": 12,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       53,
       57,
@@ -3875,7 +3875,7 @@
       53,
       56
     ],
-    "note": "RB51 · Overall-Rang 147 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB51 · Overall-Rang 147 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3892,7 +3892,7 @@
     "proj": 96,
     "floor": 7,
     "upside": 14,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       57,
       61,
@@ -3901,7 +3901,7 @@
       51,
       60
     ],
-    "note": "WR61 · Overall-Rang 148 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR61 · Overall-Rang 148 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3918,7 +3918,7 @@
     "proj": 88,
     "floor": 6,
     "upside": 13,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       55,
       61,
@@ -3927,7 +3927,7 @@
       67,
       64
     ],
-    "note": "TE16 · Overall-Rang 149 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE16 · Overall-Rang 149 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3944,7 +3944,7 @@
     "proj": 93,
     "floor": 7,
     "upside": 13,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       53,
       49,
@@ -3953,7 +3953,7 @@
       61,
       60
     ],
-    "note": "WR62 · Overall-Rang 150 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR62 · Overall-Rang 150 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3970,7 +3970,7 @@
     "proj": 91,
     "floor": 6,
     "upside": 13,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       63,
       56,
@@ -3979,7 +3979,7 @@
       50,
       49
     ],
-    "note": "WR63 · Overall-Rang 151 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR63 · Overall-Rang 151 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -3996,7 +3996,7 @@
     "proj": 81,
     "floor": 6,
     "upside": 12,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       53,
       52,
@@ -4005,7 +4005,7 @@
       52,
       56
     ],
-    "note": "RB52 · Overall-Rang 152 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB52 · Overall-Rang 152 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4022,7 +4022,7 @@
     "proj": 82,
     "floor": 6,
     "upside": 12,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       63,
       58,
@@ -4031,7 +4031,7 @@
       51,
       63
     ],
-    "note": "TE17 · Overall-Rang 153 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE17 · Overall-Rang 153 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4048,7 +4048,7 @@
     "proj": 88,
     "floor": 6,
     "upside": 13,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       58,
       62,
@@ -4057,7 +4057,7 @@
       50,
       63
     ],
-    "note": "WR64 · Overall-Rang 154 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR64 · Overall-Rang 154 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4074,7 +4074,7 @@
     "proj": 78,
     "floor": 5,
     "upside": 11,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       56,
       53,
@@ -4083,7 +4083,7 @@
       54,
       47
     ],
-    "note": "RB53 · Overall-Rang 155 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB53 · Overall-Rang 155 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4100,7 +4100,7 @@
     "proj": 86,
     "floor": 6,
     "upside": 12,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       50,
       50,
@@ -4109,7 +4109,7 @@
       60,
       59
     ],
-    "note": "WR65 · Overall-Rang 156 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR65 · Overall-Rang 156 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4126,7 +4126,7 @@
     "proj": 76,
     "floor": 5,
     "upside": 11,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       52,
       65,
@@ -4135,7 +4135,7 @@
       58,
       65
     ],
-    "note": "TE18 · Overall-Rang 157 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE18 · Overall-Rang 157 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4152,7 +4152,7 @@
     "proj": 166,
     "floor": 12,
     "upside": 24,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       53,
       46,
@@ -4161,7 +4161,7 @@
       47,
       55
     ],
-    "note": "QB22 · Overall-Rang 158 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB22 · Overall-Rang 158 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4178,7 +4178,7 @@
     "proj": 83,
     "floor": 6,
     "upside": 12,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       59,
       61,
@@ -4187,7 +4187,7 @@
       54,
       54
     ],
-    "note": "WR66 · Overall-Rang 159 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR66 · Overall-Rang 159 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4204,7 +4204,7 @@
     "proj": 81,
     "floor": 6,
     "upside": 12,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       60,
       47,
@@ -4213,7 +4213,7 @@
       60,
       59
     ],
-    "note": "WR67 · Overall-Rang 160 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR67 · Overall-Rang 160 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4230,7 +4230,7 @@
     "proj": 71,
     "floor": 5,
     "upside": 10,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       60,
       53,
@@ -4239,7 +4239,7 @@
       51,
       53
     ],
-    "note": "TE19 · Overall-Rang 161 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE19 · Overall-Rang 161 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4256,7 +4256,7 @@
     "proj": 78,
     "floor": 5,
     "upside": 11,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       48,
       47,
@@ -4265,7 +4265,7 @@
       46,
       59
     ],
-    "note": "WR68 · Overall-Rang 162 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR68 · Overall-Rang 162 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4282,7 +4282,7 @@
     "proj": 76,
     "floor": 5,
     "upside": 11,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       50,
       50,
@@ -4291,7 +4291,7 @@
       47,
       50
     ],
-    "note": "WR69 · Overall-Rang 163 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR69 · Overall-Rang 163 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4308,7 +4308,7 @@
     "proj": 73,
     "floor": 5,
     "upside": 11,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       56,
       53,
@@ -4317,7 +4317,7 @@
       47,
       57
     ],
-    "note": "WR70 · Overall-Rang 164 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR70 · Overall-Rang 164 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4334,7 +4334,7 @@
     "proj": 71,
     "floor": 5,
     "upside": 10,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       59,
       50,
@@ -4343,7 +4343,7 @@
       50,
       44
     ],
-    "note": "WR71 · Overall-Rang 165 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR71 · Overall-Rang 165 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4360,7 +4360,7 @@
     "proj": 157,
     "floor": 11,
     "upside": 23,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       38,
       54,
@@ -4369,7 +4369,7 @@
       43,
       48
     ],
-    "note": "QB23 · Overall-Rang 166 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB23 · Overall-Rang 166 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4386,7 +4386,7 @@
     "proj": 66,
     "floor": 5,
     "upside": 10,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       50,
       49,
@@ -4395,7 +4395,7 @@
       50,
       50
     ],
-    "note": "TE20 · Overall-Rang 167 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE20 · Overall-Rang 167 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4412,7 +4412,7 @@
     "proj": 68,
     "floor": 5,
     "upside": 10,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       44,
       44,
@@ -4421,7 +4421,7 @@
       51,
       47
     ],
-    "note": "WR72 · Overall-Rang 168 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR72 · Overall-Rang 168 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4438,7 +4438,7 @@
     "proj": 66,
     "floor": 5,
     "upside": 10,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       52,
       48,
@@ -4447,7 +4447,7 @@
       43,
       47
     ],
-    "note": "WR73 · Overall-Rang 169 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR73 · Overall-Rang 169 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4464,7 +4464,7 @@
     "proj": 64,
     "floor": 4,
     "upside": 9,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       45,
       49,
@@ -4473,7 +4473,7 @@
       44,
       48
     ],
-    "note": "WR74 · Overall-Rang 170 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR74 · Overall-Rang 170 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4490,7 +4490,7 @@
     "proj": 61,
     "floor": 4,
     "upside": 9,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       44,
       43,
@@ -4499,7 +4499,7 @@
       55,
       50
     ],
-    "note": "WR75 · Overall-Rang 171 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR75 · Overall-Rang 171 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4516,7 +4516,7 @@
     "proj": 60,
     "floor": 4,
     "upside": 9,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       47,
       44,
@@ -4525,7 +4525,7 @@
       44,
       46
     ],
-    "note": "TE21 · Overall-Rang 172 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE21 · Overall-Rang 172 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4542,7 +4542,7 @@
     "proj": 59,
     "floor": 4,
     "upside": 9,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       39,
       48,
@@ -4551,7 +4551,7 @@
       43,
       50
     ],
-    "note": "WR76 · Overall-Rang 173 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR76 · Overall-Rang 173 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4568,7 +4568,7 @@
     "proj": 74,
     "floor": 5,
     "upside": 11,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       57,
       56,
@@ -4577,7 +4577,7 @@
       51,
       51
     ],
-    "note": "RB54 · Overall-Rang 174 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB54 · Overall-Rang 174 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4594,7 +4594,7 @@
     "proj": 148,
     "floor": 10,
     "upside": 21,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       51,
       36,
@@ -4603,7 +4603,7 @@
       43,
       44
     ],
-    "note": "QB24 · Overall-Rang 175 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB24 · Overall-Rang 175 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4620,7 +4620,7 @@
     "proj": 56,
     "floor": 4,
     "upside": 8,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       46,
       50,
@@ -4629,7 +4629,7 @@
       43,
       50
     ],
-    "note": "WR77 · Overall-Rang 176 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR77 · Overall-Rang 176 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4646,7 +4646,7 @@
     "proj": 54,
     "floor": 4,
     "upside": 8,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       43,
       38,
@@ -4655,7 +4655,7 @@
       54,
       51
     ],
-    "note": "WR78 · Overall-Rang 177 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR78 · Overall-Rang 177 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4672,7 +4672,7 @@
     "proj": 71,
     "floor": 5,
     "upside": 10,
-    "bye": 0,
+    "bye": 10,
     "radar": [
       46,
       47,
@@ -4681,7 +4681,7 @@
       54,
       43
     ],
-    "note": "RB55 · Overall-Rang 178 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB55 · Overall-Rang 178 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4698,7 +4698,7 @@
     "proj": 52,
     "floor": 4,
     "upside": 8,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       53,
       45,
@@ -4707,7 +4707,7 @@
       49,
       42
     ],
-    "note": "WR79 · Overall-Rang 179 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR79 · Overall-Rang 179 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4724,7 +4724,7 @@
     "proj": 67,
     "floor": 5,
     "upside": 10,
-    "bye": 0,
+    "bye": 9,
     "radar": [
       44,
       47,
@@ -4733,7 +4733,7 @@
       46,
       45
     ],
-    "note": "RB56 · Overall-Rang 180 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB56 · Overall-Rang 180 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4750,7 +4750,7 @@
     "proj": 64,
     "floor": 4,
     "upside": 9,
-    "bye": 0,
+    "bye": 14,
     "radar": [
       47,
       47,
@@ -4759,7 +4759,7 @@
       47,
       51
     ],
-    "note": "RB57 · Overall-Rang 181 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB57 · Overall-Rang 181 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4776,7 +4776,7 @@
     "proj": 60,
     "floor": 4,
     "upside": 9,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       53,
       39,
@@ -4785,7 +4785,7 @@
       50,
       48
     ],
-    "note": "RB58 · Overall-Rang 182 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB58 · Overall-Rang 182 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4802,7 +4802,7 @@
     "proj": 55,
     "floor": 4,
     "upside": 8,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       46,
       51,
@@ -4811,7 +4811,7 @@
       53,
       47
     ],
-    "note": "TE22 · Overall-Rang 183 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE22 · Overall-Rang 183 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4822,13 +4822,13 @@
     "rank": 184,
     "pos": "WR",
     "name": "Kayshon Boutte",
-    "team": "NE",
+    "team": "HOU",
     "age": 25,
     "adp": 184,
     "proj": 49,
     "floor": 3,
     "upside": 7,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       52,
       42,
@@ -4837,7 +4837,7 @@
       38,
       46
     ],
-    "note": "WR80 · Overall-Rang 184 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR80 · Overall-Rang 184 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4854,7 +4854,7 @@
     "proj": 47,
     "floor": 3,
     "upside": 7,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       41,
       38,
@@ -4863,7 +4863,7 @@
       45,
       42
     ],
-    "note": "WR81 · Overall-Rang 185 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR81 · Overall-Rang 185 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4880,7 +4880,7 @@
     "proj": 57,
     "floor": 4,
     "upside": 8,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       48,
       50,
@@ -4889,7 +4889,7 @@
       37,
       39
     ],
-    "note": "RB59 · Overall-Rang 186 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB59 · Overall-Rang 186 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4906,7 +4906,7 @@
     "proj": 53,
     "floor": 4,
     "upside": 8,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       41,
       40,
@@ -4915,7 +4915,7 @@
       45,
       42
     ],
-    "note": "RB60 · Overall-Rang 187 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB60 · Overall-Rang 187 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4932,7 +4932,7 @@
     "proj": 50,
     "floor": 4,
     "upside": 7,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       43,
       48,
@@ -4941,7 +4941,7 @@
       46,
       53
     ],
-    "note": "TE23 · Overall-Rang 188 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE23 · Overall-Rang 188 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4958,7 +4958,7 @@
     "proj": 44,
     "floor": 3,
     "upside": 6,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       38,
       52,
@@ -4967,7 +4967,7 @@
       44,
       46
     ],
-    "note": "WR82 · Overall-Rang 189 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR82 · Overall-Rang 189 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -4984,7 +4984,7 @@
     "proj": 50,
     "floor": 4,
     "upside": 7,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       50,
       37,
@@ -4993,7 +4993,7 @@
       38,
       47
     ],
-    "note": "RB61 · Overall-Rang 190 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB61 · Overall-Rang 190 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5010,7 +5010,7 @@
     "proj": 47,
     "floor": 3,
     "upside": 7,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       45,
       42,
@@ -5019,7 +5019,7 @@
       36,
       47
     ],
-    "note": "RB62 · Overall-Rang 191 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB62 · Overall-Rang 191 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5036,7 +5036,7 @@
     "proj": 43,
     "floor": 3,
     "upside": 6,
-    "bye": 0,
+    "bye": 7,
     "radar": [
       37,
       45,
@@ -5045,7 +5045,7 @@
       46,
       50
     ],
-    "note": "RB63 · Overall-Rang 192 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB63 · Overall-Rang 192 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5062,7 +5062,7 @@
     "proj": 40,
     "floor": 3,
     "upside": 6,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       49,
       36,
@@ -5071,7 +5071,7 @@
       45,
       47
     ],
-    "note": "RB64 · Overall-Rang 193 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "RB64 · Overall-Rang 193 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5088,7 +5088,7 @@
     "proj": 42,
     "floor": 3,
     "upside": 6,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       43,
       45,
@@ -5097,7 +5097,7 @@
       41,
       41
     ],
-    "note": "WR83 · Overall-Rang 194 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR83 · Overall-Rang 194 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5114,7 +5114,7 @@
     "proj": 40,
     "floor": 3,
     "upside": 6,
-    "bye": 0,
+    "bye": 8,
     "radar": [
       48,
       41,
@@ -5123,7 +5123,7 @@
       48,
       34
     ],
-    "note": "WR84 · Overall-Rang 195 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR84 · Overall-Rang 195 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5140,7 +5140,7 @@
     "proj": 45,
     "floor": 3,
     "upside": 7,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       49,
       49,
@@ -5149,7 +5149,7 @@
       43,
       36
     ],
-    "note": "TE24 · Overall-Rang 196 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE24 · Overall-Rang 196 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5166,7 +5166,7 @@
     "proj": 37,
     "floor": 3,
     "upside": 5,
-    "bye": 0,
+    "bye": 6,
     "radar": [
       39,
       40,
@@ -5175,7 +5175,7 @@
       44,
       49
     ],
-    "note": "WR85 · Overall-Rang 197 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR85 · Overall-Rang 197 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5192,7 +5192,7 @@
     "proj": 35,
     "floor": 2,
     "upside": 5,
-    "bye": 0,
+    "bye": 13,
     "radar": [
       38,
       43,
@@ -5201,7 +5201,7 @@
       36,
       47
     ],
-    "note": "WR86 · Overall-Rang 198 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "WR86 · Overall-Rang 198 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5218,7 +5218,7 @@
     "proj": 140,
     "floor": 10,
     "upside": 20,
-    "bye": 0,
+    "bye": 11,
     "radar": [
       41,
       43,
@@ -5227,7 +5227,7 @@
       42,
       40
     ],
-    "note": "QB25 · Overall-Rang 199 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "QB25 · Overall-Rang 199 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5244,7 +5244,7 @@
     "proj": 40,
     "floor": 3,
     "upside": 6,
-    "bye": 0,
+    "bye": 5,
     "radar": [
       40,
       46,
@@ -5253,7 +5253,7 @@
       49,
       43
     ],
-    "note": "TE25 · Overall-Rang 200 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "note": "TE25 · Overall-Rang 200 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026).",
     "tags": [
       "Tier 3"
     ],
@@ -5270,7 +5270,7 @@
     "proj": 138,
     "floor": 8,
     "upside": 22,
-    "bye": 5,
+    "bye": 10,
     "radar": [
       90,
       88,
@@ -5297,7 +5297,7 @@
     "proj": 135,
     "floor": 8,
     "upside": 21,
-    "bye": 14,
+    "bye": 8,
     "radar": [
       85,
       82,
@@ -5324,7 +5324,7 @@
     "proj": 132,
     "floor": 7,
     "upside": 20,
-    "bye": 11,
+    "bye": 5,
     "radar": [
       80,
       85,
@@ -5351,7 +5351,7 @@
     "proj": 128,
     "floor": 7,
     "upside": 20,
-    "bye": 12,
+    "bye": 7,
     "radar": [
       82,
       80,
@@ -5378,7 +5378,7 @@
     "proj": 155,
     "floor": 10,
     "upside": 18,
-    "bye": 11,
+    "bye": 5,
     "radar": [
       95,
       85,
@@ -5405,7 +5405,7 @@
     "proj": 150,
     "floor": 10,
     "upside": 18,
-    "bye": 10,
+    "bye": 6,
     "radar": [
       88,
       82,
@@ -5432,7 +5432,7 @@
     "proj": 148,
     "floor": 9,
     "upside": 17,
-    "bye": 12,
+    "bye": 7,
     "radar": [
       85,
       80,
