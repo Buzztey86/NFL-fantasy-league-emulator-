@@ -1,0 +1,250 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useLeagueState } from "@/lib/useLeagueState";
+import { getAvailablePlayers, getPlayerByRank } from "@/lib/players";
+import {
+  buildDraftOrder,
+  getNextPickNumber,
+  getRosterForTeam,
+  getTeamIdForPick,
+  isDraftComplete,
+  pickForAITeam,
+  pickNumberToRound,
+} from "@/lib/draftEngine";
+import type { DraftPick, Player, Position } from "@/lib/types";
+import { PERSONALITY_QUOTES } from "@/lib/teams";
+
+const POSITIONS: (Position | "ALL")[] = ["ALL", "QB", "RB", "WR", "TE", "DST", "K"];
+const POS_COLOR: Record<string, string> = {
+  QB: "var(--blue)",
+  RB: "var(--green)",
+  WR: "var(--gold)",
+  TE: "var(--purple)",
+  DST: "var(--red)",
+  K: "var(--text-muted)",
+};
+
+export default function DraftPage() {
+  const { state, loading, save, cloudSynced } = useLeagueState();
+  const [posFilter, setPosFilter] = useState<Position | "ALL">("ALL");
+  const [search, setSearch] = useState("");
+  const [autoPlaying, setAutoPlaying] = useState(false);
+  const [lastEvent, setLastEvent] = useState<string | null>(null);
+
+  const order = useMemo(() => buildDraftOrder(), []);
+
+  if (loading || !state) {
+    return <main className="p-8 text-[var(--text-muted)]">Lade Draft…</main>;
+  }
+
+  const { teams, draftLog } = state;
+  const draftedRanks = new Set(draftLog.map((p) => p.playerRank));
+  const available = getAvailablePlayers(draftedRanks);
+  const complete = isDraftComplete(draftLog);
+  const nextPickNumber = getNextPickNumber(draftLog);
+  const currentRound = pickNumberToRound(nextPickNumber);
+  const onClockTeamId = complete ? null : getTeamIdForPick(nextPickNumber, order);
+  const onClockTeam = teams.find((t) => t.id === onClockTeamId) ?? null;
+
+  const filtered = available.filter((p) => {
+    if (posFilter !== "ALL" && p.pos !== posFilter) return false;
+    if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false;
+    return true;
+  });
+
+  const humanTeam = teams.find((t) => t.isHuman);
+  const myRoster = humanTeam ? getRosterForTeam(humanTeam.id, draftLog) : [];
+
+  async function makePick(player: Player) {
+    if (!onClockTeam || complete) return;
+    const pick: DraftPick = {
+      pickNumber: nextPickNumber,
+      round: currentRound,
+      teamId: onClockTeam.id,
+      playerRank: player.rank,
+    };
+    await save({ ...state!, draftLog: [...draftLog, pick] });
+    setLastEvent(`Pick ${pick.pickNumber} (R${pick.round}): ${onClockTeam.name} wählt ${player.name}.`);
+  }
+
+  async function runAiPick() {
+    if (!onClockTeam || onClockTeam.isHuman || complete) return;
+    const roster = getRosterForTeam(onClockTeam.id, draftLog);
+    const pick = pickForAITeam(onClockTeam, currentRound, available, roster);
+    await makePick(pick);
+  }
+
+  async function autoPlayUntilHuman() {
+    setAutoPlaying(true);
+    let log = [...draftLog];
+    let n = getNextPickNumber(log);
+    let round = pickNumberToRound(n);
+    let teamId = complete ? null : getTeamIdForPick(n, order);
+    let guard = 0;
+    while (teamId !== null && guard < 30) {
+      const team = teams.find((t) => t.id === teamId);
+      if (!team || team.isHuman) break;
+      const dr = new Set(log.map((p) => p.playerRank));
+      const avail = getAvailablePlayers(dr);
+      const roster = getRosterForTeam(team.id, log);
+      const player = pickForAITeam(team, round, avail, roster);
+      log = [...log, { pickNumber: n, round, teamId: team.id, playerRank: player.rank }];
+      n = log.length + 1;
+      round = pickNumberToRound(n);
+      teamId = n > order.length ? null : getTeamIdForPick(n, order);
+      guard++;
+    }
+    await save({ ...state!, draftLog: log });
+    setAutoPlaying(false);
+  }
+
+  return (
+    <main className="mx-auto max-w-[900px] px-4 sm:px-6 py-6">
+      <div className="flex items-center justify-between mb-4">
+        <Link href="/" className="text-xs text-[var(--text-dim)]">
+          ← Liga
+        </Link>
+        <Link href="/setup" className="text-xs text-[var(--text-dim)]">
+          Setup →
+        </Link>
+      </div>
+
+      <header className="text-center mb-6">
+        <div className="eyebrow">{cloudSynced ? "Cloud-Sync aktiv" : "Local-Only-Modus"}</div>
+        <h1 className="hero-gradient-text font-black" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,4vw,32px)" }}>
+          DRAFT ROOM
+        </h1>
+        {!complete ? (
+          <p className="text-sm text-[var(--text-muted)] mt-1">
+            Pick {nextPickNumber} · Runde {currentRound} ·{" "}
+            <span style={{ color: onClockTeam?.color }}>{onClockTeam?.isHuman ? "DU bist am Zug" : `${onClockTeam?.name} am Zug`}</span>
+          </p>
+        ) : (
+          <p className="text-sm text-[var(--green)] mt-1">Draft abgeschlossen — alle 150 Picks vergeben.</p>
+        )}
+      </header>
+
+      {!complete && !onClockTeam?.isHuman && (
+        <div className="card mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="text-sm text-[var(--text-secondary)]">
+            <span style={{ color: onClockTeam?.color, fontWeight: 700 }}>{onClockTeam?.manager}</span> ist am Zug.
+          </div>
+          <div className="flex gap-2">
+            <button onClick={runAiPick} className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
+              Diesen KI-Pick ausführen
+            </button>
+            <button
+              onClick={autoPlayUntilHuman}
+              disabled={autoPlaying}
+              className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--border-mid)] text-[var(--text-secondary)] disabled:opacity-40"
+            >
+              {autoPlaying ? "Läuft…" : "Bis ich dran bin durchspielen"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {lastEvent && <div className="text-xs text-[var(--text-dim)] text-center mb-4">{lastEvent}</div>}
+
+      <div className="grid gap-4 lg:grid-cols-[1fr_260px]">
+        <section>
+          <div className="flex gap-2 flex-wrap mb-3">
+            {POSITIONS.map((p) => (
+              <button
+                key={p}
+                onClick={() => setPosFilter(p)}
+                className="px-3 py-1 rounded-md text-xs font-semibold border transition-colors"
+                style={
+                  posFilter === p
+                    ? { borderColor: p === "ALL" ? "var(--gold)" : POS_COLOR[p], background: "var(--gold-bg)", color: p === "ALL" ? "var(--gold)" : POS_COLOR[p] }
+                    : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }
+                }
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Spieler suchen…"
+            className="w-full mb-3 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-3 py-2 text-sm text-[var(--text-primary)]"
+          />
+
+          <div className="space-y-2 max-h-[70vh] overflow-y-auto pr-1">
+            {filtered.slice(0, 60).map((p) => (
+              <div key={p.rank} className="card flex items-center justify-between gap-3 !py-2.5">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.06)", color: POS_COLOR[p.pos] }}>
+                      {p.pos}
+                    </span>
+                    <span className="text-sm font-semibold text-[var(--text-primary)] truncate">{p.name}</span>
+                    <span className="text-[10px] text-[var(--text-dim)]">#{p.rank}</span>
+                  </div>
+                  <div className="text-[11px] text-[var(--text-dim)] mt-0.5">
+                    {p.team} · ADP {p.adp} · Proj {p.proj} · Bye {p.bye || "—"}
+                  </div>
+                </div>
+                <button
+                  onClick={() => makePick(p)}
+                  disabled={complete || !onClockTeam?.isHuman}
+                  className="shrink-0 px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-30"
+                >
+                  Draften
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <aside className="space-y-4">
+          <div className="card">
+            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">MEIN ROSTER</h2>
+            {myRoster.length === 0 ? (
+              <p className="text-xs text-[var(--text-dim)]">Noch keine Picks.</p>
+            ) : (
+              <ul className="space-y-1">
+                {myRoster.map((p) => (
+                  <li key={p.rank} className="flex justify-between text-xs">
+                    <span className="text-[var(--text-secondary)]">{p.name}</span>
+                    <span style={{ color: POS_COLOR[p.pos] }}>{p.pos}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div className="card">
+            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">LETZTE PICKS</h2>
+            <ul className="space-y-1.5 max-h-[300px] overflow-y-auto">
+              {[...draftLog]
+                .slice(-10)
+                .reverse()
+                .map((pick) => {
+                  const team = teams.find((t) => t.id === pick.teamId);
+                  const player = getPlayerByRank(pick.playerRank);
+                  return (
+                    <li key={pick.pickNumber} className="text-xs">
+                      <div className="flex justify-between">
+                        <span style={{ color: team?.color }}>{team?.name}</span>
+                        <span className="text-[var(--text-dim)]">#{pick.pickNumber}</span>
+                      </div>
+                      <div className="text-[var(--text-secondary)]">{player.name}</div>
+                      {team && !team.isHuman && (
+                        <div className="text-[10px] text-[var(--text-ghost)] italic">
+                          &ldquo;{PERSONALITY_QUOTES[team.personality]}&rdquo;
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+  );
+}

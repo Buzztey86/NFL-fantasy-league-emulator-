@@ -1,0 +1,5245 @@
+[
+  {
+    "rank": 1,
+    "pos": "RB",
+    "name": "Jahmyr Gibbs",
+    "team": "DET",
+    "age": 23,
+    "adp": 1,
+    "proj": 295,
+    "floor": 20,
+    "upside": 42,
+    "bye": 14,
+    "radar": [
+      88,
+      90,
+      92,
+      85,
+      95,
+      82
+    ],
+    "note": "D.Montgomery-Trade → klarer Lead-RB in Detroit. Massive Upside.",
+    "tags": [
+      "Tier 1",
+      "Upside",
+      "PPR-Waffe"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 2,
+    "pos": "RB",
+    "name": "Bijan Robinson",
+    "team": "ATL",
+    "age": 23,
+    "adp": 2,
+    "proj": 310,
+    "floor": 22,
+    "upside": 40,
+    "bye": 7,
+    "radar": [
+      95,
+      82,
+      88,
+      80,
+      98,
+      90
+    ],
+    "note": "Klares RB1 nach starker Titelrunde 2025. Workhorse-Anteil gesichert.",
+    "tags": [
+      "Tier 1",
+      "Workhorse",
+      "Safe"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 3,
+    "pos": "WR",
+    "name": "Ja'Marr Chase",
+    "team": "CIN",
+    "age": 25,
+    "adp": 3,
+    "proj": 288,
+    "floor": 22,
+    "upside": 42,
+    "bye": 10,
+    "radar": [
+      95,
+      88,
+      92,
+      90,
+      88,
+      90
+    ],
+    "note": "WR1 in Konsens. Burrow-Target-Maschine. Elite-Floor.",
+    "tags": [
+      "Tier 1",
+      "Elite",
+      "Floor-Monster"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 4,
+    "pos": "WR",
+    "name": "Puka Nacua",
+    "team": "LAR",
+    "age": 24,
+    "adp": 4,
+    "proj": 268,
+    "floor": 19,
+    "upside": 39,
+    "bye": 7,
+    "radar": [
+      92,
+      86,
+      84,
+      80,
+      80,
+      86
+    ],
+    "note": "Target-Magnet in McVay-System. Stafford-Chemistry.",
+    "tags": [
+      "Tier 1",
+      "Volume",
+      "Safe"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 5,
+    "pos": "WR",
+    "name": "Jaxon Smith-Njigba",
+    "team": "SEA",
+    "age": 23,
+    "adp": 5,
+    "proj": 275,
+    "floor": 20,
+    "upside": 40,
+    "bye": 5,
+    "radar": [
+      90,
+      92,
+      88,
+      78,
+      80,
+      85
+    ],
+    "note": "Aufsteiger des Jahres. Sam Darnold — QB-Risiko.",
+    "tags": [
+      "Tier 1",
+      "Breakout",
+      "YAC-King"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 6,
+    "pos": "RB",
+    "name": "Christian McCaffrey",
+    "team": "SF",
+    "age": 29,
+    "adp": 6,
+    "proj": 285,
+    "floor": 24,
+    "upside": 38,
+    "bye": 13,
+    "radar": [
+      90,
+      97,
+      85,
+      78,
+      92,
+      95
+    ],
+    "note": "Bestes Floor-Ceiling-Profil. Altersbedingt leicht riskant.",
+    "tags": [
+      "Tier 1",
+      "Floor-Monster",
+      "Vet"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 7,
+    "pos": "WR",
+    "name": "Amon-Ra St. Brown",
+    "team": "DET",
+    "age": 25,
+    "adp": 7,
+    "proj": 258,
+    "floor": 20,
+    "upside": 36,
+    "bye": 14,
+    "radar": [
+      88,
+      90,
+      86,
+      82,
+      78,
+      88
+    ],
+    "note": "Slot-Elite. PPR-Goldmine. Gibbs erhöht Goff-Passing-Fokus.",
+    "tags": [
+      "Tier 2",
+      "PPR-Goldmine",
+      "Slot"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 8,
+    "pos": "RB",
+    "name": "Jonathan Taylor",
+    "team": "IND",
+    "age": 26,
+    "adp": 8,
+    "proj": 255,
+    "floor": 18,
+    "upside": 36,
+    "bye": 10,
+    "radar": [
+      85,
+      65,
+      80,
+      72,
+      88,
+      80
+    ],
+    "note": "Klarer Lead-RB in Indy. Verletzungshistorie beachten.",
+    "tags": [
+      "Tier 2",
+      "Workhorse"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 9,
+    "pos": "WR",
+    "name": "Justin Jefferson",
+    "team": "MIN",
+    "age": 26,
+    "adp": 9,
+    "proj": 245,
+    "floor": 19,
+    "upside": 36,
+    "bye": 8,
+    "radar": [
+      84,
+      82,
+      92,
+      80,
+      78,
+      85
+    ],
+    "note": "Kyler Murray-Effekt bleibt abzuwarten. Top-5-Talent.",
+    "tags": [
+      "Tier 2",
+      "Elite",
+      "QB-abhängig"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 10,
+    "pos": "WR",
+    "name": "CeeDee Lamb",
+    "team": "DAL",
+    "age": 25,
+    "adp": 10,
+    "proj": 250,
+    "floor": 18,
+    "upside": 38,
+    "bye": 7,
+    "radar": [
+      86,
+      84,
+      90,
+      85,
+      82,
+      82
+    ],
+    "note": "Dak zurück, Cowboys-Offense auf Kurs. Elite-Route-Runner.",
+    "tags": [
+      "Tier 2",
+      "Alpha",
+      "Elite"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 11,
+    "pos": "RB",
+    "name": "James Cook",
+    "team": "BUF",
+    "age": 24,
+    "adp": 11,
+    "proj": 242,
+    "floor": 17,
+    "upside": 35,
+    "bye": 12,
+    "radar": [
+      82,
+      78,
+      76,
+      75,
+      80,
+      78
+    ],
+    "note": "Allen-Synergy. Hoher PPR-Wert durch Passfangen.",
+    "tags": [
+      "Tier 2",
+      "PPR-Waffe"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 12,
+    "pos": "RB",
+    "name": "Saquon Barkley",
+    "team": "PHI",
+    "age": 29,
+    "adp": 12,
+    "proj": 235,
+    "floor": 18,
+    "upside": 33,
+    "bye": 5,
+    "radar": [
+      80,
+      72,
+      78,
+      82,
+      85,
+      82
+    ],
+    "note": "SB-MVP-Saison. Eagles-Lauf-First garantiert Workload.",
+    "tags": [
+      "Tier 2",
+      "Super Bowl MVP",
+      "Safe"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 13,
+    "pos": "RB",
+    "name": "De'Von Achane",
+    "team": "MIA",
+    "age": 23,
+    "adp": 13,
+    "proj": 248,
+    "floor": 16,
+    "upside": 40,
+    "bye": 6,
+    "radar": [
+      78,
+      88,
+      88,
+      68,
+      82,
+      72
+    ],
+    "note": "Explosive Explosivität. Verletzungsanfällig — Floor niedrig.",
+    "tags": [
+      "Tier 2",
+      "Boom/Bust",
+      "Speed"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 14,
+    "pos": "WR",
+    "name": "Drake London",
+    "team": "ATL",
+    "age": 23,
+    "adp": 14,
+    "proj": 238,
+    "floor": 17,
+    "upside": 37,
+    "bye": 7,
+    "radar": [
+      82,
+      80,
+      80,
+      88,
+      82,
+      78
+    ],
+    "note": "Bijan + London = doppelte ATL-Gefahr. Red-Zone-Dominanz.",
+    "tags": [
+      "Tier 2",
+      "Red Zone",
+      "Upside"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 15,
+    "pos": "WR",
+    "name": "Nico Collins",
+    "team": "HOU",
+    "age": 25,
+    "adp": 15,
+    "proj": 224,
+    "floor": 16,
+    "upside": 36,
+    "bye": 14,
+    "radar": [
+      80,
+      78,
+      82,
+      78,
+      78,
+      74
+    ],
+    "note": "Stroud zurück. Collins bleibt klare WR1 in Houston.",
+    "tags": [
+      "Tier 3",
+      "Bounce-Back",
+      "Alpha"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 16,
+    "pos": "TE",
+    "name": "Brock Bowers",
+    "team": "LV",
+    "age": 22,
+    "adp": 16,
+    "proj": 185,
+    "floor": 13,
+    "upside": 30,
+    "bye": 11,
+    "radar": [
+      90,
+      60,
+      88,
+      85,
+      80,
+      72
+    ],
+    "note": "Jeanty entlastet Bowers. Passing-Game-Fokus.",
+    "tags": [
+      "Tier 1",
+      "Young-Star",
+      "Upside"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 17,
+    "pos": "RB",
+    "name": "Derrick Henry",
+    "team": "BAL",
+    "age": 32,
+    "adp": 17,
+    "proj": 225,
+    "floor": 16,
+    "upside": 34,
+    "bye": 14,
+    "radar": [
+      88,
+      45,
+      65,
+      85,
+      88,
+      70
+    ],
+    "note": "Altersrisiko. Wenn gesund — dominierende TD-Maschine.",
+    "tags": [
+      "Tier 2",
+      "TD-Maschine",
+      "Vet"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 18,
+    "pos": "RB",
+    "name": "Kenneth Walker III",
+    "team": "KC",
+    "age": 25,
+    "adp": 18,
+    "proj": 260,
+    "floor": 18,
+    "upside": 38,
+    "bye": 0,
+    "radar": [
+      86,
+      84,
+      82,
+      88,
+      97,
+      84
+    ],
+    "note": "RB9 · Overall-Rang 18 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 19,
+    "pos": "RB",
+    "name": "Chase Brown",
+    "team": "CIN",
+    "age": 25,
+    "adp": 19,
+    "proj": 255,
+    "floor": 18,
+    "upside": 37,
+    "bye": 0,
+    "radar": [
+      80,
+      93,
+      85,
+      94,
+      81,
+      83
+    ],
+    "note": "RB10 · Overall-Rang 19 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 20,
+    "pos": "WR",
+    "name": "A.J. Brown",
+    "team": "PHI",
+    "age": 25,
+    "adp": 20,
+    "proj": 255,
+    "floor": 18,
+    "upside": 37,
+    "bye": 0,
+    "radar": [
+      90,
+      94,
+      95,
+      89,
+      92,
+      93
+    ],
+    "note": "WR9 · Overall-Rang 20 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 21,
+    "pos": "WR",
+    "name": "Malik Nabers",
+    "team": "NYG",
+    "age": 22,
+    "adp": 21,
+    "proj": 228,
+    "floor": 15,
+    "upside": 39,
+    "bye": 9,
+    "radar": [
+      82,
+      80,
+      88,
+      75,
+      75,
+      72
+    ],
+    "note": "Dart ist neu — Chemie noch ungeklärt. Megatalent.",
+    "tags": [
+      "Tier 2",
+      "Rookie-QB",
+      "Upside"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 22,
+    "pos": "WR",
+    "name": "Rashee Rice",
+    "team": "KC",
+    "age": 24,
+    "adp": 22,
+    "proj": 232,
+    "floor": 16,
+    "upside": 37,
+    "bye": 11,
+    "radar": [
+      85,
+      82,
+      85,
+      80,
+      80,
+      78
+    ],
+    "note": "Vollständig fit. Mahomes-Liebling. Hohes Upside.",
+    "tags": [
+      "Tier 2",
+      "Comeback",
+      "Mahomes"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 23,
+    "pos": "WR",
+    "name": "George Pickens",
+    "team": "DAL",
+    "age": 25,
+    "adp": 23,
+    "proj": 243,
+    "floor": 17,
+    "upside": 35,
+    "bye": 0,
+    "radar": [
+      90,
+      89,
+      93,
+      90,
+      94,
+      82
+    ],
+    "note": "WR12 · Overall-Rang 23 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 24,
+    "pos": "RB",
+    "name": "Omarion Hampton",
+    "team": "LAC",
+    "age": 25,
+    "adp": 24,
+    "proj": 250,
+    "floor": 18,
+    "upside": 36,
+    "bye": 0,
+    "radar": [
+      87,
+      86,
+      95,
+      93,
+      89,
+      85
+    ],
+    "note": "RB11 · Overall-Rang 24 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 25,
+    "pos": "TE",
+    "name": "Trey McBride",
+    "team": "ARI",
+    "age": 25,
+    "adp": 25,
+    "proj": 195,
+    "floor": 14,
+    "upside": 30,
+    "bye": 5,
+    "radar": [
+      88,
+      72,
+      85,
+      88,
+      80,
+      80
+    ],
+    "note": "#1 TE im Konsens. Sichere 100+ Catch-Saison realistisch.",
+    "tags": [
+      "Tier 1",
+      "Elite",
+      "Floor-Monster"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 26,
+    "pos": "WR",
+    "name": "Chris Olave",
+    "team": "NO",
+    "age": 25,
+    "adp": 26,
+    "proj": 239,
+    "floor": 17,
+    "upside": 35,
+    "bye": 0,
+    "radar": [
+      91,
+      90,
+      96,
+      88,
+      85,
+      95
+    ],
+    "note": "WR13 · Overall-Rang 26 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 27,
+    "pos": "RB",
+    "name": "Travis Etienne Jr.",
+    "team": "NO",
+    "age": 25,
+    "adp": 27,
+    "proj": 244,
+    "floor": 17,
+    "upside": 35,
+    "bye": 0,
+    "radar": [
+      80,
+      86,
+      82,
+      91,
+      89,
+      94
+    ],
+    "note": "RB12 · Overall-Rang 27 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 28,
+    "pos": "RB",
+    "name": "Kyren Williams",
+    "team": "LAR",
+    "age": 25,
+    "adp": 28,
+    "proj": 239,
+    "floor": 17,
+    "upside": 35,
+    "bye": 0,
+    "radar": [
+      83,
+      85,
+      83,
+      88,
+      87,
+      78
+    ],
+    "note": "RB13 · Overall-Rang 28 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 29,
+    "pos": "RB",
+    "name": "Ashton Jeanty",
+    "team": "LV",
+    "age": 22,
+    "adp": 29,
+    "proj": 220,
+    "floor": 14,
+    "upside": 38,
+    "bye": 11,
+    "radar": [
+      80,
+      65,
+      72,
+      65,
+      78,
+      68
+    ],
+    "note": "Rookie mit enormem College-Hype. Raiders-Offense unklar.",
+    "tags": [
+      "Tier 2",
+      "Rookie",
+      "Upside"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 30,
+    "pos": "QB",
+    "name": "Josh Allen",
+    "team": "BUF",
+    "age": 29,
+    "adp": 30,
+    "proj": 400,
+    "floor": 28,
+    "upside": 52,
+    "bye": 12,
+    "radar": [
+      95,
+      92,
+      86,
+      90,
+      95,
+      95
+    ],
+    "note": "#1 QB. Bestes Rushing-Profil aller QBs. Ceiling enorm.",
+    "tags": [
+      "Tier 1",
+      "Elite",
+      "Dual-Threat"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 31,
+    "pos": "RB",
+    "name": "Jeremiyah Love",
+    "team": "ARI",
+    "age": 25,
+    "adp": 31,
+    "proj": 229,
+    "floor": 16,
+    "upside": 33,
+    "bye": 0,
+    "radar": [
+      78,
+      90,
+      78,
+      90,
+      86,
+      82
+    ],
+    "note": "RB15 · Overall-Rang 31 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 32,
+    "pos": "RB",
+    "name": "Javonte Williams",
+    "team": "DAL",
+    "age": 25,
+    "adp": 32,
+    "proj": 225,
+    "floor": 16,
+    "upside": 33,
+    "bye": 0,
+    "radar": [
+      83,
+      82,
+      87,
+      91,
+      82,
+      81
+    ],
+    "note": "RB16 · Overall-Rang 32 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 33,
+    "pos": "WR",
+    "name": "Tetairoa McMillan",
+    "team": "CAR",
+    "age": 25,
+    "adp": 33,
+    "proj": 235,
+    "floor": 16,
+    "upside": 34,
+    "bye": 0,
+    "radar": [
+      89,
+      86,
+      86,
+      86,
+      84,
+      96
+    ],
+    "note": "WR14 · Overall-Rang 33 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 34,
+    "pos": "TE",
+    "name": "Colston Loveland",
+    "team": "CHI",
+    "age": 22,
+    "adp": 34,
+    "proj": 168,
+    "floor": 11,
+    "upside": 28,
+    "bye": 7,
+    "radar": [
+      78,
+      58,
+      80,
+      78,
+      72,
+      72
+    ],
+    "note": "Ben-Johnson-Offense — TE-Nutzung hoch. Williams-Synergy.",
+    "tags": [
+      "Tier 2",
+      "Rookie",
+      "Upside"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 35,
+    "pos": "WR",
+    "name": "Tee Higgins",
+    "team": "CIN",
+    "age": 25,
+    "adp": 35,
+    "proj": 231,
+    "floor": 16,
+    "upside": 33,
+    "bye": 0,
+    "radar": [
+      85,
+      82,
+      83,
+      85,
+      79,
+      86
+    ],
+    "note": "WR15 · Overall-Rang 35 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 36,
+    "pos": "RB",
+    "name": "Breece Hall",
+    "team": "NYJ",
+    "age": 25,
+    "adp": 36,
+    "proj": 220,
+    "floor": 15,
+    "upside": 32,
+    "bye": 0,
+    "radar": [
+      84,
+      82,
+      81,
+      82,
+      83,
+      76
+    ],
+    "note": "RB17 · Overall-Rang 36 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 37,
+    "pos": "WR",
+    "name": "Zay Flowers",
+    "team": "BAL",
+    "age": 25,
+    "adp": 37,
+    "proj": 228,
+    "floor": 16,
+    "upside": 33,
+    "bye": 0,
+    "radar": [
+      83,
+      87,
+      92,
+      83,
+      88,
+      88
+    ],
+    "note": "WR16 · Overall-Rang 37 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 38,
+    "pos": "RB",
+    "name": "Josh Jacobs",
+    "team": "GB",
+    "age": 27,
+    "adp": 38,
+    "proj": 230,
+    "floor": 17,
+    "upside": 32,
+    "bye": 9,
+    "radar": [
+      82,
+      60,
+      72,
+      78,
+      80,
+      79
+    ],
+    "note": "Love-Connection. Solider Workhorse ohne Spotlight.",
+    "tags": [
+      "Tier 2",
+      "Workhorse"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 39,
+    "pos": "WR",
+    "name": "Ladd McConkey",
+    "team": "LAC",
+    "age": 25,
+    "adp": 39,
+    "proj": 224,
+    "floor": 16,
+    "upside": 32,
+    "bye": 0,
+    "radar": [
+      82,
+      87,
+      92,
+      85,
+      83,
+      87
+    ],
+    "note": "WR17 · Overall-Rang 39 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 40,
+    "pos": "WR",
+    "name": "DeVonta Smith",
+    "team": "PHI",
+    "age": 25,
+    "adp": 40,
+    "proj": 221,
+    "floor": 15,
+    "upside": 32,
+    "bye": 0,
+    "radar": [
+      83,
+      89,
+      81,
+      92,
+      89,
+      85
+    ],
+    "note": "WR18 · Overall-Rang 40 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 41,
+    "pos": "RB",
+    "name": "Bucky Irving",
+    "team": "TB",
+    "age": 25,
+    "adp": 41,
+    "proj": 211,
+    "floor": 15,
+    "upside": 31,
+    "bye": 0,
+    "radar": [
+      77,
+      75,
+      78,
+      83,
+      86,
+      85
+    ],
+    "note": "RB19 · Overall-Rang 41 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 42,
+    "pos": "RB",
+    "name": "Cam Skattebo",
+    "team": "NYG",
+    "age": 25,
+    "adp": 42,
+    "proj": 206,
+    "floor": 14,
+    "upside": 30,
+    "bye": 0,
+    "radar": [
+      80,
+      76,
+      84,
+      85,
+      80,
+      77
+    ],
+    "note": "RB20 · Overall-Rang 42 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 43,
+    "pos": "WR",
+    "name": "Jaylen Waddle",
+    "team": "DEN",
+    "age": 25,
+    "adp": 43,
+    "proj": 217,
+    "floor": 15,
+    "upside": 31,
+    "bye": 0,
+    "radar": [
+      81,
+      86,
+      88,
+      90,
+      82,
+      84
+    ],
+    "note": "WR19 · Overall-Rang 43 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 44,
+    "pos": "RB",
+    "name": "David Montgomery",
+    "team": "HOU",
+    "age": 25,
+    "adp": 44,
+    "proj": 202,
+    "floor": 14,
+    "upside": 29,
+    "bye": 0,
+    "radar": [
+      83,
+      86,
+      76,
+      74,
+      77,
+      81
+    ],
+    "note": "RB21 · Overall-Rang 44 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 45,
+    "pos": "RB",
+    "name": "D'Andre Swift",
+    "team": "CHI",
+    "age": 25,
+    "adp": 45,
+    "proj": 197,
+    "floor": 14,
+    "upside": 29,
+    "bye": 0,
+    "radar": [
+      85,
+      80,
+      81,
+      76,
+      72,
+      85
+    ],
+    "note": "RB22 · Overall-Rang 45 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 46,
+    "pos": "QB",
+    "name": "Lamar Jackson",
+    "team": "BAL",
+    "age": 28,
+    "adp": 46,
+    "proj": 355,
+    "floor": 24,
+    "upside": 47,
+    "bye": 14,
+    "radar": [
+      85,
+      98,
+      72,
+      88,
+      90,
+      88
+    ],
+    "note": "MVP-Kandidat jedes Jahr. Rushing-Floor unschlagbar.",
+    "tags": [
+      "Tier 1",
+      "MVP-Kandidat",
+      "Dual-Threat"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 47,
+    "pos": "WR",
+    "name": "Garrett Wilson",
+    "team": "NYJ",
+    "age": 25,
+    "adp": 47,
+    "proj": 214,
+    "floor": 15,
+    "upside": 31,
+    "bye": 0,
+    "radar": [
+      89,
+      81,
+      83,
+      90,
+      76,
+      80
+    ],
+    "note": "WR20 · Overall-Rang 47 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 48,
+    "pos": "RB",
+    "name": "Quinshon Judkins",
+    "team": "CLE",
+    "age": 25,
+    "adp": 48,
+    "proj": 193,
+    "floor": 14,
+    "upside": 28,
+    "bye": 0,
+    "radar": [
+      74,
+      79,
+      77,
+      84,
+      79,
+      81
+    ],
+    "note": "RB23 · Overall-Rang 48 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 49,
+    "pos": "WR",
+    "name": "Emeka Egbuka",
+    "team": "TB",
+    "age": 25,
+    "adp": 49,
+    "proj": 210,
+    "floor": 15,
+    "upside": 30,
+    "bye": 0,
+    "radar": [
+      88,
+      89,
+      87,
+      76,
+      78,
+      89
+    ],
+    "note": "WR21 · Overall-Rang 49 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 50,
+    "pos": "WR",
+    "name": "Mike Evans",
+    "team": "SF",
+    "age": 25,
+    "adp": 50,
+    "proj": 207,
+    "floor": 14,
+    "upside": 30,
+    "bye": 0,
+    "radar": [
+      85,
+      76,
+      81,
+      87,
+      83,
+      84
+    ],
+    "note": "WR22 · Overall-Rang 50 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 51,
+    "pos": "RB",
+    "name": "Bhayshul Tuten",
+    "team": "JAX",
+    "age": 25,
+    "adp": 51,
+    "proj": 188,
+    "floor": 13,
+    "upside": 27,
+    "bye": 0,
+    "radar": [
+      80,
+      83,
+      73,
+      78,
+      75,
+      73
+    ],
+    "note": "RB24 · Overall-Rang 51 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 52,
+    "pos": "RB",
+    "name": "TreVeyon Henderson",
+    "team": "NE",
+    "age": 25,
+    "adp": 52,
+    "proj": 184,
+    "floor": 13,
+    "upside": 27,
+    "bye": 0,
+    "radar": [
+      80,
+      74,
+      76,
+      77,
+      81,
+      80
+    ],
+    "note": "RB25 · Overall-Rang 52 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 53,
+    "pos": "WR",
+    "name": "Davante Adams",
+    "team": "LAR",
+    "age": 25,
+    "adp": 53,
+    "proj": 204,
+    "floor": 14,
+    "upside": 30,
+    "bye": 0,
+    "radar": [
+      80,
+      76,
+      83,
+      80,
+      86,
+      83
+    ],
+    "note": "WR23 · Overall-Rang 53 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 54,
+    "pos": "RB",
+    "name": "Jadarian Price",
+    "team": "SEA",
+    "age": 25,
+    "adp": 54,
+    "proj": 180,
+    "floor": 13,
+    "upside": 26,
+    "bye": 0,
+    "radar": [
+      80,
+      69,
+      73,
+      78,
+      79,
+      80
+    ],
+    "note": "RB26 · Overall-Rang 54 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 55,
+    "pos": "WR",
+    "name": "Terry McLaurin",
+    "team": "WAS",
+    "age": 25,
+    "adp": 55,
+    "proj": 201,
+    "floor": 14,
+    "upside": 29,
+    "bye": 0,
+    "radar": [
+      86,
+      86,
+      76,
+      74,
+      83,
+      84
+    ],
+    "note": "WR24 · Overall-Rang 55 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 56,
+    "pos": "WR",
+    "name": "Jameson Williams",
+    "team": "DET",
+    "age": 25,
+    "adp": 56,
+    "proj": 197,
+    "floor": 14,
+    "upside": 29,
+    "bye": 0,
+    "radar": [
+      76,
+      81,
+      80,
+      73,
+      84,
+      81
+    ],
+    "note": "WR25 · Overall-Rang 56 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 57,
+    "pos": "TE",
+    "name": "Tyler Warren",
+    "team": "IND",
+    "age": 23,
+    "adp": 57,
+    "proj": 175,
+    "floor": 12,
+    "upside": 28,
+    "bye": 10,
+    "radar": [
+      82,
+      65,
+      82,
+      80,
+      75,
+      75
+    ],
+    "note": "Rookie-Breakout möglich. J. Taylor zieht Safeties.",
+    "tags": [
+      "Tier 2",
+      "Rookie",
+      "Breakout"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 58,
+    "pos": "WR",
+    "name": "Luther Burden III",
+    "team": "CHI",
+    "age": 25,
+    "adp": 58,
+    "proj": 194,
+    "floor": 14,
+    "upside": 28,
+    "bye": 0,
+    "radar": [
+      72,
+      82,
+      74,
+      88,
+      78,
+      85
+    ],
+    "note": "WR26 · Overall-Rang 58 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 59,
+    "pos": "QB",
+    "name": "Jayden Daniels",
+    "team": "WAS",
+    "age": 24,
+    "adp": 59,
+    "proj": 375,
+    "floor": 25,
+    "upside": 50,
+    "bye": 14,
+    "radar": [
+      82,
+      95,
+      82,
+      85,
+      88,
+      82
+    ],
+    "note": "Breakout-Rookie → Year 2 Leap. WAS-Offense spannend.",
+    "tags": [
+      "Tier 1",
+      "Dual-Threat",
+      "Year 2"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 60,
+    "pos": "WR",
+    "name": "Carnell Tate",
+    "team": "TEN",
+    "age": 25,
+    "adp": 60,
+    "proj": 191,
+    "floor": 13,
+    "upside": 28,
+    "bye": 0,
+    "radar": [
+      77,
+      75,
+      84,
+      73,
+      85,
+      83
+    ],
+    "note": "WR27 · Overall-Rang 60 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 61,
+    "pos": "WR",
+    "name": "Christian Watson",
+    "team": "GB",
+    "age": 25,
+    "adp": 61,
+    "proj": 188,
+    "floor": 13,
+    "upside": 27,
+    "bye": 0,
+    "radar": [
+      85,
+      75,
+      82,
+      85,
+      79,
+      79
+    ],
+    "note": "WR28 · Overall-Rang 61 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 62,
+    "pos": "WR",
+    "name": "Rome Odunze",
+    "team": "CHI",
+    "age": 25,
+    "adp": 62,
+    "proj": 185,
+    "floor": 13,
+    "upside": 27,
+    "bye": 0,
+    "radar": [
+      82,
+      82,
+      75,
+      83,
+      83,
+      86
+    ],
+    "note": "WR29 · Overall-Rang 62 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 63,
+    "pos": "WR",
+    "name": "D.J. Moore",
+    "team": "BUF",
+    "age": 25,
+    "adp": 63,
+    "proj": 182,
+    "floor": 13,
+    "upside": 26,
+    "bye": 0,
+    "radar": [
+      84,
+      80,
+      69,
+      80,
+      79,
+      82
+    ],
+    "note": "WR30 · Overall-Rang 63 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 64,
+    "pos": "QB",
+    "name": "Joe Burrow",
+    "team": "CIN",
+    "age": 29,
+    "adp": 64,
+    "proj": 342,
+    "floor": 22,
+    "upside": 44,
+    "bye": 10,
+    "radar": [
+      90,
+      58,
+      92,
+      88,
+      85,
+      82
+    ],
+    "note": "Arm ist Elite. Verletzungshistorie — Sleeper-Wert hoch.",
+    "tags": [
+      "Tier 2",
+      "Comeback",
+      "Arm-Talent"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 65,
+    "pos": "RB",
+    "name": "Jaylen Warren",
+    "team": "PIT",
+    "age": 25,
+    "adp": 65,
+    "proj": 176,
+    "floor": 12,
+    "upside": 26,
+    "bye": 0,
+    "radar": [
+      73,
+      72,
+      78,
+      80,
+      78,
+      72
+    ],
+    "note": "RB27 · Overall-Rang 65 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 66,
+    "pos": "QB",
+    "name": "Drake Maye",
+    "team": "NE",
+    "age": 23,
+    "adp": 66,
+    "proj": 360,
+    "floor": 22,
+    "upside": 48,
+    "bye": 14,
+    "radar": [
+      78,
+      85,
+      85,
+      78,
+      82,
+      75
+    ],
+    "note": "Enormes Potenzial, schwache Waffen in NE. Upside-QB.",
+    "tags": [
+      "Tier 1",
+      "Upside",
+      "Year 2"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 67,
+    "pos": "RB",
+    "name": "Blake Corum",
+    "team": "LAR",
+    "age": 25,
+    "adp": 67,
+    "proj": 172,
+    "floor": 12,
+    "upside": 25,
+    "bye": 0,
+    "radar": [
+      75,
+      65,
+      71,
+      80,
+      78,
+      75
+    ],
+    "note": "RB28 · Overall-Rang 67 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 68,
+    "pos": "WR",
+    "name": "Brian Thomas Jr.",
+    "team": "JAX",
+    "age": 25,
+    "adp": 68,
+    "proj": 179,
+    "floor": 13,
+    "upside": 26,
+    "bye": 0,
+    "radar": [
+      78,
+      84,
+      77,
+      75,
+      70,
+      74
+    ],
+    "note": "WR31 · Overall-Rang 68 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 69,
+    "pos": "WR",
+    "name": "Parker Washington",
+    "team": "JAX",
+    "age": 25,
+    "adp": 69,
+    "proj": 176,
+    "floor": 12,
+    "upside": 26,
+    "bye": 0,
+    "radar": [
+      76,
+      84,
+      74,
+      74,
+      84,
+      81
+    ],
+    "note": "WR32 · Overall-Rang 69 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 70,
+    "pos": "WR",
+    "name": "Marvin Harrison Jr.",
+    "team": "ARI",
+    "age": 25,
+    "adp": 70,
+    "proj": 173,
+    "floor": 12,
+    "upside": 25,
+    "bye": 0,
+    "radar": [
+      80,
+      71,
+      75,
+      82,
+      68,
+      76
+    ],
+    "note": "WR33 · Overall-Rang 70 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 71,
+    "pos": "TE",
+    "name": "Harold Fannin",
+    "team": "CLE",
+    "age": 25,
+    "adp": 71,
+    "proj": 158,
+    "floor": 11,
+    "upside": 23,
+    "bye": 0,
+    "radar": [
+      88,
+      94,
+      87,
+      85,
+      83,
+      85
+    ],
+    "note": "TE5 · Overall-Rang 71 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 72,
+    "pos": "RB",
+    "name": "Rico Dowdle",
+    "team": "PIT",
+    "age": 25,
+    "adp": 72,
+    "proj": 168,
+    "floor": 12,
+    "upside": 24,
+    "bye": 0,
+    "radar": [
+      69,
+      66,
+      69,
+      64,
+      74,
+      68
+    ],
+    "note": "RB29 · Overall-Rang 72 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 73,
+    "pos": "WR",
+    "name": "DK Metcalf",
+    "team": "PIT",
+    "age": 25,
+    "adp": 73,
+    "proj": 170,
+    "floor": 12,
+    "upside": 25,
+    "bye": 0,
+    "radar": [
+      77,
+      79,
+      77,
+      76,
+      69,
+      74
+    ],
+    "note": "WR34 · Overall-Rang 73 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 74,
+    "pos": "RB",
+    "name": "Tony Pollard",
+    "team": "TEN",
+    "age": 25,
+    "adp": 74,
+    "proj": 164,
+    "floor": 11,
+    "upside": 24,
+    "bye": 0,
+    "radar": [
+      67,
+      78,
+      74,
+      70,
+      64,
+      65
+    ],
+    "note": "RB30 · Overall-Rang 74 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 75,
+    "pos": "RB",
+    "name": "Jonathon Brooks",
+    "team": "CAR",
+    "age": 25,
+    "adp": 75,
+    "proj": 159,
+    "floor": 11,
+    "upside": 23,
+    "bye": 0,
+    "radar": [
+      67,
+      67,
+      78,
+      76,
+      74,
+      75
+    ],
+    "note": "RB31 · Overall-Rang 75 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 76,
+    "pos": "RB",
+    "name": "Rhamondre Stevenson",
+    "team": "NE",
+    "age": 25,
+    "adp": 76,
+    "proj": 155,
+    "floor": 11,
+    "upside": 22,
+    "bye": 0,
+    "radar": [
+      62,
+      73,
+      71,
+      76,
+      65,
+      75
+    ],
+    "note": "RB32 · Overall-Rang 76 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 77,
+    "pos": "WR",
+    "name": "Jordan Addison",
+    "team": "MIN",
+    "age": 25,
+    "adp": 77,
+    "proj": 167,
+    "floor": 12,
+    "upside": 24,
+    "bye": 0,
+    "radar": [
+      67,
+      80,
+      69,
+      68,
+      74,
+      71
+    ],
+    "note": "WR35 · Overall-Rang 77 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 78,
+    "pos": "RB",
+    "name": "J.K. Dobbins",
+    "team": "DEN",
+    "age": 25,
+    "adp": 78,
+    "proj": 152,
+    "floor": 11,
+    "upside": 22,
+    "bye": 0,
+    "radar": [
+      65,
+      74,
+      66,
+      66,
+      66,
+      75
+    ],
+    "note": "RB33 · Overall-Rang 78 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 79,
+    "pos": "RB",
+    "name": "RJ Harvey",
+    "team": "DEN",
+    "age": 25,
+    "adp": 79,
+    "proj": 148,
+    "floor": 10,
+    "upside": 21,
+    "bye": 0,
+    "radar": [
+      68,
+      75,
+      70,
+      63,
+      66,
+      66
+    ],
+    "note": "RB34 · Overall-Rang 79 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 80,
+    "pos": "QB",
+    "name": "Jalen Hurts",
+    "team": "PHI",
+    "age": 26,
+    "adp": 80,
+    "proj": 348,
+    "floor": 23,
+    "upside": 45,
+    "bye": 5,
+    "radar": [
+      82,
+      90,
+      78,
+      85,
+      88,
+      85
+    ],
+    "note": "SB-Champion-System. Receiving-Core top — Floor sicher.",
+    "tags": [
+      "Tier 1",
+      "SB-QB",
+      "Safe"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 81,
+    "pos": "TE",
+    "name": "Tucker Kraft",
+    "team": "GB",
+    "age": 25,
+    "adp": 81,
+    "proj": 151,
+    "floor": 11,
+    "upside": 22,
+    "bye": 0,
+    "radar": [
+      84,
+      83,
+      89,
+      83,
+      77,
+      93
+    ],
+    "note": "TE6 · Overall-Rang 81 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 82,
+    "pos": "WR",
+    "name": "Makai Lemon",
+    "team": "PHI",
+    "age": 25,
+    "adp": 82,
+    "proj": 164,
+    "floor": 11,
+    "upside": 24,
+    "bye": 0,
+    "radar": [
+      75,
+      70,
+      76,
+      76,
+      80,
+      78
+    ],
+    "note": "WR36 · Overall-Rang 82 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 83,
+    "pos": "QB",
+    "name": "Dak Prescott",
+    "team": "DAL",
+    "age": 25,
+    "adp": 83,
+    "proj": 315,
+    "floor": 22,
+    "upside": 46,
+    "bye": 0,
+    "radar": [
+      80,
+      87,
+      78,
+      75,
+      90,
+      79
+    ],
+    "note": "QB7 · Overall-Rang 83 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 84,
+    "pos": "WR",
+    "name": "Michael Wilson",
+    "team": "ARI",
+    "age": 25,
+    "adp": 84,
+    "proj": 161,
+    "floor": 11,
+    "upside": 23,
+    "bye": 0,
+    "radar": [
+      76,
+      72,
+      69,
+      67,
+      69,
+      72
+    ],
+    "note": "WR37 · Overall-Rang 84 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 85,
+    "pos": "QB",
+    "name": "Justin Herbert",
+    "team": "LAC",
+    "age": 25,
+    "adp": 85,
+    "proj": 303,
+    "floor": 21,
+    "upside": 44,
+    "bye": 0,
+    "radar": [
+      87,
+      82,
+      73,
+      81,
+      84,
+      84
+    ],
+    "note": "QB8 · Overall-Rang 85 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 1"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 86,
+    "pos": "QB",
+    "name": "Patrick Mahomes",
+    "team": "KC",
+    "age": 25,
+    "adp": 86,
+    "proj": 292,
+    "floor": 20,
+    "upside": 42,
+    "bye": 0,
+    "radar": [
+      77,
+      78,
+      84,
+      72,
+      85,
+      83
+    ],
+    "note": "QB9 · Overall-Rang 86 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 87,
+    "pos": "RB",
+    "name": "Kyle Monangai",
+    "team": "CHI",
+    "age": 25,
+    "adp": 87,
+    "proj": 144,
+    "floor": 10,
+    "upside": 21,
+    "bye": 0,
+    "radar": [
+      67,
+      66,
+      61,
+      66,
+      69,
+      72
+    ],
+    "note": "RB35 · Overall-Rang 87 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 88,
+    "pos": "TE",
+    "name": "Sam LaPorta",
+    "team": "DET",
+    "age": 24,
+    "adp": 88,
+    "proj": 152,
+    "floor": 10,
+    "upside": 26,
+    "bye": 14,
+    "radar": [
+      76,
+      58,
+      78,
+      75,
+      70,
+      72
+    ],
+    "note": "Gibbs-Offense gibt TE mehr Raum. Solider Floor.",
+    "tags": [
+      "Tier 3",
+      "Safe",
+      "Year 3"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 89,
+    "pos": "QB",
+    "name": "Caleb Williams",
+    "team": "CHI",
+    "age": 25,
+    "adp": 89,
+    "proj": 281,
+    "floor": 20,
+    "upside": 41,
+    "bye": 0,
+    "radar": [
+      68,
+      79,
+      76,
+      71,
+      80,
+      73
+    ],
+    "note": "QB10 · Overall-Rang 89 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 90,
+    "pos": "WR",
+    "name": "Josh Downs",
+    "team": "IND",
+    "age": 25,
+    "adp": 90,
+    "proj": 158,
+    "floor": 11,
+    "upside": 23,
+    "bye": 0,
+    "radar": [
+      75,
+      71,
+      71,
+      66,
+      68,
+      76
+    ],
+    "note": "WR38 · Overall-Rang 90 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 91,
+    "pos": "WR",
+    "name": "Jayden Reed",
+    "team": "GB",
+    "age": 25,
+    "adp": 91,
+    "proj": 155,
+    "floor": 11,
+    "upside": 22,
+    "bye": 0,
+    "radar": [
+      64,
+      74,
+      66,
+      69,
+      68,
+      76
+    ],
+    "note": "WR39 · Overall-Rang 91 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 92,
+    "pos": "WR",
+    "name": "Courtland Sutton",
+    "team": "DEN",
+    "age": 25,
+    "adp": 92,
+    "proj": 152,
+    "floor": 11,
+    "upside": 22,
+    "bye": 0,
+    "radar": [
+      70,
+      71,
+      67,
+      77,
+      79,
+      70
+    ],
+    "note": "WR40 · Overall-Rang 92 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 93,
+    "pos": "WR",
+    "name": "Chris Godwin",
+    "team": "TB",
+    "age": 25,
+    "adp": 93,
+    "proj": 149,
+    "floor": 10,
+    "upside": 22,
+    "bye": 0,
+    "radar": [
+      63,
+      73,
+      68,
+      71,
+      67,
+      70
+    ],
+    "note": "WR41 · Overall-Rang 93 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 94,
+    "pos": "RB",
+    "name": "Chuba Hubbard",
+    "team": "CAR",
+    "age": 25,
+    "adp": 94,
+    "proj": 140,
+    "floor": 10,
+    "upside": 20,
+    "bye": 0,
+    "radar": [
+      71,
+      72,
+      59,
+      66,
+      71,
+      70
+    ],
+    "note": "RB36 · Overall-Rang 94 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 95,
+    "pos": "TE",
+    "name": "Kyle Pitts",
+    "team": "ATL",
+    "age": 24,
+    "adp": 95,
+    "proj": 160,
+    "floor": 10,
+    "upside": 30,
+    "bye": 7,
+    "radar": [
+      80,
+      62,
+      78,
+      80,
+      72,
+      70
+    ],
+    "note": "Endlich?! Bijan zieht Defense, Pitts profitiert.",
+    "tags": [
+      "Tier 2",
+      "Upside",
+      "Bounce-Back"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 96,
+    "pos": "RB",
+    "name": "Rachaad White",
+    "team": "WAS",
+    "age": 25,
+    "adp": 96,
+    "proj": 136,
+    "floor": 10,
+    "upside": 20,
+    "bye": 0,
+    "radar": [
+      59,
+      66,
+      65,
+      59,
+      60,
+      65
+    ],
+    "note": "RB37 · Overall-Rang 96 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 97,
+    "pos": "RB",
+    "name": "Aaron Jones",
+    "team": "MIN",
+    "age": 25,
+    "adp": 97,
+    "proj": 132,
+    "floor": 9,
+    "upside": 19,
+    "bye": 0,
+    "radar": [
+      64,
+      62,
+      71,
+      70,
+      65,
+      70
+    ],
+    "note": "RB38 · Overall-Rang 97 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 98,
+    "pos": "QB",
+    "name": "Jaxson Dart",
+    "team": "NYG",
+    "age": 25,
+    "adp": 98,
+    "proj": 270,
+    "floor": 19,
+    "upside": 39,
+    "bye": 0,
+    "radar": [
+      72,
+      69,
+      70,
+      75,
+      75,
+      77
+    ],
+    "note": "QB11 · Overall-Rang 98 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 99,
+    "pos": "WR",
+    "name": "Jakobi Meyers",
+    "team": "JAX",
+    "age": 25,
+    "adp": 99,
+    "proj": 147,
+    "floor": 10,
+    "upside": 21,
+    "bye": 0,
+    "radar": [
+      67,
+      63,
+      74,
+      69,
+      66,
+      71
+    ],
+    "note": "WR42 · Overall-Rang 99 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 100,
+    "pos": "WR",
+    "name": "Wan'Dale Robinson",
+    "team": "TEN",
+    "age": 25,
+    "adp": 100,
+    "proj": 144,
+    "floor": 10,
+    "upside": 21,
+    "bye": 0,
+    "radar": [
+      75,
+      76,
+      62,
+      62,
+      67,
+      66
+    ],
+    "note": "WR43 · Overall-Rang 100 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 101,
+    "pos": "RB",
+    "name": "Chris Rodriguez",
+    "team": "JAX",
+    "age": 25,
+    "adp": 101,
+    "proj": 128,
+    "floor": 9,
+    "upside": 19,
+    "bye": 0,
+    "radar": [
+      67,
+      68,
+      59,
+      63,
+      59,
+      62
+    ],
+    "note": "RB39 · Overall-Rang 101 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 102,
+    "pos": "RB",
+    "name": "Kenneth Gainwell",
+    "team": "TB",
+    "age": 25,
+    "adp": 102,
+    "proj": 125,
+    "floor": 9,
+    "upside": 18,
+    "bye": 0,
+    "radar": [
+      57,
+      64,
+      67,
+      58,
+      54,
+      64
+    ],
+    "note": "RB40 · Overall-Rang 102 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 103,
+    "pos": "WR",
+    "name": "Romeo Doubs",
+    "team": "NE",
+    "age": 25,
+    "adp": 103,
+    "proj": 141,
+    "floor": 10,
+    "upside": 20,
+    "bye": 0,
+    "radar": [
+      69,
+      75,
+      67,
+      63,
+      70,
+      60
+    ],
+    "note": "WR44 · Overall-Rang 103 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 104,
+    "pos": "WR",
+    "name": "Xavier Worthy",
+    "team": "KC",
+    "age": 25,
+    "adp": 104,
+    "proj": 138,
+    "floor": 10,
+    "upside": 20,
+    "bye": 0,
+    "radar": [
+      72,
+      70,
+      75,
+      67,
+      62,
+      75
+    ],
+    "note": "WR45 · Overall-Rang 104 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 105,
+    "pos": "WR",
+    "name": "Stefon Diggs",
+    "team": "WAS",
+    "age": 25,
+    "adp": 105,
+    "proj": 136,
+    "floor": 10,
+    "upside": 20,
+    "bye": 0,
+    "radar": [
+      60,
+      64,
+      73,
+      60,
+      66,
+      59
+    ],
+    "note": "WR46 · Overall-Rang 105 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 106,
+    "pos": "QB",
+    "name": "Jordan Love",
+    "team": "GB",
+    "age": 25,
+    "adp": 106,
+    "proj": 260,
+    "floor": 18,
+    "upside": 38,
+    "bye": 0,
+    "radar": [
+      74,
+      65,
+      73,
+      65,
+      78,
+      69
+    ],
+    "note": "QB12 · Overall-Rang 106 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 107,
+    "pos": "QB",
+    "name": "Brock Purdy",
+    "team": "SF",
+    "age": 25,
+    "adp": 107,
+    "proj": 249,
+    "floor": 17,
+    "upside": 36,
+    "bye": 0,
+    "radar": [
+      68,
+      77,
+      70,
+      62,
+      68,
+      63
+    ],
+    "note": "QB13 · Overall-Rang 107 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 108,
+    "pos": "WR",
+    "name": "KC Concepcion",
+    "team": "CLE",
+    "age": 25,
+    "adp": 108,
+    "proj": 133,
+    "floor": 9,
+    "upside": 19,
+    "bye": 0,
+    "radar": [
+      61,
+      73,
+      65,
+      69,
+      66,
+      60
+    ],
+    "note": "WR47 · Overall-Rang 108 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 109,
+    "pos": "RB",
+    "name": "Jordan Mason",
+    "team": "MIN",
+    "age": 25,
+    "adp": 109,
+    "proj": 121,
+    "floor": 8,
+    "upside": 18,
+    "bye": 0,
+    "radar": [
+      59,
+      56,
+      59,
+      69,
+      66,
+      59
+    ],
+    "note": "RB41 · Overall-Rang 109 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 110,
+    "pos": "RB",
+    "name": "Jacory Croskey-Merritt",
+    "team": "WAS",
+    "age": 25,
+    "adp": 110,
+    "proj": 117,
+    "floor": 8,
+    "upside": 17,
+    "bye": 0,
+    "radar": [
+      65,
+      61,
+      63,
+      67,
+      52,
+      54
+    ],
+    "note": "RB42 · Overall-Rang 110 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 111,
+    "pos": "WR",
+    "name": "Quentin Johnston",
+    "team": "LAC",
+    "age": 25,
+    "adp": 111,
+    "proj": 130,
+    "floor": 9,
+    "upside": 19,
+    "bye": 0,
+    "radar": [
+      59,
+      60,
+      67,
+      62,
+      69,
+      63
+    ],
+    "note": "WR48 · Overall-Rang 111 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 112,
+    "pos": "WR",
+    "name": "Alec Pierce",
+    "team": "IND",
+    "age": 25,
+    "adp": 112,
+    "proj": 127,
+    "floor": 9,
+    "upside": 18,
+    "bye": 0,
+    "radar": [
+      63,
+      59,
+      67,
+      62,
+      71,
+      59
+    ],
+    "note": "WR49 · Overall-Rang 112 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 113,
+    "pos": "QB",
+    "name": "Matthew Stafford",
+    "team": "LAR",
+    "age": 25,
+    "adp": 113,
+    "proj": 240,
+    "floor": 17,
+    "upside": 35,
+    "bye": 0,
+    "radar": [
+      74,
+      63,
+      68,
+      70,
+      63,
+      65
+    ],
+    "note": "QB14 · Overall-Rang 113 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 114,
+    "pos": "RB",
+    "name": "Keaton Mitchell",
+    "team": "LAC",
+    "age": 25,
+    "adp": 114,
+    "proj": 113,
+    "floor": 8,
+    "upside": 16,
+    "bye": 0,
+    "radar": [
+      53,
+      65,
+      59,
+      52,
+      57,
+      57
+    ],
+    "note": "RB43 · Overall-Rang 114 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 115,
+    "pos": "TE",
+    "name": "Jake Ferguson",
+    "team": "DAL",
+    "age": 25,
+    "adp": 115,
+    "proj": 130,
+    "floor": 9,
+    "upside": 19,
+    "bye": 0,
+    "radar": [
+      77,
+      77,
+      81,
+      77,
+      73,
+      71
+    ],
+    "note": "TE9 · Overall-Rang 115 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 116,
+    "pos": "RB",
+    "name": "Woody Marks",
+    "team": "HOU",
+    "age": 25,
+    "adp": 116,
+    "proj": 110,
+    "floor": 8,
+    "upside": 16,
+    "bye": 0,
+    "radar": [
+      56,
+      51,
+      64,
+      61,
+      55,
+      61
+    ],
+    "note": "RB44 · Overall-Rang 116 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 117,
+    "pos": "QB",
+    "name": "Trevor Lawrence",
+    "team": "JAX",
+    "age": 25,
+    "adp": 117,
+    "proj": 230,
+    "floor": 16,
+    "upside": 33,
+    "bye": 0,
+    "radar": [
+      66,
+      59,
+      60,
+      64,
+      65,
+      57
+    ],
+    "note": "QB15 · Overall-Rang 117 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 118,
+    "pos": "WR",
+    "name": "Matthew Golden",
+    "team": "GB",
+    "age": 25,
+    "adp": 118,
+    "proj": 125,
+    "floor": 9,
+    "upside": 18,
+    "bye": 0,
+    "radar": [
+      70,
+      62,
+      69,
+      72,
+      63,
+      65
+    ],
+    "note": "WR50 · Overall-Rang 118 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 119,
+    "pos": "TE",
+    "name": "Dalton Kincaid",
+    "team": "BUF",
+    "age": 25,
+    "adp": 119,
+    "proj": 123,
+    "floor": 9,
+    "upside": 18,
+    "bye": 0,
+    "radar": [
+      76,
+      79,
+      77,
+      79,
+      72,
+      69
+    ],
+    "note": "TE10 · Overall-Rang 119 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 120,
+    "pos": "TE",
+    "name": "Travis Kelce",
+    "team": "KC",
+    "age": 25,
+    "adp": 120,
+    "proj": 117,
+    "floor": 8,
+    "upside": 17,
+    "bye": 0,
+    "radar": [
+      75,
+      75,
+      72,
+      67,
+      70,
+      72
+    ],
+    "note": "TE11 · Overall-Rang 120 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 121,
+    "pos": "WR",
+    "name": "De'Zhaun Stribling",
+    "team": "SF",
+    "age": 25,
+    "adp": 121,
+    "proj": 122,
+    "floor": 9,
+    "upside": 18,
+    "bye": 0,
+    "radar": [
+      71,
+      63,
+      61,
+      64,
+      56,
+      69
+    ],
+    "note": "WR51 · Overall-Rang 121 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 122,
+    "pos": "QB",
+    "name": "Jared Goff",
+    "team": "DET",
+    "age": 25,
+    "adp": 122,
+    "proj": 220,
+    "floor": 15,
+    "upside": 32,
+    "bye": 0,
+    "radar": [
+      56,
+      55,
+      58,
+      61,
+      61,
+      58
+    ],
+    "note": "QB16 · Overall-Rang 122 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 123,
+    "pos": "WR",
+    "name": "Michael Pittman Jr.",
+    "team": "PIT",
+    "age": 25,
+    "adp": 123,
+    "proj": 119,
+    "floor": 8,
+    "upside": 17,
+    "bye": 0,
+    "radar": [
+      65,
+      69,
+      58,
+      59,
+      64,
+      57
+    ],
+    "note": "WR52 · Overall-Rang 123 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 124,
+    "pos": "QB",
+    "name": "Kyler Murray",
+    "team": "MIN",
+    "age": 25,
+    "adp": 124,
+    "proj": 211,
+    "floor": 15,
+    "upside": 31,
+    "bye": 0,
+    "radar": [
+      60,
+      59,
+      66,
+      58,
+      61,
+      61
+    ],
+    "note": "QB17 · Overall-Rang 124 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 125,
+    "pos": "TE",
+    "name": "Mark Andrews",
+    "team": "BAL",
+    "age": 25,
+    "adp": 125,
+    "proj": 111,
+    "floor": 8,
+    "upside": 16,
+    "bye": 0,
+    "radar": [
+      64,
+      68,
+      66,
+      63,
+      77,
+      72
+    ],
+    "note": "TE12 · Overall-Rang 125 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 126,
+    "pos": "QB",
+    "name": "Bo Nix",
+    "team": "DEN",
+    "age": 25,
+    "adp": 126,
+    "proj": 202,
+    "floor": 14,
+    "upside": 29,
+    "bye": 0,
+    "radar": [
+      51,
+      54,
+      65,
+      64,
+      52,
+      60
+    ],
+    "note": "QB18 · Overall-Rang 126 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 127,
+    "pos": "WR",
+    "name": "Khalil Shakir",
+    "team": "BUF",
+    "age": 25,
+    "adp": 127,
+    "proj": 117,
+    "floor": 8,
+    "upside": 17,
+    "bye": 0,
+    "radar": [
+      60,
+      66,
+      61,
+      62,
+      70,
+      64
+    ],
+    "note": "WR53 · Overall-Rang 127 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 128,
+    "pos": "TE",
+    "name": "George Kittle",
+    "team": "SF",
+    "age": 25,
+    "adp": 128,
+    "proj": 105,
+    "floor": 7,
+    "upside": 15,
+    "bye": 0,
+    "radar": [
+      65,
+      76,
+      74,
+      66,
+      74,
+      66
+    ],
+    "note": "TE13 · Overall-Rang 128 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 129,
+    "pos": "RB",
+    "name": "Tyler Allgeier",
+    "team": "ARI",
+    "age": 25,
+    "adp": 129,
+    "proj": 106,
+    "floor": 7,
+    "upside": 15,
+    "bye": 0,
+    "radar": [
+      53,
+      65,
+      64,
+      56,
+      54,
+      62
+    ],
+    "note": "RB45 · Overall-Rang 129 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 130,
+    "pos": "RB",
+    "name": "Tyjae Spears",
+    "team": "TEN",
+    "age": 25,
+    "adp": 130,
+    "proj": 102,
+    "floor": 7,
+    "upside": 15,
+    "bye": 0,
+    "radar": [
+      54,
+      59,
+      52,
+      56,
+      58,
+      65
+    ],
+    "note": "RB46 · Overall-Rang 130 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 131,
+    "pos": "QB",
+    "name": "Baker Mayfield",
+    "team": "TB",
+    "age": 25,
+    "adp": 131,
+    "proj": 192,
+    "floor": 13,
+    "upside": 28,
+    "bye": 0,
+    "radar": [
+      59,
+      55,
+      57,
+      62,
+      56,
+      61
+    ],
+    "note": "QB19 · Overall-Rang 131 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 132,
+    "pos": "TE",
+    "name": "Dallas Goedert",
+    "team": "PHI",
+    "age": 25,
+    "adp": 132,
+    "proj": 99,
+    "floor": 7,
+    "upside": 14,
+    "bye": 0,
+    "radar": [
+      65,
+      72,
+      67,
+      63,
+      67,
+      67
+    ],
+    "note": "TE14 · Overall-Rang 132 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 2"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 133,
+    "pos": "WR",
+    "name": "Deebo Samuel",
+    "team": "FA",
+    "age": 25,
+    "adp": 133,
+    "proj": 114,
+    "floor": 8,
+    "upside": 17,
+    "bye": 0,
+    "radar": [
+      67,
+      65,
+      58,
+      62,
+      69,
+      63
+    ],
+    "note": "WR54 · Overall-Rang 133 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 134,
+    "pos": "WR",
+    "name": "Jalen Coker",
+    "team": "CAR",
+    "age": 25,
+    "adp": 134,
+    "proj": 111,
+    "floor": 8,
+    "upside": 16,
+    "bye": 0,
+    "radar": [
+      66,
+      64,
+      67,
+      54,
+      59,
+      65
+    ],
+    "note": "WR55 · Overall-Rang 134 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 135,
+    "pos": "RB",
+    "name": "Jonah Coleman",
+    "team": "DEN",
+    "age": 25,
+    "adp": 135,
+    "proj": 99,
+    "floor": 7,
+    "upside": 14,
+    "bye": 0,
+    "radar": [
+      52,
+      51,
+      50,
+      54,
+      56,
+      52
+    ],
+    "note": "RB47 · Overall-Rang 135 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 136,
+    "pos": "RB",
+    "name": "Dylan Sampson",
+    "team": "CLE",
+    "age": 25,
+    "adp": 136,
+    "proj": 95,
+    "floor": 7,
+    "upside": 14,
+    "bye": 0,
+    "radar": [
+      57,
+      57,
+      50,
+      53,
+      51,
+      58
+    ],
+    "note": "RB48 · Overall-Rang 136 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 137,
+    "pos": "WR",
+    "name": "Jordyn Tyson",
+    "team": "NO",
+    "age": 25,
+    "adp": 137,
+    "proj": 109,
+    "floor": 8,
+    "upside": 16,
+    "bye": 0,
+    "radar": [
+      56,
+      55,
+      59,
+      59,
+      65,
+      56
+    ],
+    "note": "WR56 · Overall-Rang 137 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 138,
+    "pos": "WR",
+    "name": "Jauan Jennings",
+    "team": "MIN",
+    "age": 25,
+    "adp": 138,
+    "proj": 106,
+    "floor": 7,
+    "upside": 15,
+    "bye": 0,
+    "radar": [
+      57,
+      52,
+      68,
+      54,
+      56,
+      55
+    ],
+    "note": "WR57 · Overall-Rang 138 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 139,
+    "pos": "RB",
+    "name": "MarShawn Lloyd",
+    "team": "GB",
+    "age": 25,
+    "adp": 139,
+    "proj": 92,
+    "floor": 6,
+    "upside": 13,
+    "bye": 0,
+    "radar": [
+      51,
+      50,
+      46,
+      49,
+      53,
+      60
+    ],
+    "note": "RB49 · Overall-Rang 139 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 140,
+    "pos": "WR",
+    "name": "Rashid Shaheed",
+    "team": "SEA",
+    "age": 25,
+    "adp": 140,
+    "proj": 104,
+    "floor": 7,
+    "upside": 15,
+    "bye": 0,
+    "radar": [
+      62,
+      53,
+      55,
+      56,
+      62,
+      51
+    ],
+    "note": "WR58 · Overall-Rang 140 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 141,
+    "pos": "QB",
+    "name": "Sam Darnold",
+    "team": "SEA",
+    "age": 25,
+    "adp": 141,
+    "proj": 183,
+    "floor": 13,
+    "upside": 27,
+    "bye": 0,
+    "radar": [
+      47,
+      59,
+      49,
+      53,
+      50,
+      56
+    ],
+    "note": "QB20 · Overall-Rang 141 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 142,
+    "pos": "QB",
+    "name": "Tyler Shough",
+    "team": "NO",
+    "age": 25,
+    "adp": 142,
+    "proj": 175,
+    "floor": 12,
+    "upside": 25,
+    "bye": 0,
+    "radar": [
+      45,
+      49,
+      54,
+      52,
+      50,
+      47
+    ],
+    "note": "QB21 · Overall-Rang 142 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 143,
+    "pos": "WR",
+    "name": "Omar Cooper Jr.",
+    "team": "NYJ",
+    "age": 25,
+    "adp": 143,
+    "proj": 101,
+    "floor": 7,
+    "upside": 15,
+    "bye": 0,
+    "radar": [
+      53,
+      53,
+      54,
+      57,
+      59,
+      65
+    ],
+    "note": "WR59 · Overall-Rang 143 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 144,
+    "pos": "TE",
+    "name": "Juwan Johnson",
+    "team": "NO",
+    "age": 25,
+    "adp": 144,
+    "proj": 93,
+    "floor": 7,
+    "upside": 13,
+    "bye": 0,
+    "radar": [
+      59,
+      68,
+      68,
+      63,
+      70,
+      66
+    ],
+    "note": "TE15 · Overall-Rang 144 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 145,
+    "pos": "WR",
+    "name": "Travis Hunter",
+    "team": "JAX",
+    "age": 25,
+    "adp": 145,
+    "proj": 98,
+    "floor": 7,
+    "upside": 14,
+    "bye": 0,
+    "radar": [
+      56,
+      58,
+      64,
+      52,
+      60,
+      54
+    ],
+    "note": "WR60 · Overall-Rang 145 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 146,
+    "pos": "RB",
+    "name": "Zach Charbonnet",
+    "team": "SEA",
+    "age": 25,
+    "adp": 146,
+    "proj": 88,
+    "floor": 6,
+    "upside": 13,
+    "bye": 0,
+    "radar": [
+      57,
+      55,
+      53,
+      48,
+      59,
+      53
+    ],
+    "note": "RB50 · Overall-Rang 146 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 147,
+    "pos": "RB",
+    "name": "Brian Robinson Jr.",
+    "team": "ATL",
+    "age": 25,
+    "adp": 147,
+    "proj": 85,
+    "floor": 6,
+    "upside": 12,
+    "bye": 0,
+    "radar": [
+      53,
+      57,
+      60,
+      55,
+      53,
+      56
+    ],
+    "note": "RB51 · Overall-Rang 147 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 148,
+    "pos": "WR",
+    "name": "Keenan Allen",
+    "team": "IND",
+    "age": 25,
+    "adp": 148,
+    "proj": 96,
+    "floor": 7,
+    "upside": 14,
+    "bye": 0,
+    "radar": [
+      57,
+      61,
+      51,
+      49,
+      51,
+      60
+    ],
+    "note": "WR61 · Overall-Rang 148 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 149,
+    "pos": "TE",
+    "name": "Isaiah Likely",
+    "team": "NYG",
+    "age": 25,
+    "adp": 149,
+    "proj": 88,
+    "floor": 6,
+    "upside": 13,
+    "bye": 0,
+    "radar": [
+      55,
+      61,
+      64,
+      69,
+      67,
+      64
+    ],
+    "note": "TE16 · Overall-Rang 149 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 150,
+    "pos": "WR",
+    "name": "Tre Tucker",
+    "team": "LV",
+    "age": 25,
+    "adp": 150,
+    "proj": 93,
+    "floor": 7,
+    "upside": 13,
+    "bye": 0,
+    "radar": [
+      53,
+      49,
+      65,
+      64,
+      61,
+      60
+    ],
+    "note": "WR62 · Overall-Rang 150 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 151,
+    "pos": "WR",
+    "name": "Denzel Boston",
+    "team": "CLE",
+    "age": 25,
+    "adp": 151,
+    "proj": 91,
+    "floor": 6,
+    "upside": 13,
+    "bye": 0,
+    "radar": [
+      63,
+      56,
+      58,
+      55,
+      50,
+      49
+    ],
+    "note": "WR63 · Overall-Rang 151 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 152,
+    "pos": "RB",
+    "name": "Braelon Allen",
+    "team": "NYJ",
+    "age": 25,
+    "adp": 152,
+    "proj": 81,
+    "floor": 6,
+    "upside": 12,
+    "bye": 0,
+    "radar": [
+      53,
+      52,
+      49,
+      58,
+      52,
+      56
+    ],
+    "note": "RB52 · Overall-Rang 152 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 153,
+    "pos": "TE",
+    "name": "Chig Okonkwo",
+    "team": "WAS",
+    "age": 25,
+    "adp": 153,
+    "proj": 82,
+    "floor": 6,
+    "upside": 12,
+    "bye": 0,
+    "radar": [
+      63,
+      58,
+      64,
+      64,
+      51,
+      63
+    ],
+    "note": "TE17 · Overall-Rang 153 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 154,
+    "pos": "WR",
+    "name": "Jalen McMillan",
+    "team": "TB",
+    "age": 25,
+    "adp": 154,
+    "proj": 88,
+    "floor": 6,
+    "upside": 13,
+    "bye": 0,
+    "radar": [
+      58,
+      62,
+      59,
+      49,
+      50,
+      63
+    ],
+    "note": "WR64 · Overall-Rang 154 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 155,
+    "pos": "RB",
+    "name": "Mike Washington",
+    "team": "LV",
+    "age": 25,
+    "adp": 155,
+    "proj": 78,
+    "floor": 5,
+    "upside": 11,
+    "bye": 0,
+    "radar": [
+      56,
+      53,
+      58,
+      51,
+      54,
+      47
+    ],
+    "note": "RB53 · Overall-Rang 155 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 156,
+    "pos": "WR",
+    "name": "Ja'Kobi Lane",
+    "team": "BAL",
+    "age": 25,
+    "adp": 156,
+    "proj": 86,
+    "floor": 6,
+    "upside": 12,
+    "bye": 0,
+    "radar": [
+      50,
+      50,
+      55,
+      57,
+      60,
+      59
+    ],
+    "note": "WR65 · Overall-Rang 156 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 157,
+    "pos": "TE",
+    "name": "Hunter Henry",
+    "team": "NE",
+    "age": 25,
+    "adp": 157,
+    "proj": 76,
+    "floor": 5,
+    "upside": 11,
+    "bye": 0,
+    "radar": [
+      52,
+      65,
+      49,
+      61,
+      58,
+      65
+    ],
+    "note": "TE18 · Overall-Rang 157 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 158,
+    "pos": "QB",
+    "name": "C.J. Stroud",
+    "team": "HOU",
+    "age": 25,
+    "adp": 158,
+    "proj": 166,
+    "floor": 12,
+    "upside": 24,
+    "bye": 0,
+    "radar": [
+      53,
+      46,
+      45,
+      48,
+      47,
+      55
+    ],
+    "note": "QB22 · Overall-Rang 158 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 159,
+    "pos": "WR",
+    "name": "Caleb Douglas",
+    "team": "MIA",
+    "age": 25,
+    "adp": 159,
+    "proj": 83,
+    "floor": 6,
+    "upside": 12,
+    "bye": 0,
+    "radar": [
+      59,
+      61,
+      57,
+      46,
+      54,
+      54
+    ],
+    "note": "WR66 · Overall-Rang 159 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 160,
+    "pos": "WR",
+    "name": "Germie Bernard",
+    "team": "PIT",
+    "age": 25,
+    "adp": 160,
+    "proj": 81,
+    "floor": 6,
+    "upside": 12,
+    "bye": 0,
+    "radar": [
+      60,
+      47,
+      56,
+      46,
+      60,
+      59
+    ],
+    "note": "WR67 · Overall-Rang 160 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 161,
+    "pos": "TE",
+    "name": "Brenton Strange",
+    "team": "JAX",
+    "age": 25,
+    "adp": 161,
+    "proj": 71,
+    "floor": 5,
+    "upside": 10,
+    "bye": 0,
+    "radar": [
+      60,
+      53,
+      53,
+      55,
+      51,
+      53
+    ],
+    "note": "TE19 · Overall-Rang 161 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 162,
+    "pos": "WR",
+    "name": "Tre Harris",
+    "team": "LAC",
+    "age": 25,
+    "adp": 162,
+    "proj": 78,
+    "floor": 5,
+    "upside": 11,
+    "bye": 0,
+    "radar": [
+      48,
+      47,
+      46,
+      58,
+      46,
+      59
+    ],
+    "note": "WR68 · Overall-Rang 162 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 163,
+    "pos": "WR",
+    "name": "Adonai Mitchell",
+    "team": "NYJ",
+    "age": 25,
+    "adp": 163,
+    "proj": 76,
+    "floor": 5,
+    "upside": 11,
+    "bye": 0,
+    "radar": [
+      50,
+      50,
+      53,
+      45,
+      47,
+      50
+    ],
+    "note": "WR69 · Overall-Rang 163 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 164,
+    "pos": "WR",
+    "name": "Pat Bryant",
+    "team": "DEN",
+    "age": 25,
+    "adp": 164,
+    "proj": 73,
+    "floor": 5,
+    "upside": 11,
+    "bye": 0,
+    "radar": [
+      56,
+      53,
+      49,
+      58,
+      47,
+      57
+    ],
+    "note": "WR70 · Overall-Rang 164 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 165,
+    "pos": "WR",
+    "name": "Ted Hurst",
+    "team": "TB",
+    "age": 25,
+    "adp": 165,
+    "proj": 71,
+    "floor": 5,
+    "upside": 10,
+    "bye": 0,
+    "radar": [
+      59,
+      50,
+      45,
+      48,
+      50,
+      44
+    ],
+    "note": "WR71 · Overall-Rang 165 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 166,
+    "pos": "QB",
+    "name": "Daniel Jones",
+    "team": "IND",
+    "age": 25,
+    "adp": 166,
+    "proj": 157,
+    "floor": 11,
+    "upside": 23,
+    "bye": 0,
+    "radar": [
+      38,
+      54,
+      52,
+      40,
+      43,
+      48
+    ],
+    "note": "QB23 · Overall-Rang 166 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 167,
+    "pos": "TE",
+    "name": "Oronde Gadsden II",
+    "team": "LAC",
+    "age": 25,
+    "adp": 167,
+    "proj": 66,
+    "floor": 5,
+    "upside": 10,
+    "bye": 0,
+    "radar": [
+      50,
+      49,
+      55,
+      49,
+      50,
+      50
+    ],
+    "note": "TE20 · Overall-Rang 167 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 168,
+    "pos": "WR",
+    "name": "Jerry Jeudy",
+    "team": "CLE",
+    "age": 25,
+    "adp": 168,
+    "proj": 68,
+    "floor": 5,
+    "upside": 10,
+    "bye": 0,
+    "radar": [
+      44,
+      44,
+      58,
+      58,
+      51,
+      47
+    ],
+    "note": "WR72 · Overall-Rang 168 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 169,
+    "pos": "WR",
+    "name": "Calvin Ridley",
+    "team": "TEN",
+    "age": 25,
+    "adp": 169,
+    "proj": 66,
+    "floor": 5,
+    "upside": 10,
+    "bye": 0,
+    "radar": [
+      52,
+      48,
+      49,
+      41,
+      43,
+      47
+    ],
+    "note": "WR73 · Overall-Rang 169 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 170,
+    "pos": "WR",
+    "name": "Dontayvion Wicks",
+    "team": "PHI",
+    "age": 25,
+    "adp": 170,
+    "proj": 64,
+    "floor": 4,
+    "upside": 9,
+    "bye": 0,
+    "radar": [
+      45,
+      49,
+      47,
+      42,
+      44,
+      48
+    ],
+    "note": "WR74 · Overall-Rang 170 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 171,
+    "pos": "WR",
+    "name": "Malik Washington",
+    "team": "MIA",
+    "age": 25,
+    "adp": 171,
+    "proj": 61,
+    "floor": 4,
+    "upside": 9,
+    "bye": 0,
+    "radar": [
+      44,
+      43,
+      45,
+      44,
+      55,
+      50
+    ],
+    "note": "WR75 · Overall-Rang 171 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 172,
+    "pos": "TE",
+    "name": "T.J. Hockenson",
+    "team": "MIN",
+    "age": 25,
+    "adp": 172,
+    "proj": 60,
+    "floor": 4,
+    "upside": 9,
+    "bye": 0,
+    "radar": [
+      47,
+      44,
+      46,
+      56,
+      44,
+      46
+    ],
+    "note": "TE21 · Overall-Rang 172 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 173,
+    "pos": "WR",
+    "name": "Cyrus Allen",
+    "team": "KC",
+    "age": 25,
+    "adp": 173,
+    "proj": 59,
+    "floor": 4,
+    "upside": 9,
+    "bye": 0,
+    "radar": [
+      39,
+      48,
+      55,
+      44,
+      43,
+      50
+    ],
+    "note": "WR76 · Overall-Rang 173 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 174,
+    "pos": "RB",
+    "name": "Sean Tucker",
+    "team": "TB",
+    "age": 25,
+    "adp": 174,
+    "proj": 74,
+    "floor": 5,
+    "upside": 11,
+    "bye": 0,
+    "radar": [
+      57,
+      56,
+      46,
+      47,
+      51,
+      51
+    ],
+    "note": "RB54 · Overall-Rang 174 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 175,
+    "pos": "QB",
+    "name": "Malik Willis",
+    "team": "MIA",
+    "age": 25,
+    "adp": 175,
+    "proj": 148,
+    "floor": 10,
+    "upside": 21,
+    "bye": 0,
+    "radar": [
+      51,
+      36,
+      43,
+      37,
+      43,
+      44
+    ],
+    "note": "QB24 · Overall-Rang 175 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 176,
+    "pos": "WR",
+    "name": "Zachariah Branch",
+    "team": "ATL",
+    "age": 25,
+    "adp": 176,
+    "proj": 56,
+    "floor": 4,
+    "upside": 8,
+    "bye": 0,
+    "radar": [
+      46,
+      50,
+      52,
+      45,
+      43,
+      50
+    ],
+    "note": "WR77 · Overall-Rang 176 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 177,
+    "pos": "WR",
+    "name": "Cooper Kupp",
+    "team": "SEA",
+    "age": 25,
+    "adp": 177,
+    "proj": 54,
+    "floor": 4,
+    "upside": 8,
+    "bye": 0,
+    "radar": [
+      43,
+      38,
+      43,
+      48,
+      54,
+      51
+    ],
+    "note": "WR78 · Overall-Rang 177 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 178,
+    "pos": "RB",
+    "name": "Tank Bigsby",
+    "team": "PHI",
+    "age": 25,
+    "adp": 178,
+    "proj": 71,
+    "floor": 5,
+    "upside": 10,
+    "bye": 0,
+    "radar": [
+      46,
+      47,
+      57,
+      41,
+      54,
+      43
+    ],
+    "note": "RB55 · Overall-Rang 178 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 179,
+    "pos": "WR",
+    "name": "Jaylin Noel",
+    "team": "HOU",
+    "age": 25,
+    "adp": 179,
+    "proj": 52,
+    "floor": 4,
+    "upside": 8,
+    "bye": 0,
+    "radar": [
+      53,
+      45,
+      51,
+      46,
+      49,
+      42
+    ],
+    "note": "WR79 · Overall-Rang 179 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 180,
+    "pos": "RB",
+    "name": "Nick Singleton",
+    "team": "TEN",
+    "age": 25,
+    "adp": 180,
+    "proj": 67,
+    "floor": 5,
+    "upside": 10,
+    "bye": 0,
+    "radar": [
+      44,
+      47,
+      44,
+      45,
+      46,
+      45
+    ],
+    "note": "RB56 · Overall-Rang 180 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 181,
+    "pos": "RB",
+    "name": "Jaydon Blue",
+    "team": "DAL",
+    "age": 25,
+    "adp": 181,
+    "proj": 64,
+    "floor": 4,
+    "upside": 9,
+    "bye": 0,
+    "radar": [
+      47,
+      47,
+      46,
+      43,
+      47,
+      51
+    ],
+    "note": "RB57 · Overall-Rang 181 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 182,
+    "pos": "RB",
+    "name": "Emmett Johnson",
+    "team": "KC",
+    "age": 25,
+    "adp": 182,
+    "proj": 60,
+    "floor": 4,
+    "upside": 9,
+    "bye": 0,
+    "radar": [
+      53,
+      39,
+      44,
+      39,
+      50,
+      48
+    ],
+    "note": "RB58 · Overall-Rang 182 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 183,
+    "pos": "TE",
+    "name": "Kenyon Sadiq",
+    "team": "NYJ",
+    "age": 25,
+    "adp": 183,
+    "proj": 55,
+    "floor": 4,
+    "upside": 8,
+    "bye": 0,
+    "radar": [
+      46,
+      51,
+      54,
+      53,
+      53,
+      47
+    ],
+    "note": "TE22 · Overall-Rang 183 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 184,
+    "pos": "WR",
+    "name": "Kayshon Boutte",
+    "team": "NE",
+    "age": 25,
+    "adp": 184,
+    "proj": 49,
+    "floor": 3,
+    "upside": 7,
+    "bye": 0,
+    "radar": [
+      52,
+      42,
+      37,
+      42,
+      38,
+      46
+    ],
+    "note": "WR80 · Overall-Rang 184 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 185,
+    "pos": "WR",
+    "name": "Bryce Lance",
+    "team": "NO",
+    "age": 25,
+    "adp": 185,
+    "proj": 47,
+    "floor": 3,
+    "upside": 7,
+    "bye": 0,
+    "radar": [
+      41,
+      38,
+      44,
+      45,
+      45,
+      42
+    ],
+    "note": "WR81 · Overall-Rang 185 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 186,
+    "pos": "RB",
+    "name": "Kaelon Black",
+    "team": "SF",
+    "age": 25,
+    "adp": 186,
+    "proj": 57,
+    "floor": 4,
+    "upside": 8,
+    "bye": 0,
+    "radar": [
+      48,
+      50,
+      40,
+      46,
+      37,
+      39
+    ],
+    "note": "RB59 · Overall-Rang 186 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 187,
+    "pos": "RB",
+    "name": "Tyrone Tracy Jr.",
+    "team": "NYG",
+    "age": 25,
+    "adp": 187,
+    "proj": 53,
+    "floor": 4,
+    "upside": 8,
+    "bye": 0,
+    "radar": [
+      41,
+      40,
+      45,
+      47,
+      45,
+      42
+    ],
+    "note": "RB60 · Overall-Rang 187 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 188,
+    "pos": "TE",
+    "name": "Dalton Schultz",
+    "team": "HOU",
+    "age": 25,
+    "adp": 188,
+    "proj": 50,
+    "floor": 4,
+    "upside": 7,
+    "bye": 0,
+    "radar": [
+      43,
+      48,
+      52,
+      47,
+      46,
+      53
+    ],
+    "note": "TE23 · Overall-Rang 188 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 189,
+    "pos": "WR",
+    "name": "DeVaughn Vele",
+    "team": "NO",
+    "age": 25,
+    "adp": 189,
+    "proj": 44,
+    "floor": 3,
+    "upside": 6,
+    "bye": 0,
+    "radar": [
+      38,
+      52,
+      51,
+      45,
+      44,
+      46
+    ],
+    "note": "WR82 · Overall-Rang 189 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 190,
+    "pos": "RB",
+    "name": "Isiah Pacheco",
+    "team": "DET",
+    "age": 25,
+    "adp": 190,
+    "proj": 50,
+    "floor": 4,
+    "upside": 7,
+    "bye": 0,
+    "radar": [
+      50,
+      37,
+      50,
+      47,
+      38,
+      47
+    ],
+    "note": "RB61 · Overall-Rang 190 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 191,
+    "pos": "RB",
+    "name": "Alvin Kamara",
+    "team": "NO",
+    "age": 25,
+    "adp": 191,
+    "proj": 47,
+    "floor": 3,
+    "upside": 7,
+    "bye": 0,
+    "radar": [
+      45,
+      42,
+      44,
+      46,
+      36,
+      47
+    ],
+    "note": "RB62 · Overall-Rang 191 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 192,
+    "pos": "RB",
+    "name": "Kaytron Allen",
+    "team": "WAS",
+    "age": 25,
+    "adp": 192,
+    "proj": 43,
+    "floor": 3,
+    "upside": 6,
+    "bye": 0,
+    "radar": [
+      37,
+      45,
+      48,
+      43,
+      46,
+      50
+    ],
+    "note": "RB63 · Overall-Rang 192 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 193,
+    "pos": "RB",
+    "name": "George Holani",
+    "team": "SEA",
+    "age": 25,
+    "adp": 193,
+    "proj": 40,
+    "floor": 3,
+    "upside": 6,
+    "bye": 0,
+    "radar": [
+      49,
+      36,
+      34,
+      39,
+      45,
+      47
+    ],
+    "note": "RB64 · Overall-Rang 193 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 194,
+    "pos": "WR",
+    "name": "Jalen Nailor",
+    "team": "LV",
+    "age": 25,
+    "adp": 194,
+    "proj": 42,
+    "floor": 3,
+    "upside": 6,
+    "bye": 0,
+    "radar": [
+      43,
+      45,
+      48,
+      51,
+      41,
+      41
+    ],
+    "note": "WR83 · Overall-Rang 194 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 195,
+    "pos": "WR",
+    "name": "Tank Dell",
+    "team": "HOU",
+    "age": 25,
+    "adp": 195,
+    "proj": 40,
+    "floor": 3,
+    "upside": 6,
+    "bye": 0,
+    "radar": [
+      48,
+      41,
+      49,
+      43,
+      48,
+      34
+    ],
+    "note": "WR84 · Overall-Rang 195 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 196,
+    "pos": "TE",
+    "name": "A.J. Barner",
+    "team": "SEA",
+    "age": 25,
+    "adp": 196,
+    "proj": 45,
+    "floor": 3,
+    "upside": 7,
+    "bye": 0,
+    "radar": [
+      49,
+      49,
+      39,
+      36,
+      43,
+      36
+    ],
+    "note": "TE24 · Overall-Rang 196 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 197,
+    "pos": "WR",
+    "name": "Isaac TeSlaa",
+    "team": "DET",
+    "age": 25,
+    "adp": 197,
+    "proj": 37,
+    "floor": 3,
+    "upside": 5,
+    "bye": 0,
+    "radar": [
+      39,
+      40,
+      47,
+      35,
+      44,
+      49
+    ],
+    "note": "WR85 · Overall-Rang 197 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 198,
+    "pos": "WR",
+    "name": "Rashod Bateman",
+    "team": "BAL",
+    "age": 25,
+    "adp": 198,
+    "proj": 35,
+    "floor": 2,
+    "upside": 5,
+    "bye": 0,
+    "radar": [
+      38,
+      43,
+      45,
+      33,
+      36,
+      47
+    ],
+    "note": "WR86 · Overall-Rang 198 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 199,
+    "pos": "QB",
+    "name": "Michael Penix",
+    "team": "ATL",
+    "age": 25,
+    "adp": 199,
+    "proj": 140,
+    "floor": 10,
+    "upside": 20,
+    "bye": 0,
+    "radar": [
+      41,
+      43,
+      42,
+      47,
+      42,
+      40
+    ],
+    "note": "QB25 · Overall-Rang 199 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 200,
+    "pos": "TE",
+    "name": "Darren Waller",
+    "team": "CAR",
+    "age": 25,
+    "adp": 200,
+    "proj": 40,
+    "floor": 3,
+    "upside": 6,
+    "bye": 0,
+    "radar": [
+      40,
+      46,
+      45,
+      48,
+      49,
+      43
+    ],
+    "note": "TE25 · Overall-Rang 200 (Rotoworld/NBC Sports Consensus, Stand 26.08.2026). Bye-Woche noch nicht erfasst.",
+    "tags": [
+      "Tier 3"
+    ],
+    "curated": false
+  },
+  {
+    "rank": 201,
+    "pos": "DST",
+    "name": "Philadelphia Eagles",
+    "team": "PHI",
+    "age": 0,
+    "adp": 201,
+    "proj": 138,
+    "floor": 8,
+    "upside": 22,
+    "bye": 5,
+    "radar": [
+      90,
+      88,
+      85,
+      80,
+      88,
+      75
+    ],
+    "note": "Beste D der Liga. SOS top. Haason Reddick zurück.",
+    "tags": [
+      "Tier 1",
+      "Elite-D"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 202,
+    "pos": "DST",
+    "name": "Houston Texans",
+    "team": "HOU",
+    "age": 0,
+    "adp": 202,
+    "proj": 135,
+    "floor": 8,
+    "upside": 21,
+    "bye": 14,
+    "radar": [
+      85,
+      82,
+      82,
+      78,
+      85,
+      82
+    ],
+    "note": "Top-2-Defense 2025. Anderson + Will Anderson Dominator.",
+    "tags": [
+      "Tier 1",
+      "Pass-Rush"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 203,
+    "pos": "DST",
+    "name": "Kansas City Chiefs",
+    "team": "KC",
+    "age": 0,
+    "adp": 203,
+    "proj": 132,
+    "floor": 7,
+    "upside": 20,
+    "bye": 11,
+    "radar": [
+      80,
+      85,
+      78,
+      82,
+      82,
+      85
+    ],
+    "note": "Playoff-Maschine. Mahomes gibt gute Field Position.",
+    "tags": [
+      "Tier 2",
+      "Playoff-D"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 204,
+    "pos": "DST",
+    "name": "Buffalo Bills",
+    "team": "BUF",
+    "age": 0,
+    "adp": 204,
+    "proj": 128,
+    "floor": 7,
+    "upside": 20,
+    "bye": 12,
+    "radar": [
+      82,
+      80,
+      80,
+      78,
+      80,
+      80
+    ],
+    "note": "Von Miller fit. Neues Stadion-Momentum. Solid.",
+    "tags": [
+      "Tier 2",
+      "Solid"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 205,
+    "pos": "K",
+    "name": "Harrison Butker",
+    "team": "KC",
+    "age": 28,
+    "adp": 205,
+    "proj": 155,
+    "floor": 10,
+    "upside": 18,
+    "bye": 11,
+    "radar": [
+      95,
+      85,
+      88,
+      98,
+      85,
+      90
+    ],
+    "note": "Sicherster Kicker. Mahomes-Offense = viele FG-Chancen.",
+    "tags": [
+      "Tier 1",
+      "Konsistent"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 206,
+    "pos": "K",
+    "name": "Evan McPherson",
+    "team": "CIN",
+    "age": 26,
+    "adp": 206,
+    "proj": 150,
+    "floor": 10,
+    "upside": 18,
+    "bye": 10,
+    "radar": [
+      88,
+      82,
+      85,
+      95,
+      80,
+      85
+    ],
+    "note": "Elite Long-FG-Prozent. Burrow-Offense chancenreich.",
+    "tags": [
+      "Tier 1",
+      "Big-Leg"
+    ],
+    "curated": true
+  },
+  {
+    "rank": 207,
+    "pos": "K",
+    "name": "Tyler Bass",
+    "team": "BUF",
+    "age": 28,
+    "adp": 207,
+    "proj": 148,
+    "floor": 9,
+    "upside": 17,
+    "bye": 12,
+    "radar": [
+      85,
+      80,
+      82,
+      90,
+      78,
+      82
+    ],
+    "note": "Allen sorgt für FG-Chancen. Zuverlässige Option.",
+    "tags": [
+      "Tier 2",
+      "Volumen"
+    ],
+    "curated": true
+  }
+]
