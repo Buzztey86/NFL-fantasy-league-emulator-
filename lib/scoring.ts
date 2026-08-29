@@ -1,4 +1,6 @@
 export interface PlayerStatLine {
+  name: string;
+  team: string;
   passYds: number;
   passTD: number;
   passInt: number;
@@ -11,8 +13,8 @@ export interface PlayerStatLine {
   twoPtConv: number; // best effort, oft 0 da schwer aus der Quelle extrahierbar
 }
 
-export function emptyStatLine(): PlayerStatLine {
-  return { passYds: 0, passTD: 0, passInt: 0, rushYds: 0, rushTD: 0, rec: 0, recYds: 0, recTD: 0, fumLost: 0, twoPtConv: 0 };
+export function emptyStatLine(name = "", team = ""): PlayerStatLine {
+  return { name, team, passYds: 0, passTD: 0, passInt: 0, rushYds: 0, rushTD: 0, rec: 0, recYds: 0, recTD: 0, fumLost: 0, twoPtConv: 0 };
 }
 
 /** Offense-Scoring (QB/RB/WR/TE) — deckt FLEX automatisch mit ab. */

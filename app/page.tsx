@@ -1,60 +1,70 @@
+"use client";
+
 import Link from "next/link";
+import { useLang } from "@/lib/i18n/LanguageContext";
 
 export default function Home() {
+  const { t } = useLang();
+  const h = t.home;
+
   return (
     <main className="mx-auto max-w-[860px] px-6 py-10">
       <header className="text-center border-b border-[var(--border-subtle)] pb-8 mb-10">
-        <div className="eyebrow mb-2">Saison 2026 · PPR · Snake Draft · 10 Teams</div>
+        <div className="eyebrow mb-2">{h.eyebrow}</div>
         <h1
           className="hero-gradient-text font-black tracking-tight"
           style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 5vw, 48px)", letterSpacing: "-1px" }}
         >
-          THE GRIDIRON ORACLE
+          {h.title}
         </h1>
-        <p className="text-[var(--text-dim)] text-sm mt-2">Deine Liga, jetzt von jedem Gerät aus.</p>
+        <p className="text-[var(--text-dim)] text-sm mt-2">{h.subtitle}</p>
       </header>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Link href="/draft" className="card card-hover block">
           <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            DRAFT ROOM →
+            {h.draftTitle}
           </div>
-          <p className="text-sm text-[var(--text-secondary)]">
-            Live-Draftboard, KI-Manager picken automatisch, Fortschritt synct über alle deine Geräte.
-          </p>
+          <p className="text-sm text-[var(--text-secondary)]">{h.draftDesc}</p>
         </Link>
 
         <Link href="/setup" className="card card-hover block">
           <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            LIGA-SETUP →
+            {h.setupTitle}
           </div>
-          <p className="text-sm text-[var(--text-secondary)]">
-            Draft-Reihenfolge festlegen, bestehenden Draft-Stand importieren oder neu starten.
-          </p>
+          <p className="text-sm text-[var(--text-secondary)]">{h.setupDesc}</p>
         </Link>
 
         <Link href="/season" className="card card-hover block">
           <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            SEASON →
+            {h.seasonTitle}
           </div>
-          <p className="text-sm text-[var(--text-secondary)]">
-            Matchups, Standings und Live-Scoring aus echten NFL-Stats (ESPN, kostenlos).
-          </p>
+          <p className="text-sm text-[var(--text-secondary)]">{h.seasonDesc}</p>
         </Link>
 
         <Link href="/waivers" className="card card-hover block">
           <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            WAIVER &amp; TRADES →
+            {h.waiverTitle}
           </div>
-          <p className="text-sm text-[var(--text-secondary)]">
-            FAAB-Gebote gegen 9 KI-Manager, Trade-Center mit persönlichkeitsbasierter KI-Bewertung.
-          </p>
+          <p className="text-sm text-[var(--text-secondary)]">{h.waiverDesc}</p>
+        </Link>
+
+        <Link href="/stats" className="card card-hover block">
+          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            {h.statsTitle}
+          </div>
+          <p className="text-sm text-[var(--text-secondary)]">{h.statsDesc}</p>
+        </Link>
+
+        <Link href="/glossary" className="card card-hover block">
+          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            {h.glossaryTitle}
+          </div>
+          <p className="text-sm text-[var(--text-secondary)]">{h.glossaryDesc}</p>
         </Link>
       </div>
 
-      <footer className="text-center text-[11px] text-[var(--text-ghost)] mt-16">
-        The Gridiron Oracle League · Eigene Web-App · v0.1
-      </footer>
+      <footer className="text-center text-[11px] text-[var(--text-ghost)] mt-16">{h.footer}</footer>
     </main>
   );
 }

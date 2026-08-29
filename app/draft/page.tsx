@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useLeagueState } from "@/lib/useLeagueState";
 import { getAvailablePlayers, getPlayerByRank } from "@/lib/players";
@@ -15,6 +15,8 @@ import {
 } from "@/lib/draftEngine";
 import type { DraftPick, Player, Position } from "@/lib/types";
 import { PERSONALITY_QUOTES } from "@/lib/teams";
+import { useLang } from "@/lib/i18n/LanguageContext";
+import { Tooltip } from "@/components/Tooltip";
 
 const POSITIONS: (Position | "ALL")[] = ["ALL", "QB", "RB", "WR", "TE", "DST", "K"];
 const POS_COLOR: Record<string, string> = {
@@ -28,15 +30,18 @@ const POS_COLOR: Record<string, string> = {
 
 export default function DraftPage() {
   const { state, loading, save, cloudSynced } = useLeagueState();
+  const { t, lang } = useLang();
+  const d = t.draft;
+  const c = t.common;
   const [posFilter, setPosFilter] = useState<Position | "ALL">("ALL");
   const [search, setSearch] = useState("");
   const [autoPlaying, setAutoPlaying] = useState(false);
   const [lastEvent, setLastEvent] = useState<string | null>(null);
 
-  const order = useMemo(() => buildDraftOrder(), []);
+  const order = buildDraftOrder();
 
   if (loading || !state) {
-    return <main className="p-8 text-[var(--text-muted)]">Lade Draft…</main>;
+    return <main className="p-8 text-[var(--text-muted)]">{c.loadingDraft}</main>;
   }
 
   const { teams, draftLog } = state;
@@ -66,7 +71,7 @@ export default function DraftPage() {
       playerRank: player.rank,
     };
     await save({ ...state!, draftLog: [...draftLog, pick] });
-    setLastEvent(`Pick ${pick.pickNumber} (R${pick.round}): ${onClockTeam.name} wählt ${player.name}.`);
+    setLastEvent(`${d.pick} ${pick.pickNumber} (R${pick.round}): ${onClockTeam.name} → ${player.name}.`);
   }
 
   async function runAiPick() {
@@ -104,43 +109,43 @@ export default function DraftPage() {
     <main className="mx-auto max-w-[900px] px-4 sm:px-6 py-6">
       <div className="flex items-center justify-between mb-4">
         <Link href="/" className="text-xs text-[var(--text-dim)]">
-          ← Liga
+          {c.backToLeague}
         </Link>
         <Link href="/setup" className="text-xs text-[var(--text-dim)]">
-          Setup →
+          {c.setupArrow}
         </Link>
       </div>
 
       <header className="text-center mb-6">
-        <div className="eyebrow">{cloudSynced ? "Cloud-Sync aktiv" : "Local-Only-Modus"}</div>
+        <div className="eyebrow">{cloudSynced ? c.cloudSyncActive : c.localOnlyModeShort}</div>
         <h1 className="hero-gradient-text font-black" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,4vw,32px)" }}>
-          DRAFT ROOM
+          {d.heading}
         </h1>
         {!complete ? (
           <p className="text-sm text-[var(--text-muted)] mt-1">
-            Pick {nextPickNumber} · Runde {currentRound} ·{" "}
-            <span style={{ color: onClockTeam?.color }}>{onClockTeam?.isHuman ? "DU bist am Zug" : `${onClockTeam?.name} am Zug`}</span>
+            {d.pick} {nextPickNumber} · {d.round} {currentRound} ·{" "}
+            <span style={{ color: onClockTeam?.color }}>{onClockTeam?.isHuman ? d.yourTurn : `${onClockTeam?.name} ${d.teamsTurn}`}</span>
           </p>
         ) : (
-          <p className="text-sm text-[var(--green)] mt-1">Draft abgeschlossen — alle 150 Picks vergeben.</p>
+          <p className="text-sm text-[var(--green)] mt-1">{d.complete}</p>
         )}
       </header>
 
       {!complete && !onClockTeam?.isHuman && (
         <div className="card mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="text-sm text-[var(--text-secondary)]">
-            <span style={{ color: onClockTeam?.color, fontWeight: 700 }}>{onClockTeam?.manager}</span> ist am Zug.
+            <span style={{ color: onClockTeam?.color, fontWeight: 700 }}>{onClockTeam?.manager}</span> {d.onTheClock}
           </div>
           <div className="flex gap-2">
             <button onClick={runAiPick} className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
-              Diesen KI-Pick ausführen
+              {d.runAiPick}
             </button>
             <button
               onClick={autoPlayUntilHuman}
               disabled={autoPlaying}
               className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--border-mid)] text-[var(--text-secondary)] disabled:opacity-40"
             >
-              {autoPlaying ? "Läuft…" : "Bis ich dran bin durchspielen"}
+              {autoPlaying ? d.autoPlaying : d.autoPlay}
             </button>
           </div>
         </div>
@@ -169,7 +174,7 @@ export default function DraftPage() {
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Spieler suchen…"
+            placeholder={d.searchPlaceholder}
             className="w-full mb-3 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-3 py-2 text-sm text-[var(--text-primary)]"
           />
 
@@ -185,7 +190,18 @@ export default function DraftPage() {
                     <span className="text-[10px] text-[var(--text-dim)]">#{p.rank}</span>
                   </div>
                   <div className="text-[11px] text-[var(--text-dim)] mt-0.5">
-                    {p.team} · ADP {p.adp} · Proj {p.proj} · Bye {p.bye || "—"}
+                    {p.team} ·{" "}
+                    <Tooltip text={t.tooltips.adp}>
+                      ADP {p.adp}
+                    </Tooltip>{" "}
+                    ·{" "}
+                    <Tooltip text={t.tooltips.proj}>
+                      Proj {p.proj}
+                    </Tooltip>{" "}
+                    ·{" "}
+                    <Tooltip text={t.tooltips.bye}>
+                      Bye {p.bye || "—"}
+                    </Tooltip>
                   </div>
                 </div>
                 <button
@@ -193,7 +209,7 @@ export default function DraftPage() {
                   disabled={complete || !onClockTeam?.isHuman}
                   className="shrink-0 px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-30"
                 >
-                  Draften
+                  {d.draftButton}
                 </button>
               </div>
             ))}
@@ -202,9 +218,9 @@ export default function DraftPage() {
 
         <aside className="space-y-4">
           <div className="card">
-            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">MEIN ROSTER</h2>
+            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">{d.myRoster}</h2>
             {myRoster.length === 0 ? (
-              <p className="text-xs text-[var(--text-dim)]">Noch keine Picks.</p>
+              <p className="text-xs text-[var(--text-dim)]">{d.noPicksYet}</p>
             ) : (
               <ul className="space-y-1">
                 {myRoster.map((p) => (
@@ -218,7 +234,7 @@ export default function DraftPage() {
           </div>
 
           <div className="card">
-            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">LETZTE PICKS</h2>
+            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">{d.recentPicks}</h2>
             <ul className="space-y-1.5 max-h-[300px] overflow-y-auto">
               {[...draftLog]
                 .slice(-10)
@@ -235,7 +251,7 @@ export default function DraftPage() {
                       <div className="text-[var(--text-secondary)]">{player.name}</div>
                       {team && !team.isHuman && (
                         <div className="text-[10px] text-[var(--text-ghost)] italic">
-                          &ldquo;{PERSONALITY_QUOTES[team.personality]}&rdquo;
+                          &ldquo;{PERSONALITY_QUOTES[team.personality][lang]}&rdquo;
                         </div>
                       )}
                     </li>

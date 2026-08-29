@@ -15,14 +15,14 @@ export const DEFAULT_TEAMS: Team[] = [
   { id: 9, name: "The Dynasty Builder", manager: "Sam Torres", color: "#EC4899", isHuman: false, personality: "dynasty_builder" },
 ];
 
-export const PERSONALITY_QUOTES: Record<string, string> = {
-  analytics: "Nach meinen Projektionen ist das der Value Pick. Kein Reach.",
-  cowboys: "Ich brauche diesen Burschen. Sofort.",
-  purple_dynasty: "Ich denke an Woche 16. Wer gewinnt dann mein Matchup?",
-  chaos: "Ich hab gelesen er könnte explodieren. Ich nehm ihn.",
-  iron_curtain: "Meine Defense schlägt deine Offense. Immer.",
-  sleeper: "Alle schlafen auf ihm. Bald wollt ihr ihn alle.",
-  old_school: "Ohne Laufangriff gewinnst du nix. Das war immer so.",
-  zero_rb: "RBs früh sind dead money. WR ist King.",
-  dynasty_builder: "Er ist jung. In drei Jahren ist er der Beste an seiner Position.",
+export const PERSONALITY_QUOTES: Record<string, { de: string; en: string }> = {
+  analytics: { de: "Nach meinen Projektionen ist das der Value Pick. Kein Reach.", en: "According to my projections, this is the value pick. No reach." },
+  cowboys: { de: "Ich brauche diesen Burschen. Sofort.", en: "I need this guy. Right now." },
+  purple_dynasty: { de: "Ich denke an Woche 16. Wer gewinnt dann mein Matchup?", en: "I'm thinking about Week 16. Who wins my matchup then?" },
+  chaos: { de: "Ich hab gelesen er könnte explodieren. Ich nehm ihn.", en: "I read he could go off. I'm taking him." },
+  iron_curtain: { de: "Meine Defense schlägt deine Offense. Immer.", en: "My defense beats your offense. Always." },
+  sleeper: { de: "Alle schlafen auf ihm. Bald wollt ihr ihn alle.", en: "Everyone's sleeping on him. Soon you'll all want him." },
+  old_school: { de: "Ohne Laufangriff gewinnst du nix. Das war immer so.", en: "Without a run game you win nothing. Always been that way." },
+  zero_rb: { de: "RBs früh sind dead money. WR ist King.", en: "Early RBs are dead money. WR is king." },
+  dynasty_builder: { de: "Er ist jung. In drei Jahren ist er der Beste an seiner Position.", en: "He's young. In three years he's the best at his position." },
 };

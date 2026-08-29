@@ -22,34 +22,37 @@ function tagBonus(players: Player[], tags: string[], amount: number): number {
   return players.reduce((sum, p) => sum + (p.tags.some((t) => tags.includes(t)) ? amount : 0), 0);
 }
 
-const ACCEPT_QUOTES: Record<PersonalityId, string> = {
-  human: "",
-  analytics: "Die Zahlen sprechen dafür. Ich nehme an.",
-  cowboys: "Deal! Ich brauchte genau diesen Move.",
-  purple_dynasty: "Das passt zu meinem Plan für die Playoffs. Abgemacht.",
-  chaos: "Mein Bauchgefühl sagt ja. Machen wir's!",
-  iron_curtain: "Endlich jemand, der Defense und QB richtig einschätzt. Deal.",
-  sleeper: "Ich sehe hier Wert, den andere übersehen. Ich bin dabei.",
-  old_school: "Ein guter Läufer ist ein guter Läufer. Ich nehme an.",
-  zero_rb: "WR-Tiefe für Sicherheit? Klingt nach mir. Deal.",
-  dynasty_builder: "Er ist jung genug für meinen Plan. Ich nehme an.",
+const ACCEPT_QUOTES: Record<PersonalityId, { de: string; en: string }> = {
+  human: { de: "", en: "" },
+  analytics: { de: "Die Zahlen sprechen dafür. Ich nehme an.", en: "The numbers support it. I accept." },
+  cowboys: { de: "Deal! Ich brauchte genau diesen Move.", en: "Deal! I needed exactly this move." },
+  purple_dynasty: { de: "Das passt zu meinem Plan für die Playoffs. Abgemacht.", en: "This fits my playoff plan. Agreed." },
+  chaos: { de: "Mein Bauchgefühl sagt ja. Machen wir's!", en: "My gut says yes. Let's do it!" },
+  iron_curtain: { de: "Endlich jemand, der Defense und QB richtig einschätzt. Deal.", en: "Finally someone who values defense and QB right. Deal." },
+  sleeper: { de: "Ich sehe hier Wert, den andere übersehen. Ich bin dabei.", en: "I see value here others are missing. I'm in." },
+  old_school: { de: "Ein guter Läufer ist ein guter Läufer. Ich nehme an.", en: "A good runner is a good runner. I accept." },
+  zero_rb: { de: "WR-Tiefe für Sicherheit? Klingt nach mir. Deal.", en: "WR depth for security? Sounds like me. Deal." },
+  dynasty_builder: { de: "Er ist jung genug für meinen Plan. Ich nehme an.", en: "He's young enough for my plan. I accept." },
 };
 
-const REJECT_QUOTES: Record<PersonalityId, string> = {
-  human: "",
-  analytics: `Nach meinen Projektionen hätte dieser Trade für mich einen negativen Expected-Value. Ich lehne ab.`,
-  cowboys: "Nicht genug Star-Power für mich dabei. Kein Deal.",
-  purple_dynasty: "Ich denke an Woche 16. Das hilft mir da nicht genug.",
-  chaos: "Fühlt sich nicht richtig an. Vielleicht ein andermal.",
-  iron_curtain: "Meine Defense schlägt deine Offense. Ich brauche diesen Trade nicht.",
-  sleeper: "Ich glaube, ich finde noch besseren Value auf dem Waiver Wire. Nein danke.",
-  old_school: "Du willst mir einen Läufer wegnehmen? Ohne Laufangriff gewinnst du nix.",
-  zero_rb: "RBs früh abzugeben ist dead money für mich. Kein Interesse.",
-  dynasty_builder: "Zu alt für meinen Zeitplan. Ich baue lieber weiter.",
+const REJECT_QUOTES: Record<PersonalityId, { de: string; en: string }> = {
+  human: { de: "", en: "" },
+  analytics: {
+    de: "Nach meinen Projektionen hätte dieser Trade für mich einen negativen Expected-Value. Ich lehne ab.",
+    en: "According to my projections, this trade has a negative expected value for me. I decline.",
+  },
+  cowboys: { de: "Nicht genug Star-Power für mich dabei. Kein Deal.", en: "Not enough star power in this for me. No deal." },
+  purple_dynasty: { de: "Ich denke an Woche 16. Das hilft mir da nicht genug.", en: "I'm thinking about Week 16. This doesn't help me enough there." },
+  chaos: { de: "Fühlt sich nicht richtig an. Vielleicht ein andermal.", en: "Doesn't feel right. Maybe another time." },
+  iron_curtain: { de: "Meine Defense schlägt deine Offense. Ich brauche diesen Trade nicht.", en: "My defense beats your offense. I don't need this trade." },
+  sleeper: { de: "Ich glaube, ich finde noch besseren Value auf dem Waiver Wire. Nein danke.", en: "I think I'll find better value on the waiver wire. No thanks." },
+  old_school: { de: "Du willst mir einen Läufer wegnehmen? Ohne Laufangriff gewinnst du nix.", en: "You want to take a runner from me? Without a run game you win nothing." },
+  zero_rb: { de: "RBs früh abzugeben ist dead money für mich. Kein Interesse.", en: "Giving up early RBs is dead money for me. Not interested." },
+  dynasty_builder: { de: "Zu alt für meinen Zeitplan. Ich baue lieber weiter.", en: "Too old for my timeline. I'd rather keep building." },
 };
 
 /** Bewertet einen Trade aus KI-Sicht: aiGets = was die KI erhält, aiLoses = was die KI abgibt. */
-export function evaluateTradeForAI(team: Team, aiGets: Player[], aiLoses: Player[]): TradeEvaluation {
+export function evaluateTradeForAI(team: Team, aiGets: Player[], aiLoses: Player[], lang: "de" | "en" = "de"): TradeEvaluation {
   const rawValueIn = aiGets.reduce((s, p) => s + p.proj, 0);
   const rawValueOut = aiLoses.reduce((s, p) => s + p.proj, 0);
   let delta = rawValueIn - rawValueOut;
@@ -95,6 +98,6 @@ export function evaluateTradeForAI(team: Team, aiGets: Player[], aiLoses: Player
   }
 
   const accept = delta >= acceptThreshold;
-  const reason = accept ? ACCEPT_QUOTES[team.personality] : REJECT_QUOTES[team.personality];
+  const reason = accept ? ACCEPT_QUOTES[team.personality][lang] : REJECT_QUOTES[team.personality][lang];
   return { accept, reason, delta: Math.round(delta * 10) / 10 };
 }

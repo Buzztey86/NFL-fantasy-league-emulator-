@@ -10,10 +10,14 @@ import { computeTeamWeekScore } from "@/lib/seasonEngine";
 import { gamesForWeek, teamRecord } from "@/lib/schedule";
 import { fetchWeekStats } from "@/lib/nflStats";
 import { REGULAR_SEASON_WEEKS } from "@/lib/types";
+import { useLang } from "@/lib/i18n/LanguageContext";
 
 export default function SeasonPage() {
   const league = useLeagueState();
   const season = useSeasonState();
+  const { t, lang } = useLang();
+  const sT = t.season;
+  const c = t.common;
   const [week, setWeek] = useState(1);
   const [tab, setTab] = useState<"matchups" | "standings">("matchups");
   const [computing, setComputing] = useState(false);
@@ -32,7 +36,7 @@ export default function SeasonPage() {
   }, [league.state, season.state]);
 
   if (loading) {
-    return <main className="p-8 text-[var(--text-muted)]">Lade Season-State…</main>;
+    return <main className="p-8 text-[var(--text-muted)]">{c.loadingSeason}</main>;
   }
 
   const { teams, draftLog } = league.state!;
@@ -46,7 +50,7 @@ export default function SeasonPage() {
 
       const anyCompleted = stats.games.some((g) => g.completed);
       if (!anyCompleted) {
-        setStatusMsg("Noch keine abgeschlossenen Spiele für diese Woche gefunden (Saison evtl. noch nicht gestartet).");
+        setStatusMsg(sT.noCompletedGames);
         setComputing(false);
         return;
       }
@@ -65,9 +69,9 @@ export default function SeasonPage() {
       }
 
       await season.save({ ...seasonState, lineups: newLineups, weeklyScores: newScores });
-      setStatusMsg(`Woche ${week} berechnet (${stats.games.filter((g) => g.completed).length} Spiele ausgewertet).`);
+      setStatusMsg(`${sT.computedMsg} ${week} (${stats.games.filter((g) => g.completed).length} ${sT.gamesEvaluated}).`);
     } catch (e) {
-      setStatusMsg(e instanceof Error ? e.message : "Fehler beim Berechnen.");
+      setStatusMsg(e instanceof Error ? e.message : "Error.");
     }
     setComputing(false);
   }
@@ -76,15 +80,17 @@ export default function SeasonPage() {
     <main className="mx-auto max-w-[900px] px-4 sm:px-6 py-6">
       <div className="flex items-center justify-between mb-4">
         <Link href="/" className="text-xs text-[var(--text-dim)]">
-          ← Liga
+          {c.backToLeague}
         </Link>
-        <span className="text-xs text-[var(--text-dim)]">{league.cloudSynced ? "Cloud-Sync aktiv" : "Local-Only-Modus"}</span>
+        <span className="text-xs text-[var(--text-dim)]">{league.cloudSynced ? c.cloudSyncActive : c.localOnlyModeShort}</span>
       </div>
 
       <header className="text-center mb-6">
-        <div className="eyebrow">Saison {seasonState.seasonYear}</div>
+        <div className="eyebrow">
+          {lang === "de" ? "Saison" : "Season"} {seasonState.seasonYear}
+        </div>
         <h1 className="hero-gradient-text font-black" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,4vw,32px)" }}>
-          SEASON
+          {sT.heading}
         </h1>
       </header>
 
@@ -94,14 +100,14 @@ export default function SeasonPage() {
           className="px-4 py-1.5 rounded-md text-xs font-semibold border"
           style={tab === "matchups" ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" } : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }}
         >
-          Matchups
+          {sT.matchupsTab}
         </button>
         <button
           onClick={() => setTab("standings")}
           className="px-4 py-1.5 rounded-md text-xs font-semibold border"
           style={tab === "standings" ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" } : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }}
         >
-          Standings
+          {sT.standingsTab}
         </button>
       </div>
 
@@ -130,7 +136,7 @@ export default function SeasonPage() {
               disabled={computing}
               className="px-4 py-2 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-40"
             >
-              {computing ? "Berechne…" : `Woche ${week} berechnen (echte NFL-Stats)`}
+              {computing ? sT.computing : `${lang === "de" ? "Woche" : "Week"} ${week} ${sT.computeButton}`}
             </button>
             {statusMsg && <p className="text-xs text-[var(--text-dim)] mt-2">{statusMsg}</p>}
           </div>
@@ -170,8 +176,12 @@ export default function SeasonPage() {
                 <th className="text-center">W</th>
                 <th className="text-center">L</th>
                 <th className="text-center">T</th>
-                <th className="text-right">PF</th>
-                <th className="text-right">PA</th>
+                <th className="text-right" title={t.tooltips.pf}>
+                  PF
+                </th>
+                <th className="text-right" title={t.tooltips.pa}>
+                  PA
+                </th>
               </tr>
             </thead>
             <tbody>

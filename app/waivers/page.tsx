@@ -8,6 +8,8 @@ import { getAvailablePlayers, getPlayerByRank } from "@/lib/players";
 import { generateAIWaiverClaims, resolveWaivers, type WaiverClaim } from "@/lib/waiver";
 import { evaluateTradeForAI, type TradeOffer } from "@/lib/trade";
 import type { Player } from "@/lib/types";
+import { useLang } from "@/lib/i18n/LanguageContext";
+import { Tooltip } from "@/components/Tooltip";
 
 const POS_COLOR: Record<string, string> = {
   QB: "var(--blue)",
@@ -20,6 +22,9 @@ const POS_COLOR: Record<string, string> = {
 
 export default function WaiversPage() {
   const { state, loading, save, cloudSynced } = useLeagueState();
+  const { t, lang } = useLang();
+  const w = t.waivers;
+  const c = t.common;
   const [tab, setTab] = useState<"waiver" | "trade">("waiver");
   const [week, setWeek] = useState(1);
   const [search, setSearch] = useState("");
@@ -36,7 +41,7 @@ export default function WaiversPage() {
   const [tradeLog, setTradeLog] = useState<TradeOffer[]>([]);
 
   if (loading || !state) {
-    return <main className="p-8 text-[var(--text-muted)]">Lade Liga-State…</main>;
+    return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
   }
 
   const { teams, draftLog, transactions, faab } = state;
@@ -67,7 +72,7 @@ export default function WaiversPage() {
     const aiClaims = generateAIWaiverClaims(teams, draftLog, transactions, faab, week);
     const allClaims = [...pendingClaims, ...aiClaims];
     if (allClaims.length === 0) {
-      setResolveMsg("Keine Claims vorhanden.");
+      setResolveMsg(w.noClaims);
       return;
     }
     const wins: Record<number, number> = {};
@@ -81,7 +86,7 @@ export default function WaiversPage() {
 
     await save({ ...state!, transactions: [...transactions, ...newTx], faab: newFaab });
     const wonCount = allClaims.filter((c) => winningClaimIds.has(c.id) && c.teamId === humanTeam.id).length;
-    setResolveMsg(`Waiver-Runde abgeschlossen: ${newTx.length} Claims vergeben (davon ${wonCount} an dich).`);
+    setResolveMsg(`${w.roundDone}: ${newTx.length} ${w.claimsAwarded} (${wonCount} ${w.ofThoseToYou}).`);
     setPendingClaims([]);
   }
 
@@ -99,7 +104,7 @@ export default function WaiversPage() {
     const aiGets = myRoster.filter((p) => myOffer.has(p.rank));
     const aiLoses = partnerRoster.filter((p) => theirOffer.has(p.rank));
 
-    const evalResult = evaluateTradeForAI(partner, aiGets, aiLoses);
+    const evalResult = evaluateTradeForAI(partner, aiGets, aiLoses, lang);
     const offer: TradeOffer = {
       id: crypto.randomUUID(),
       week,
@@ -112,7 +117,7 @@ export default function WaiversPage() {
       aiReason: evalResult.reason,
     };
     setTradeLog((prev) => [offer, ...prev]);
-    setTradeResult(`${partner.manager}: ${evalResult.accept ? "✅ Angenommen" : "❌ Abgelehnt"} — "${evalResult.reason}"`);
+    setTradeResult(`${partner.manager}: ${evalResult.accept ? w.accepted : w.rejected} — "${evalResult.reason}"`);
 
     if (evalResult.accept) {
       const tx: Transaction = {
@@ -138,15 +143,17 @@ export default function WaiversPage() {
     <main className="mx-auto max-w-[900px] px-4 sm:px-6 py-6">
       <div className="flex items-center justify-between mb-4">
         <Link href="/" className="text-xs text-[var(--text-dim)]">
-          ← Liga
+          {c.backToLeague}
         </Link>
-        <span className="text-xs text-[var(--text-dim)]">{cloudSynced ? "Cloud-Sync aktiv" : "Local-Only-Modus"}</span>
+        <span className="text-xs text-[var(--text-dim)]">{cloudSynced ? c.cloudSyncActive : c.localOnlyModeShort}</span>
       </div>
 
       <header className="text-center mb-6">
-        <div className="eyebrow">FAAB $100 · Woche {week}</div>
+        <div className="eyebrow">
+          <Tooltip text={t.tooltips.faab}>FAAB</Tooltip> $100 · {lang === "de" ? "Woche" : "Week"} {week}
+        </div>
         <h1 className="hero-gradient-text font-black" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,4vw,32px)" }}>
-          WAIVER &amp; TRADES
+          {w.heading}
         </h1>
       </header>
 
@@ -156,19 +163,19 @@ export default function WaiversPage() {
           className="px-4 py-1.5 rounded-md text-xs font-semibold border"
           style={tab === "waiver" ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" } : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }}
         >
-          Waiver Wire
+          {w.waiverTab}
         </button>
         <button
           onClick={() => setTab("trade")}
           className="px-4 py-1.5 rounded-md text-xs font-semibold border"
           style={tab === "trade" ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" } : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }}
         >
-          Trade Center
+          {w.tradeTab}
         </button>
       </div>
 
       <div className="card mb-4">
-        <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">FAAB-BUDGETS</h2>
+        <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">{w.faabBudgets}</h2>
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
           {teams.map((t) => (
             <div key={t.id} className="flex justify-between">
@@ -185,7 +192,7 @@ export default function WaiversPage() {
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Free Agent suchen…"
+              placeholder={w.searchFreeAgent}
               className="w-full mb-3 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-3 py-2 text-sm text-[var(--text-primary)]"
             />
             <div className="space-y-1.5 max-h-[300px] overflow-y-auto">
@@ -198,7 +205,7 @@ export default function WaiversPage() {
                     {p.name} <span className="text-[var(--text-dim)] text-[11px]">#{p.rank}</span>
                   </span>
                   <button onClick={() => setBidFor(p)} className="text-xs px-2 py-1 rounded border border-[var(--gold-border)] text-[var(--gold)]">
-                    Bieten
+                    {w.bid}
                   </button>
                 </div>
               ))}
@@ -207,9 +214,11 @@ export default function WaiversPage() {
 
           {bidFor && (
             <div className="card mb-4">
-              <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">Gebot für {bidFor.name}</h3>
+              <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">
+                {w.bidForTitle} {bidFor.name}
+              </h3>
               <div className="flex items-center gap-3 mb-2">
-                <label className="text-xs text-[var(--text-dim)]">FAAB $</label>
+                <label className="text-xs text-[var(--text-dim)]">{w.faabLabel}</label>
                 <input
                   type="number"
                   value={bidAmount}
@@ -218,16 +227,18 @@ export default function WaiversPage() {
                   max={faab[humanTeam.id] ?? 0}
                   className="w-24 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-2 py-1 text-sm"
                 />
-                <span className="text-xs text-[var(--text-dim)]">von ${faab[humanTeam.id] ?? 0}</span>
+                <span className="text-xs text-[var(--text-dim)]">
+                  {w.ofBudget} ${faab[humanTeam.id] ?? 0}
+                </span>
               </div>
               <div className="flex items-center gap-3 mb-3">
-                <label className="text-xs text-[var(--text-dim)]">Dafür droppen (optional)</label>
+                <label className="text-xs text-[var(--text-dim)]">{w.dropOptional}</label>
                 <select
                   value={dropRank}
                   onChange={(e) => setDropRank(e.target.value === "none" ? "none" : Number(e.target.value))}
                   className="bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-2 py-1 text-xs"
                 >
-                  <option value="none">— niemand —</option>
+                  <option value="none">{w.noone}</option>
                   {myRoster.map((p) => (
                     <option key={p.rank} value={p.rank}>
                       {p.name}
@@ -236,14 +247,14 @@ export default function WaiversPage() {
                 </select>
               </div>
               <button onClick={submitMyClaim} className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
-                Claim einreichen
+                {w.submitClaim}
               </button>
             </div>
           )}
 
           {pendingClaims.length > 0 && (
             <div className="card mb-4">
-              <h3 className="text-xs text-[var(--gold)] font-bold mb-2">DEINE OFFENEN CLAIMS</h3>
+              <h3 className="text-xs text-[var(--gold)] font-bold mb-2">{w.yourOpenClaims}</h3>
               {pendingClaims.map((c) => (
                 <div key={c.id} className="text-xs flex justify-between py-1">
                   <span>{getPlayerByRank(c.addPlayerRank).name}</span>
@@ -255,7 +266,7 @@ export default function WaiversPage() {
 
           <div className="text-center">
             <button onClick={runWaiverRound} className="px-4 py-2 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
-              Waiver-Runde durchführen
+              {w.runWaiverRound}
             </button>
             {resolveMsg && <p className="text-xs text-[var(--text-dim)] mt-2">{resolveMsg}</p>}
           </div>
@@ -265,7 +276,7 @@ export default function WaiversPage() {
       {tab === "trade" && (
         <>
           <div className="card mb-4">
-            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">HANDELSPARTNER</h2>
+            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">{w.tradePartner}</h2>
             <div className="flex flex-wrap gap-2">
               {partnerTeams.map((t) => (
                 <button
@@ -288,8 +299,8 @@ export default function WaiversPage() {
           {tradePartnerId != null && (
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <div className="card">
-                <h3 className="text-xs text-[var(--gold)] font-bold mb-2">DU GIBST AB</h3>
-                {myRoster.length === 0 && <p className="text-xs text-[var(--text-dim)]">Kein Roster (noch nicht gedraftet).</p>}
+                <h3 className="text-xs text-[var(--gold)] font-bold mb-2">{w.youGiveUp}</h3>
+                {myRoster.length === 0 && <p className="text-xs text-[var(--text-dim)]">{w.noRosterYet}</p>}
                 {myRoster.map((p) => (
                   <label key={p.rank} className="flex items-center gap-2 text-xs py-1 cursor-pointer">
                     <input type="checkbox" checked={myOffer.has(p.rank)} onChange={() => toggleSet(myOffer, setMyOffer, p.rank)} />
@@ -298,8 +309,8 @@ export default function WaiversPage() {
                 ))}
               </div>
               <div className="card">
-                <h3 className="text-xs text-[var(--gold)] font-bold mb-2">DU BEKOMMST</h3>
-                {partnerRoster.length === 0 && <p className="text-xs text-[var(--text-dim)]">Kein Roster (noch nicht gedraftet).</p>}
+                <h3 className="text-xs text-[var(--gold)] font-bold mb-2">{w.youGet}</h3>
+                {partnerRoster.length === 0 && <p className="text-xs text-[var(--text-dim)]">{w.noRosterYet}</p>}
                 {partnerRoster.map((p) => (
                   <label key={p.rank} className="flex items-center gap-2 text-xs py-1 cursor-pointer">
                     <input type="checkbox" checked={theirOffer.has(p.rank)} onChange={() => toggleSet(theirOffer, setTheirOffer, p.rank)} />
@@ -317,7 +328,7 @@ export default function WaiversPage() {
                 disabled={myOffer.size === 0 || theirOffer.size === 0}
                 className="px-4 py-2 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-40"
               >
-                Angebot senden
+                {w.sendOffer}
               </button>
               {tradeResult && <p className="text-xs text-[var(--text-secondary)] mt-2">{tradeResult}</p>}
             </div>
@@ -325,7 +336,7 @@ export default function WaiversPage() {
 
           {tradeLog.length > 0 && (
             <div className="card">
-              <h3 className="text-xs text-[var(--gold)] font-bold mb-2">TRADE-VERLAUF (diese Sitzung)</h3>
+              <h3 className="text-xs text-[var(--gold)] font-bold mb-2">{w.tradeHistory}</h3>
               {tradeLog.map((t) => (
                 <div key={t.id} className="text-xs py-1 border-b border-[var(--border-inner)]">
                   {t.status === "accepted" ? "✅" : "❌"} vs {teams.find((x) => x.id === t.receiverTeamId)?.name} —{" "}

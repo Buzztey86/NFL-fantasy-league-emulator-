@@ -54,6 +54,7 @@ function parsePlayerCategories(
   kickers: Record<string, KickerStatLine>
 ) {
   for (const teamBlock of boxPlayers) {
+    const teamAbbr = teamBlock.team?.abbreviation ?? "";
     for (const cat of teamBlock.statistics ?? []) {
       const labels: string[] = cat.labels ?? [];
       const get = (a: any, label: string) => {
@@ -64,7 +65,7 @@ function parsePlayerCategories(
       if (cat.name === "passing") {
         for (const a of cat.athletes ?? []) {
           const key = normalizePlayerName(a.athlete.displayName);
-          const line = players[key] ?? emptyStatLine();
+          const line = players[key] ?? emptyStatLine(a.athlete.displayName, teamAbbr);
           line.passYds += Number(get(a, "YDS")) || 0;
           line.passTD += Number(get(a, "TD")) || 0;
           line.passInt += Number(get(a, "INT")) || 0;
@@ -73,7 +74,7 @@ function parsePlayerCategories(
       } else if (cat.name === "rushing") {
         for (const a of cat.athletes ?? []) {
           const key = normalizePlayerName(a.athlete.displayName);
-          const line = players[key] ?? emptyStatLine();
+          const line = players[key] ?? emptyStatLine(a.athlete.displayName, teamAbbr);
           line.rushYds += Number(get(a, "YDS")) || 0;
           line.rushTD += Number(get(a, "TD")) || 0;
           players[key] = line;
@@ -81,7 +82,7 @@ function parsePlayerCategories(
       } else if (cat.name === "receiving") {
         for (const a of cat.athletes ?? []) {
           const key = normalizePlayerName(a.athlete.displayName);
-          const line = players[key] ?? emptyStatLine();
+          const line = players[key] ?? emptyStatLine(a.athlete.displayName, teamAbbr);
           line.rec += Number(get(a, "REC")) || 0;
           line.recYds += Number(get(a, "YDS")) || 0;
           line.recTD += Number(get(a, "TD")) || 0;
@@ -90,7 +91,7 @@ function parsePlayerCategories(
       } else if (cat.name === "fumbles") {
         for (const a of cat.athletes ?? []) {
           const key = normalizePlayerName(a.athlete.displayName);
-          const line = players[key] ?? emptyStatLine();
+          const line = players[key] ?? emptyStatLine(a.athlete.displayName, teamAbbr);
           line.fumLost += Number(get(a, "LOST")) || 0;
           players[key] = line;
         }
@@ -179,8 +180,8 @@ function parseTeamDefense(summary: any, defenses: Record<string, DefenseStatLine
   }
 }
 
-export async function fetchWeekStats(season: number, week: number): Promise<WeekStatsResult> {
-  const scoreboard = await fetchJson(`${BASE}/scoreboard?dates=${season}&seasontype=2&week=${week}`);
+export async function fetchWeekStats(season: number, week: number, seasonType: 1 | 2 = 2): Promise<WeekStatsResult> {
+  const scoreboard = await fetchJson(`${BASE}/scoreboard?dates=${season}&seasontype=${seasonType}&week=${week}`);
 
   const games: GameResult[] = (scoreboard.events ?? []).map((e: any) => {
     const comp = e.competitions[0];
