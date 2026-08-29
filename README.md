@@ -66,6 +66,22 @@ Ohne diesen Schritt läuft die App weiter im bisherigen Solo-Modus (mit oder
 ohne Supabase) — Login ist nur aktiv, wenn Google als Provider konfiguriert
 ist und `NEXT_PUBLIC_SUPABASE_URL`/`NEXT_PUBLIC_SUPABASE_ANON_KEY` gesetzt sind.
 
+### Schritt 0b: Discord-Login zusätzlich einrichten (optional)
+
+Analoges Prinzip wie bei Google:
+
+1. [discord.com/developers/applications](https://discord.com/developers/applications)
+   → **New Application** → Namen vergeben.
+2. Links **OAuth2** → bei **Redirects** dieselbe URL wie bei Google eintragen:
+   `https://DEIN-PROJEKT.supabase.co/auth/v1/callback`
+3. Auf derselben Seite **Client ID** kopieren, bei **Client Secret** auf
+   "Reset Secret" (falls noch keins sichtbar) und kopieren.
+4. In Supabase: **Authentication → Providers → Discord** → aktivieren →
+   Client ID + Secret einfügen → Speichern.
+
+Der Discord-Button erscheint auf der Login-Seite automatisch, sobald der
+Provider in Supabase aktiv ist — kein Code-Änderung nötig.
+
 ### Schritt 1: Supabase-Projekt anlegen (überspringen, falls schon vorhanden)
 
 1. Gehe zu [supabase.com](https://supabase.com) → "Start your project" → mit

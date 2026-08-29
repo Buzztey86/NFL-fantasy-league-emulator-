@@ -18,13 +18,13 @@ function LoginContent() {
   const l = t.login;
   const searchParams = useSearchParams();
   const hasError = searchParams.get("error") === "auth_failed";
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<"google" | "discord" | null>(null);
 
-  async function signInWithGoogle() {
+  async function signIn(provider: "google" | "discord") {
     if (!supabase) return;
-    setLoading(true);
+    setLoading(provider);
     const redirectTo = `${window.location.origin}/auth/callback`;
-    await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo } });
+    await supabase.auth.signInWithOAuth({ provider, options: { redirectTo } });
   }
 
   return (
@@ -43,14 +43,25 @@ function LoginContent() {
         ) : (
           <>
             {hasError && <p className="text-xs text-[var(--red)] mb-4">{l.error}</p>}
-            <button
-              onClick={signInWithGoogle}
-              disabled={loading}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-full text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-50"
-            >
-              <GoogleIcon />
-              {loading ? l.signingIn : l.googleButton}
-            </button>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => signIn("google")}
+                disabled={loading !== null}
+                className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-full text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-50"
+              >
+                <GoogleIcon />
+                {loading === "google" ? l.signingIn : l.googleButton}
+              </button>
+              <button
+                onClick={() => signIn("discord")}
+                disabled={loading !== null}
+                className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-full text-sm font-semibold border disabled:opacity-50"
+                style={{ borderColor: "var(--border-mid)", background: "rgba(88,101,242,0.12)", color: "#8B95F6" }}
+              >
+                <DiscordIcon />
+                {loading === "discord" ? l.signingIn : l.discordButton}
+              </button>
+            </div>
           </>
         )}
       </div>
@@ -65,6 +76,14 @@ function GoogleIcon() {
       <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6 29.6 4 24 4c-7.5 0-14 4.2-17.7 10.7z" />
       <path fill="#4CAF50" d="M24 44c5.5 0 10.4-1.9 14.2-5.1l-6.6-5.4C29.6 35.4 27 36 24 36c-5.2 0-9.6-3.3-11.2-7.9l-6.5 5C9.9 39.7 16.4 44 24 44z" />
       <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.5l6.6 5.4C41.8 35.6 44 30.2 44 24c0-1.3-.1-2.7-.4-3.5z" />
+    </svg>
+  );
+}
+
+function DiscordIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#8B95F6">
+      <path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.076.076 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
     </svg>
   );
 }
