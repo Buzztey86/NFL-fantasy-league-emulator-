@@ -140,8 +140,13 @@ create policy "members manage their season_state" on public.season_state for all
 -- eine Liga mit DERSELBEN ID anlegen (damit die Zeile weiter referenziert
 -- werden kann) und den bisherigen Eigentümer als Mitglied seines "isHuman"-
 -- Teams eintragen. Mehrfaches Ausführen ist sicher (on conflict do nothing).
+-- Zeilen mit nicht-UUID-förmiger id (z.B. eine alte Test-Zeile "default" aus
+-- der Zeit vor dem Login) werden dabei übersprungen statt das Skript
+-- abbrechen zu lassen.
 insert into public.leagues (id, owner_id)
-select ls.id::uuid, ls.id::uuid from public.league_state ls
+select ls.id::uuid, ls.id::uuid
+from public.league_state ls
+where ls.id ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
 on conflict (id) do nothing;
 
 insert into public.league_members (league_id, user_id, team_id)
@@ -153,4 +158,5 @@ select
     0
   )
 from public.league_state ls
+where ls.id ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
 on conflict (league_id, user_id) do nothing;
