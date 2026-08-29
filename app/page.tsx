@@ -56,6 +56,13 @@ export default function Home() {
           <p className="text-sm text-[var(--text-secondary)]">{h.statsDesc}</p>
         </Link>
 
+        <Link href="/roster" className="card card-hover block">
+          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            {h.rosterTitle}
+          </div>
+          <p className="text-sm text-[var(--text-secondary)]">{h.rosterDesc}</p>
+        </Link>
+
         <Link href="/glossary" className="card card-hover block">
           <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
             {h.glossaryTitle}

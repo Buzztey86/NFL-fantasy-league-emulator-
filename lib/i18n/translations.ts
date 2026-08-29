@@ -27,6 +27,8 @@ export const translations = {
       statsDesc: "Aktuelle NFL-Statistiken und Top-Performer, live von ESPN.",
       glossaryTitle: "GLOSSAR →",
       glossaryDesc: "Fantasy-Football-Begriffe verständlich erklärt, inkl. Stat-Tooltips.",
+      rosterTitle: "MEIN ROSTER →",
+      rosterDesc: "Dein Kader mit Stats — fahr über einen Spieler für den Skill-Radar.",
       footer: "The Gridiron Oracle League · Eigene Web-App",
     },
     setup: {
@@ -148,6 +150,14 @@ export const translations = {
       noGamesFound: "Keine Preseason-Spiele für diese Woche gefunden.",
     },
     langToggle: "EN",
+    roster: {
+      heading: "MEIN ROSTER",
+      subtitle: "Dein aktueller Kader inkl. Waiver-Adds und Trades. Fahre über einen Spieler für den Skill-Radar.",
+      hoverHint: "Hover für Skill-Radar",
+      empty: "Noch kein Roster — draft zuerst ein paar Spieler.",
+      slotStarter: "STARTER",
+      slotBench: "BANK",
+    },
   },
   en: {
     common: {
@@ -177,6 +187,8 @@ export const translations = {
       statsDesc: "Current NFL stats and top performers, live from ESPN.",
       glossaryTitle: "GLOSSARY →",
       glossaryDesc: "Fantasy football terms explained clearly, incl. stat tooltips.",
+      rosterTitle: "MY ROSTER →",
+      rosterDesc: "Your roster with stats — hover a player for the skill radar.",
       footer: "The Gridiron Oracle League · Custom web app",
     },
     setup: {
@@ -298,6 +310,14 @@ export const translations = {
       noGamesFound: "No preseason games found for this week.",
     },
     langToggle: "DE",
+    roster: {
+      heading: "MY ROSTER",
+      subtitle: "Your current roster incl. waiver adds and trades. Hover a player for the skill radar.",
+      hoverHint: "Hover for skill radar",
+      empty: "No roster yet — draft some players first.",
+      slotStarter: "STARTERS",
+      slotBench: "BENCH",
+    },
   },
 };
 
