@@ -3,15 +3,25 @@
 import { useLang } from "@/lib/i18n/LanguageContext";
 
 export function LanguageToggle() {
-  const { lang, setLang, t } = useLang();
+  const { lang, setLang } = useLang();
+
+  const optionStyle = (active: boolean) => ({
+    background: active ? "var(--gold-bg)" : "transparent",
+    color: active ? "var(--gold)" : "var(--text-dim)",
+    fontWeight: active ? 800 : 600,
+  });
+
   return (
-    <button
-      onClick={() => setLang(lang === "de" ? "en" : "de")}
-      className="fixed top-3 right-3 z-[100] px-2.5 py-1 rounded-md text-[11px] font-bold border"
-      style={{ borderColor: "var(--border-mid)", background: "var(--bg-surface)", color: "var(--text-muted)" }}
-      title={lang === "de" ? "Switch to English" : "Auf Deutsch umschalten"}
+    <div
+      className="fixed top-4 right-4 z-[100] flex rounded-full overflow-hidden shadow-lg"
+      style={{ border: "1px solid var(--gold-border)", background: "var(--bg-deep)" }}
     >
-      {t.langToggle}
-    </button>
+      <button onClick={() => setLang("de")} className="px-3 py-1.5 text-[12px] transition-colors" style={optionStyle(lang === "de")}>
+        DE
+      </button>
+      <button onClick={() => setLang("en")} className="px-3 py-1.5 text-[12px] transition-colors" style={optionStyle(lang === "en")}>
+        EN
+      </button>
+    </div>
   );
 }
