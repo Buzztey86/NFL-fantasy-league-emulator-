@@ -38,34 +38,22 @@ function rowToState(row: Row): SeasonState {
   };
 }
 
-export function useSeasonState() {
+export function useSeasonState(leagueId: string | null) {
   const [state, setState] = useState<SeasonState | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const channelRef = useRef<any>(null);
-  const rowIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
 
     async function load() {
       if (supabaseConfigured && supabase) {
+        if (!leagueId) return;
+        setLoading(true);
         try {
-          const {
-            data: { user },
-          } = await supabase.auth.getUser();
-
-          if (!user) {
-            if (!cancelled) {
-              setError("Nicht angemeldet.");
-              setLoading(false);
-            }
-            return;
-          }
-          rowIdRef.current = user.id;
-
-          const { data, error: fetchError } = await supabase.from("season_state").select("*").eq("id", user.id).maybeSingle();
+          const { data, error: fetchError } = await supabase.from("season_state").select("*").eq("id", leagueId).maybeSingle();
           if (fetchError) throw fetchError;
 
           if (!cancelled) {
@@ -74,7 +62,7 @@ export function useSeasonState() {
             } else {
               const init = defaultSeasonState();
               await supabase.from("season_state").insert({
-                id: user.id,
+                id: leagueId,
                 season_year: init.seasonYear,
                 schedule: init.schedule,
                 lineups: init.lineups,
@@ -87,10 +75,10 @@ export function useSeasonState() {
           }
 
           const channel = supabase
-            .channel(`season_state_changes_${user.id}`)
+            .channel(`season_state_changes_${leagueId}`)
             .on(
               "postgres_changes",
-              { event: "*", schema: "public", table: "season_state", filter: `id=eq.${user.id}` },
+              { event: "*", schema: "public", table: "season_state", filter: `id=eq.${leagueId}` },
               (payload) => {
                 const row = payload.new as Row;
                 if (row) setState(rowToState(row));
@@ -117,25 +105,28 @@ export function useSeasonState() {
       cancelled = true;
       if (channelRef.current && supabase) supabase.removeChannel(channelRef.current);
     };
-  }, []);
+  }, [leagueId]);
 
-  const save = useCallback(async (next: SeasonState) => {
-    const withTimestamp: SeasonState = { ...next, updatedAt: new Date().toISOString() };
-    setState(withTimestamp);
-    if (supabaseConfigured && supabase && rowIdRef.current) {
-      const { error: saveError } = await supabase.from("season_state").upsert({
-        id: rowIdRef.current,
-        season_year: withTimestamp.seasonYear,
-        schedule: withTimestamp.schedule,
-        lineups: withTimestamp.lineups,
-        weekly_scores: withTimestamp.weeklyScores,
-        updated_at: withTimestamp.updatedAt,
-      });
-      if (saveError) setError(saveError.message);
-    } else if (!supabaseConfigured && typeof window !== "undefined") {
-      window.localStorage.setItem(LOCAL_KEY, JSON.stringify(withTimestamp));
-    }
-  }, []);
+  const save = useCallback(
+    async (next: SeasonState) => {
+      const withTimestamp: SeasonState = { ...next, updatedAt: new Date().toISOString() };
+      setState(withTimestamp);
+      if (supabaseConfigured && supabase && leagueId) {
+        const { error: saveError } = await supabase.from("season_state").upsert({
+          id: leagueId,
+          season_year: withTimestamp.seasonYear,
+          schedule: withTimestamp.schedule,
+          lineups: withTimestamp.lineups,
+          weekly_scores: withTimestamp.weeklyScores,
+          updated_at: withTimestamp.updatedAt,
+        });
+        if (saveError) setError(saveError.message);
+      } else if (!supabaseConfigured && typeof window !== "undefined") {
+        window.localStorage.setItem(LOCAL_KEY, JSON.stringify(withTimestamp));
+      }
+    },
+    [leagueId]
+  );
 
   return { state, loading, error, save, cloudSynced: supabaseConfigured };
 }

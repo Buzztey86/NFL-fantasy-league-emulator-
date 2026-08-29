@@ -19,11 +19,12 @@ function LoginContent() {
   const searchParams = useSearchParams();
   const hasError = searchParams.get("error") === "auth_failed";
   const [loading, setLoading] = useState<"google" | "discord" | null>(null);
+  const next = searchParams.get("next") || "/";
 
   async function signIn(provider: "google" | "discord") {
     if (!supabase) return;
     setLoading(provider);
-    const redirectTo = `${window.location.origin}/auth/callback`;
+    const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
     await supabase.auth.signInWithOAuth({ provider, options: { redirectTo } });
   }
 

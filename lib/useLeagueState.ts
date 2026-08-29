@@ -8,6 +8,11 @@ import { DEFAULT_TEAMS } from "./teams";
 
 const LOCAL_KEY = "gridiron-oracle-state-v1";
 
+export interface LeagueMemberRow {
+  teamId: number;
+  userId: string;
+}
+
 function defaultState(): LeagueState {
   const faab: Record<number, number> = {};
   for (const t of DEFAULT_TEAMS) faab[t.id] = STARTING_FAAB;
@@ -33,38 +38,27 @@ function rowToState(row: Row): LeagueState {
   };
 }
 
-export function useLeagueState() {
+/**
+ * @param leagueId Die ID der aktiven Liga (siehe useLeagueContext). Im
+ * Local-Only-Modus (kein Supabase konfiguriert) wird sie ignoriert.
+ */
+export function useLeagueState(leagueId: string | null) {
   const [state, setState] = useState<LeagueState | null>(null);
+  const [members, setMembers] = useState<LeagueMemberRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const channelRef = useRef<any>(null);
-  // Die Row-ID ist im Cloud-Modus die echte, authentifizierte User-ID —
-  // dadurch bekommt jeder Google-Account automatisch seine eigene, per RLS
-  // abgesicherte Liga, ganz ohne zusätzliche Schema-Spalte.
-  const rowIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
 
     async function load() {
       if (supabaseConfigured && supabase) {
+        if (!leagueId) return; // Warten, bis der LeagueContext eine aktive Liga kennt.
+        setLoading(true);
         try {
-          const {
-            data: { user },
-          } = await supabase.auth.getUser();
-
-          if (!user) {
-            if (!cancelled) {
-              setError("Nicht angemeldet.");
-              setLoading(false);
-            }
-            return;
-          }
-          rowIdRef.current = user.id;
-
-          const { data, error: fetchError } = await supabase.from("league_state").select("*").eq("id", user.id).maybeSingle();
-
+          const { data, error: fetchError } = await supabase.from("league_state").select("*").eq("id", leagueId).maybeSingle();
           if (fetchError) throw fetchError;
 
           if (!cancelled) {
@@ -73,7 +67,7 @@ export function useLeagueState() {
             } else {
               const init = defaultState();
               await supabase.from("league_state").insert({
-                id: user.id,
+                id: leagueId,
                 teams: init.teams,
                 draft_log: init.draftLog,
                 transactions: init.transactions,
@@ -82,14 +76,18 @@ export function useLeagueState() {
               });
               setState(init);
             }
-            setLoading(false);
           }
 
+          const { data: memberRows } = await supabase.from("league_members").select("team_id, user_id").eq("league_id", leagueId);
+          if (!cancelled) setMembers((memberRows ?? []).map((m) => ({ teamId: m.team_id, userId: m.user_id })));
+
+          if (!cancelled) setLoading(false);
+
           const channel = supabase
-            .channel(`league_state_changes_${user.id}`)
+            .channel(`league_state_changes_${leagueId}`)
             .on(
               "postgres_changes",
-              { event: "*", schema: "public", table: "league_state", filter: `id=eq.${user.id}` },
+              { event: "*", schema: "public", table: "league_state", filter: `id=eq.${leagueId}` },
               (payload) => {
                 const row = payload.new as Row;
                 if (row) setState(rowToState(row));
@@ -116,29 +114,32 @@ export function useLeagueState() {
       cancelled = true;
       if (channelRef.current && supabase) supabase.removeChannel(channelRef.current);
     };
-  }, []);
+  }, [leagueId]);
 
-  const save = useCallback(async (next: LeagueState) => {
-    const withTimestamp: LeagueState = { ...next, updatedAt: new Date().toISOString() };
-    setState(withTimestamp);
-    if (supabaseConfigured && supabase && rowIdRef.current) {
-      const { error: saveError } = await supabase.from("league_state").upsert({
-        id: rowIdRef.current,
-        teams: withTimestamp.teams,
-        draft_log: withTimestamp.draftLog,
-        transactions: withTimestamp.transactions,
-        faab: withTimestamp.faab,
-        updated_at: withTimestamp.updatedAt,
-      });
-      if (saveError) setError(saveError.message);
-    } else if (!supabaseConfigured && typeof window !== "undefined") {
-      window.localStorage.setItem(LOCAL_KEY, JSON.stringify(withTimestamp));
-    }
-  }, []);
+  const save = useCallback(
+    async (next: LeagueState) => {
+      const withTimestamp: LeagueState = { ...next, updatedAt: new Date().toISOString() };
+      setState(withTimestamp);
+      if (supabaseConfigured && supabase && leagueId) {
+        const { error: saveError } = await supabase.from("league_state").upsert({
+          id: leagueId,
+          teams: withTimestamp.teams,
+          draft_log: withTimestamp.draftLog,
+          transactions: withTimestamp.transactions,
+          faab: withTimestamp.faab,
+          updated_at: withTimestamp.updatedAt,
+        });
+        if (saveError) setError(saveError.message);
+      } else if (!supabaseConfigured && typeof window !== "undefined") {
+        window.localStorage.setItem(LOCAL_KEY, JSON.stringify(withTimestamp));
+      }
+    },
+    [leagueId]
+  );
 
   const reset = useCallback(async () => {
     await save(defaultState());
   }, [save]);
 
-  return { state, loading, error, save, reset, cloudSynced: supabaseConfigured };
+  return { state, members, loading, error, save, reset, cloudSynced: supabaseConfigured };
 }

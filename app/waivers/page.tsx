@@ -12,6 +12,8 @@ import { useLang } from "@/lib/i18n/LanguageContext";
 import { Tooltip } from "@/components/Tooltip";
 import { HoverRadar } from "@/components/HoverRadar";
 import { RADAR_AXES, RADAR_AXIS_TIPS } from "@/lib/radarAxes";
+import { useLeagueContext } from "@/lib/league/LeagueContext";
+import { withMemberOwnership, resolveMyTeamId } from "@/lib/league/resolveTeams";
 
 const POS_COLOR: Record<string, string> = {
   QB: "var(--blue)",
@@ -31,7 +33,8 @@ const POS_COLOR_HEX: Record<string, string> = {
 };
 
 export default function WaiversPage() {
-  const { state, loading, save, cloudSynced } = useLeagueState();
+  const { activeLeagueId, activeMembership, loading: leagueCtxLoading } = useLeagueContext();
+  const { state, members, loading, save, cloudSynced } = useLeagueState(activeLeagueId);
   const { t, lang } = useLang();
   const w = t.waivers;
   const c = t.common;
@@ -50,12 +53,14 @@ export default function WaiversPage() {
   const [tradeResult, setTradeResult] = useState<string | null>(null);
   const [tradeLog, setTradeLog] = useState<TradeOffer[]>([]);
 
-  if (loading || !state) {
+  if (leagueCtxLoading || loading || !state) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
   }
 
-  const { teams, draftLog, transactions, faab } = state;
-  const humanTeam = teams.find((t) => t.isHuman)!;
+  const { draftLog, transactions, faab } = state;
+  const teams = withMemberOwnership(state.teams, members);
+  const myTeamId = resolveMyTeamId(activeMembership, teams, cloudSynced);
+  const humanTeam = teams.find((t) => t.id === myTeamId)!;
   const myRoster = getCurrentRoster(humanTeam.id, draftLog, transactions);
   const rostered = getAllRosteredRanks(
     teams.map((t) => t.id),

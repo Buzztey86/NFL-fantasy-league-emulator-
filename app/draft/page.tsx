@@ -19,6 +19,8 @@ import { useLang } from "@/lib/i18n/LanguageContext";
 import { Tooltip } from "@/components/Tooltip";
 import { HoverRadar } from "@/components/HoverRadar";
 import { RADAR_AXES, RADAR_AXIS_TIPS } from "@/lib/radarAxes";
+import { useLeagueContext } from "@/lib/league/LeagueContext";
+import { withMemberOwnership, resolveMyTeamId } from "@/lib/league/resolveTeams";
 
 const POSITIONS: (Position | "ALL")[] = ["ALL", "QB", "RB", "WR", "TE", "DST", "K"];
 const POS_COLOR: Record<string, string> = {
@@ -39,7 +41,8 @@ const POS_COLOR_HEX: Record<string, string> = {
 };
 
 export default function DraftPage() {
-  const { state, loading, save, cloudSynced } = useLeagueState();
+  const { activeLeagueId, activeMembership, loading: leagueCtxLoading } = useLeagueContext();
+  const { state, members, loading, save, cloudSynced } = useLeagueState(activeLeagueId);
   const { t, lang } = useLang();
   const d = t.draft;
   const c = t.common;
@@ -50,11 +53,13 @@ export default function DraftPage() {
 
   const order = buildDraftOrder();
 
-  if (loading || !state) {
+  if (leagueCtxLoading || loading || !state) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingDraft}</main>;
   }
 
-  const { teams, draftLog } = state;
+  const teams = withMemberOwnership(state.teams, members);
+  const { draftLog } = state;
+  const myTeamId = resolveMyTeamId(activeMembership, teams, cloudSynced);
   const draftedRanks = new Set(draftLog.map((p) => p.playerRank));
   const available = getAvailablePlayers(draftedRanks);
   const complete = isDraftComplete(draftLog);
@@ -69,8 +74,7 @@ export default function DraftPage() {
     return true;
   });
 
-  const humanTeam = teams.find((t) => t.isHuman);
-  const myRoster = humanTeam ? getRosterForTeam(humanTeam.id, draftLog) : [];
+  const myRoster = getRosterForTeam(myTeamId, draftLog);
 
   async function makePick(player: Player) {
     if (!onClockTeam || complete) return;
@@ -134,12 +138,20 @@ export default function DraftPage() {
         {!complete ? (
           <p className="text-sm text-[var(--text-muted)] mt-1">
             {d.pick} {nextPickNumber} · {d.round} {currentRound} ·{" "}
-            <span style={{ color: onClockTeam?.color }}>{onClockTeam?.isHuman ? d.yourTurn : `${onClockTeam?.name} ${d.teamsTurn}`}</span>
+            <span style={{ color: onClockTeam?.color }}>
+              {onClockTeamId === myTeamId ? d.yourTurn : onClockTeam?.isHuman ? `${onClockTeam.name} (${d.waitingForPlayer})` : `${onClockTeam?.name} ${d.teamsTurn}`}
+            </span>
           </p>
         ) : (
           <p className="text-sm text-[var(--green)] mt-1">{d.complete}</p>
         )}
       </header>
+
+      {!complete && onClockTeam?.isHuman && onClockTeamId !== myTeamId && (
+        <div className="card mb-4 text-center text-sm text-[var(--text-secondary)]">
+          <span style={{ color: onClockTeam.color, fontWeight: 700 }}>{onClockTeam.manager}</span> {d.waitingForPlayer}
+        </div>
+      )}
 
       {!complete && !onClockTeam?.isHuman && (
         <div className="card mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -227,7 +239,7 @@ export default function DraftPage() {
                 </div>
                 <button
                   onClick={() => makePick(p)}
-                  disabled={complete || !onClockTeam?.isHuman}
+                  disabled={complete || onClockTeamId !== myTeamId}
                   className="shrink-0 px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-30"
                 >
                   {d.draftButton}

@@ -11,10 +11,13 @@ import { gamesForWeek, teamRecord } from "@/lib/schedule";
 import { fetchWeekStats } from "@/lib/nflStats";
 import { REGULAR_SEASON_WEEKS } from "@/lib/types";
 import { useLang } from "@/lib/i18n/LanguageContext";
+import { useLeagueContext } from "@/lib/league/LeagueContext";
+import { withMemberOwnership } from "@/lib/league/resolveTeams";
 
 export default function SeasonPage() {
-  const league = useLeagueState();
-  const season = useSeasonState();
+  const { activeLeagueId, loading: leagueCtxLoading } = useLeagueContext();
+  const league = useLeagueState(activeLeagueId);
+  const season = useSeasonState(activeLeagueId);
   const { t, lang } = useLang();
   const sT = t.season;
   const c = t.common;
@@ -23,7 +26,7 @@ export default function SeasonPage() {
   const [computing, setComputing] = useState(false);
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
 
-  const loading = league.loading || season.loading || !league.state || !season.state;
+  const loading = leagueCtxLoading || league.loading || season.loading || !league.state || !season.state;
 
   const games = useMemo(() => (season.state ? gamesForWeek(season.state.schedule, week) : []), [season.state, week]);
 
@@ -39,7 +42,8 @@ export default function SeasonPage() {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingSeason}</main>;
   }
 
-  const { teams, draftLog } = league.state!;
+  const { draftLog } = league.state!;
+  const teams = withMemberOwnership(league.state!.teams, league.members);
   const seasonState = season.state!;
 
   async function computeWeek() {

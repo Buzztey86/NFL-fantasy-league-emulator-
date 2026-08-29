@@ -7,6 +7,8 @@ import { autoLineup, LINEUP_SLOTS } from "@/lib/lineup";
 import { RADAR_AXES, RADAR_AXIS_TIPS } from "@/lib/radarAxes";
 import { HoverRadar } from "@/components/HoverRadar";
 import { useLang } from "@/lib/i18n/LanguageContext";
+import { useLeagueContext } from "@/lib/league/LeagueContext";
+import { withMemberOwnership, resolveMyTeamId } from "@/lib/league/resolveTeams";
 import type { Player } from "@/lib/types";
 
 const POS_COLOR: Record<string, string> = {
@@ -60,18 +62,20 @@ function PlayerRow({ player, lang }: { player: Player; lang: "de" | "en" }) {
 }
 
 export default function RosterPage() {
-  const { state, loading, cloudSynced } = useLeagueState();
+  const { activeLeagueId, activeMembership, loading: leagueCtxLoading } = useLeagueContext();
+  const { state, members, loading, cloudSynced } = useLeagueState(activeLeagueId);
   const { t, lang } = useLang();
   const r = t.roster;
   const c = t.common;
 
-  if (loading || !state) {
+  if (leagueCtxLoading || loading || !state) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
   }
 
-  const { teams, draftLog, transactions } = state;
-  const humanTeam = teams.find((tm) => tm.isHuman)!;
-  const roster = getCurrentRoster(humanTeam.id, draftLog, transactions);
+  const { draftLog, transactions } = state;
+  const teams = withMemberOwnership(state.teams, members);
+  const myTeamId = resolveMyTeamId(activeMembership, teams, cloudSynced);
+  const roster = getCurrentRoster(myTeamId, draftLog, transactions);
 
   const lineup = autoLineup(roster);
   const starterRanks = new Set(LINEUP_SLOTS.map((slot) => lineup[slot]).filter((v): v is number => v != null));

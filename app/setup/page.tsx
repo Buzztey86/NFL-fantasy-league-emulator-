@@ -7,9 +7,12 @@ import { PERSONAS, buildTeamsFromOrder } from "@/lib/personas";
 import type { PersonalityId, DraftPick } from "@/lib/types";
 import { pickNumberToRound } from "@/lib/draftEngine";
 import { useLang } from "@/lib/i18n/LanguageContext";
+import { useLeagueContext } from "@/lib/league/LeagueContext";
+import { InviteSection } from "@/components/InviteSection";
 
 export default function SetupPage() {
-  const { state, loading, save, reset, cloudSynced } = useLeagueState();
+  const { activeLeagueId, loading: leagueCtxLoading } = useLeagueContext();
+  const { state, loading, save, reset, cloudSynced } = useLeagueState(activeLeagueId);
   const { t } = useLang();
   const s = t.setup;
   const c = t.common;
@@ -24,7 +27,7 @@ export default function SetupPage() {
     return [...state.teams].sort((a, b) => a.id - b.id).map((t) => t.personality);
   }, [order, state]);
 
-  if (loading || !state) {
+  if (leagueCtxLoading || loading || !state) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
   }
 
@@ -96,6 +99,8 @@ export default function SetupPage() {
         {s.heading}
       </h1>
       <p className="text-sm text-[var(--text-muted)] mb-6">{cloudSynced ? c.cloudSyncLong : c.localOnlyModeLong}</p>
+
+      <InviteSection teams={state.teams} />
 
       <section className="card mb-6">
         <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-3">{s.draftOrderTitle}</h2>
