@@ -195,7 +195,7 @@ as $$
     ),
     coalesce((select array_agg(m.team_id) from public.league_members m where m.league_id = l.id), array[]::int[])
   from public.leagues l
-  left join public.league_state ls on ls.id = l.id
+  left join public.league_state ls on ls.id = l.id::text
   where l.invite_code = p_invite_code;
 $$;
 grant execute on function public.get_invite_preview(text) to authenticated;
@@ -222,7 +222,7 @@ begin
   insert into public.league_members (league_id, user_id, team_id)
   values (v_league_id, auth.uid(), p_team_id);
 
-  select teams into v_teams from public.league_state where id = v_league_id;
+  select teams into v_teams from public.league_state where id = v_league_id::text;
   select jsonb_agg(
     case when (t->>'id')::int = p_team_id
       then t || jsonb_build_object('name', p_team_name, 'manager', coalesce(nullif(p_manager_name, ''), t->>'manager'), 'isHuman', true, 'personality', 'human')
@@ -231,7 +231,7 @@ begin
   ) into v_updated_teams
   from jsonb_array_elements(v_teams) t;
 
-  update public.league_state set teams = v_updated_teams where id = v_league_id;
+  update public.league_state set teams = v_updated_teams where id = v_league_id::text;
   return true;
 end;
 $$;
