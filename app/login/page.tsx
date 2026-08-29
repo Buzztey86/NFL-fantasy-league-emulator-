@@ -18,7 +18,9 @@ function LoginContent() {
   const l = t.login;
   const searchParams = useSearchParams();
   const hasError = searchParams.get("error") === "auth_failed";
-  const [loading, setLoading] = useState<"google" | "discord" | null>(null);
+  const [loading, setLoading] = useState<"google" | "discord" | "magic" | null>(null);
+  const [email, setEmail] = useState("");
+  const [magicLinkStatus, setMagicLinkStatus] = useState<"sent" | "error" | null>(null);
   const next = searchParams.get("next") || "/";
 
   async function signIn(provider: "google" | "discord") {
@@ -26,6 +28,16 @@ function LoginContent() {
     setLoading(provider);
     const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
     await supabase.auth.signInWithOAuth({ provider, options: { redirectTo } });
+  }
+
+  async function sendMagicLink() {
+    if (!supabase || !email.trim()) return;
+    setLoading("magic");
+    setMagicLinkStatus(null);
+    const emailRedirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
+    const { error } = await supabase.auth.signInWithOtp({ email: email.trim(), options: { emailRedirectTo } });
+    setMagicLinkStatus(error ? "error" : "sent");
+    setLoading(null);
   }
 
   return (
@@ -63,6 +75,37 @@ function LoginContent() {
                 {loading === "discord" ? l.signingIn : l.discordButton}
               </button>
             </div>
+
+            <div className="flex items-center gap-3 my-5">
+              <div className="flex-1 h-px" style={{ background: "var(--border-mid)" }} />
+              <span className="text-[11px] text-[var(--text-dim)] uppercase tracking-wide">{l.orDivider}</span>
+              <div className="flex-1 h-px" style={{ background: "var(--border-mid)" }} />
+            </div>
+
+            {magicLinkStatus === "sent" ? (
+              <p className="text-sm text-[var(--green)]">{l.magicLinkSent}</p>
+            ) : (
+              <div className="flex flex-col gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setMagicLinkStatus(null);
+                  }}
+                  placeholder={l.emailPlaceholder}
+                  className="w-full bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-full px-4 py-3 text-sm text-[var(--text-primary)] text-center"
+                />
+                {magicLinkStatus === "error" && <p className="text-xs text-[var(--red)]">{l.magicLinkError}</p>}
+                <button
+                  onClick={sendMagicLink}
+                  disabled={loading !== null || !email.trim()}
+                  className="w-full px-4 py-3 rounded-full text-sm font-semibold border border-[var(--border-mid)] text-[var(--text-secondary)] disabled:opacity-50"
+                >
+                  {loading === "magic" ? l.sendingLink : l.sendMagicLink}
+                </button>
+              </div>
+            )}
           </>
         )}
       </div>

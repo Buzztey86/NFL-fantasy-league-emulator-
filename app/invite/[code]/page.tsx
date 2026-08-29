@@ -6,7 +6,12 @@ import Link from "next/link";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
-import type { Team } from "@/lib/types";
+
+interface InviteTeam {
+  id: number;
+  name: string;
+  color: string;
+}
 
 export default function InvitePage() {
   const { code } = useParams<{ code: string }>();
@@ -16,7 +21,7 @@ export default function InvitePage() {
 
   const [loading, setLoading] = useState(true);
   const [leagueId, setLeagueId] = useState<string | null>(null);
-  const [teams, setTeams] = useState<Team[]>([]);
+  const [teams, setTeams] = useState<InviteTeam[]>([]);
   const [claimedTeamIds, setClaimedTeamIds] = useState<Set<number>>(new Set());
   const [alreadyMember, setAlreadyMember] = useState(false);
   const [selectedTeamId, setSelectedTeamId] = useState<number | null>(null);
@@ -30,20 +35,23 @@ export default function InvitePage() {
     async function load() {
       if (!supabaseConfigured || !supabase || !userId) return;
 
-      const { data: league } = await supabase.from("leagues").select("id").eq("invite_code", code).maybeSingle();
-      if (!league) {
+      const { data, error } = await supabase.rpc("get_invite_preview", { p_invite_code: code }).maybeSingle<{
+        league_id: string;
+        league_name: string;
+        teams: InviteTeam[];
+        claimed_team_ids: number[];
+      }>();
+      if (error || !data || !data.league_id) {
         setLoading(false);
         return;
       }
-      setLeagueId(league.id);
+      setLeagueId(data.league_id);
+      setTeams(data.teams ?? []);
+      setClaimedTeamIds(new Set(data.claimed_team_ids ?? []));
 
-      const { data: members } = await supabase.from("league_members").select("user_id, team_id").eq("league_id", league.id);
-      const claimed = new Set((members ?? []).map((m) => m.team_id));
-      setClaimedTeamIds(claimed);
-      setAlreadyMember((members ?? []).some((m) => m.user_id === userId));
-
-      const { data: leagueState } = await supabase.from("league_state").select("teams").eq("id", league.id).maybeSingle();
-      setTeams(leagueState?.teams ?? []);
+      // Prüfen, ob wir selbst schon Mitglied sind (eigene Mitgliedschaften kennt der LeagueContext bereits).
+      const { data: mine } = await supabase.from("league_members").select("league_id").eq("league_id", data.league_id).eq("user_id", userId).maybeSingle();
+      setAlreadyMember(Boolean(mine));
 
       setLoading(false);
     }
@@ -58,23 +66,19 @@ export default function InvitePage() {
     }
     setJoining(true);
 
-    const { error: joinError } = await supabase
-      .from("league_members")
-      .insert({ league_id: leagueId, user_id: userId, team_id: selectedTeamId });
+    const { error: joinError } = await supabase.rpc("join_league", {
+      p_invite_code: code,
+      p_team_id: selectedTeamId,
+      p_team_name: teamName.trim(),
+      p_manager_name: managerName.trim(),
+    });
 
     if (!joinError) {
-      // Team im gemeinsamen league_state umbenennen, jetzt wo die Mitgliedschaft
-      // (und damit laut RLS-Policy das Schreibrecht) besteht.
-      const updatedTeams = teams.map((tm) =>
-        tm.id === selectedTeamId
-          ? { ...tm, name: teamName.trim(), manager: managerName.trim() || tm.manager, isHuman: true, personality: "human" as const }
-          : tm
-      );
-      await supabase.from("league_state").update({ teams: updatedTeams }).eq("id", leagueId);
-
       setActiveLeagueId(leagueId);
       await refresh();
       setJoinedTeamName(teamName.trim());
+    } else {
+      setNameError(joinError.message);
     }
     setJoining(false);
   }

@@ -82,6 +82,24 @@ Analoges Prinzip wie bei Google:
 Der Discord-Button erscheint auf der Login-Seite automatisch, sobald der
 Provider in Supabase aktiv ist — kein Code-Änderung nötig.
 
+### Schritt 0c: Magic Link (E-Mail-Login ohne OAuth-Setup)
+
+Braucht keine externe App-Konfiguration — der "Email"-Provider ist in
+Supabase standardmäßig aktiv. Einfach E-Mail eingeben, Link im Postfach
+öffnen, fertig. Gut geeignet, wenn du OAuth-Apps (Google/Discord) grundsätzlich
+skeptisch gegenüberstehst oder sie einfach noch nicht eingerichtet hast.
+
+### Sicherheitshinweis zu Row-Level-Security
+
+Die Policies für `leagues`/`league_members` sind bewusst eng gehalten: Nur
+Mitglieder einer Liga dürfen deren Zeilen direkt lesen. Der Invite-Flow (eine
+Liga per Code finden, bevor man Mitglied ist) läuft ausschließlich über zwei
+`security definer`-Postgres-Funktionen (`get_invite_preview`, `join_league`),
+die gezielt nur die für die Einladung nötigen Felder zurückgeben bzw. das
+Beitreten atomar (inkl. Race-Condition-Schutz durch den `unique(league_id,
+team_id)`-Constraint) durchführen — kein pauschales "jeder eingeloggte Nutzer
+darf alles lesen" mehr.
+
 ### Schritt 1: Supabase-Projekt anlegen (überspringen, falls schon vorhanden)
 
 1. Gehe zu [supabase.com](https://supabase.com) → "Start your project" → mit

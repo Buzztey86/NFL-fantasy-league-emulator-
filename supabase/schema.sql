@@ -104,17 +104,24 @@ drop policy if exists "members can view their leagues" on public.leagues;
 create policy "members can view their leagues" on public.leagues for select using (
   exists (select 1 from public.league_members m where m.league_id = leagues.id and m.user_id = auth.uid())
 );
+-- Die vorherige "anyone authenticated can look up a league by invite code"-Policy
+-- ist entfernt: das war zu breit (jeder eingeloggte Nutzer konnte ALLE Ligen
+-- sehen). Der Invite-Lookup läuft jetzt ausschließlich über die enge
+-- security-definer-Funktion get_invite_preview() weiter unten.
 drop policy if exists "anyone authenticated can look up a league by invite code" on public.leagues;
-create policy "anyone authenticated can look up a league by invite code" on public.leagues for select using (auth.role() = 'authenticated');
 drop policy if exists "owners can update their league" on public.leagues;
 create policy "owners can update their league" on public.leagues for update using (owner_id = auth.uid());
 drop policy if exists "authenticated users can create a league" on public.leagues;
 create policy "authenticated users can create a league" on public.leagues for insert with check (owner_id = auth.uid());
 
 drop policy if exists "members can view league_members of their leagues" on public.league_members;
-create policy "members can view league_members of their leagues" on public.league_members for select using (auth.role() = 'authenticated');
+create policy "members can view league_members of their leagues" on public.league_members for select using (
+  exists (select 1 from public.league_members m2 where m2.league_id = league_members.league_id and m2.user_id = auth.uid())
+);
+-- Direktes Insert durch den Client ist nicht mehr nötig/erlaubt — das
+-- Beitreten läuft jetzt ausschließlich über join_league() weiter unten,
+-- damit Team-Verfügbarkeit serverseitig atomar geprüft wird.
 drop policy if exists "users can join a league by inserting their own membership" on public.league_members;
-create policy "users can join a league by inserting their own membership" on public.league_members for insert with check (user_id = auth.uid());
 drop policy if exists "owners can manage memberships" on public.league_members;
 create policy "owners can manage memberships" on public.league_members for delete using (
   exists (select 1 from public.leagues l where l.id = league_members.league_id and l.owner_id = auth.uid())
@@ -160,3 +167,70 @@ select
 from public.league_state ls
 where ls.id ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
 on conflict (league_id, user_id) do nothing;
+
+-- ── Security-Definer-Funktionen für den Invite-Flow ──────────────────────────
+-- Grund: Ein Eingeladener ist per Definition noch KEIN Mitglied und darf laut
+-- den obigen (bewusst engen) RLS-Policies weder leagues/league_members noch
+-- league_state direkt lesen. Diese beiden Funktionen laufen mit den Rechten
+-- des Funktions-Owners (security definer), geben aber nur genau die Felder
+-- zurück, die die Invite-Seite braucht — keine Draft-Picks, kein FAAB, keine
+-- User-IDs anderer Mitglieder, keine anderen Ligen.
+
+drop function if exists public.get_invite_preview(text);
+create function public.get_invite_preview(p_invite_code text)
+returns table (league_id uuid, league_name text, teams jsonb, claimed_team_ids int[])
+language sql
+security definer
+set search_path = public
+as $$
+  select
+    l.id,
+    l.name,
+    coalesce(
+      (select jsonb_agg(jsonb_build_object('id', t->>'id', 'name', t->>'name', 'color', t->>'color'))
+       from jsonb_array_elements(ls.teams) t),
+      '[]'::jsonb
+    ),
+    coalesce((select array_agg(m.team_id) from public.league_members m where m.league_id = l.id), array[]::int[])
+  from public.leagues l
+  left join public.league_state ls on ls.id = l.id
+  where l.invite_code = p_invite_code;
+$$;
+grant execute on function public.get_invite_preview(text) to authenticated;
+
+drop function if exists public.join_league(text, int, text, text);
+create function public.join_league(p_invite_code text, p_team_id int, p_team_name text, p_manager_name text)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_league_id uuid;
+  v_teams jsonb;
+  v_updated_teams jsonb;
+begin
+  select id into v_league_id from public.leagues where invite_code = p_invite_code;
+  if v_league_id is null then
+    raise exception 'invite code not found';
+  end if;
+
+  -- Atomar prüfen + eintragen: unique(league_id, team_id) verhindert, dass
+  -- zwei Personen gleichzeitig dasselbe Team claimen (Race Condition).
+  insert into public.league_members (league_id, user_id, team_id)
+  values (v_league_id, auth.uid(), p_team_id);
+
+  select teams into v_teams from public.league_state where id = v_league_id;
+  select jsonb_agg(
+    case when (t->>'id')::int = p_team_id
+      then t || jsonb_build_object('name', p_team_name, 'manager', coalesce(nullif(p_manager_name, ''), t->>'manager'), 'isHuman', true, 'personality', 'human')
+      else t
+    end
+  ) into v_updated_teams
+  from jsonb_array_elements(v_teams) t;
+
+  update public.league_state set teams = v_updated_teams where id = v_league_id;
+  return true;
+end;
+$$;
+grant execute on function public.join_league(text, int, text, text) to authenticated;
