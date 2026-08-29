@@ -19,7 +19,11 @@ export default function InvitePage() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [claimedTeamIds, setClaimedTeamIds] = useState<Set<number>>(new Set());
   const [alreadyMember, setAlreadyMember] = useState(false);
-  const [joining, setJoining] = useState<number | null>(null);
+  const [selectedTeamId, setSelectedTeamId] = useState<number | null>(null);
+  const [teamName, setTeamName] = useState("");
+  const [managerName, setManagerName] = useState("");
+  const [nameError, setNameError] = useState<string | null>(null);
+  const [joining, setJoining] = useState(false);
   const [joinedTeamName, setJoinedTeamName] = useState<string | null>(null);
 
   useEffect(() => {
@@ -46,16 +50,33 @@ export default function InvitePage() {
     load();
   }, [code, userId]);
 
-  async function joinTeam(teamId: number) {
-    if (!supabase || !leagueId || !userId) return;
-    setJoining(teamId);
-    const { error } = await supabase.from("league_members").insert({ league_id: leagueId, user_id: userId, team_id: teamId });
-    if (!error) {
+  async function confirmJoin() {
+    if (!supabase || !leagueId || !userId || selectedTeamId == null) return;
+    if (!teamName.trim()) {
+      setNameError(inv.nameRequired);
+      return;
+    }
+    setJoining(true);
+
+    const { error: joinError } = await supabase
+      .from("league_members")
+      .insert({ league_id: leagueId, user_id: userId, team_id: selectedTeamId });
+
+    if (!joinError) {
+      // Team im gemeinsamen league_state umbenennen, jetzt wo die Mitgliedschaft
+      // (und damit laut RLS-Policy das Schreibrecht) besteht.
+      const updatedTeams = teams.map((tm) =>
+        tm.id === selectedTeamId
+          ? { ...tm, name: teamName.trim(), manager: managerName.trim() || tm.manager, isHuman: true, personality: "human" as const }
+          : tm
+      );
+      await supabase.from("league_state").update({ teams: updatedTeams }).eq("id", leagueId);
+
       setActiveLeagueId(leagueId);
       await refresh();
-      setJoinedTeamName(teams.find((t) => t.id === teamId)?.name ?? null);
+      setJoinedTeamName(teamName.trim());
     }
-    setJoining(null);
+    setJoining(false);
   }
 
   if (!supabaseConfigured) {
@@ -99,6 +120,8 @@ export default function InvitePage() {
     );
   }
 
+  const selectedTeam = teams.find((tm) => tm.id === selectedTeamId) ?? null;
+
   return (
     <main className="mx-auto max-w-[500px] px-6 py-10">
       <h1
@@ -107,29 +130,75 @@ export default function InvitePage() {
       >
         {inv.heading}
       </h1>
-      <p className="text-sm text-[var(--text-dim)] text-center mb-6">{inv.chooseTeam}</p>
-      <div className="space-y-2">
-        {teams.map((team) => {
-          const claimed = claimedTeamIds.has(team.id);
-          return (
-            <div key={team.id} className="card flex items-center justify-between">
-              <div>
-                <div style={{ color: team.color }} className="font-semibold text-sm">
-                  {team.name}
+
+      {selectedTeam ? (
+        <div className="card">
+          <button onClick={() => setSelectedTeamId(null)} className="text-xs text-[var(--text-dim)] mb-4">
+            {inv.back}
+          </button>
+          <div className="text-sm mb-4">
+            <span className="text-[var(--text-dim)]">{inv.currentAiTeam}: </span>
+            <span style={{ color: selectedTeam.color }} className="font-semibold">
+              {selectedTeam.name}
+            </span>
+          </div>
+
+          <label className="block text-xs text-[var(--text-dim)] mb-1">{inv.yourTeamName}</label>
+          <input
+            value={teamName}
+            onChange={(e) => {
+              setTeamName(e.target.value);
+              setNameError(null);
+            }}
+            placeholder={inv.yourTeamNamePlaceholder}
+            className="w-full mb-3 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-3 py-2 text-sm text-[var(--text-primary)]"
+          />
+
+          <label className="block text-xs text-[var(--text-dim)] mb-1">{inv.yourManagerName}</label>
+          <input
+            value={managerName}
+            onChange={(e) => setManagerName(e.target.value)}
+            placeholder={inv.yourManagerNamePlaceholder}
+            className="w-full mb-4 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-3 py-2 text-sm text-[var(--text-primary)]"
+          />
+
+          {nameError && <p className="text-xs text-[var(--red)] mb-3">{nameError}</p>}
+
+          <button
+            onClick={confirmJoin}
+            disabled={joining}
+            className="w-full px-4 py-2.5 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-50"
+          >
+            {joining ? "…" : inv.confirmJoin}
+          </button>
+        </div>
+      ) : (
+        <>
+          <p className="text-sm text-[var(--text-dim)] text-center mb-6">{inv.chooseTeam}</p>
+          <div className="space-y-2">
+            {teams.map((team) => {
+              const claimed = claimedTeamIds.has(team.id);
+              return (
+                <div key={team.id} className="card flex items-center justify-between">
+                  <div>
+                    <div style={{ color: team.color }} className="font-semibold text-sm">
+                      {team.name}
+                    </div>
+                    <div className="text-[11px] text-[var(--text-dim)]">{claimed ? inv.claimed : inv.available}</div>
+                  </div>
+                  <button
+                    onClick={() => setSelectedTeamId(team.id)}
+                    disabled={claimed}
+                    className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-30"
+                  >
+                    {inv.joinButton}
+                  </button>
                 </div>
-                <div className="text-[11px] text-[var(--text-dim)]">{claimed ? inv.claimed : inv.available}</div>
-              </div>
-              <button
-                onClick={() => joinTeam(team.id)}
-                disabled={claimed || joining !== null}
-                className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-30"
-              >
-                {joining === team.id ? "…" : inv.joinButton}
-              </button>
-            </div>
-          );
-        })}
-      </div>
+              );
+            })}
+          </div>
+        </>
+      )}
     </main>
   );
 }
