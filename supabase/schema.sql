@@ -124,16 +124,16 @@ create policy "owners can manage memberships" on public.league_members for delet
 -- "gehört allen Mitgliedern dieser Liga" umstellen.
 drop policy if exists "users manage their own league_state" on public.league_state;
 create policy "members manage their league_state" on public.league_state for all using (
-  exists (select 1 from public.league_members m where m.league_id = league_state.id and m.user_id = auth.uid())
+  exists (select 1 from public.league_members m where m.league_id = league_state.id::uuid and m.user_id = auth.uid())
 ) with check (
-  exists (select 1 from public.league_members m where m.league_id = league_state.id and m.user_id = auth.uid())
+  exists (select 1 from public.league_members m where m.league_id = league_state.id::uuid and m.user_id = auth.uid())
 );
 
 drop policy if exists "users manage their own season_state" on public.season_state;
 create policy "members manage their season_state" on public.season_state for all using (
-  exists (select 1 from public.league_members m where m.league_id = season_state.id and m.user_id = auth.uid())
+  exists (select 1 from public.league_members m where m.league_id = season_state.id::uuid and m.user_id = auth.uid())
 ) with check (
-  exists (select 1 from public.league_members m where m.league_id = season_state.id and m.user_id = auth.uid())
+  exists (select 1 from public.league_members m where m.league_id = season_state.id::uuid and m.user_id = auth.uid())
 );
 
 -- Migration bestehender Solo-Ligen: für jede vorhandene league_state-Zeile
