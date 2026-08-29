@@ -25,7 +25,18 @@ create policy "users manage their own league_state"
 
 -- Realtime aktivieren, damit Änderungen (z.B. dein Pick vom Handy) sofort
 -- auf allen anderen offenen Geräten/Tabs erscheinen.
-alter publication supabase_realtime add table public.league_state;
+-- In ein DO-Block gewrappt, damit erneutes Ausführen dieses Skripts NICHT
+-- mit "already member of publication" abbricht (das hätte sonst alles
+-- Nachfolgende im Skript stillschweigend verhindert!).
+do $$
+begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'league_state'
+  ) then
+    alter publication supabase_realtime add table public.league_state;
+  end if;
+end $$;
 
 -- ── Migration Phase 3: Waiver Wire & Trades ──────────────────────────────────
 -- Sicher erneut ausführbar, auch wenn du schon eine bestehende league_state-
@@ -53,4 +64,12 @@ create policy "users manage their own season_state"
   using (auth.uid()::text = id)
   with check (auth.uid()::text = id);
 
-alter publication supabase_realtime add table public.season_state;
+do $$
+begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'season_state'
+  ) then
+    alter publication supabase_realtime add table public.season_state;
+  end if;
+end $$;
