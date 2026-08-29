@@ -37,7 +37,7 @@ function PlayerRow({ player, lang }: { player: Player; lang: "de" | "en" }) {
           <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.06)", color: POS_COLOR[player.pos] }}>
             {player.pos}
           </span>
-          <HoverRadar axes={axes} values={player.radar} tips={tips} color={POS_COLOR_HEX[player.pos]}>
+          <HoverRadar axes={axes} values={player.radar} tips={tips} color={POS_COLOR_HEX[player.pos]} photo={player.photo}>
             <span className="text-sm font-semibold text-[var(--text-primary)] border-b border-dotted border-[var(--text-dim)] cursor-help">
               {player.name}
             </span>

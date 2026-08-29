@@ -5,19 +5,21 @@ import { createPortal } from "react-dom";
 import { RadarChart } from "./RadarChart";
 import { usePopoverPosition } from "./popoverPosition";
 
-const WIDTH = 156; // 140px Chart + Padding
+const WIDTH = 236; // Foto + Chart + Padding
 
 export function HoverRadar({
   axes,
   values,
   tips,
   color,
+  photo,
   children,
 }: {
   axes: string[];
   values: number[];
   tips?: string[];
   color: string;
+  photo?: string | null;
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -37,7 +39,7 @@ export function HoverRadar({
         typeof document !== "undefined" &&
         createPortal(
           <div
-            className="fixed z-[9999] p-2 rounded-lg shadow-xl"
+            className="fixed z-[9999] p-2 rounded-lg shadow-xl flex items-center gap-1"
             style={{
               top: pos.top,
               left: pos.left,
@@ -46,6 +48,20 @@ export function HoverRadar({
               border: "1px solid var(--border-mid)",
             }}
           >
+            {photo && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={photo}
+                alt=""
+                width={72}
+                height={72}
+                className="rounded-md object-cover shrink-0"
+                style={{ background: "rgba(255,255,255,0.04)" }}
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.display = "none";
+                }}
+              />
+            )}
             <RadarChart axes={axes} values={values} tips={tips} color={color} />
           </div>,
           document.body

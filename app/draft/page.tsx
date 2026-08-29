@@ -17,6 +17,8 @@ import type { DraftPick, Player, Position } from "@/lib/types";
 import { PERSONALITY_QUOTES } from "@/lib/teams";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { Tooltip } from "@/components/Tooltip";
+import { HoverRadar } from "@/components/HoverRadar";
+import { RADAR_AXES, RADAR_AXIS_TIPS } from "@/lib/radarAxes";
 
 const POSITIONS: (Position | "ALL")[] = ["ALL", "QB", "RB", "WR", "TE", "DST", "K"];
 const POS_COLOR: Record<string, string> = {
@@ -26,6 +28,14 @@ const POS_COLOR: Record<string, string> = {
   TE: "var(--purple)",
   DST: "var(--red)",
   K: "var(--text-muted)",
+};
+const POS_COLOR_HEX: Record<string, string> = {
+  QB: "#3B82F6",
+  RB: "#10B981",
+  WR: "#F59E0B",
+  TE: "#8B5CF6",
+  DST: "#EF4444",
+  K: "#9CA3AF",
 };
 
 export default function DraftPage() {
@@ -186,7 +196,17 @@ export default function DraftPage() {
                     <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.06)", color: POS_COLOR[p.pos] }}>
                       {p.pos}
                     </span>
-                    <span className="text-sm font-semibold text-[var(--text-primary)] truncate">{p.name}</span>
+                    <HoverRadar
+                      axes={RADAR_AXES[p.pos][lang]}
+                      values={p.radar}
+                      tips={RADAR_AXIS_TIPS[p.pos][lang]}
+                      color={POS_COLOR_HEX[p.pos]}
+                      photo={p.photo}
+                    >
+                      <span className="text-sm font-semibold text-[var(--text-primary)] truncate border-b border-dotted border-[var(--text-dim)] cursor-help">
+                        {p.name}
+                      </span>
+                    </HoverRadar>
                     <span className="text-[10px] text-[var(--text-dim)]">#{p.rank}</span>
                   </div>
                   <div className="text-[11px] text-[var(--text-dim)] mt-0.5">

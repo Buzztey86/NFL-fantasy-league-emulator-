@@ -10,6 +10,8 @@ import { evaluateTradeForAI, type TradeOffer } from "@/lib/trade";
 import type { Player } from "@/lib/types";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { Tooltip } from "@/components/Tooltip";
+import { HoverRadar } from "@/components/HoverRadar";
+import { RADAR_AXES, RADAR_AXIS_TIPS } from "@/lib/radarAxes";
 
 const POS_COLOR: Record<string, string> = {
   QB: "var(--blue)",
@@ -18,6 +20,14 @@ const POS_COLOR: Record<string, string> = {
   TE: "var(--purple)",
   DST: "var(--red)",
   K: "var(--text-muted)",
+};
+const POS_COLOR_HEX: Record<string, string> = {
+  QB: "#3B82F6",
+  RB: "#10B981",
+  WR: "#F59E0B",
+  TE: "#8B5CF6",
+  DST: "#EF4444",
+  K: "#9CA3AF",
 };
 
 export default function WaiversPage() {
@@ -202,7 +212,16 @@ export default function WaiversPage() {
                     <span className="text-[10px] font-bold mr-1" style={{ color: POS_COLOR[p.pos] }}>
                       {p.pos}
                     </span>
-                    {p.name} <span className="text-[var(--text-dim)] text-[11px]">#{p.rank}</span>
+                    <HoverRadar
+                      axes={RADAR_AXES[p.pos][lang]}
+                      values={p.radar}
+                      tips={RADAR_AXIS_TIPS[p.pos][lang]}
+                      color={POS_COLOR_HEX[p.pos]}
+                      photo={p.photo}
+                    >
+                      <span className="border-b border-dotted border-[var(--text-dim)] cursor-help">{p.name}</span>
+                    </HoverRadar>{" "}
+                    <span className="text-[var(--text-dim)] text-[11px]">#{p.rank}</span>
                   </span>
                   <button onClick={() => setBidFor(p)} className="text-xs px-2 py-1 rounded border border-[var(--gold-border)] text-[var(--gold)]">
                     {w.bid}

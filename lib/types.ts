@@ -19,6 +19,7 @@ export interface Player {
   radar: number[];
   note: string;
   tags: string[];
+  photo?: string | null;
   /** true = wurde vom Draft-Engine generiert, weil der reale Datensatz an dieser Stelle erschöpft war */
   generated?: boolean;
 }
