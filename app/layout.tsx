@@ -3,6 +3,7 @@ import { Playfair_Display, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { UserBadge } from "@/components/UserBadge";
 
 const playfair = Playfair_Display({
   variable: "--font-display",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full antialiased">
         <LanguageProvider>
           <LanguageToggle />
+          <UserBadge />
           {children}
         </LanguageProvider>
       </body>

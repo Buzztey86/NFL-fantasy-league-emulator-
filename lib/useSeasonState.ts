@@ -1,13 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { supabase, supabaseConfigured } from "./supabaseClient";
+import { supabase, supabaseConfigured } from "./supabase/client";
 import type { SeasonState } from "./types";
 import { REGULAR_SEASON_WEEKS, NUM_TEAMS } from "./types";
 import { generateSchedule } from "./schedule";
 
 const LOCAL_KEY = "gridiron-oracle-season-v1";
-const ROW_ID = "default";
 const SEASON_YEAR = 2026;
 
 function defaultSeasonState(): SeasonState {
@@ -45,6 +44,7 @@ export function useSeasonState() {
   const [error, setError] = useState<string | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const channelRef = useRef<any>(null);
+  const rowIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -52,11 +52,20 @@ export function useSeasonState() {
     async function load() {
       if (supabaseConfigured && supabase) {
         try {
-          const { data, error: fetchError } = await supabase
-            .from("season_state")
-            .select("*")
-            .eq("id", ROW_ID)
-            .maybeSingle();
+          const {
+            data: { user },
+          } = await supabase.auth.getUser();
+
+          if (!user) {
+            if (!cancelled) {
+              setError("Nicht angemeldet.");
+              setLoading(false);
+            }
+            return;
+          }
+          rowIdRef.current = user.id;
+
+          const { data, error: fetchError } = await supabase.from("season_state").select("*").eq("id", user.id).maybeSingle();
           if (fetchError) throw fetchError;
 
           if (!cancelled) {
@@ -65,7 +74,7 @@ export function useSeasonState() {
             } else {
               const init = defaultSeasonState();
               await supabase.from("season_state").insert({
-                id: ROW_ID,
+                id: user.id,
                 season_year: init.seasonYear,
                 schedule: init.schedule,
                 lineups: init.lineups,
@@ -78,10 +87,10 @@ export function useSeasonState() {
           }
 
           const channel = supabase
-            .channel("season_state_changes")
+            .channel(`season_state_changes_${user.id}`)
             .on(
               "postgres_changes",
-              { event: "*", schema: "public", table: "season_state", filter: `id=eq.${ROW_ID}` },
+              { event: "*", schema: "public", table: "season_state", filter: `id=eq.${user.id}` },
               (payload) => {
                 const row = payload.new as Row;
                 if (row) setState(rowToState(row));
@@ -113,9 +122,9 @@ export function useSeasonState() {
   const save = useCallback(async (next: SeasonState) => {
     const withTimestamp: SeasonState = { ...next, updatedAt: new Date().toISOString() };
     setState(withTimestamp);
-    if (supabaseConfigured && supabase) {
+    if (supabaseConfigured && supabase && rowIdRef.current) {
       const { error: saveError } = await supabase.from("season_state").upsert({
-        id: ROW_ID,
+        id: rowIdRef.current,
         season_year: withTimestamp.seasonYear,
         schedule: withTimestamp.schedule,
         lineups: withTimestamp.lineups,
@@ -123,7 +132,7 @@ export function useSeasonState() {
         updated_at: withTimestamp.updatedAt,
       });
       if (saveError) setError(saveError.message);
-    } else if (typeof window !== "undefined") {
+    } else if (!supabaseConfigured && typeof window !== "undefined") {
       window.localStorage.setItem(LOCAL_KEY, JSON.stringify(withTimestamp));
     }
   }, []);

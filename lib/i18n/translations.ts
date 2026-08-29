@@ -150,6 +150,15 @@ export const translations = {
       noGamesFound: "Keine Preseason-Spiele für diese Woche gefunden.",
     },
     langToggle: "EN",
+    login: {
+      title: "THE GRIDIRON ORACLE",
+      subtitle: "Melde dich an, um deine eigene Liga zu starten.",
+      googleButton: "Mit Google anmelden",
+      notConfigured: "Auth ist nicht konfiguriert. Diese App läuft im lokalen Solo-Modus ohne Login.",
+      error: "Anmeldung fehlgeschlagen. Bitte erneut versuchen.",
+      signingIn: "Weiterleitung zu Google…",
+      signOut: "Abmelden",
+    },
     roster: {
       heading: "MEIN ROSTER",
       subtitle: "Dein aktueller Kader inkl. Waiver-Adds und Trades. Fahre über einen Spieler für den Skill-Radar.",
@@ -310,6 +319,15 @@ export const translations = {
       noGamesFound: "No preseason games found for this week.",
     },
     langToggle: "DE",
+    login: {
+      title: "THE GRIDIRON ORACLE",
+      subtitle: "Sign in to start your own league.",
+      googleButton: "Sign in with Google",
+      notConfigured: "Auth isn't configured. This app is running in local solo mode without login.",
+      error: "Sign-in failed. Please try again.",
+      signingIn: "Redirecting to Google…",
+      signOut: "Sign out",
+    },
     roster: {
       heading: "MY ROSTER",
       subtitle: "Your current roster incl. waiver adds and trades. Hover a player for the skill radar.",

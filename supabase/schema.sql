@@ -11,16 +11,17 @@ create table if not exists public.league_state (
 -- Row Level Security aktivieren...
 alter table public.league_state enable row level security;
 
--- ...aber für den anonymen Key alles erlauben. Das ist eine bewusste
--- Vereinfachung für ein privates Solo-Projekt (nur du kennst die URL/Keys).
--- Wenn du die App jemals öffentlich teilst, ersetze diese Policy durch
--- echte Auth-geprüfte Regeln.
+-- ...und jetzt ECHT einschränken: die Zeilen-ID ist die authentifizierte
+-- Google-User-ID. Jeder Nutzer sieht und ändert ausschließlich seine eigene
+-- Zeile. Falls du vorher die offene "allow all for anon"-Policy von Phase 1
+-- hattest, wird sie hier ersetzt.
 drop policy if exists "allow all for anon" on public.league_state;
-create policy "allow all for anon"
+drop policy if exists "users manage their own league_state" on public.league_state;
+create policy "users manage their own league_state"
   on public.league_state
   for all
-  using (true)
-  with check (true);
+  using (auth.uid()::text = id)
+  with check (auth.uid()::text = id);
 
 -- Realtime aktivieren, damit Änderungen (z.B. dein Pick vom Handy) sofort
 -- auf allen anderen offenen Geräten/Tabs erscheinen.
@@ -45,10 +46,11 @@ create table if not exists public.season_state (
 alter table public.season_state enable row level security;
 
 drop policy if exists "allow all for anon" on public.season_state;
-create policy "allow all for anon"
+drop policy if exists "users manage their own season_state" on public.season_state;
+create policy "users manage their own season_state"
   on public.season_state
   for all
-  using (true)
-  with check (true);
+  using (auth.uid()::text = id)
+  with check (auth.uid()::text = id);
 
 alter publication supabase_realtime add table public.season_state;

@@ -42,7 +42,31 @@ weiterdraften, wo du am Laptop aufgehört hast.
 
 ## Deployment (kostenlos, ca. 15–20 Minuten)
 
-### Schritt 1: Supabase-Projekt anlegen
+### Schritt 0: Google-Login einrichten (Multi-User-Modus)
+
+Seit Phase 4 unterstützt die App Google-Anmeldung — jeder Google-Account
+bekommt automatisch seine eigene, komplett getrennte Liga (per Row-Level-
+Security in Supabase abgesichert, keine zusätzliche Schema-Änderung nötig).
+
+1. **Google Cloud Console** → [console.cloud.google.com](https://console.cloud.google.com)
+   → Neues Projekt (oder bestehendes nutzen) → **APIs & Services → Credentials**
+   → **Create Credentials → OAuth client ID** → Application type: **Web application**.
+2. Bei **Authorized redirect URIs** einfügen:
+   `https://DEIN-PROJEKT.supabase.co/auth/v1/callback`
+   (die genaue URL findest du gleich in Supabase, Schritt 4).
+3. Client ID und Client Secret kopieren.
+4. In Supabase: **Authentication → Providers → Google** → aktivieren → Client ID
+   und Secret einfügen → Speichern. Die Redirect-URL für Schritt 2 steht direkt
+   auf dieser Seite.
+5. In Supabase: **Authentication → URL Configuration** → **Site URL** auf deine
+   Vercel-URL setzen, und unter **Redirect URLs** zusätzlich
+   `http://localhost:3000/auth/callback` für lokale Tests eintragen.
+
+Ohne diesen Schritt läuft die App weiter im bisherigen Solo-Modus (mit oder
+ohne Supabase) — Login ist nur aktiv, wenn Google als Provider konfiguriert
+ist und `NEXT_PUBLIC_SUPABASE_URL`/`NEXT_PUBLIC_SUPABASE_ANON_KEY` gesetzt sind.
+
+### Schritt 1: Supabase-Projekt anlegen (überspringen, falls schon vorhanden)
 
 1. Gehe zu [supabase.com](https://supabase.com) → "Start your project" → mit
    GitHub oder E-Mail registrieren (kostenlos, keine Kreditkarte nötig).
