@@ -5,10 +5,11 @@ import { createPortal } from "react-dom";
 import { usePopoverPosition } from "./popoverPosition";
 
 const WIDTH = 300;
+const ESTIMATED_HEIGHT = 90;
 
 export function Tooltip({ text, children }: { text: string; children: ReactNode }) {
   const [open, setOpen] = useState(false);
-  const { triggerRef, pos, update } = usePopoverPosition(WIDTH);
+  const { triggerRef, pos, update } = usePopoverPosition(WIDTH, ESTIMATED_HEIGHT);
 
   function show() {
     update();
@@ -35,7 +36,7 @@ export function Tooltip({ text, children }: { text: string; children: ReactNode 
               top: pos.top,
               left: pos.left,
               width: `min(88vw, ${WIDTH}px)`,
-              transform: "translate(-50%, -100%)",
+              transform: pos.placement === "above" ? "translate(-50%, -100%)" : "translate(-50%, 0)",
               background: "var(--bg-deep)",
               border: "1px solid var(--border-mid)",
               color: "var(--text-secondary)",

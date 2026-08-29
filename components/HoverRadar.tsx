@@ -8,6 +8,7 @@ import { usePopoverPosition } from "./popoverPosition";
 const WIDTH = 480;
 const CHART_SIZE = 280;
 const PHOTO_SIZE = 130;
+const ESTIMATED_HEIGHT = 340; // Name-Label + max(Foto, Chart) + Padding
 
 export function HoverRadar({
   axes,
@@ -27,7 +28,7 @@ export function HoverRadar({
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
-  const { triggerRef, pos, update } = usePopoverPosition(WIDTH);
+  const { triggerRef, pos, update } = usePopoverPosition(WIDTH, ESTIMATED_HEIGHT);
 
   function show() {
     update();
@@ -48,7 +49,7 @@ export function HoverRadar({
               top: pos.top,
               left: pos.left,
               width: `min(92vw, ${WIDTH}px)`,
-              transform: "translate(-50%, -100%)",
+              transform: pos.placement === "above" ? "translate(-50%, -100%)" : "translate(-50%, 0)",
               background: "var(--bg-deep)",
               border: "1px solid var(--border-mid)",
             }}
