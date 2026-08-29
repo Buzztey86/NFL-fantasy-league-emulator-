@@ -23,9 +23,10 @@ export function RadarChart({
 }) {
   const n = axes.length;
   const CX = size / 2;
-  const CY = size * 0.486;
-  const R = size * 0.371;
-  const labelFontSize = size * 0.054;
+  const CY = size / 2;
+  const R = size * 0.22;
+  const labelRingOffset = size * 0.11;
+  const labelFontSize = Math.max(10, size * 0.046);
   const [cr, cg, cb] = hexToRgb(color);
 
   const rings = [1, 2, 3, 4].map((ring) => {
@@ -56,7 +57,7 @@ export function RadarChart({
   });
 
   const labels = axes.map((axis, i) => {
-    const [x, y] = polarPoint(CX, CY, R + 13, i, n);
+    const [x, y] = polarPoint(CX, CY, R + labelRingOffset, i, n);
     const anchor = x < CX - 4 ? "end" : x > CX + 4 ? "start" : "middle";
     return (
       <g key={axis} style={{ cursor: "help" }}>

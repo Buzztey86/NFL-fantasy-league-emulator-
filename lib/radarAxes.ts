@@ -2,11 +2,11 @@ import type { Position } from "./types";
 
 export const RADAR_AXES: Record<Position, { de: string[]; en: string[] }> = {
   QB: { de: ["Arm", "Scramble", "Accuracy", "TD-Rate", "Floor", "Upside"], en: ["Arm", "Scramble", "Accuracy", "TD Rate", "Floor", "Upside"] },
-  RB: { de: ["Workload", "Receiving", "TD-Rate", "SOS", "Handcuff", "Floor"], en: ["Workload", "Receiving", "TD Rate", "SOS", "Handcuff", "Floor"] },
-  WR: { de: ["Targets", "YAC", "Separation", "Red Zone", "TD-Rate", "Floor"], en: ["Targets", "YAC", "Separation", "Red Zone", "TD Rate", "Floor"] },
-  TE: { de: ["Targets", "Blocking", "Routes", "Red Zone", "TD-Rate", "Floor"], en: ["Targets", "Blocking", "Routes", "Red Zone", "TD Rate", "Floor"] },
-  DST: { de: ["Sacks", "INT", "Punkte-Allow", "TD", "Turnover", "Schedule"], en: ["Sacks", "INT", "Points Allowed", "TD", "Turnovers", "Schedule"] },
-  K: { de: ["Acc.", "Volumen", "FG 50+", "XP-Rate", "SOS", "Team-Off"], en: ["Acc.", "Volume", "FG 50+", "XP Rate", "SOS", "Team Off."] },
+  RB: { de: ["Workload", "Passfang", "TD Rate", "SOS", "Handcuff", "Floor"], en: ["Workload", "Receiv.", "TD Rate", "SOS", "Handcuff", "Floor"] },
+  WR: { de: ["Targets", "YAC", "Trennung", "Red Zone", "TD Rate", "Floor"], en: ["Targets", "YAC", "Separat.", "Red Zone", "TD Rate", "Floor"] },
+  TE: { de: ["Targets", "Blocking", "Routes", "Red Zone", "TD Rate", "Floor"], en: ["Targets", "Blocking", "Routes", "Red Zone", "TD Rate", "Floor"] },
+  DST: { de: ["Sacks", "INT", "Pkt-Allow", "TD", "Turnover", "Schedule"], en: ["Sacks", "INT", "Pts Allow", "TD", "Turnover", "Schedule"] },
+  K: { de: ["Acc.", "Volumen", "FG 50+", "XP Rate", "SOS", "Team-Off"], en: ["Acc.", "Volume", "FG 50+", "XP Rate", "SOS", "Tm Off."] },
 };
 
 export const RADAR_AXIS_TIPS: Record<Position, { de: string[]; en: string[] }> = {

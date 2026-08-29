@@ -5,9 +5,9 @@ import { createPortal } from "react-dom";
 import { RadarChart } from "./RadarChart";
 import { usePopoverPosition } from "./popoverPosition";
 
-const WIDTH = 320;
-const CHART_SIZE = 176;
-const PHOTO_SIZE = 104;
+const WIDTH = 480;
+const CHART_SIZE = 280;
+const PHOTO_SIZE = 130;
 
 export function HoverRadar({
   axes,
@@ -47,7 +47,7 @@ export function HoverRadar({
             style={{
               top: pos.top,
               left: pos.left,
-              width: WIDTH,
+              width: `min(92vw, ${WIDTH}px)`,
               transform: "translate(-50%, -100%)",
               background: "var(--bg-deep)",
               border: "1px solid var(--border-mid)",
@@ -55,13 +55,13 @@ export function HoverRadar({
           >
             {name && (
               <div
-                className="text-[13px] font-bold mb-2 text-center"
+                className="text-[16px] font-bold mb-2.5 text-center"
                 style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)" }}
               >
                 {name}
               </div>
             )}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-4 flex-wrap">
               {photo && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img

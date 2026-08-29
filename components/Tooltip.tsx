@@ -4,7 +4,7 @@ import { useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { usePopoverPosition } from "./popoverPosition";
 
-const WIDTH = 260;
+const WIDTH = 300;
 
 export function Tooltip({ text, children }: { text: string; children: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -30,11 +30,11 @@ export function Tooltip({ text, children }: { text: string; children: ReactNode 
         typeof document !== "undefined" &&
         createPortal(
           <div
-            className="fixed z-[9999] pointer-events-none text-left text-[13px] leading-relaxed p-3.5 rounded-lg shadow-2xl"
+            className="fixed z-[9999] pointer-events-none text-left text-[14px] leading-relaxed p-4 rounded-lg shadow-2xl"
             style={{
               top: pos.top,
               left: pos.left,
-              width: WIDTH,
+              width: `min(88vw, ${WIDTH}px)`,
               transform: "translate(-50%, -100%)",
               background: "var(--bg-deep)",
               border: "1px solid var(--border-mid)",
