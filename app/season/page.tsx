@@ -15,7 +15,7 @@ import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { withMemberOwnership } from "@/lib/league/resolveTeams";
 
 export default function SeasonPage() {
-  const { activeLeagueId, loading: leagueCtxLoading } = useLeagueContext();
+  const { activeLeagueId, loading: leagueCtxLoading, loadError } = useLeagueContext();
   const league = useLeagueState(activeLeagueId);
   const season = useSeasonState(activeLeagueId);
   const { t, lang } = useLang();
@@ -38,6 +38,9 @@ export default function SeasonPage() {
       .sort((a, b) => b.w - a.w || b.pf - a.pf);
   }, [league.state, season.state]);
 
+  if (loadError) {
+    return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
+  }
   if (loading) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingSeason}</main>;
   }

@@ -100,9 +100,26 @@ create table if not exists public.league_members (
 );
 alter table public.league_members enable row level security;
 
+-- Helper-Funktion statt einer selbstreferenzierenden Policy auf league_members
+-- selbst (eine Policy auf Tabelle X, die in ihrem USING-Ausdruck wieder X
+-- abfragt, ist ein bekannter Postgres-RLS-Fallstrick). security definer
+-- umgeht das sauber, da die Funktion mit erhöhten Rechten liest.
+drop function if exists public.is_league_member(uuid);
+create function public.is_league_member(p_league_id uuid) returns boolean
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select exists (
+    select 1 from public.league_members where league_id = p_league_id and user_id = auth.uid()
+  );
+$$;
+grant execute on function public.is_league_member(uuid) to authenticated;
+
 drop policy if exists "members can view their leagues" on public.leagues;
 create policy "members can view their leagues" on public.leagues for select using (
-  exists (select 1 from public.league_members m where m.league_id = leagues.id and m.user_id = auth.uid())
+  public.is_league_member(id)
 );
 -- Die vorherige "anyone authenticated can look up a league by invite code"-Policy
 -- ist entfernt: das war zu breit (jeder eingeloggte Nutzer konnte ALLE Ligen
@@ -116,7 +133,7 @@ create policy "authenticated users can create a league" on public.leagues for in
 
 drop policy if exists "members can view league_members of their leagues" on public.league_members;
 create policy "members can view league_members of their leagues" on public.league_members for select using (
-  exists (select 1 from public.league_members m2 where m2.league_id = league_members.league_id and m2.user_id = auth.uid())
+  public.is_league_member(league_id)
 );
 -- Direktes Insert durch den Client ist nicht mehr nötig/erlaubt — das
 -- Beitreten läuft jetzt ausschließlich über join_league() weiter unten,
@@ -132,17 +149,17 @@ create policy "owners can manage memberships" on public.league_members for delet
 drop policy if exists "users manage their own league_state" on public.league_state;
 drop policy if exists "members manage their league_state" on public.league_state;
 create policy "members manage their league_state" on public.league_state for all using (
-  exists (select 1 from public.league_members m where m.league_id = league_state.id::uuid and m.user_id = auth.uid())
+  public.is_league_member(id::uuid)
 ) with check (
-  exists (select 1 from public.league_members m where m.league_id = league_state.id::uuid and m.user_id = auth.uid())
+  public.is_league_member(id::uuid)
 );
 
 drop policy if exists "users manage their own season_state" on public.season_state;
 drop policy if exists "members manage their season_state" on public.season_state;
 create policy "members manage their season_state" on public.season_state for all using (
-  exists (select 1 from public.league_members m where m.league_id = season_state.id::uuid and m.user_id = auth.uid())
+  public.is_league_member(id::uuid)
 ) with check (
-  exists (select 1 from public.league_members m where m.league_id = season_state.id::uuid and m.user_id = auth.uid())
+  public.is_league_member(id::uuid)
 );
 
 -- Migration bestehender Solo-Ligen: für jede vorhandene league_state-Zeile

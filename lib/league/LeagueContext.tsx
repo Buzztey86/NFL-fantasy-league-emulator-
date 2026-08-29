@@ -12,6 +12,7 @@ export interface Membership {
 
 interface LeagueContextValue {
   loading: boolean;
+  loadError: string | null;
   userId: string | null;
   memberships: Membership[];
   activeLeagueId: string | null;
@@ -26,11 +27,13 @@ const ACTIVE_LEAGUE_KEY = "gridiron-oracle-active-league";
 
 export function LeagueProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [memberships, setMemberships] = useState<Membership[]>([]);
   const [activeLeagueId, setActiveLeagueIdState] = useState<string | null>(null);
 
   const load = useCallback(async () => {
+    setLoadError(null);
     if (!supabaseConfigured || !supabase) {
       setLoading(false);
       return;
@@ -44,7 +47,19 @@ export function LeagueProvider({ children }: { children: ReactNode }) {
     }
     setUserId(user.id);
 
-    const { data: memberRows } = await supabase.from("league_members").select("league_id, team_id").eq("user_id", user.id);
+    const { data: memberRows, error: memberError } = await supabase
+      .from("league_members")
+      .select("league_id, team_id")
+      .eq("user_id", user.id);
+
+    if (memberError) {
+      // Echten Fehler NICHT als "brandneuer Nutzer" missinterpretieren —
+      // sonst würde bei einem RLS-/Netzwerkfehler fälschlich eine zusätzliche
+      // Liga angelegt, statt das eigentliche Problem sichtbar zu machen.
+      setLoadError(memberError.message);
+      setLoading(false);
+      return;
+    }
 
     let rows = memberRows ?? [];
 
@@ -94,7 +109,7 @@ export function LeagueProvider({ children }: { children: ReactNode }) {
   const activeMembership = memberships.find((m) => m.leagueId === activeLeagueId) ?? null;
 
   return (
-    <LeagueContext.Provider value={{ loading, userId, memberships, activeLeagueId, activeMembership, setActiveLeagueId, refresh: load }}>
+    <LeagueContext.Provider value={{ loading, loadError, userId, memberships, activeLeagueId, activeMembership, setActiveLeagueId, refresh: load }}>
       {children}
     </LeagueContext.Provider>
   );

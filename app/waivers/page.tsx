@@ -33,7 +33,7 @@ const POS_COLOR_HEX: Record<string, string> = {
 };
 
 export default function WaiversPage() {
-  const { activeLeagueId, activeMembership, loading: leagueCtxLoading } = useLeagueContext();
+  const { activeLeagueId, activeMembership, loading: leagueCtxLoading, loadError } = useLeagueContext();
   const { state, members, loading, save, cloudSynced } = useLeagueState(activeLeagueId);
   const { t, lang } = useLang();
   const w = t.waivers;
@@ -53,6 +53,9 @@ export default function WaiversPage() {
   const [tradeResult, setTradeResult] = useState<string | null>(null);
   const [tradeLog, setTradeLog] = useState<TradeOffer[]>([]);
 
+  if (loadError) {
+    return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
+  }
   if (leagueCtxLoading || loading || !state) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
   }

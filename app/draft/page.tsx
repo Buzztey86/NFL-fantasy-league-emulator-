@@ -41,7 +41,7 @@ const POS_COLOR_HEX: Record<string, string> = {
 };
 
 export default function DraftPage() {
-  const { activeLeagueId, activeMembership, loading: leagueCtxLoading } = useLeagueContext();
+  const { activeLeagueId, activeMembership, loading: leagueCtxLoading, loadError } = useLeagueContext();
   const { state, members, loading, save, cloudSynced } = useLeagueState(activeLeagueId);
   const { t, lang } = useLang();
   const d = t.draft;
@@ -53,6 +53,9 @@ export default function DraftPage() {
 
   const order = buildDraftOrder();
 
+  if (loadError) {
+    return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
+  }
   if (leagueCtxLoading || loading || !state) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingDraft}</main>;
   }

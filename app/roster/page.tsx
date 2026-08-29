@@ -62,12 +62,15 @@ function PlayerRow({ player, lang }: { player: Player; lang: "de" | "en" }) {
 }
 
 export default function RosterPage() {
-  const { activeLeagueId, activeMembership, loading: leagueCtxLoading } = useLeagueContext();
+  const { activeLeagueId, activeMembership, loading: leagueCtxLoading, loadError } = useLeagueContext();
   const { state, members, loading, cloudSynced } = useLeagueState(activeLeagueId);
   const { t, lang } = useLang();
   const r = t.roster;
   const c = t.common;
 
+  if (loadError) {
+    return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
+  }
   if (leagueCtxLoading || loading || !state) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
   }

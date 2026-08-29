@@ -11,7 +11,7 @@ import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { InviteSection } from "@/components/InviteSection";
 
 export default function SetupPage() {
-  const { activeLeagueId, loading: leagueCtxLoading } = useLeagueContext();
+  const { activeLeagueId, loading: leagueCtxLoading, loadError } = useLeagueContext();
   const { state, loading, save, reset, cloudSynced } = useLeagueState(activeLeagueId);
   const { t } = useLang();
   const s = t.setup;
@@ -27,6 +27,9 @@ export default function SetupPage() {
     return [...state.teams].sort((a, b) => a.id - b.id).map((t) => t.personality);
   }, [order, state]);
 
+  if (loadError) {
+    return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
+  }
   if (leagueCtxLoading || loading || !state) {
     return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
   }
