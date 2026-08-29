@@ -33,12 +33,14 @@ export default function Home() {
           </p>
         </Link>
 
-        <div className="card opacity-50">
-          <div className="text-[var(--text-dim)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            SAISON &amp; SCORING (bald)
+        <Link href="/season" className="card card-hover block">
+          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            SEASON →
           </div>
-          <p className="text-sm text-[var(--text-muted)]">Matchups, Standings, Live-Scoring — Phase 2.</p>
-        </div>
+          <p className="text-sm text-[var(--text-secondary)]">
+            Matchups, Standings und Live-Scoring aus echten NFL-Stats (ESPN, kostenlos).
+          </p>
+        </Link>
 
         <div className="card opacity-50">
           <div className="text-[var(--text-dim)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>

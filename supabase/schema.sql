@@ -25,3 +25,24 @@ create policy "allow all for anon"
 -- Realtime aktivieren, damit Änderungen (z.B. dein Pick vom Handy) sofort
 -- auf allen anderen offenen Geräten/Tabs erscheinen.
 alter publication supabase_realtime add table public.league_state;
+
+-- ── Season-State (Phase 2: Matchups, Scoring, Standings) ─────────────────────
+create table if not exists public.season_state (
+  id text primary key default 'default',
+  season_year integer not null default 2026,
+  schedule jsonb not null default '[]'::jsonb,
+  lineups jsonb not null default '{}'::jsonb,
+  weekly_scores jsonb not null default '{}'::jsonb,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.season_state enable row level security;
+
+drop policy if exists "allow all for anon" on public.season_state;
+create policy "allow all for anon"
+  on public.season_state
+  for all
+  using (true)
+  with check (true);
+
+alter publication supabase_realtime add table public.season_state;

@@ -70,3 +70,25 @@ export const ROSTER_SLOTS: Record<string, number> = {
 export const TOTAL_ROUNDS = 15;
 export const NUM_TEAMS = 10;
 export const TOTAL_PICKS = TOTAL_ROUNDS * NUM_TEAMS;
+export const REGULAR_SEASON_WEEKS = 14;
+
+export interface SeasonGame {
+  week: number;
+  homeTeamId: number;
+  awayTeamId: number;
+}
+
+export interface TeamWeekScore {
+  total: number;
+  slots: { slot: string; player: string | null; pos: string | null; points: number }[];
+}
+
+export interface SeasonState {
+  seasonYear: number;
+  schedule: SeasonGame[];
+  // lineups[week][teamId] = { QB: rank|null, ... }
+  lineups: Record<number, Record<number, Record<string, number | null>>>;
+  // weeklyScores[week][teamId] = TeamWeekScore
+  weeklyScores: Record<number, Record<number, TeamWeekScore>>;
+  updatedAt: string;
+}

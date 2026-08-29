@@ -42,6 +42,15 @@ function generateFillerPlayer(rank: number): Player {
   };
 }
 
+export function normalizePlayerName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[.']/g, "")
+    .replace(/\b(jr|sr|ii|iii|iv)\b/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
 let cachedPool: Player[] | null = null;
 
 /** Vollständiger Spieler-Pool (echte + generierte Auffüll-Spieler), nach Rang sortiert. */
