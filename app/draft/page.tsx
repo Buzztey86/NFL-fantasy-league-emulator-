@@ -193,7 +193,7 @@ export default function DraftPage() {
               <div key={p.rank} className="card flex items-center justify-between gap-3 !py-2.5">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.06)", color: POS_COLOR[p.pos] }}>
+                    <span className="text-[11px] font-bold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.06)", color: POS_COLOR[p.pos] }}>
                       {p.pos}
                     </span>
                     <HoverRadar
@@ -202,14 +202,15 @@ export default function DraftPage() {
                       tips={RADAR_AXIS_TIPS[p.pos][lang]}
                       color={POS_COLOR_HEX[p.pos]}
                       photo={p.photo}
+                      name={p.name}
                     >
                       <span className="text-sm font-semibold text-[var(--text-primary)] truncate border-b border-dotted border-[var(--text-dim)] cursor-help">
                         {p.name}
                       </span>
                     </HoverRadar>
-                    <span className="text-[10px] text-[var(--text-dim)]">#{p.rank}</span>
+                    <span className="text-[11px] text-[var(--text-dim)]">#{p.rank}</span>
                   </div>
-                  <div className="text-[11px] text-[var(--text-dim)] mt-0.5">
+                  <div className="text-[12px] text-[var(--text-dim)] mt-0.5">
                     {p.team} ·{" "}
                     <Tooltip text={t.tooltips.adp}>
                       ADP {p.adp}
@@ -270,7 +271,7 @@ export default function DraftPage() {
                       </div>
                       <div className="text-[var(--text-secondary)]">{player.name}</div>
                       {team && !team.isHuman && (
-                        <div className="text-[10px] text-[var(--text-ghost)] italic">
+                        <div className="text-[11px] text-[var(--text-ghost)] italic">
                           &ldquo;{PERSONALITY_QUOTES[team.personality][lang]}&rdquo;
                         </div>
                       )}

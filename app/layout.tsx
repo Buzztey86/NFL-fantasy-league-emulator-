@@ -27,8 +27,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de" className={`${playfair.variable} ${sourceSerif.variable} h-full`}>
       <body className="min-h-full antialiased">
         <LanguageProvider>
-          <LanguageToggle />
-          <UserBadge />
+          <div className="fixed top-4 right-4 z-[100] flex flex-col items-end gap-2">
+            <LanguageToggle />
+            <UserBadge />
+          </div>
           {children}
         </LanguageProvider>
       </body>

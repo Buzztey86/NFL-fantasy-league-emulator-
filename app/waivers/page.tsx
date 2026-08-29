@@ -209,7 +209,7 @@ export default function WaiversPage() {
               {freeAgents.slice(0, 40).map((p) => (
                 <div key={p.rank} className="flex items-center justify-between text-sm py-1 border-b border-[var(--border-inner)]">
                   <span>
-                    <span className="text-[10px] font-bold mr-1" style={{ color: POS_COLOR[p.pos] }}>
+                    <span className="text-[11px] font-bold mr-1" style={{ color: POS_COLOR[p.pos] }}>
                       {p.pos}
                     </span>
                     <HoverRadar
@@ -218,10 +218,11 @@ export default function WaiversPage() {
                       tips={RADAR_AXIS_TIPS[p.pos][lang]}
                       color={POS_COLOR_HEX[p.pos]}
                       photo={p.photo}
+                      name={p.name}
                     >
                       <span className="border-b border-dotted border-[var(--text-dim)] cursor-help">{p.name}</span>
                     </HoverRadar>{" "}
-                    <span className="text-[var(--text-dim)] text-[11px]">#{p.rank}</span>
+                    <span className="text-[var(--text-dim)] text-[12px]">#{p.rank}</span>
                   </span>
                   <button onClick={() => setBidFor(p)} className="text-xs px-2 py-1 rounded border border-[var(--gold-border)] text-[var(--gold)]">
                     {w.bid}

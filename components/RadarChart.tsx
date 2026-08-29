@@ -8,11 +8,24 @@ function hexToRgb(hex: string): [number, number, number] {
   return [parseInt(clean.slice(0, 2), 16), parseInt(clean.slice(2, 4), 16), parseInt(clean.slice(4, 6), 16)];
 }
 
-export function RadarChart({ axes, values, tips, color }: { axes: string[]; values: number[]; tips?: string[]; color: string }) {
+export function RadarChart({
+  axes,
+  values,
+  tips,
+  color,
+  size = 140,
+}: {
+  axes: string[];
+  values: number[];
+  tips?: string[];
+  color: string;
+  size?: number;
+}) {
   const n = axes.length;
-  const CX = 70;
-  const CY = 68;
-  const R = 52;
+  const CX = size / 2;
+  const CY = size * 0.486;
+  const R = size * 0.371;
+  const labelFontSize = size * 0.054;
   const [cr, cg, cb] = hexToRgb(color);
 
   const rings = [1, 2, 3, 4].map((ring) => {
@@ -48,7 +61,7 @@ export function RadarChart({ axes, values, tips, color }: { axes: string[]; valu
     return (
       <g key={axis} style={{ cursor: "help" }}>
         {tips?.[i] && <title>{`${axis}: ${tips[i]}`}</title>}
-        <text x={x.toFixed(1)} y={(y + 3).toFixed(1)} textAnchor={anchor} fontSize={7.5} fill="#6B7280" fontFamily="'Source Serif 4', serif">
+        <text x={x.toFixed(1)} y={(y + 3).toFixed(1)} textAnchor={anchor} fontSize={labelFontSize} fill="#9CA3AF" fontFamily="'Source Serif 4', serif">
           {axis}
         </text>
       </g>
@@ -56,7 +69,7 @@ export function RadarChart({ axes, values, tips, color }: { axes: string[]; valu
   });
 
   return (
-    <svg width={140} height={140} viewBox="0 0 140 140" style={{ overflow: "visible" }}>
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ overflow: "visible" }}>
       {rings}
       {spokes}
       <path d={polygonD} fill={`rgba(${cr},${cg},${cb},0.18)`} stroke={color} strokeWidth={1.5} strokeLinejoin="round" />

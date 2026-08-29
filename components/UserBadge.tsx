@@ -28,11 +28,11 @@ export function UserBadge() {
   }
 
   return (
-    <div className="fixed top-4 left-4 z-[100] flex items-center gap-2">
-      <span className="text-[11px] text-[var(--text-dim)] hidden sm:inline">{email}</span>
+    <div className="flex items-center gap-2">
+      <span className="text-[12px] text-[var(--text-dim)] hidden sm:inline">{email}</span>
       <button
         onClick={signOut}
-        className="px-3 py-1.5 rounded-full text-[11px] font-semibold border"
+        className="px-3 py-1.5 rounded-full text-[12px] font-semibold border"
         style={{ borderColor: "var(--border-mid)", background: "var(--bg-deep)", color: "var(--text-muted)" }}
       >
         {t.login.signOut}

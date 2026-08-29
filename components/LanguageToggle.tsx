@@ -12,10 +12,7 @@ export function LanguageToggle() {
   });
 
   return (
-    <div
-      className="fixed top-4 right-4 z-[100] flex rounded-full overflow-hidden shadow-lg"
-      style={{ border: "1px solid var(--gold-border)", background: "var(--bg-deep)" }}
-    >
+    <div className="flex rounded-full overflow-hidden shadow-lg" style={{ border: "1px solid var(--gold-border)", background: "var(--bg-deep)" }}>
       <button onClick={() => setLang("de")} className="px-3 py-1.5 text-[12px] transition-colors" style={optionStyle(lang === "de")}>
         DE
       </button>

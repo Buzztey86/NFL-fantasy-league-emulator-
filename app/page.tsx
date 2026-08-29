@@ -71,7 +71,7 @@ export default function Home() {
         </Link>
       </div>
 
-      <footer className="text-center text-[11px] text-[var(--text-ghost)] mt-16">{h.footer}</footer>
+      <footer className="text-center text-[12px] text-[var(--text-ghost)] mt-16">{h.footer}</footer>
     </main>
   );
 }

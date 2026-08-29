@@ -34,23 +34,23 @@ function PlayerRow({ player, lang }: { player: Player; lang: "de" | "en" }) {
     <div className="card flex items-center justify-between gap-3 !py-3">
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
-          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.06)", color: POS_COLOR[player.pos] }}>
+          <span className="text-[11px] font-bold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.06)", color: POS_COLOR[player.pos] }}>
             {player.pos}
           </span>
-          <HoverRadar axes={axes} values={player.radar} tips={tips} color={POS_COLOR_HEX[player.pos]} photo={player.photo}>
+          <HoverRadar axes={axes} values={player.radar} tips={tips} color={POS_COLOR_HEX[player.pos]} photo={player.photo} name={player.name}>
             <span className="text-sm font-semibold text-[var(--text-primary)] border-b border-dotted border-[var(--text-dim)] cursor-help">
               {player.name}
             </span>
           </HoverRadar>
-          <span className="text-[10px] text-[var(--text-dim)]">{player.team}</span>
+          <span className="text-[11px] text-[var(--text-dim)]">{player.team}</span>
         </div>
-        <div className="text-[11px] text-[var(--text-dim)] mt-0.5">
+        <div className="text-[12px] text-[var(--text-dim)] mt-0.5">
           Proj {player.proj} · Floor {player.floor} · Ceiling {player.upside} · Bye {player.bye || "—"}
         </div>
       </div>
       <div className="flex flex-wrap gap-1 justify-end max-w-[140px]">
         {player.tags.slice(0, 2).map((tag) => (
-          <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded" style={{ background: "var(--gold-bg)", color: "var(--gold)" }}>
+          <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: "var(--gold-bg)", color: "var(--gold)" }}>
             {tag}
           </span>
         ))}
