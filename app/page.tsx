@@ -42,12 +42,14 @@ export default function Home() {
           </p>
         </Link>
 
-        <div className="card opacity-50">
-          <div className="text-[var(--text-dim)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            WAIVER &amp; TRADES (bald)
+        <Link href="/waivers" className="card card-hover block">
+          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            WAIVER &amp; TRADES →
           </div>
-          <p className="text-sm text-[var(--text-muted)]">FAAB-Waiver und KI-Verhandlungen — Phase 3.</p>
-        </div>
+          <p className="text-sm text-[var(--text-secondary)]">
+            FAAB-Gebote gegen 9 KI-Manager, Trade-Center mit persönlichkeitsbasierter KI-Bewertung.
+          </p>
+        </Link>
       </div>
 
       <footer className="text-center text-[11px] text-[var(--text-ghost)] mt-16">

@@ -3,24 +3,35 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { supabase, supabaseConfigured } from "./supabaseClient";
 import type { LeagueState } from "./types";
+import { STARTING_FAAB } from "./types";
 import { DEFAULT_TEAMS } from "./teams";
 
 const LOCAL_KEY = "gridiron-oracle-state-v1";
 const ROW_ID = "default";
 
 function defaultState(): LeagueState {
-  return { teams: DEFAULT_TEAMS, draftLog: [], updatedAt: new Date().toISOString() };
+  const faab: Record<number, number> = {};
+  for (const t of DEFAULT_TEAMS) faab[t.id] = STARTING_FAAB;
+  return { teams: DEFAULT_TEAMS, draftLog: [], transactions: [], faab, updatedAt: new Date().toISOString() };
 }
 
 interface Row {
   id: string;
   teams: LeagueState["teams"];
   draft_log: LeagueState["draftLog"];
+  transactions: LeagueState["transactions"];
+  faab: LeagueState["faab"];
   updated_at: string;
 }
 
 function rowToState(row: Row): LeagueState {
-  return { teams: row.teams, draftLog: row.draft_log, updatedAt: row.updated_at };
+  return {
+    teams: row.teams,
+    draftLog: row.draft_log,
+    transactions: row.transactions ?? [],
+    faab: row.faab ?? {},
+    updatedAt: row.updated_at,
+  };
 }
 
 export function useLeagueState() {
@@ -53,6 +64,8 @@ export function useLeagueState() {
                 id: ROW_ID,
                 teams: init.teams,
                 draft_log: init.draftLog,
+                transactions: init.transactions,
+                faab: init.faab,
                 updated_at: init.updatedAt,
               });
               setState(init);
@@ -101,6 +114,8 @@ export function useLeagueState() {
         id: ROW_ID,
         teams: withTimestamp.teams,
         draft_log: withTimestamp.draftLog,
+        transactions: withTimestamp.transactions,
+        faab: withTimestamp.faab,
         updated_at: withTimestamp.updatedAt,
       });
       if (saveError) setError(saveError.message);

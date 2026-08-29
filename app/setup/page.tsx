@@ -76,7 +76,7 @@ export default function SetupPage() {
       return;
     }
     const teams = buildTeamsFromOrder(currentOrder);
-    await save({ teams, draftLog: picks, updatedAt: new Date().toISOString() });
+    await save({ ...state!, teams, draftLog: picks });
     setImportMsg(`${picks.length} Picks importiert.`);
     setTimeout(() => setImportMsg(null), 3000);
   }

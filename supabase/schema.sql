@@ -26,6 +26,12 @@ create policy "allow all for anon"
 -- auf allen anderen offenen Geräten/Tabs erscheinen.
 alter publication supabase_realtime add table public.league_state;
 
+-- ── Migration Phase 3: Waiver Wire & Trades ──────────────────────────────────
+-- Sicher erneut ausführbar, auch wenn du schon eine bestehende league_state-
+-- Zeile hast (add column if not exists ändert nichts an vorhandenen Daten).
+alter table public.league_state add column if not exists transactions jsonb not null default '[]'::jsonb;
+alter table public.league_state add column if not exists faab jsonb not null default '{}'::jsonb;
+
 -- ── Season-State (Phase 2: Matchups, Scoring, Standings) ─────────────────────
 create table if not exists public.season_state (
   id text primary key default 'default',

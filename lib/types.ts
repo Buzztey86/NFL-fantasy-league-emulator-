@@ -1,6 +1,8 @@
 // The Gridiron Oracle League — zentrale Typdefinitionen
 // Diese Typen spiegeln 1:1 die Datenstruktur aus 07_DRAFTBOARD_DATA.md / draftboard-2026.html
 
+import type { Transaction } from "./roster";
+
 export type Position = "QB" | "RB" | "WR" | "TE" | "DST" | "K";
 
 export interface Player {
@@ -53,8 +55,12 @@ export interface DraftPick {
 export interface LeagueState {
   teams: Team[];
   draftLog: DraftPick[]; // Reihenfolge = Pick-Reihenfolge
+  transactions: Transaction[];
+  faab: Record<number, number>; // teamId -> verbleibendes FAAB-Budget
   updatedAt: string;
 }
+
+export const STARTING_FAAB = 100;
 
 export const ROSTER_SLOTS: Record<string, number> = {
   QB: 1,

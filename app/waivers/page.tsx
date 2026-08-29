@@ -1,0 +1,341 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { useLeagueState } from "@/lib/useLeagueState";
+import { getAllRosteredRanks, getCurrentRoster, type Transaction } from "@/lib/roster";
+import { getAvailablePlayers, getPlayerByRank } from "@/lib/players";
+import { generateAIWaiverClaims, resolveWaivers, type WaiverClaim } from "@/lib/waiver";
+import { evaluateTradeForAI, type TradeOffer } from "@/lib/trade";
+import type { Player } from "@/lib/types";
+
+const POS_COLOR: Record<string, string> = {
+  QB: "var(--blue)",
+  RB: "var(--green)",
+  WR: "var(--gold)",
+  TE: "var(--purple)",
+  DST: "var(--red)",
+  K: "var(--text-muted)",
+};
+
+export default function WaiversPage() {
+  const { state, loading, save, cloudSynced } = useLeagueState();
+  const [tab, setTab] = useState<"waiver" | "trade">("waiver");
+  const [week, setWeek] = useState(1);
+  const [search, setSearch] = useState("");
+  const [pendingClaims, setPendingClaims] = useState<WaiverClaim[]>([]);
+  const [bidFor, setBidFor] = useState<Player | null>(null);
+  const [bidAmount, setBidAmount] = useState(5);
+  const [dropRank, setDropRank] = useState<number | "none">("none");
+  const [resolveMsg, setResolveMsg] = useState<string | null>(null);
+
+  const [tradePartnerId, setTradePartnerId] = useState<number | null>(null);
+  const [myOffer, setMyOffer] = useState<Set<number>>(new Set());
+  const [theirOffer, setTheirOffer] = useState<Set<number>>(new Set());
+  const [tradeResult, setTradeResult] = useState<string | null>(null);
+  const [tradeLog, setTradeLog] = useState<TradeOffer[]>([]);
+
+  if (loading || !state) {
+    return <main className="p-8 text-[var(--text-muted)]">Lade Liga-State…</main>;
+  }
+
+  const { teams, draftLog, transactions, faab } = state;
+  const humanTeam = teams.find((t) => t.isHuman)!;
+  const myRoster = getCurrentRoster(humanTeam.id, draftLog, transactions);
+  const rostered = getAllRosteredRanks(
+    teams.map((t) => t.id),
+    draftLog,
+    transactions
+  );
+  const freeAgents = getAvailablePlayers(rostered).filter((p) => !search || p.name.toLowerCase().includes(search.toLowerCase()));
+
+  function submitMyClaim() {
+    if (!bidFor) return;
+    const claim: WaiverClaim = {
+      id: crypto.randomUUID(),
+      teamId: humanTeam.id,
+      addPlayerRank: bidFor.rank,
+      dropPlayerRank: dropRank === "none" ? null : dropRank,
+      bidAmount: Math.max(1, Math.min(faab[humanTeam.id] ?? 0, bidAmount)),
+      week,
+    };
+    setPendingClaims((prev) => [...prev.filter((c) => c.addPlayerRank !== bidFor.rank), claim]);
+    setBidFor(null);
+  }
+
+  async function runWaiverRound() {
+    const aiClaims = generateAIWaiverClaims(teams, draftLog, transactions, faab, week);
+    const allClaims = [...pendingClaims, ...aiClaims];
+    if (allClaims.length === 0) {
+      setResolveMsg("Keine Claims vorhanden.");
+      return;
+    }
+    const wins: Record<number, number> = {};
+    const { transactions: newTx, faabSpent, winningClaimIds } = resolveWaivers(allClaims, wins);
+
+    const newFaab = { ...faab };
+    for (const [teamIdStr, spent] of Object.entries(faabSpent)) {
+      const teamId = Number(teamIdStr);
+      newFaab[teamId] = Math.max(0, (newFaab[teamId] ?? 0) - spent);
+    }
+
+    await save({ ...state!, transactions: [...transactions, ...newTx], faab: newFaab });
+    const wonCount = allClaims.filter((c) => winningClaimIds.has(c.id) && c.teamId === humanTeam.id).length;
+    setResolveMsg(`Waiver-Runde abgeschlossen: ${newTx.length} Claims vergeben (davon ${wonCount} an dich).`);
+    setPendingClaims([]);
+  }
+
+  function toggleSet(set: Set<number>, setSet: (s: Set<number>) => void, rank: number) {
+    const next = new Set(set);
+    if (next.has(rank)) next.delete(rank);
+    else next.add(rank);
+    setSet(next);
+  }
+
+  async function sendTradeOffer() {
+    if (!tradePartnerId) return;
+    const partner = teams.find((t) => t.id === tradePartnerId)!;
+    const partnerRoster = getCurrentRoster(partner.id, draftLog, transactions);
+    const aiGets = myRoster.filter((p) => myOffer.has(p.rank));
+    const aiLoses = partnerRoster.filter((p) => theirOffer.has(p.rank));
+
+    const evalResult = evaluateTradeForAI(partner, aiGets, aiLoses);
+    const offer: TradeOffer = {
+      id: crypto.randomUUID(),
+      week,
+      createdAt: new Date().toISOString(),
+      proposerTeamId: humanTeam.id,
+      receiverTeamId: partner.id,
+      proposerGives: [...myOffer],
+      proposerGets: [...theirOffer],
+      status: evalResult.accept ? "accepted" : "rejected",
+      aiReason: evalResult.reason,
+    };
+    setTradeLog((prev) => [offer, ...prev]);
+    setTradeResult(`${partner.manager}: ${evalResult.accept ? "✅ Angenommen" : "❌ Abgelehnt"} — "${evalResult.reason}"`);
+
+    if (evalResult.accept) {
+      const tx: Transaction = {
+        id: crypto.randomUUID(),
+        type: "trade",
+        week,
+        timestamp: new Date().toISOString(),
+        teamAId: humanTeam.id,
+        teamBId: partner.id,
+        teamAGives: [...myOffer],
+        teamBGives: [...theirOffer],
+      };
+      await save({ ...state!, transactions: [...transactions, tx] });
+      setMyOffer(new Set());
+      setTheirOffer(new Set());
+    }
+  }
+
+  const partnerTeams = teams.filter((t) => !t.isHuman);
+  const partnerRoster = tradePartnerId != null ? getCurrentRoster(tradePartnerId, draftLog, transactions) : [];
+
+  return (
+    <main className="mx-auto max-w-[900px] px-4 sm:px-6 py-6">
+      <div className="flex items-center justify-between mb-4">
+        <Link href="/" className="text-xs text-[var(--text-dim)]">
+          ← Liga
+        </Link>
+        <span className="text-xs text-[var(--text-dim)]">{cloudSynced ? "Cloud-Sync aktiv" : "Local-Only-Modus"}</span>
+      </div>
+
+      <header className="text-center mb-6">
+        <div className="eyebrow">FAAB $100 · Woche {week}</div>
+        <h1 className="hero-gradient-text font-black" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,4vw,32px)" }}>
+          WAIVER &amp; TRADES
+        </h1>
+      </header>
+
+      <div className="flex gap-2 justify-center mb-4">
+        <button
+          onClick={() => setTab("waiver")}
+          className="px-4 py-1.5 rounded-md text-xs font-semibold border"
+          style={tab === "waiver" ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" } : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }}
+        >
+          Waiver Wire
+        </button>
+        <button
+          onClick={() => setTab("trade")}
+          className="px-4 py-1.5 rounded-md text-xs font-semibold border"
+          style={tab === "trade" ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" } : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }}
+        >
+          Trade Center
+        </button>
+      </div>
+
+      <div className="card mb-4">
+        <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">FAAB-BUDGETS</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
+          {teams.map((t) => (
+            <div key={t.id} className="flex justify-between">
+              <span style={{ color: t.color }}>{t.name}</span>
+              <span className="text-[var(--text-secondary)] font-mono">${faab[t.id] ?? 0}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {tab === "waiver" && (
+        <>
+          <div className="card mb-4">
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Free Agent suchen…"
+              className="w-full mb-3 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-3 py-2 text-sm text-[var(--text-primary)]"
+            />
+            <div className="space-y-1.5 max-h-[300px] overflow-y-auto">
+              {freeAgents.slice(0, 40).map((p) => (
+                <div key={p.rank} className="flex items-center justify-between text-sm py-1 border-b border-[var(--border-inner)]">
+                  <span>
+                    <span className="text-[10px] font-bold mr-1" style={{ color: POS_COLOR[p.pos] }}>
+                      {p.pos}
+                    </span>
+                    {p.name} <span className="text-[var(--text-dim)] text-[11px]">#{p.rank}</span>
+                  </span>
+                  <button onClick={() => setBidFor(p)} className="text-xs px-2 py-1 rounded border border-[var(--gold-border)] text-[var(--gold)]">
+                    Bieten
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {bidFor && (
+            <div className="card mb-4">
+              <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">Gebot für {bidFor.name}</h3>
+              <div className="flex items-center gap-3 mb-2">
+                <label className="text-xs text-[var(--text-dim)]">FAAB $</label>
+                <input
+                  type="number"
+                  value={bidAmount}
+                  onChange={(e) => setBidAmount(Number(e.target.value))}
+                  min={1}
+                  max={faab[humanTeam.id] ?? 0}
+                  className="w-24 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-2 py-1 text-sm"
+                />
+                <span className="text-xs text-[var(--text-dim)]">von ${faab[humanTeam.id] ?? 0}</span>
+              </div>
+              <div className="flex items-center gap-3 mb-3">
+                <label className="text-xs text-[var(--text-dim)]">Dafür droppen (optional)</label>
+                <select
+                  value={dropRank}
+                  onChange={(e) => setDropRank(e.target.value === "none" ? "none" : Number(e.target.value))}
+                  className="bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-2 py-1 text-xs"
+                >
+                  <option value="none">— niemand —</option>
+                  {myRoster.map((p) => (
+                    <option key={p.rank} value={p.rank}>
+                      {p.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button onClick={submitMyClaim} className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
+                Claim einreichen
+              </button>
+            </div>
+          )}
+
+          {pendingClaims.length > 0 && (
+            <div className="card mb-4">
+              <h3 className="text-xs text-[var(--gold)] font-bold mb-2">DEINE OFFENEN CLAIMS</h3>
+              {pendingClaims.map((c) => (
+                <div key={c.id} className="text-xs flex justify-between py-1">
+                  <span>{getPlayerByRank(c.addPlayerRank).name}</span>
+                  <span className="text-[var(--text-dim)]">${c.bidAmount}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="text-center">
+            <button onClick={runWaiverRound} className="px-4 py-2 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
+              Waiver-Runde durchführen
+            </button>
+            {resolveMsg && <p className="text-xs text-[var(--text-dim)] mt-2">{resolveMsg}</p>}
+          </div>
+        </>
+      )}
+
+      {tab === "trade" && (
+        <>
+          <div className="card mb-4">
+            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">HANDELSPARTNER</h2>
+            <div className="flex flex-wrap gap-2">
+              {partnerTeams.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => {
+                    setTradePartnerId(t.id);
+                    setMyOffer(new Set());
+                    setTheirOffer(new Set());
+                    setTradeResult(null);
+                  }}
+                  className="px-3 py-1.5 rounded-md text-xs font-semibold border"
+                  style={tradePartnerId === t.id ? { borderColor: t.color, background: "rgba(255,255,255,0.06)", color: t.color } : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }}
+                >
+                  {t.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {tradePartnerId != null && (
+            <div className="grid sm:grid-cols-2 gap-4 mb-4">
+              <div className="card">
+                <h3 className="text-xs text-[var(--gold)] font-bold mb-2">DU GIBST AB</h3>
+                {myRoster.length === 0 && <p className="text-xs text-[var(--text-dim)]">Kein Roster (noch nicht gedraftet).</p>}
+                {myRoster.map((p) => (
+                  <label key={p.rank} className="flex items-center gap-2 text-xs py-1 cursor-pointer">
+                    <input type="checkbox" checked={myOffer.has(p.rank)} onChange={() => toggleSet(myOffer, setMyOffer, p.rank)} />
+                    <span style={{ color: POS_COLOR[p.pos] }}>{p.pos}</span> {p.name}
+                  </label>
+                ))}
+              </div>
+              <div className="card">
+                <h3 className="text-xs text-[var(--gold)] font-bold mb-2">DU BEKOMMST</h3>
+                {partnerRoster.length === 0 && <p className="text-xs text-[var(--text-dim)]">Kein Roster (noch nicht gedraftet).</p>}
+                {partnerRoster.map((p) => (
+                  <label key={p.rank} className="flex items-center gap-2 text-xs py-1 cursor-pointer">
+                    <input type="checkbox" checked={theirOffer.has(p.rank)} onChange={() => toggleSet(theirOffer, setTheirOffer, p.rank)} />
+                    <span style={{ color: POS_COLOR[p.pos] }}>{p.pos}</span> {p.name}
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {tradePartnerId != null && (
+            <div className="text-center mb-4">
+              <button
+                onClick={sendTradeOffer}
+                disabled={myOffer.size === 0 || theirOffer.size === 0}
+                className="px-4 py-2 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-40"
+              >
+                Angebot senden
+              </button>
+              {tradeResult && <p className="text-xs text-[var(--text-secondary)] mt-2">{tradeResult}</p>}
+            </div>
+          )}
+
+          {tradeLog.length > 0 && (
+            <div className="card">
+              <h3 className="text-xs text-[var(--gold)] font-bold mb-2">TRADE-VERLAUF (diese Sitzung)</h3>
+              {tradeLog.map((t) => (
+                <div key={t.id} className="text-xs py-1 border-b border-[var(--border-inner)]">
+                  {t.status === "accepted" ? "✅" : "❌"} vs {teams.find((x) => x.id === t.receiverTeamId)?.name} —{" "}
+                  {t.proposerGives.map((r) => getPlayerByRank(r).name).join(", ")} ⇄ {t.proposerGets.map((r) => getPlayerByRank(r).name).join(", ")}
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </main>
+  );
+}
