@@ -103,7 +103,7 @@ export default function SetupPage() {
       </h1>
       <p className="text-sm text-[var(--text-muted)] mb-6">{cloudSynced ? c.cloudSyncLong : c.localOnlyModeLong}</p>
 
-      <InviteSection teams={state.teams} />
+      <InviteSection state={state} save={save} />
 
       <section className="card mb-6">
         <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-3">{s.draftOrderTitle}</h2>

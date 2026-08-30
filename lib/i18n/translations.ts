@@ -55,6 +55,10 @@ export const translations = {
       copied: "Kopiert!",
       inviteNotAvailable: "Einladungen brauchen Cloud-Sync (Google/Discord-Login).",
       currentMembers: "AKTUELLE MITGLIEDER",
+      remove: "Entfernen",
+      removeConfirm: "Dieses Mitglied wirklich entfernen? Das Team geht zurück an die KI.",
+      regenerateLink: "Neuen Link erzeugen",
+      regenerated: "Neuer Link erzeugt!",
     },
     invite: {
       heading: "LIGA BEITRETEN",
@@ -306,6 +310,10 @@ export const translations = {
       copied: "Copied!",
       inviteNotAvailable: "Invites require cloud sync (Google/Discord login).",
       currentMembers: "CURRENT MEMBERS",
+      remove: "Remove",
+      removeConfirm: "Really remove this member? The team reverts to AI control.",
+      regenerateLink: "Generate new link",
+      regenerated: "New link generated!",
     },
     invite: {
       heading: "JOIN LEAGUE",
