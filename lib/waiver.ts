@@ -1,6 +1,6 @@
 import type { Player, PersonalityId, Team } from "./types";
 import type { Transaction } from "./roster";
-import { getCurrentRoster, getAllRosteredRanks } from "./roster";
+import { getCurrentRoster, getAllRosteredRanks, MAX_ROSTER_SIZE } from "./roster";
 import { getAvailablePlayers } from "./players";
 import { pickForAITeam } from "./draftEngine";
 
@@ -63,7 +63,7 @@ export function generateAIWaiverClaims(
 
     const [lo, hi] = personalityBidFraction(team.personality);
     const bid = Math.max(1, Math.min(budget, Math.round(budget * (lo + Math.random() * (hi - lo)))));
-    const dropCandidate = roster.length >= 15 ? pickDropCandidate(roster) : null;
+    const dropCandidate = roster.length >= MAX_ROSTER_SIZE ? pickDropCandidate(roster) : null;
 
     claims.push({
       id: crypto.randomUUID(),

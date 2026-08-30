@@ -252,6 +252,10 @@ export const translations = {
       empty: "Noch kein Roster — draft zuerst ein paar Spieler.",
       slotStarter: "STARTER",
       slotBench: "BANK",
+      slotIR: "VERLETZTEN-LISTE (IR)",
+      irEmpty: "IR-Slot frei — kein Eligibility-Check, du entscheidest selbst.",
+      moveToIR: "→ IR",
+      moveToActive: "→ Aktiv",
     },
   },
   en: {
@@ -507,6 +511,10 @@ export const translations = {
       empty: "No roster yet — draft some players first.",
       slotStarter: "STARTERS",
       slotBench: "BENCH",
+      slotIR: "INJURED RESERVE (IR)",
+      irEmpty: "IR slot open — no eligibility check, it's on you.",
+      moveToIR: "→ IR",
+      moveToActive: "→ Active",
     },
   },
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { useLeagueState } from "@/lib/useLeagueState";
 import { getCurrentRoster } from "@/lib/roster";
@@ -29,7 +30,7 @@ const POS_COLOR_HEX: Record<string, string> = {
   K: "#9CA3AF",
 };
 
-function PlayerRow({ player, lang }: { player: Player; lang: "de" | "en" }) {
+function PlayerRow({ player, lang, action }: { player: Player; lang: "de" | "en"; action?: ReactNode }) {
   const axes = RADAR_AXES[player.pos][lang];
   const tips = RADAR_AXIS_TIPS[player.pos][lang];
   return (
@@ -50,12 +51,15 @@ function PlayerRow({ player, lang }: { player: Player; lang: "de" | "en" }) {
           Proj {player.proj} · Floor {player.floor} · Ceiling {player.upside} · Bye {player.bye || "—"}
         </div>
       </div>
-      <div className="flex flex-wrap gap-1 justify-end max-w-[140px]">
-        {player.tags.slice(0, 2).map((tag) => (
-          <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: "var(--gold-bg)", color: "var(--gold)" }}>
-            {tag}
-          </span>
-        ))}
+      <div className="flex flex-col items-end gap-1.5 shrink-0">
+        <div className="flex flex-wrap gap-1 justify-end max-w-[140px]">
+          {player.tags.slice(0, 2).map((tag) => (
+            <span key={tag} className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: "var(--gold-bg)", color: "var(--gold)" }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+        {action}
       </div>
     </div>
   );
@@ -63,7 +67,7 @@ function PlayerRow({ player, lang }: { player: Player; lang: "de" | "en" }) {
 
 export default function RosterPage() {
   const { activeLeagueId, activeMembership, loading: leagueCtxLoading, loadError } = useLeagueContext();
-  const { state, members, loading, cloudSynced } = useLeagueState(activeLeagueId);
+  const { state, members, loading, save, cloudSynced } = useLeagueState(activeLeagueId);
   const { t, lang } = useLang();
   const r = t.roster;
   const c = t.common;
@@ -78,12 +82,26 @@ export default function RosterPage() {
   const { draftLog, transactions } = state;
   const teams = withMemberOwnership(state.teams, members);
   const myTeamId = resolveMyTeamId(activeMembership, teams, cloudSynced);
-  const roster = getCurrentRoster(myTeamId, draftLog, transactions);
+  const fullRoster = getCurrentRoster(myTeamId, draftLog, transactions);
 
-  const lineup = autoLineup(roster);
+  const irRank = state.irSlots?.[myTeamId] ?? null;
+  const irPlayer = irRank != null ? fullRoster.find((p) => p.rank === irRank) ?? null : null;
+  const activeRoster = fullRoster.filter((p) => p.rank !== irRank);
+
+  const lineup = autoLineup(activeRoster);
   const starterRanks = new Set(LINEUP_SLOTS.map((slot) => lineup[slot]).filter((v): v is number => v != null));
-  const starters = roster.filter((p) => starterRanks.has(p.rank));
-  const bench = roster.filter((p) => !starterRanks.has(p.rank));
+  const starters = activeRoster.filter((p) => starterRanks.has(p.rank));
+  const bench = activeRoster.filter((p) => !starterRanks.has(p.rank));
+
+  async function moveToIR(playerRank: number) {
+    const newIrSlots = { ...state!.irSlots, [myTeamId]: playerRank };
+    await save({ ...state!, irSlots: newIrSlots });
+  }
+
+  async function moveToActive() {
+    const newIrSlots = { ...state!.irSlots, [myTeamId]: null };
+    await save({ ...state!, irSlots: newIrSlots });
+  }
 
   return (
     <main className="mx-auto max-w-[700px] px-4 sm:px-6 py-6">
@@ -101,7 +119,7 @@ export default function RosterPage() {
         <p className="text-xs text-[var(--text-dim)] mt-2 max-w-[420px] mx-auto">{r.subtitle}</p>
       </header>
 
-      {roster.length === 0 ? (
+      {fullRoster.length === 0 ? (
         <p className="text-center text-sm text-[var(--text-dim)]">{r.empty}</p>
       ) : (
         <div className="space-y-6">
@@ -119,11 +137,39 @@ export default function RosterPage() {
               <h2 className="text-[var(--text-dim)] text-xs font-bold tracking-wide mb-2">{r.slotBench}</h2>
               <div className="space-y-2">
                 {bench.map((p) => (
-                  <PlayerRow key={p.rank} player={p} lang={lang} />
+                  <PlayerRow
+                    key={p.rank}
+                    player={p}
+                    lang={lang}
+                    action={
+                      irRank == null ? (
+                        <button onClick={() => moveToIR(p.rank)} className="text-[10px] text-[var(--purple)] underline">
+                          {r.moveToIR}
+                        </button>
+                      ) : undefined
+                    }
+                  />
                 ))}
               </div>
             </section>
           )}
+
+          <section>
+            <h2 className="text-[var(--purple)] text-xs font-bold tracking-wide mb-2">{r.slotIR}</h2>
+            {irPlayer ? (
+              <PlayerRow
+                player={irPlayer}
+                lang={lang}
+                action={
+                  <button onClick={moveToActive} className="text-[10px] text-[var(--green)] underline">
+                    {r.moveToActive}
+                  </button>
+                }
+              />
+            ) : (
+              <p className="text-xs text-[var(--text-dim)]">{r.irEmpty}</p>
+            )}
+          </section>
         </div>
       )}
     </main>

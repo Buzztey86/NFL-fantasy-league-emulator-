@@ -59,6 +59,7 @@ export interface LeagueState {
   draftLog: DraftPick[]; // Reihenfolge = Pick-Reihenfolge
   transactions: Transaction[];
   faab: Record<number, number>; // teamId -> verbleibendes FAAB-Budget
+  irSlots: Record<number, number | null>; // teamId -> Spieler-Rang auf IR (1 Slot pro Team)
   updatedAt: string;
 }
 

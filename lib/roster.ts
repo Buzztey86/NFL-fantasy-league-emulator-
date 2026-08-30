@@ -55,4 +55,4 @@ export function getAllRosteredRanks(teamIds: number[], draftLog: DraftPick[], tr
   return set;
 }
 
-export const MAX_ROSTER_SIZE = 15;
+export const MAX_ROSTER_SIZE = 16; // 9 Starter + 6 Bank + 1 IR-Slot

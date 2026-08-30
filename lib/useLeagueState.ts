@@ -16,7 +16,7 @@ export interface LeagueMemberRow {
 function defaultState(): LeagueState {
   const faab: Record<number, number> = {};
   for (const t of DEFAULT_TEAMS) faab[t.id] = STARTING_FAAB;
-  return { teams: DEFAULT_TEAMS, draftLog: [], transactions: [], faab, updatedAt: new Date().toISOString() };
+  return { teams: DEFAULT_TEAMS, draftLog: [], transactions: [], faab, irSlots: {}, updatedAt: new Date().toISOString() };
 }
 
 interface Row {
@@ -25,6 +25,7 @@ interface Row {
   draft_log: LeagueState["draftLog"];
   transactions: LeagueState["transactions"];
   faab: LeagueState["faab"];
+  ir_slots: LeagueState["irSlots"];
   updated_at: string;
 }
 
@@ -34,6 +35,7 @@ function rowToState(row: Row): LeagueState {
     draftLog: row.draft_log,
     transactions: row.transactions ?? [],
     faab: row.faab ?? {},
+    irSlots: row.ir_slots ?? {},
     updatedAt: row.updated_at,
   };
 }
@@ -72,6 +74,7 @@ export function useLeagueState(leagueId: string | null) {
                 draft_log: init.draftLog,
                 transactions: init.transactions,
                 faab: init.faab,
+                ir_slots: init.irSlots,
                 updated_at: init.updatedAt,
               });
               setState(init);
@@ -127,6 +130,7 @@ export function useLeagueState(leagueId: string | null) {
           draft_log: withTimestamp.draftLog,
           transactions: withTimestamp.transactions,
           faab: withTimestamp.faab,
+          ir_slots: withTimestamp.irSlots,
           updated_at: withTimestamp.updatedAt,
         });
         if (saveError) setError(saveError.message);

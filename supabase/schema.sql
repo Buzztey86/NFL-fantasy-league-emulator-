@@ -43,6 +43,7 @@ end $$;
 -- Zeile hast (add column if not exists ändert nichts an vorhandenen Daten).
 alter table public.league_state add column if not exists transactions jsonb not null default '[]'::jsonb;
 alter table public.league_state add column if not exists faab jsonb not null default '{}'::jsonb;
+alter table public.league_state add column if not exists ir_slots jsonb not null default '{}'::jsonb;
 
 -- ── Season-State (Phase 2: Matchups, Scoring, Standings) ─────────────────────
 create table if not exists public.season_state (
