@@ -116,7 +116,7 @@ export const translations = {
       bye: "Freilos",
       playoffsNotSet: "Playoff-Paarungen stehen erst fest, sobald die Vorrunde ausgewertet ist.",
       needsRegularSeason: "Playoff-Seeds stehen erst nach Abschluss von Woche 14 fest.",
-      champion: "🏆 Champion",
+      champion: "Champion",
     },
     waivers: {
       heading: "WAIVER & TRADES",
@@ -228,6 +228,13 @@ export const translations = {
     leagueSwitcher: {
       myTeam: "Mein Team",
       switchLeague: "Liga wechseln",
+    },
+    nav: {
+      home: "Liga",
+      draft: "Draft",
+      lineup: "Lineup",
+      season: "Season",
+      waivers: "Waiver",
     },
     login: {
       title: "THE GRIDIRON ORACLE",
@@ -375,7 +382,7 @@ export const translations = {
       bye: "Bye",
       playoffsNotSet: "Playoff matchups aren't set yet — the previous round needs to be scored first.",
       needsRegularSeason: "Playoff seeds are determined once Week 14 is complete.",
-      champion: "🏆 Champion",
+      champion: "Champion",
     },
     waivers: {
       heading: "WAIVER & TRADES",
@@ -487,6 +494,13 @@ export const translations = {
     leagueSwitcher: {
       myTeam: "My team",
       switchLeague: "Switch league",
+    },
+    nav: {
+      home: "League",
+      draft: "Draft",
+      lineup: "Lineup",
+      season: "Season",
+      waivers: "Waiver",
     },
     login: {
       title: "THE GRIDIRON ORACLE",

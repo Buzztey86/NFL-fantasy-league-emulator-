@@ -18,6 +18,8 @@ import { PERSONALITY_QUOTES } from "@/lib/teams";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { Tooltip } from "@/components/Tooltip";
 import { HoverRadar } from "@/components/HoverRadar";
+import { PlayerThumb } from "@/components/PlayerThumb";
+import { TeamBadge } from "@/components/TeamBadge";
 import { RADAR_AXES, RADAR_AXIS_TIPS } from "@/lib/radarAxes";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { withMemberOwnership, resolveMyTeamId } from "@/lib/league/resolveTeams";
@@ -207,7 +209,8 @@ export default function DraftPage() {
           <div className="space-y-2 max-h-[70vh] overflow-y-auto pr-1">
             {filtered.slice(0, 60).map((p) => (
               <div key={p.rank} className="card flex items-center justify-between gap-3 !py-2.5">
-                <div className="min-w-0">
+                <PlayerThumb photo={p.photo} />
+                <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     <span className="text-[11px] font-bold px-1.5 py-0.5 rounded" style={{ background: "rgba(255,255,255,0.06)", color: POS_COLOR[p.pos] }}>
                       {p.pos}
@@ -282,7 +285,7 @@ export default function DraftPage() {
                   return (
                     <li key={pick.pickNumber} className="text-xs">
                       <div className="flex justify-between">
-                        <span style={{ color: team?.color }}>{team?.name}</span>
+                        <TeamBadge color={team?.color} name={team?.name} />
                         <span className="text-[var(--text-dim)]">#{pick.pickNumber}</span>
                       </div>
                       <div className="text-[var(--text-secondary)]">{player.name}</div>

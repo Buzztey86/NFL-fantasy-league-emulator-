@@ -9,6 +9,7 @@ import { pickNumberToRound } from "@/lib/draftEngine";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { InviteSection } from "@/components/InviteSection";
+import { useToast } from "@/components/ToastProvider";
 
 export default function SetupPage() {
   const { activeLeagueId, loading: leagueCtxLoading, loadError } = useLeagueContext();
@@ -16,10 +17,10 @@ export default function SetupPage() {
   const { t } = useLang();
   const s = t.setup;
   const c = t.common;
+  const { showToast } = useToast();
   const [order, setOrder] = useState<PersonalityId[] | null>(null);
   const [importText, setImportText] = useState("");
   const [importMsg, setImportMsg] = useState<string | null>(null);
-  const [savedMsg, setSavedMsg] = useState<string | null>(null);
 
   const currentOrder = useMemo<PersonalityId[]>(() => {
     if (order) return order;
@@ -47,8 +48,7 @@ export default function SetupPage() {
     if (!isValid || !state) return;
     const teams = buildTeamsFromOrder(currentOrder);
     await save({ ...state!, teams });
-    setSavedMsg(s.savedMsg);
-    setTimeout(() => setSavedMsg(null), 2500);
+    showToast(s.savedMsg);
   }
 
   function parseImport(): { picks: DraftPick[]; error?: string } {
@@ -84,8 +84,8 @@ export default function SetupPage() {
     }
     const teams = buildTeamsFromOrder(currentOrder);
     await save({ ...state!, teams, draftLog: picks });
-    setImportMsg(`${picks.length} picks imported.`);
-    setTimeout(() => setImportMsg(null), 3000);
+    setImportMsg(null);
+    showToast(`${picks.length} picks imported.`);
   }
 
   async function handleReset() {
@@ -133,7 +133,6 @@ export default function SetupPage() {
         >
           {s.saveOrder}
         </button>
-        {savedMsg && <span className="ml-3 text-xs text-[var(--green)]">{savedMsg}</span>}
       </section>
 
       <section className="card mb-6">

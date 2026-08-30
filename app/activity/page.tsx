@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { Shuffle, Repeat, ArrowLeftRight } from "lucide-react";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { useLeagueState } from "@/lib/useLeagueState";
 import { withMemberOwnership } from "@/lib/league/resolveTeams";
 import { buildActivityFeed, teamById } from "@/lib/activity";
+import { TeamBadge } from "@/components/TeamBadge";
 import { useLang } from "@/lib/i18n/LanguageContext";
 
 export default function ActivityPage() {
@@ -48,47 +50,51 @@ export default function ActivityPage() {
             if (entry.kind === "draft") {
               const team = teamById(teams, entry.teamId);
               return (
-                <div key={entry.id} className="card !py-2.5 text-sm">
-                  <span style={{ color: team?.color }} className="font-semibold">
-                    {team?.name}
-                  </span>{" "}
-                  {a.drafted} <span className="text-[var(--text-primary)]">{entry.playerName}</span>{" "}
-                  <span className="text-[var(--text-dim)] text-xs">
-                    ({a.pick} {entry.pickNumber}, R{entry.round})
-                  </span>
+                <div key={entry.id} className="card card-hover flex items-start gap-2 !py-2.5 text-sm">
+                  <Shuffle size={14} className="text-[var(--text-dim)] shrink-0 mt-0.5" />
+                  <div>
+                    <TeamBadge color={team?.color} name={team?.name} className="font-semibold" /> {a.drafted}{" "}
+                    <span className="text-[var(--text-primary)]">{entry.playerName}</span>{" "}
+                    <span className="text-[var(--text-dim)] text-xs">
+                      ({a.pick} {entry.pickNumber}, R{entry.round})
+                    </span>
+                  </div>
                 </div>
               );
             }
             if (entry.kind === "waiver") {
               const team = teamById(teams, entry.teamId);
               return (
-                <div key={entry.id} className="card !py-2.5 text-sm">
-                  <span style={{ color: team?.color }} className="font-semibold">
-                    {team?.name}
-                  </span>{" "}
-                  {a.addedVia} <span className="text-[var(--text-primary)]">{entry.addedName}</span>{" "}
-                  <span className="text-[var(--gold)] text-xs">(${entry.faab})</span>
-                  {entry.droppedName && (
-                    <div className="text-xs text-[var(--text-dim)] mt-0.5">
-                      {a.droppedFor} {entry.droppedName}
-                    </div>
-                  )}
+                <div key={entry.id} className="card card-hover flex items-start gap-2 !py-2.5 text-sm">
+                  <Repeat size={14} className="text-[var(--text-dim)] shrink-0 mt-0.5" />
+                  <div>
+                    <TeamBadge color={team?.color} name={team?.name} className="font-semibold" /> {a.addedVia}{" "}
+                    <span className="text-[var(--text-primary)]">{entry.addedName}</span>{" "}
+                    <span className="text-[var(--gold)] text-xs">(${entry.faab})</span>
+                    {entry.droppedName && (
+                      <div className="text-xs text-[var(--text-dim)] mt-0.5">
+                        {a.droppedFor} {entry.droppedName}
+                      </div>
+                    )}
+                  </div>
                 </div>
               );
             }
             const teamA = teamById(teams, entry.teamAId);
             const teamB = teamById(teams, entry.teamBId);
             return (
-              <div key={entry.id} className="card !py-2.5 text-sm">
-                <div className="text-xs text-[var(--purple)] mb-1">
-                  {a.tradeBetween} <span style={{ color: teamA?.color }}>{teamA?.name}</span> &amp;{" "}
-                  <span style={{ color: teamB?.color }}>{teamB?.name}</span>
-                </div>
-                <div className="text-xs">
-                  <span style={{ color: teamA?.color }}>{teamA?.name}</span> {a.gives} {entry.teamAGivesNames.join(", ") || "—"}
-                </div>
-                <div className="text-xs">
-                  <span style={{ color: teamB?.color }}>{teamB?.name}</span> {a.gives} {entry.teamBGivesNames.join(", ") || "—"}
+              <div key={entry.id} className="card card-hover flex items-start gap-2 !py-2.5 text-sm">
+                <ArrowLeftRight size={14} className="text-[var(--purple)] shrink-0 mt-0.5" />
+                <div className="flex-1">
+                  <div className="text-xs text-[var(--purple)] mb-1 flex items-center gap-1 flex-wrap">
+                    {a.tradeBetween} <TeamBadge color={teamA?.color} name={teamA?.name} /> &amp; <TeamBadge color={teamB?.color} name={teamB?.name} />
+                  </div>
+                  <div className="text-xs flex items-center gap-1 flex-wrap">
+                    <TeamBadge color={teamA?.color} name={teamA?.name} /> {a.gives} {entry.teamAGivesNames.join(", ") || "—"}
+                  </div>
+                  <div className="text-xs flex items-center gap-1 flex-wrap">
+                    <TeamBadge color={teamB?.color} name={teamB?.name} /> {a.gives} {entry.teamBGivesNames.join(", ") || "—"}
+                  </div>
                 </div>
               </div>
             );

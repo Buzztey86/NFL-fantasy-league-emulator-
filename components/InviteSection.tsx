@@ -1,19 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { User, Bot, UserMinus, RefreshCw, Copy } from "lucide-react";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { useLang } from "@/lib/i18n/LanguageContext";
+import { useToast } from "@/components/ToastProvider";
 import { personaByPersonality } from "@/lib/personas";
 import type { LeagueState, Team } from "@/lib/types";
 
 export function InviteSection({ state, save }: { state: LeagueState; save: (next: LeagueState) => Promise<void> }) {
   const { t } = useLang();
   const s = t.setup;
+  const { showToast } = useToast();
   const { activeLeagueId, activeMembership, refresh } = useLeagueContext();
   const [inviteCode, setInviteCode] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-  const [regenerated, setRegenerated] = useState(false);
   const [members, setMembers] = useState<{ teamId: number }[]>([]);
 
   const teams = state.teams;
@@ -57,8 +58,7 @@ export function InviteSection({ state, save }: { state: LeagueState; save: (next
   function copyLink() {
     if (!inviteUrl) return;
     navigator.clipboard.writeText(inviteUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    showToast(s.copied);
   }
 
   async function regenerateLink() {
@@ -66,8 +66,7 @@ export function InviteSection({ state, save }: { state: LeagueState; save: (next
     const newCode = crypto.randomUUID().slice(0, 8);
     await supabase.from("leagues").update({ invite_code: newCode }).eq("id", activeLeagueId);
     setInviteCode(newCode);
-    setRegenerated(true);
-    setTimeout(() => setRegenerated(false), 2000);
+    showToast(s.regenerated);
   }
 
   async function removeMember(team: Team) {
@@ -76,10 +75,6 @@ export function InviteSection({ state, save }: { state: LeagueState; save: (next
 
     await supabase.from("league_members").delete().eq("league_id", activeLeagueId).eq("team_id", team.id);
 
-    // Team-Anzeige auf eine KI-Persönlichkeit zurücksetzen (die ursprünglich
-    // hinterlegte AI-Persona für diesen Slot ist nicht mehr bekannt, sobald
-    // sie überschrieben wurde -> nimmt die Analytics-Persona als neutralen
-    // Fallback, klar besser als den Menschen-Namen zu behalten).
     const fallback = personaByPersonality("analytics");
     const updatedTeams = teams.map((tm) =>
       tm.id === team.id ? { ...tm, name: fallback.name, manager: fallback.manager, personality: fallback.personality, isHuman: false } : tm
@@ -101,15 +96,20 @@ export function InviteSection({ state, save }: { state: LeagueState; save: (next
             onFocus={(e) => e.currentTarget.select()}
             className="flex-1 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-3 py-2 text-xs text-[var(--text-secondary)] font-mono"
           />
-          <button onClick={copyLink} className="shrink-0 px-3 py-2 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
-            {copied ? s.copied : s.copyLink}
+          <button
+            onClick={copyLink}
+            className="shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] transition-colors"
+          >
+            <Copy size={13} />
+            {s.copyLink}
           </button>
         </div>
       )}
       {isOwner && (
         <div className="mb-4">
-          <button onClick={regenerateLink} className="text-[11px] text-[var(--text-dim)] underline">
-            {regenerated ? s.regenerated : s.regenerateLink}
+          <button onClick={regenerateLink} className="flex items-center gap-1 text-[11px] text-[var(--text-dim)] underline transition-colors hover:text-[var(--text-secondary)]">
+            <RefreshCw size={11} />
+            {s.regenerateLink}
           </button>
         </div>
       )}
@@ -119,11 +119,15 @@ export function InviteSection({ state, save }: { state: LeagueState; save: (next
           const claimed = members.some((m) => m.teamId === team.id);
           return (
             <div key={team.id} className="flex items-center justify-between text-xs">
-              <span style={{ color: team.color }}>{team.name}</span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full shrink-0" style={{ background: team.color }} />
+                <span style={{ color: team.color }}>{team.name}</span>
+              </span>
               <div className="flex items-center gap-2">
-                <span className={claimed ? "text-[var(--green)]" : "text-[var(--text-dim)]"}>{claimed ? "👤" : "🤖"}</span>
+                {claimed ? <User size={13} className="text-[var(--green)]" /> : <Bot size={13} className="text-[var(--text-dim)]" />}
                 {isOwner && claimed && (
-                  <button onClick={() => removeMember(team)} className="text-[10px] text-[var(--red)] underline">
+                  <button onClick={() => removeMember(team)} className="flex items-center gap-1 text-[10px] text-[var(--red)] underline transition-colors">
+                    <UserMinus size={11} />
                     {s.remove}
                   </button>
                 )}

@@ -13,6 +13,8 @@ import { useLang } from "@/lib/i18n/LanguageContext";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { withMemberOwnership } from "@/lib/league/resolveTeams";
 import { getPlayoffSeeds, getPlayoffMatchupsForWeek, isPlayoffWeek, REGULAR_SEASON_CUTOFF_WEEK, type PlayoffMatchup } from "@/lib/playoffs";
+import { TeamBadge } from "@/components/TeamBadge";
+import { Trophy } from "lucide-react";
 
 const TOTAL_WEEKS = 17;
 
@@ -192,6 +194,7 @@ export default function SeasonPage() {
 
           {champion && (
             <div className="card text-center mb-4" style={{ borderColor: "var(--gold)" }}>
+              <Trophy size={22} className="text-[var(--gold)] mx-auto mb-1" />
               <p className="text-sm text-[var(--text-dim)] mb-1">{sT.champion}</p>
               <p className="text-lg font-black" style={{ color: champion.color, fontFamily: "var(--font-display)" }}>
                 {champion.name}
@@ -214,9 +217,7 @@ export default function SeasonPage() {
                         <span className="text-[10px] text-[var(--text-dim)] w-16">
                           {sT.seed} {seedOf(teamId)}
                         </span>
-                        <span style={{ color: team?.color }} className="flex-1 text-center">
-                          {team?.name}
-                        </span>
+                        <TeamBadge color={team?.color} name={team?.name} className="flex-1 justify-center" />
                         <span className="text-[10px] text-[var(--purple)] w-16 text-right">{sT.bye}</span>
                       </div>
                     );
@@ -231,18 +232,18 @@ export default function SeasonPage() {
                     <div key={i} className="card">
                       <div className="text-center text-[10px] text-[var(--purple)] mb-1.5">{roundLabel(m.roundLabel)}</div>
                       <div className="flex items-center justify-between">
-                        <div className="flex-1 text-right pr-3">
+                        <div className="flex-1 flex items-center justify-end gap-1 pr-3">
                           <span className="text-[10px] text-[var(--text-dim)] mr-1">
                             {sT.seed}
                             {seedOf(m.home)}
                           </span>
-                          <span style={{ color: home?.color }}>{home?.name}</span>
+                          <TeamBadge color={home?.color} name={home?.name} />
                         </div>
                         <div className="px-3 text-sm font-bold text-[var(--text-primary)] tabular-nums">
                           {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
                         </div>
-                        <div className="flex-1 pl-3">
-                          <span style={{ color: away?.color }}>{away?.name}</span>
+                        <div className="flex-1 flex items-center gap-1 pl-3">
+                          <TeamBadge color={away?.color} name={away?.name} />
                           <span className="text-[10px] text-[var(--text-dim)] ml-1">
                             {sT.seed}
                             {seedOf(m.away)}
@@ -264,14 +265,14 @@ export default function SeasonPage() {
                 const played = homeScore != null && awayScore != null;
                 return (
                   <div key={i} className="card flex items-center justify-between">
-                    <div className="flex-1 text-right pr-3">
-                      <span style={{ color: home?.color }}>{home?.name}</span>
+                    <div className="flex-1 flex justify-end pr-3">
+                      <TeamBadge color={home?.color} name={home?.name} />
                     </div>
                     <div className="px-3 text-sm font-bold text-[var(--text-primary)] tabular-nums">
                       {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
                     </div>
                     <div className="flex-1 pl-3">
-                      <span style={{ color: away?.color }}>{away?.name}</span>
+                      <TeamBadge color={away?.color} name={away?.name} />
                     </div>
                   </div>
                 );

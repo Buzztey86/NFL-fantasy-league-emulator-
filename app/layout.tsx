@@ -6,6 +6,8 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import { UserBadge } from "@/components/UserBadge";
 import { LeagueProvider } from "@/lib/league/LeagueContext";
 import { LeagueSwitcher } from "@/components/LeagueSwitcher";
+import { BottomNav } from "@/components/BottomNav";
+import { ToastProvider } from "@/components/ToastProvider";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
 const playfair = Playfair_Display({
@@ -56,14 +58,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full antialiased">
         <ServiceWorkerRegister />
         <LanguageProvider>
-          <LeagueProvider>
-            <LeagueSwitcher />
-            <div className="fixed top-4 right-4 z-[100] flex flex-col items-end gap-2">
-              <LanguageToggle />
-              <UserBadge />
-            </div>
-            {children}
-          </LeagueProvider>
+          <ToastProvider>
+            <LeagueProvider>
+              <LeagueSwitcher />
+              <div className="fixed top-4 right-4 z-[100] flex flex-col items-end gap-2">
+                <LanguageToggle />
+                <UserBadge />
+              </div>
+              {children}
+              <BottomNav />
+            </LeagueProvider>
+          </ToastProvider>
         </LanguageProvider>
       </body>
     </html>

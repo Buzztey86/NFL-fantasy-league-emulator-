@@ -10,6 +10,7 @@ import { getCurrentRoster } from "@/lib/roster";
 import { autoLineup, LINEUP_SLOTS, SLOT_ELIGIBLE_POS, type Lineup } from "@/lib/lineup";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { isPlayoffWeek } from "@/lib/playoffs";
+import { useToast } from "@/components/ToastProvider";
 
 const TOTAL_WEEKS = 17;
 
@@ -29,10 +30,10 @@ export default function LineupPage() {
   const { t } = useLang();
   const l = t.lineup;
   const c = t.common;
+  const { showToast } = useToast();
 
   const [week, setWeek] = useState(1);
   const [lineup, setLineup] = useState<Lineup | null>(null);
-  const [saved, setSaved] = useState(false);
 
   const loading = leagueCtxLoading || league.loading || season.loading || !league.state || !season.state;
 
@@ -50,7 +51,6 @@ export default function LineupPage() {
     if (!season.state) return;
     const existing = season.state.lineups[week]?.[myTeamId] as unknown as Lineup | undefined;
     setLineup(existing ?? (roster.length > 0 ? autoLineup(roster) : null));
-    setSaved(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [week, myTeamId, roster.length, season.state === null]);
 
@@ -77,7 +77,6 @@ export default function LineupPage() {
 
   function setSlot(slot: keyof Lineup, rank: number | null) {
     setLineup((prev) => (prev ? { ...prev, [slot]: rank } : prev));
-    setSaved(false);
   }
 
   async function save() {
@@ -85,8 +84,7 @@ export default function LineupPage() {
     const newLineups = { ...season.state.lineups };
     newLineups[week] = { ...(newLineups[week] ?? {}), [myTeamId]: lineup as unknown as Record<string, number | null> };
     await season.save({ ...season.state, lineups: newLineups });
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+    showToast(l.saved);
   }
 
   return (
@@ -177,7 +175,7 @@ export default function LineupPage() {
 
           <div className="text-center mb-6">
             <button onClick={save} className="px-5 py-2.5 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
-              {saved ? l.saved : l.save}
+              {l.save}
             </button>
           </div>
 

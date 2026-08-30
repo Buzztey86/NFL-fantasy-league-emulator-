@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { CheckCircle2, XCircle } from "lucide-react";
 import { useLeagueState } from "@/lib/useLeagueState";
 import { getAllRosteredRanks, getCurrentRoster, type Transaction } from "@/lib/roster";
 import { getAvailablePlayers, getPlayerByRank } from "@/lib/players";
@@ -11,6 +12,8 @@ import type { Player } from "@/lib/types";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { Tooltip } from "@/components/Tooltip";
 import { HoverRadar } from "@/components/HoverRadar";
+import { PlayerThumb } from "@/components/PlayerThumb";
+import { useToast } from "@/components/ToastProvider";
 import { RADAR_AXES, RADAR_AXIS_TIPS } from "@/lib/radarAxes";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { withMemberOwnership, resolveMyTeamId } from "@/lib/league/resolveTeams";
@@ -36,6 +39,7 @@ export default function WaiversPage() {
   const { activeLeagueId, activeMembership, loading: leagueCtxLoading, loadError } = useLeagueContext();
   const { state, members, loading, save, cloudSynced } = useLeagueState(activeLeagueId);
   const { t, lang } = useLang();
+  const { showToast } = useToast();
   const w = t.waivers;
   const c = t.common;
   const [tab, setTab] = useState<"waiver" | "trade">("waiver");
@@ -45,7 +49,6 @@ export default function WaiversPage() {
   const [bidFor, setBidFor] = useState<Player | null>(null);
   const [bidAmount, setBidAmount] = useState(5);
   const [dropRank, setDropRank] = useState<number | "none">("none");
-  const [resolveMsg, setResolveMsg] = useState<string | null>(null);
 
   const [tradePartnerId, setTradePartnerId] = useState<number | null>(null);
   const [myOffer, setMyOffer] = useState<Set<number>>(new Set());
@@ -91,7 +94,7 @@ export default function WaiversPage() {
     const aiClaims = generateAIWaiverClaims(teams, draftLog, transactions, faab, week);
     const allClaims = [...pendingClaims, ...aiClaims];
     if (allClaims.length === 0) {
-      setResolveMsg(w.noClaims);
+      showToast(w.noClaims, "info");
       return;
     }
     const wins: Record<number, number> = {};
@@ -105,7 +108,7 @@ export default function WaiversPage() {
 
     await save({ ...state!, transactions: [...transactions, ...newTx], faab: newFaab });
     const wonCount = allClaims.filter((c) => winningClaimIds.has(c.id) && c.teamId === humanTeam.id).length;
-    setResolveMsg(`${w.roundDone}: ${newTx.length} ${w.claimsAwarded} (${wonCount} ${w.ofThoseToYou}).`);
+    showToast(`${w.roundDone}: ${newTx.length} ${w.claimsAwarded} (${wonCount} ${w.ofThoseToYou}).`);
     setPendingClaims([]);
   }
 
@@ -230,9 +233,10 @@ export default function WaiversPage() {
             />
             <div className="space-y-1.5 max-h-[300px] overflow-y-auto">
               {freeAgents.slice(0, 40).map((p) => (
-                <div key={p.rank} className="flex items-center justify-between text-sm py-1 border-b border-[var(--border-inner)]">
-                  <span>
-                    <span className="text-[11px] font-bold mr-1" style={{ color: POS_COLOR[p.pos] }}>
+                <div key={p.rank} className="flex items-center justify-between text-sm py-1.5 border-b border-[var(--border-inner)] gap-2">
+                  <span className="flex items-center gap-2 min-w-0">
+                    <PlayerThumb photo={p.photo} size={26} />
+                    <span className="text-[11px] font-bold" style={{ color: POS_COLOR[p.pos] }}>
                       {p.pos}
                     </span>
                     <HoverRadar
@@ -244,10 +248,10 @@ export default function WaiversPage() {
                       name={p.name}
                     >
                       <span className="border-b border-dotted border-[var(--text-dim)] cursor-help">{p.name}</span>
-                    </HoverRadar>{" "}
+                    </HoverRadar>
                     <span className="text-[var(--text-dim)] text-[12px]">#{p.rank}</span>
                   </span>
-                  <button onClick={() => setBidFor(p)} className="text-xs px-2 py-1 rounded border border-[var(--gold-border)] text-[var(--gold)]">
+                  <button onClick={() => setBidFor(p)} className="shrink-0 text-xs px-2 py-1 rounded border border-[var(--gold-border)] text-[var(--gold)]">
                     {w.bid}
                   </button>
                 </div>
@@ -308,10 +312,9 @@ export default function WaiversPage() {
           )}
 
           <div className="text-center">
-            <button onClick={runWaiverRound} className="px-4 py-2 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]">
+            <button onClick={runWaiverRound} className="px-4 py-2 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] transition-colors">
               {w.runWaiverRound}
             </button>
-            {resolveMsg && <p className="text-xs text-[var(--text-dim)] mt-2">{resolveMsg}</p>}
           </div>
         </>
       )}
@@ -394,12 +397,23 @@ export default function WaiversPage() {
           {tradeLog.length > 0 && (
             <div className="card">
               <h3 className="text-xs text-[var(--gold)] font-bold mb-2">{w.tradeHistory}</h3>
-              {tradeLog.map((t) => (
-                <div key={t.id} className="text-xs py-1 border-b border-[var(--border-inner)]">
-                  {t.status === "accepted" ? "✅" : "❌"} vs {teams.find((x) => x.id === t.receiverTeamId)?.name} —{" "}
-                  {t.proposerGives.map((r) => getPlayerByRank(r).name).join(", ")} ⇄ {t.proposerGets.map((r) => getPlayerByRank(r).name).join(", ")}
-                </div>
-              ))}
+              {tradeLog.map((t) => {
+                const partner = teams.find((x) => x.id === t.receiverTeamId);
+                return (
+                  <div key={t.id} className="flex items-start gap-1.5 text-xs py-1 border-b border-[var(--border-inner)]">
+                    {t.status === "accepted" ? (
+                      <CheckCircle2 size={13} className="text-[var(--green)] shrink-0 mt-0.5" />
+                    ) : (
+                      <XCircle size={13} className="text-[var(--red)] shrink-0 mt-0.5" />
+                    )}
+                    <span>
+                      vs <span className="w-1.5 h-1.5 rounded-full inline-block mr-1" style={{ background: partner?.color }} />
+                      {partner?.name} —{" "}
+                      {t.proposerGives.map((r) => getPlayerByRank(r).name).join(", ")} ⇄ {t.proposerGets.map((r) => getPlayerByRank(r).name).join(", ")}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           )}
         </>
