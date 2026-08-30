@@ -30,7 +30,7 @@ export default function GlossaryPage() {
         <div className="space-y-3">
           {statTooltipEntries.map(([key, text]) => (
             <div key={key} className="text-sm border-b border-[var(--border-inner)] pb-2 last:border-0">
-              <p className="text-[var(--text-secondary)]">{text}</p>
+              <p className="text-[var(--text-secondary)] prose-serif">{text}</p>
             </div>
           ))}
         </div>
@@ -42,7 +42,7 @@ export default function GlossaryPage() {
             <div className="text-[var(--gold)] text-sm font-bold mb-1" style={{ fontFamily: "var(--font-display)" }}>
               {entry.term}
             </div>
-            <p className="text-sm text-[var(--text-secondary)]">{entry.def}</p>
+            <p className="text-sm text-[var(--text-secondary)] prose-serif">{entry.def}</p>
           </div>
         ))}
       </section>

@@ -62,7 +62,7 @@ export function RadarChart({
     return (
       <g key={axis} style={{ cursor: "help" }}>
         {tips?.[i] && <title>{`${axis}: ${tips[i]}`}</title>}
-        <text x={x.toFixed(1)} y={(y + 3).toFixed(1)} textAnchor={anchor} fontSize={labelFontSize} fill="#9CA3AF" fontFamily="'Source Serif 4', serif">
+        <text x={x.toFixed(1)} y={(y + 3).toFixed(1)} textAnchor={anchor} fontSize={labelFontSize} fill="#9CA3AF" fontFamily="Inter, -apple-system, sans-serif">
           {axis}
         </text>
       </g>

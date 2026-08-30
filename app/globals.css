@@ -29,6 +29,7 @@
 
   --font-display: "Playfair Display", Georgia, serif;
   --font-body: "Source Serif 4", Georgia, serif;
+  --font-sans: "Inter", -apple-system, "Segoe UI", sans-serif;
 
   --card-radius: 10px;
 }
@@ -56,6 +57,7 @@
   --color-pink: var(--pink);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
+  --font-sans: var(--font-sans);
 }
 
 * {
@@ -70,9 +72,17 @@ body {
 body {
   background: linear-gradient(135deg, var(--bg-base) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
   background-attachment: fixed;
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   color: var(--text-secondary);
   min-height: 100vh;
+}
+
+/* Gezielt für "lesbaren" statt "scanbaren" Inhalt: Glossar-Definitionen,
+   KI-Zitate/Trade-Talk. Der Rest der App (Navigation, Stats, Tabellen,
+   Buttons) nutzt die neue Sans-Serif-Standardschrift — besser scanbar,
+   v.a. bei Zahlen. */
+.prose-serif {
+  font-family: var(--font-body);
 }
 
 .hero-gradient-text {

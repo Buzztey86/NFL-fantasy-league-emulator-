@@ -213,7 +213,7 @@ export default function WaiversPage() {
           {teams.map((t) => (
             <div key={t.id} className="flex justify-between">
               <span style={{ color: t.color }}>{t.name}</span>
-              <span className="text-[var(--text-secondary)] font-mono">${faab[t.id] ?? 0}</span>
+              <span className="text-[var(--text-secondary)] tabular-nums">${faab[t.id] ?? 0}</span>
             </div>
           ))}
         </div>
@@ -374,7 +374,7 @@ export default function WaiversPage() {
               >
                 {w.sendOffer}
               </button>
-              {tradeResult && <p className="text-xs text-[var(--text-secondary)] mt-2">{tradeResult}</p>}
+              {tradeResult && <p className="text-xs text-[var(--text-secondary)] mt-2 prose-serif">{tradeResult}</p>}
               {counterOffer && (
                 <div className="card mt-3 text-left">
                   <p className="text-xs text-[var(--purple)] mb-2">

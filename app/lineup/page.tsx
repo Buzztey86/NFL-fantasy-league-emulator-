@@ -161,7 +161,7 @@ export default function LineupPage() {
                       ))}
                     </select>
                     {actualPts != null && (
-                      <span className="w-12 shrink-0 text-right text-xs font-mono text-[var(--green)]">{actualPts.toFixed(1)}</span>
+                      <span className="w-12 shrink-0 text-right text-xs tabular-nums text-[var(--green)]">{actualPts.toFixed(1)}</span>
                     )}
                     {!currentPlayer && actualPts == null && <span className="w-12 shrink-0" />}
                   </div>
@@ -172,7 +172,7 @@ export default function LineupPage() {
 
           <div className="flex items-center justify-between mb-6">
             <span className="text-xs text-[var(--text-dim)]">{l.projTotal}</span>
-            <span className="text-sm font-bold text-[var(--gold)] font-mono">{projTotal.toFixed(1)}</span>
+            <span className="text-sm font-bold text-[var(--gold)] tabular-nums">{projTotal.toFixed(1)}</span>
           </div>
 
           <div className="text-center mb-6">

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Source_Serif_4 } from "next/font/google";
+import { Playfair_Display, Source_Serif_4, Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
@@ -18,6 +18,12 @@ const sourceSerif = Source_Serif_4({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -46,7 +52,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${playfair.variable} ${sourceSerif.variable} h-full`}>
+    <html lang="de" className={`${playfair.variable} ${sourceSerif.variable} ${inter.variable} h-full`}>
       <body className="min-h-full antialiased">
         <ServiceWorkerRegister />
         <LanguageProvider>

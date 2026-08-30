@@ -238,7 +238,7 @@ export default function SeasonPage() {
                           </span>
                           <span style={{ color: home?.color }}>{home?.name}</span>
                         </div>
-                        <div className="px-3 text-sm font-bold text-[var(--text-primary)] font-mono">
+                        <div className="px-3 text-sm font-bold text-[var(--text-primary)] tabular-nums">
                           {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
                         </div>
                         <div className="flex-1 pl-3">
@@ -267,7 +267,7 @@ export default function SeasonPage() {
                     <div className="flex-1 text-right pr-3">
                       <span style={{ color: home?.color }}>{home?.name}</span>
                     </div>
-                    <div className="px-3 text-sm font-bold text-[var(--text-primary)] font-mono">
+                    <div className="px-3 text-sm font-bold text-[var(--text-primary)] tabular-nums">
                       {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
                     </div>
                     <div className="flex-1 pl-3">

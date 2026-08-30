@@ -40,7 +40,7 @@ export function Tooltip({ text, children }: { text: string; children: ReactNode 
               background: "var(--bg-deep)",
               border: "1px solid var(--border-mid)",
               color: "var(--text-secondary)",
-              fontFamily: "var(--font-body)",
+              fontFamily: "var(--font-sans)",
             }}
           >
             {text}

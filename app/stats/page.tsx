@@ -154,7 +154,7 @@ function LeaderboardCard({ title, rows }: { title: string; rows: { name: string;
                 <span className="text-[var(--text-dim)] mr-1.5">{i + 1}.</span>
                 {r.name} <span className="text-[var(--text-dim)]">({r.team})</span>
               </span>
-              <span className="text-[var(--text-primary)] font-mono">{r.value}</span>
+              <span className="text-[var(--text-primary)] tabular-nums">{r.value}</span>
             </li>
           ))}
         </ol>

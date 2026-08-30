@@ -287,7 +287,7 @@ export default function DraftPage() {
                       </div>
                       <div className="text-[var(--text-secondary)]">{player.name}</div>
                       {team && !team.isHuman && (
-                        <div className="text-[11px] text-[var(--text-ghost)] italic">
+                        <div className="text-[11px] text-[var(--text-ghost)] italic prose-serif">
                           &ldquo;{PERSONALITY_QUOTES[team.personality][lang]}&rdquo;
                         </div>
                       )}
