@@ -105,7 +105,7 @@ alter table public.league_members enable row level security;
 -- selbst (eine Policy auf Tabelle X, die in ihrem USING-Ausdruck wieder X
 -- abfragt, ist ein bekannter Postgres-RLS-Fallstrick). security definer
 -- umgeht das sauber, da die Funktion mit erhöhten Rechten liest.
-drop function if exists public.is_league_member(uuid);
+drop function if exists public.is_league_member(uuid) cascade;
 create function public.is_league_member(p_league_id uuid) returns boolean
 language sql
 security definer
