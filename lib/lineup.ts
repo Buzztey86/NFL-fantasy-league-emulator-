@@ -14,6 +14,19 @@ export interface Lineup {
 
 export const LINEUP_SLOTS: (keyof Lineup)[] = ["QB", "RB1", "RB2", "WR1", "WR2", "TE", "FLEX", "DST", "K"];
 
+/** Welche Positionen für einen Slot in Frage kommen (FLEX = RB/WR/TE). */
+export const SLOT_ELIGIBLE_POS: Record<keyof Lineup, Position[]> = {
+  QB: ["QB"],
+  RB1: ["RB"],
+  RB2: ["RB"],
+  WR1: ["WR"],
+  WR2: ["WR"],
+  TE: ["TE"],
+  FLEX: ["RB", "WR", "TE"],
+  DST: ["DST"],
+  K: ["K"],
+};
+
 /** Wählt automatisch die beste Aufstellung nach Projektion (proj-Feld). Flex = bester Rest aus RB/WR/TE. */
 export function autoLineup(roster: Player[]): Lineup {
   const byPos = (pos: Position) => roster.filter((p) => p.pos === pos).sort((a, b) => b.proj - a.proj);

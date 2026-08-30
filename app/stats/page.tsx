@@ -7,13 +7,15 @@ import { scoreOffensePlayer } from "@/lib/scoring";
 import { useLang } from "@/lib/i18n/LanguageContext";
 
 const PRESEASON_WEEKS = [1, 2, 3, 4];
+const REGULAR_SEASON_WEEKS = Array.from({ length: 18 }, (_, i) => i + 1);
 const SEASON_YEAR = 2026;
 
 export default function StatsPage() {
   const { t } = useLang();
   const st = t.stats;
   const c = t.common;
-  const [week, setWeek] = useState(2);
+  const [seasonType, setSeasonType] = useState<1 | 2>(2);
+  const [week, setWeek] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState<WeekStatsResult | null>(null);
@@ -22,7 +24,7 @@ export default function StatsPage() {
     setLoading(true);
     setError(null);
     try {
-      const result = await fetchWeekStats(SEASON_YEAR, week, 1); // seasontype 1 = Preseason
+      const result = await fetchWeekStats(SEASON_YEAR, week, seasonType);
       const anyCompleted = result.games.some((g) => g.completed);
       if (!anyCompleted) {
         setError(st.noGamesFound);
@@ -58,8 +60,43 @@ export default function StatsPage() {
         </h1>
       </header>
 
-      <div className="flex gap-1 justify-center mb-4">
-        {PRESEASON_WEEKS.map((w) => (
+      <div className="flex gap-2 justify-center mb-4">
+        <button
+          onClick={() => {
+            setSeasonType(2);
+            setWeek(1);
+            setStats(null);
+            setError(null);
+          }}
+          className="px-3 py-1.5 rounded-md text-xs font-semibold border"
+          style={
+            seasonType === 2
+              ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" }
+              : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }
+          }
+        >
+          {st.regularSeason}
+        </button>
+        <button
+          onClick={() => {
+            setSeasonType(1);
+            setWeek(1);
+            setStats(null);
+            setError(null);
+          }}
+          className="px-3 py-1.5 rounded-md text-xs font-semibold border"
+          style={
+            seasonType === 1
+              ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" }
+              : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }
+          }
+        >
+          {st.preseason}
+        </button>
+      </div>
+
+      <div className="flex gap-1 flex-wrap justify-center mb-4">
+        {(seasonType === 1 ? PRESEASON_WEEKS : REGULAR_SEASON_WEEKS).map((w) => (
           <button
             key={w}
             onClick={() => setWeek(w)}
