@@ -9,10 +9,12 @@ import { autoLineup } from "@/lib/lineup";
 import { computeTeamWeekScore } from "@/lib/seasonEngine";
 import { gamesForWeek, teamRecord } from "@/lib/schedule";
 import { fetchWeekStats } from "@/lib/nflStats";
-import { REGULAR_SEASON_WEEKS } from "@/lib/types";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { withMemberOwnership } from "@/lib/league/resolveTeams";
+import { getPlayoffSeeds, getPlayoffMatchupsForWeek, isPlayoffWeek, REGULAR_SEASON_CUTOFF_WEEK, type PlayoffMatchup } from "@/lib/playoffs";
+
+const TOTAL_WEEKS = 17;
 
 export default function SeasonPage() {
   const { activeLeagueId, loading: leagueCtxLoading, loadError } = useLeagueContext();
@@ -32,11 +34,22 @@ export default function SeasonPage() {
 
   const standings = useMemo(() => {
     if (!league.state || !season.state) return [];
-    const rec = teamRecord(league.state.teams, season.state.schedule, season.state.weeklyScores);
+    const regularSchedule = season.state.schedule.filter((g) => g.week <= REGULAR_SEASON_CUTOFF_WEEK);
+    const rec = teamRecord(league.state.teams, regularSchedule, season.state.weeklyScores);
     return league.state.teams
       .map((t) => ({ team: t, ...rec[t.id] }))
       .sort((a, b) => b.w - a.w || b.pf - a.pf);
   }, [league.state, season.state]);
+
+  const playoffSeeds = useMemo(() => {
+    if (!league.state || !season.state) return [];
+    return getPlayoffSeeds(league.state.teams, season.state.schedule, season.state.weeklyScores);
+  }, [league.state, season.state]);
+
+  const playoffMatchups = useMemo(() => {
+    if (!isPlayoffWeek(week) || playoffSeeds.length === 0) return [];
+    return getPlayoffMatchupsForWeek(playoffSeeds, season.state?.weeklyScores ?? {}, week);
+  }, [week, playoffSeeds, season.state]);
 
   if (loadError) {
     return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
@@ -48,6 +61,8 @@ export default function SeasonPage() {
   const { draftLog } = league.state!;
   const teams = withMemberOwnership(league.state!.teams, league.members);
   const seasonState = season.state!;
+  const seedOf = (teamId: number) => playoffSeeds.indexOf(teamId) + 1;
+  const byeSeeds = isPlayoffWeek(week) && week === 15 ? [playoffSeeds[0], playoffSeeds[1]] : [];
 
   async function computeWeek() {
     setComputing(true);
@@ -82,6 +97,23 @@ export default function SeasonPage() {
     }
     setComputing(false);
   }
+
+  function roundLabel(r: PlayoffMatchup["roundLabel"]) {
+    if (r === "quarterfinal") return sT.quarterfinal;
+    if (r === "semifinal") return sT.semifinal;
+    return sT.championship;
+  }
+
+  const champion =
+    week === 17 && playoffMatchups.length === 1 && seasonState.weeklyScores[17]?.[playoffMatchups[0].home] != null
+      ? (() => {
+          const m = playoffMatchups[0];
+          const homeScore = seasonState.weeklyScores[17][m.home]?.total ?? 0;
+          const awayScore = seasonState.weeklyScores[17][m.away]?.total ?? 0;
+          const winnerId = homeScore >= awayScore ? m.home : m.away;
+          return teams.find((t) => t.id === winnerId) ?? null;
+        })()
+      : null;
 
   return (
     <main className="mx-auto max-w-[900px] px-4 sm:px-6 py-6">
@@ -121,7 +153,7 @@ export default function SeasonPage() {
       {tab === "matchups" && (
         <>
           <div className="flex gap-1 flex-wrap justify-center mb-4">
-            {Array.from({ length: REGULAR_SEASON_WEEKS }, (_, i) => i + 1).map((w) => (
+            {Array.from({ length: TOTAL_WEEKS }, (_, i) => i + 1).map((w) => (
               <button
                 key={w}
                 onClick={() => setWeek(w)}
@@ -129,6 +161,8 @@ export default function SeasonPage() {
                 style={
                   w === week
                     ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" }
+                    : isPlayoffWeek(w)
+                    ? { borderColor: "var(--purple)", color: "var(--purple)" }
                     : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }
                 }
               >
@@ -136,6 +170,14 @@ export default function SeasonPage() {
               </button>
             ))}
           </div>
+
+          {isPlayoffWeek(week) && (
+            <div className="text-center mb-3">
+              <span className="text-[11px] px-2 py-1 rounded-full" style={{ background: "rgba(139,92,246,0.15)", color: "var(--purple)" }}>
+                {sT.playoffsTab}
+              </span>
+            </div>
+          )}
 
           <div className="text-center mb-4">
             <button
@@ -148,28 +190,94 @@ export default function SeasonPage() {
             {statusMsg && <p className="text-xs text-[var(--text-dim)] mt-2">{statusMsg}</p>}
           </div>
 
-          <div className="space-y-2">
-            {games.map((g, i) => {
-              const home = teams.find((t) => t.id === g.homeTeamId);
-              const away = teams.find((t) => t.id === g.awayTeamId);
-              const homeScore = seasonState.weeklyScores[week]?.[g.homeTeamId]?.total;
-              const awayScore = seasonState.weeklyScores[week]?.[g.awayTeamId]?.total;
-              const played = homeScore != null && awayScore != null;
-              return (
-                <div key={i} className="card flex items-center justify-between">
-                  <div className="flex-1 text-right pr-3">
-                    <span style={{ color: home?.color }}>{home?.name}</span>
+          {champion && (
+            <div className="card text-center mb-4" style={{ borderColor: "var(--gold)" }}>
+              <p className="text-sm text-[var(--text-dim)] mb-1">{sT.champion}</p>
+              <p className="text-lg font-black" style={{ color: champion.color, fontFamily: "var(--font-display)" }}>
+                {champion.name}
+              </p>
+            </div>
+          )}
+
+          {isPlayoffWeek(week) ? (
+            playoffSeeds.length === 0 ? (
+              <p className="text-center text-sm text-[var(--text-dim)]">{sT.needsRegularSeason}</p>
+            ) : playoffMatchups.length === 0 ? (
+              <p className="text-center text-sm text-[var(--text-dim)]">{sT.playoffsNotSet}</p>
+            ) : (
+              <div className="space-y-2">
+                {week === 15 &&
+                  byeSeeds.map((teamId) => {
+                    const team = teams.find((t) => t.id === teamId);
+                    return (
+                      <div key={teamId} className="card flex items-center justify-between opacity-70">
+                        <span className="text-[10px] text-[var(--text-dim)] w-16">
+                          {sT.seed} {seedOf(teamId)}
+                        </span>
+                        <span style={{ color: team?.color }} className="flex-1 text-center">
+                          {team?.name}
+                        </span>
+                        <span className="text-[10px] text-[var(--purple)] w-16 text-right">{sT.bye}</span>
+                      </div>
+                    );
+                  })}
+                {playoffMatchups.map((m, i) => {
+                  const home = teams.find((t) => t.id === m.home);
+                  const away = teams.find((t) => t.id === m.away);
+                  const homeScore = seasonState.weeklyScores[week]?.[m.home]?.total;
+                  const awayScore = seasonState.weeklyScores[week]?.[m.away]?.total;
+                  const played = homeScore != null && awayScore != null;
+                  return (
+                    <div key={i} className="card">
+                      <div className="text-center text-[10px] text-[var(--purple)] mb-1.5">{roundLabel(m.roundLabel)}</div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1 text-right pr-3">
+                          <span className="text-[10px] text-[var(--text-dim)] mr-1">
+                            {sT.seed}
+                            {seedOf(m.home)}
+                          </span>
+                          <span style={{ color: home?.color }}>{home?.name}</span>
+                        </div>
+                        <div className="px-3 text-sm font-bold text-[var(--text-primary)] font-mono">
+                          {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
+                        </div>
+                        <div className="flex-1 pl-3">
+                          <span style={{ color: away?.color }}>{away?.name}</span>
+                          <span className="text-[10px] text-[var(--text-dim)] ml-1">
+                            {sT.seed}
+                            {seedOf(m.away)}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )
+          ) : (
+            <div className="space-y-2">
+              {games.map((g, i) => {
+                const home = teams.find((t) => t.id === g.homeTeamId);
+                const away = teams.find((t) => t.id === g.awayTeamId);
+                const homeScore = seasonState.weeklyScores[week]?.[g.homeTeamId]?.total;
+                const awayScore = seasonState.weeklyScores[week]?.[g.awayTeamId]?.total;
+                const played = homeScore != null && awayScore != null;
+                return (
+                  <div key={i} className="card flex items-center justify-between">
+                    <div className="flex-1 text-right pr-3">
+                      <span style={{ color: home?.color }}>{home?.name}</span>
+                    </div>
+                    <div className="px-3 text-sm font-bold text-[var(--text-primary)] font-mono">
+                      {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
+                    </div>
+                    <div className="flex-1 pl-3">
+                      <span style={{ color: away?.color }}>{away?.name}</span>
+                    </div>
                   </div>
-                  <div className="px-3 text-sm font-bold text-[var(--text-primary)] font-mono">
-                    {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
-                  </div>
-                  <div className="flex-1 pl-3">
-                    <span style={{ color: away?.color }}>{away?.name}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </>
       )}
 
@@ -194,7 +302,10 @@ export default function SeasonPage() {
             <tbody>
               {standings.map((s, i) => (
                 <tr key={s.team.id} className="border-b border-[var(--border-inner)]">
-                  <td className="py-2 text-[var(--text-dim)]">{i + 1}</td>
+                  <td className="py-2 text-[var(--text-dim)]">
+                    {i + 1}
+                    {i < 6 && <span className="text-[var(--purple)] ml-1">●</span>}
+                  </td>
                   <td style={{ color: s.team.color }} className="font-semibold">
                     {s.team.name}
                   </td>
@@ -207,6 +318,9 @@ export default function SeasonPage() {
               ))}
             </tbody>
           </table>
+          <p className="text-[10px] text-[var(--text-dim)] mt-2">
+            <span className="text-[var(--purple)]">●</span> {sT.playoffsTab} (Top 6)
+          </p>
         </div>
       )}
     </main>

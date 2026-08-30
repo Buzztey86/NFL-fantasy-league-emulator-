@@ -8,8 +8,10 @@ import { useSeasonState } from "@/lib/useSeasonState";
 import { withMemberOwnership, resolveMyTeamId } from "@/lib/league/resolveTeams";
 import { getCurrentRoster } from "@/lib/roster";
 import { autoLineup, LINEUP_SLOTS, SLOT_ELIGIBLE_POS, type Lineup } from "@/lib/lineup";
-import { REGULAR_SEASON_WEEKS } from "@/lib/types";
 import { useLang } from "@/lib/i18n/LanguageContext";
+import { isPlayoffWeek } from "@/lib/playoffs";
+
+const TOTAL_WEEKS = 17;
 
 const POS_COLOR: Record<string, string> = {
   QB: "var(--blue)",
@@ -104,7 +106,7 @@ export default function LineupPage() {
       </header>
 
       <div className="flex gap-1 flex-wrap justify-center mb-5">
-        {Array.from({ length: REGULAR_SEASON_WEEKS }, (_, i) => i + 1).map((w) => (
+        {Array.from({ length: TOTAL_WEEKS }, (_, i) => i + 1).map((w) => (
           <button
             key={w}
             onClick={() => setWeek(w)}
@@ -112,6 +114,8 @@ export default function LineupPage() {
             style={
               w === week
                 ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" }
+                : isPlayoffWeek(w)
+                ? { borderColor: "var(--purple)", color: "var(--purple)" }
                 : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }
             }
           >
