@@ -31,6 +31,8 @@ export const translations = {
       rosterDesc: "Dein Kader mit Stats — fahr über einen Spieler für den Skill-Radar.",
       lineupTitle: "AUFSTELLUNG →",
       lineupDesc: "Wähle deine Starter pro Woche, statt die Auto-Aufstellung zu übernehmen.",
+      activityTitle: "LIGA-VERLAUF →",
+      activityDesc: "Draft, Waiver und Trades in einer gemeinsamen Zeitleiste.",
       footer: "The Gridiron Oracle League · Eigene Web-App",
     },
     setup: {
@@ -139,6 +141,8 @@ export const translations = {
       accepted: "✅ Angenommen",
       rejected: "❌ Abgelehnt",
       tradeHistory: "TRADE-VERLAUF (diese Sitzung)",
+      counterOfferIntro: "Gegenangebot: Wäre bereit, wenn du zusätzlich anbietest:",
+      acceptCounter: "Gegenangebot annehmen",
     },
     glossary: {
       heading: "GLOSSAR",
@@ -191,6 +195,18 @@ export const translations = {
       regularSeason: "Regular Season",
     },
     langToggle: "EN",
+    activity: {
+      heading: "LIGA-VERLAUF",
+      subtitle: "Alles, was in deiner Liga passiert ist — Draft, Waiver, Trades.",
+      empty: "Noch nichts passiert.",
+      drafted: "draftet",
+      pick: "Pick",
+      addedVia: "holt via Waiver",
+      droppedFor: "dafür gedroppt:",
+      tradeBetween: "Trade zwischen",
+      gives: "gibt",
+      gets: "bekommt",
+    },
     lineup: {
       heading: "AUFSTELLUNG",
       subtitle: "Wähle deine Starter für die Woche.",
@@ -266,6 +282,8 @@ export const translations = {
       rosterDesc: "Your roster with stats — hover a player for the skill radar.",
       lineupTitle: "LINEUP →",
       lineupDesc: "Set your own starters each week instead of the auto lineup.",
+      activityTitle: "LEAGUE ACTIVITY →",
+      activityDesc: "Draft, waivers, and trades in one shared timeline.",
       footer: "The Gridiron Oracle League · Custom web app",
     },
     setup: {
@@ -374,6 +392,8 @@ export const translations = {
       accepted: "✅ Accepted",
       rejected: "❌ Rejected",
       tradeHistory: "TRADE HISTORY (this session)",
+      counterOfferIntro: "Counter-offer: Would accept if you also include:",
+      acceptCounter: "Accept counter-offer",
     },
     glossary: {
       heading: "GLOSSARY",
@@ -426,6 +446,18 @@ export const translations = {
       regularSeason: "Regular Season",
     },
     langToggle: "DE",
+    activity: {
+      heading: "LEAGUE ACTIVITY",
+      subtitle: "Everything that's happened in your league — draft, waivers, trades.",
+      empty: "Nothing has happened yet.",
+      drafted: "drafted",
+      pick: "Pick",
+      addedVia: "adds via waiver",
+      droppedFor: "dropped for it:",
+      tradeBetween: "Trade between",
+      gives: "gives",
+      gets: "gets",
+    },
     lineup: {
       heading: "LINEUP",
       subtitle: "Choose your starters for the week.",

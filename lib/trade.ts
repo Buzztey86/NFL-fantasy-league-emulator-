@@ -101,3 +101,25 @@ export function evaluateTradeForAI(team: Team, aiGets: Player[], aiLoses: Player
   const reason = accept ? ACCEPT_QUOTES[team.personality][lang] : REJECT_QUOTES[team.personality][lang];
   return { accept, reason, delta: Math.round(delta * 10) / 10 };
 }
+
+/**
+ * Versucht, einen abgelehnten Trade durch Hinzufügen genau eines weiteren
+ * Spielers aus dem Restkader des Vorschlagenden für die KI attraktiv zu
+ * machen. Probiert die schwächsten verfügbaren Spieler zuerst (die KI
+ * verlangt nicht gleich den besten Spieler als Nachschlag). Gibt null zurück,
+ * wenn kein einzelner zusätzlicher Spieler ausreicht.
+ */
+export function suggestCounterOffer(
+  team: Team,
+  aiGets: Player[],
+  aiLoses: Player[],
+  proposerRemainingRoster: Player[],
+  lang: "de" | "en" = "de"
+): Player | null {
+  const candidates = [...proposerRemainingRoster].sort((a, b) => a.proj - b.proj);
+  for (const candidate of candidates) {
+    const result = evaluateTradeForAI(team, [...aiGets, candidate], aiLoses, lang);
+    if (result.accept) return candidate;
+  }
+  return null;
+}

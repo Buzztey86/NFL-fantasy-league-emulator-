@@ -86,6 +86,7 @@ export default function DraftPage() {
       round: currentRound,
       teamId: onClockTeam.id,
       playerRank: player.rank,
+      timestamp: new Date().toISOString(),
     };
     await save({ ...state!, draftLog: [...draftLog, pick] });
     setLastEvent(`${d.pick} ${pick.pickNumber} (R${pick.round}): ${onClockTeam.name} → ${player.name}.`);
@@ -112,7 +113,7 @@ export default function DraftPage() {
       const avail = getAvailablePlayers(dr);
       const roster = getRosterForTeam(team.id, log);
       const player = pickForAITeam(team, round, avail, roster);
-      log = [...log, { pickNumber: n, round, teamId: team.id, playerRank: player.rank }];
+      log = [...log, { pickNumber: n, round, teamId: team.id, playerRank: player.rank, timestamp: new Date().toISOString() }];
       n = log.length + 1;
       round = pickNumberToRound(n);
       teamId = n > order.length ? null : getTeamIdForPick(n, order);

@@ -51,6 +51,7 @@ export interface DraftPick {
   round: number; // 1-basiert
   teamId: number;
   playerRank: number;
+  timestamp?: string; // erst ab Phase 6 erfasst; ältere Picks haben keinen
 }
 
 export interface LeagueState {

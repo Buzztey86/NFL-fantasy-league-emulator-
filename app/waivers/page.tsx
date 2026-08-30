@@ -6,7 +6,7 @@ import { useLeagueState } from "@/lib/useLeagueState";
 import { getAllRosteredRanks, getCurrentRoster, type Transaction } from "@/lib/roster";
 import { getAvailablePlayers, getPlayerByRank } from "@/lib/players";
 import { generateAIWaiverClaims, resolveWaivers, type WaiverClaim } from "@/lib/waiver";
-import { evaluateTradeForAI, type TradeOffer } from "@/lib/trade";
+import { evaluateTradeForAI, suggestCounterOffer, type TradeOffer } from "@/lib/trade";
 import type { Player } from "@/lib/types";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { Tooltip } from "@/components/Tooltip";
@@ -51,6 +51,7 @@ export default function WaiversPage() {
   const [myOffer, setMyOffer] = useState<Set<number>>(new Set());
   const [theirOffer, setTheirOffer] = useState<Set<number>>(new Set());
   const [tradeResult, setTradeResult] = useState<string | null>(null);
+  const [counterOffer, setCounterOffer] = useState<Player | null>(null);
   const [tradeLog, setTradeLog] = useState<TradeOffer[]>([]);
 
   if (loadError) {
@@ -136,6 +137,13 @@ export default function WaiversPage() {
     };
     setTradeLog((prev) => [offer, ...prev]);
     setTradeResult(`${partner.manager}: ${evalResult.accept ? w.accepted : w.rejected} — "${evalResult.reason}"`);
+    setCounterOffer(null);
+
+    if (!evalResult.accept) {
+      const remainingMine = myRoster.filter((p) => !myOffer.has(p.rank));
+      const suggestion = suggestCounterOffer(partner, aiGets, aiLoses, remainingMine, lang);
+      if (suggestion) setCounterOffer(suggestion);
+    }
 
     if (evalResult.accept) {
       const tx: Transaction = {
@@ -152,6 +160,13 @@ export default function WaiversPage() {
       setMyOffer(new Set());
       setTheirOffer(new Set());
     }
+  }
+
+  function acceptCounterOffer() {
+    if (!counterOffer) return;
+    setMyOffer((prev) => new Set([...prev, counterOffer.rank]));
+    setCounterOffer(null);
+    setTradeResult(null);
   }
 
   const partnerTeams = teams.filter((t) => !t.isHuman);
@@ -314,6 +329,7 @@ export default function WaiversPage() {
                     setMyOffer(new Set());
                     setTheirOffer(new Set());
                     setTradeResult(null);
+                    setCounterOffer(null);
                   }}
                   className="px-3 py-1.5 rounded-md text-xs font-semibold border"
                   style={tradePartnerId === t.id ? { borderColor: t.color, background: "rgba(255,255,255,0.06)", color: t.color } : { borderColor: "var(--border-mid)", color: "var(--text-muted)" }}
@@ -359,6 +375,19 @@ export default function WaiversPage() {
                 {w.sendOffer}
               </button>
               {tradeResult && <p className="text-xs text-[var(--text-secondary)] mt-2">{tradeResult}</p>}
+              {counterOffer && (
+                <div className="card mt-3 text-left">
+                  <p className="text-xs text-[var(--purple)] mb-2">
+                    {w.counterOfferIntro} <span className="text-[var(--text-primary)] font-semibold">{counterOffer.name}</span>
+                  </p>
+                  <button
+                    onClick={acceptCounterOffer}
+                    className="px-3 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)]"
+                  >
+                    {w.acceptCounter}
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
