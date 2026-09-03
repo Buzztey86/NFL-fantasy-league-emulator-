@@ -350,3 +350,28 @@ as $$
   select id, email, created_at from auth.users where public.is_app_admin();
 $$;
 grant execute on function public.admin_list_users() to authenticated;
+
+-- ── Geteilter NFL-Stats-Cache (Phase 9) ───────────────────────────────────────
+-- Die realen Fantasy-Punkte eines Spielers in Woche X sind unabhängig davon,
+-- in wie vielen Ligen er gedraftet wurde — bisher hat jede Liga denselben
+-- ESPN-Abruf redundant selbst gemacht. Jetzt: einmal ziehen (egal von wem),
+-- für alle Ligen wiederverwenden. Absichtlich offen für alle authentifizierten
+-- Nutzer zum Lesen UND Schreiben — das sind reine, öffentlich nachprüfbare
+-- NFL-Ergebnisse, kein sensibler Liga-Zustand; im schlimmsten Fall überschreibt
+-- ein erneuter Pull denselben Wert einfach neu.
+create table if not exists public.nfl_stats_cache (
+  season_year integer not null,
+  week integer not null,
+  season_type integer not null default 2,
+  stats jsonb not null,
+  updated_at timestamptz not null default now(),
+  primary key (season_year, week, season_type)
+);
+alter table public.nfl_stats_cache enable row level security;
+
+drop policy if exists "anyone authenticated can read the stats cache" on public.nfl_stats_cache;
+create policy "anyone authenticated can read the stats cache" on public.nfl_stats_cache for select using (auth.role() = 'authenticated');
+drop policy if exists "anyone authenticated can write the stats cache" on public.nfl_stats_cache;
+create policy "anyone authenticated can write the stats cache" on public.nfl_stats_cache for insert with check (auth.role() = 'authenticated');
+drop policy if exists "anyone authenticated can update the stats cache" on public.nfl_stats_cache;
+create policy "anyone authenticated can update the stats cache" on public.nfl_stats_cache for update using (auth.role() = 'authenticated');

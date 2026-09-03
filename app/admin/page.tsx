@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { useToast } from "@/components/ToastProvider";
-import { fetchWeekStats } from "@/lib/nflStats";
+import { getOrFetchWeekStats } from "@/lib/statsCache";
 import { getRosterForTeam } from "@/lib/draftEngine";
 import { autoLineup } from "@/lib/lineup";
 import { computeTeamWeekScore } from "@/lib/seasonEngine";
@@ -104,7 +104,7 @@ export default function AdminPage() {
     try {
       // Die echten NFL-Stats sind für ALLE Ligen identisch — nur EINMAL abrufen,
       // nicht pro Liga, das spart unnötige Requests.
-      const stats = await fetchWeekStats(2026, pullWeek);
+      const stats = await getOrFetchWeekStats(2026, pullWeek);
       const anyCompleted = stats.games.some((g) => g.completed);
       if (!anyCompleted) {
         log.push(`Woche ${pullWeek}: keine abgeschlossenen Spiele gefunden — abgebrochen.`);

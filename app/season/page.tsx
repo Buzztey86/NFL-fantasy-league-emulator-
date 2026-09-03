@@ -8,7 +8,7 @@ import { getRosterForTeam } from "@/lib/draftEngine";
 import { autoLineup } from "@/lib/lineup";
 import { computeTeamWeekScore } from "@/lib/seasonEngine";
 import { gamesForWeek, teamRecord } from "@/lib/schedule";
-import { fetchWeekStats } from "@/lib/nflStats";
+import { getOrFetchWeekStats } from "@/lib/statsCache";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { withMemberOwnership } from "@/lib/league/resolveTeams";
@@ -70,7 +70,7 @@ export default function SeasonPage() {
     setComputing(true);
     setStatusMsg(null);
     try {
-      const stats = await fetchWeekStats(seasonState.seasonYear, week);
+      const stats = await getOrFetchWeekStats(seasonState.seasonYear, week);
 
       const anyCompleted = stats.games.some((g) => g.completed);
       if (!anyCompleted) {
