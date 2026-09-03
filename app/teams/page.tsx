@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Link from "next/link";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { useLeagueState } from "@/lib/useLeagueState";
@@ -60,7 +61,7 @@ export default function TeamsPage() {
     return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
   }
   if (leagueCtxLoading || loading || !state) {
-    return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
+    return <LoadingScreen text={c.loadingLeague} />;
   }
 
   const teams = withMemberOwnership(state.teams, members);

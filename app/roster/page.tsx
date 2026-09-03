@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Link from "next/link";
 import { useLeagueState } from "@/lib/useLeagueState";
 import { getCurrentRoster } from "@/lib/roster";
@@ -76,7 +77,7 @@ export default function RosterPage() {
     return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
   }
   if (leagueCtxLoading || loading || !state) {
-    return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
+    return <LoadingScreen text={c.loadingLeague} />;
   }
 
   const { draftLog, transactions } = state;

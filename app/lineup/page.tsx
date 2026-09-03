@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Link from "next/link";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { useLeagueState } from "@/lib/useLeagueState";
@@ -59,7 +60,7 @@ export default function LineupPage() {
     return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
   }
   if (loading) {
-    return <main className="p-8 text-[var(--text-muted)]">{c.loadingSeason}</main>;
+    return <LoadingScreen text={c.loadingSeason} />;
   }
 
   const rosterByRank = new Map(roster.map((p) => [p.rank, p]));

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Link from "next/link";
 import { useLeagueState } from "@/lib/useLeagueState";
 import { getAvailablePlayers, getPlayerByRank } from "@/lib/players";
@@ -60,7 +61,7 @@ export default function DraftPage() {
     return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
   }
   if (leagueCtxLoading || loading || !state) {
-    return <main className="p-8 text-[var(--text-muted)]">{c.loadingDraft}</main>;
+    return <LoadingScreen text={c.loadingDraft} />;
   }
 
   const teams = withMemberOwnership(state.teams, members);

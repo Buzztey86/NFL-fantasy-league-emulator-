@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
@@ -88,7 +89,7 @@ export default function InvitePage() {
   }
 
   if (loading || !userId) {
-    return <main className="p-8 text-center text-[var(--text-muted)]">{inv.loading}</main>;
+    return <LoadingScreen text={inv.loading} />;
   }
 
   if (!leagueId) {

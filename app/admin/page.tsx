@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { useToast } from "@/components/ToastProvider";
 import { getOrFetchWeekStats } from "@/lib/statsCache";
@@ -168,7 +169,7 @@ export default function AdminPage() {
     loadAll();
   }
 
-  if (checking) return <main className="p-8 text-[var(--text-muted)]">Lade…</main>;
+  if (checking) return <LoadingScreen text="Lade…" />;
   if (!authorized) return <main className="p-8 text-center text-[var(--red)] text-sm">Kein Zugriff.</main>;
 
   return (
@@ -186,7 +187,7 @@ export default function AdminPage() {
       </header>
 
       {loading ? (
-        <p className="text-center text-sm text-[var(--text-dim)]">Lade Daten…</p>
+        <LoadingScreen text="Lade Daten…" fullScreen={false} />
       ) : (
         <div className="space-y-8">
           <section className="card">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Link from "next/link";
 import { useLeagueState } from "@/lib/useLeagueState";
 import { useSeasonState } from "@/lib/useSeasonState";
@@ -58,7 +59,7 @@ export default function SeasonPage() {
     return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
   }
   if (loading) {
-    return <main className="p-8 text-[var(--text-muted)]">{c.loadingSeason}</main>;
+    return <LoadingScreen text={c.loadingSeason} />;
   }
 
   const { draftLog } = league.state!;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Link from "next/link";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { useLeagueState } from "@/lib/useLeagueState";
@@ -61,7 +62,7 @@ export default function WaiversPage() {
     return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
   }
   if (leagueCtxLoading || loading || !state) {
-    return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
+    return <LoadingScreen text={c.loadingLeague} />;
   }
 
   const { draftLog, transactions, faab } = state;

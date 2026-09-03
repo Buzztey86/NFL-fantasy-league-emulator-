@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Link from "next/link";
 import { useLeagueState } from "@/lib/useLeagueState";
 import { PERSONAS, buildTeamsFromOrder } from "@/lib/personas";
@@ -32,7 +33,7 @@ export default function SetupPage() {
     return <main className="p-8 text-[var(--red)] text-sm">{loadError}</main>;
   }
   if (leagueCtxLoading || loading || !state) {
-    return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
+    return <LoadingScreen text={c.loadingLeague} />;
   }
 
   const usedCount = (id: PersonalityId) => currentOrder.filter((p) => p === id).length;

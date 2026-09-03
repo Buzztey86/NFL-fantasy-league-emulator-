@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import Link from "next/link";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { fetchScoreboard, type GameResult } from "@/lib/nflStats";
@@ -175,7 +176,7 @@ export default function TippspielPage() {
     return <main className="p-8 text-center text-[var(--text-muted)]">{t.login.notConfigured}</main>;
   }
   if (initializing) {
-    return <main className="p-8 text-[var(--text-muted)]">{c.loadingLeague}</main>;
+    return <LoadingScreen text={c.loadingLeague} />;
   }
 
   if (!displayName) {
