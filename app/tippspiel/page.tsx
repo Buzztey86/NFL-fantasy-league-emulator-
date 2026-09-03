@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { fetchScoreboard, type GameResult } from "@/lib/nflStats";
-import { computeWeekScore } from "@/lib/tippspiel";
+import { computeWeekScore, scoreGamePrediction, type ScorePrediction } from "@/lib/tippspiel";
 import { useToast } from "@/components/ToastProvider";
 import { useLang } from "@/lib/i18n/LanguageContext";
 
@@ -13,7 +13,8 @@ const TOTAL_WEEKS = 18;
 
 interface PickRow {
   game_id: string;
-  picked_team: string;
+  picked_home_score: number;
+  picked_away_score: number;
 }
 
 export default function TippspielPage() {
@@ -31,9 +32,11 @@ export default function TippspielPage() {
   const [week, setWeek] = useState(1);
   const [games, setGames] = useState<GameResult[] | null>(null);
   const [gamesLoading, setGamesLoading] = useState(false);
-  const [myPicks, setMyPicks] = useState<Record<string, string>>({});
+  const [myPicks, setMyPicks] = useState<Record<string, ScorePrediction>>({});
+  const [draft, setDraft] = useState<Record<string, { home: string; away: string }>>({});
+  const [saving, setSaving] = useState(false);
 
-  const [leaderboard, setLeaderboard] = useState<{ userId: string; name: string; correct: number }[] | null>(null);
+  const [leaderboard, setLeaderboard] = useState<{ userId: string; name: string; points: number }[] | null>(null);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
 
   useEffect(() => {
@@ -73,30 +76,49 @@ export default function TippspielPage() {
 
       const { data } = await supabase
         .from("tippspiel_picks")
-        .select("game_id, picked_team")
+        .select("game_id, picked_home_score, picked_away_score")
         .eq("user_id", userId)
         .eq("season_year", SEASON_YEAR)
         .eq("week", week);
-      const picks: Record<string, string> = {};
-      for (const row of (data ?? []) as PickRow[]) picks[row.game_id] = row.picked_team;
+      const picks: Record<string, ScorePrediction> = {};
+      const draftInit: Record<string, { home: string; away: string }> = {};
+      for (const row of (data ?? []) as PickRow[]) {
+        picks[row.game_id] = { home: row.picked_home_score, away: row.picked_away_score };
+        draftInit[row.game_id] = { home: String(row.picked_home_score), away: String(row.picked_away_score) };
+      }
       setMyPicks(picks);
+      setDraft(draftInit);
     } catch (e) {
       showToast(e instanceof Error ? e.message : "Error", "error");
     }
     setGamesLoading(false);
   }
 
-  async function pick(gameId: string, teamAbbr: string) {
-    if (!supabase || !userId) return;
-    setMyPicks((prev) => ({ ...prev, [gameId]: teamAbbr }));
-    await supabase.from("tippspiel_picks").upsert({
-      user_id: userId,
-      season_year: SEASON_YEAR,
-      week,
-      game_id: gameId,
-      picked_team: teamAbbr,
-    });
-    showToast(tp.saved);
+  function setDraftValue(gameId: string, side: "home" | "away", value: string) {
+    setDraft((prev) => ({ ...prev, [gameId]: { ...(prev[gameId] ?? { home: "", away: "" }), [side]: value } }));
+  }
+
+  async function saveAllPicks() {
+    if (!supabase || !userId || !games) return;
+    setSaving(true);
+    const rows = [];
+    const newPicks: Record<string, ScorePrediction> = { ...myPicks };
+    for (const g of games) {
+      if (g.completed) continue;
+      const d = draft[g.id];
+      if (!d || d.home === "" || d.away === "") continue;
+      const home = Number(d.home);
+      const away = Number(d.away);
+      if (!Number.isFinite(home) || !Number.isFinite(away) || home < 0 || away < 0) continue;
+      rows.push({ user_id: userId, season_year: SEASON_YEAR, week, game_id: g.id, picked_home_score: home, picked_away_score: away });
+      newPicks[g.id] = { home, away };
+    }
+    if (rows.length > 0) {
+      await supabase.from("tippspiel_picks").upsert(rows);
+      setMyPicks(newPicks);
+      showToast(tp.saved);
+    }
+    setSaving(false);
   }
 
   async function computeLeaderboardAll() {
@@ -104,14 +126,17 @@ export default function TippspielPage() {
     setLeaderboardLoading(true);
 
     const { data: players } = await supabase.from("tippspiel_players").select("user_id, display_name");
-    const { data: allPicks } = await supabase.from("tippspiel_picks").select("user_id, week, game_id, picked_team").eq("season_year", SEASON_YEAR);
+    const { data: allPicks } = await supabase
+      .from("tippspiel_picks")
+      .select("user_id, week, game_id, picked_home_score, picked_away_score")
+      .eq("season_year", SEASON_YEAR);
 
-    const picksByUserWeek = new Map<string, Record<string, string>>();
+    const picksByUserWeek = new Map<string, Record<string, ScorePrediction>>();
     const weeksNeeded = new Set<number>();
     for (const row of allPicks ?? []) {
       const key = `${row.user_id}:${row.week}`;
       const entry = picksByUserWeek.get(key) ?? {};
-      entry[row.game_id] = row.picked_team;
+      entry[row.game_id] = { home: row.picked_home_score, away: row.picked_away_score };
       picksByUserWeek.set(key, entry);
       weeksNeeded.add(row.week);
     }
@@ -132,14 +157,14 @@ export default function TippspielPage() {
       if (!weekGames) continue;
       for (const player of players ?? []) {
         const picks = picksByUserWeek.get(`${player.user_id}:${w}`);
-        const { correct } = computeWeekScore(picks, weekGames);
-        totals.set(player.user_id, (totals.get(player.user_id) ?? 0) + correct);
+        const { points } = computeWeekScore(picks, weekGames);
+        totals.set(player.user_id, (totals.get(player.user_id) ?? 0) + points);
       }
     }
 
     const sorted = (players ?? [])
-      .map((p) => ({ userId: p.user_id, name: p.display_name, correct: totals.get(p.user_id) ?? 0 }))
-      .sort((a, b) => b.correct - a.correct);
+      .map((p) => ({ userId: p.user_id, name: p.display_name, points: totals.get(p.user_id) ?? 0 }))
+      .sort((a, b) => b.points - a.points);
     setLeaderboard(sorted);
     setLeaderboardLoading(false);
   }
@@ -188,12 +213,13 @@ export default function TippspielPage() {
         <span className="text-xs text-[var(--gold)]">{displayName}</span>
       </div>
 
-      <header className="text-center mb-6">
+      <header className="text-center mb-3">
         <h1 className="hero-gradient-text font-black" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,4vw,32px)" }}>
           {tp.heading}
         </h1>
         <p className="text-xs text-[var(--text-dim)] mt-2">{tp.subtitle}</p>
       </header>
+      <p className="text-center text-[11px] text-[var(--text-dim)] mb-5">{tp.scoringHint}</p>
 
       <div className="flex gap-2 justify-center mb-4">
         <button
@@ -246,48 +272,71 @@ export default function TippspielPage() {
             </div>
           ) : (
             <>
-              {myWeekScore && myWeekScore.total > 0 && (
+              {myWeekScore && myWeekScore.gamesScored > 0 && (
                 <p className="text-center text-xs text-[var(--gold)] mb-3 tabular-nums">
-                  {myWeekScore.correct}/{myWeekScore.total} {tp.correct}
+                  {myWeekScore.points} {tp.pointsShort} ({myWeekScore.gamesScored} {t.season.gamesEvaluated})
                 </p>
               )}
-              <div className="space-y-2">
+              <div className="space-y-2 mb-4">
                 {games.map((g) => {
-                  const picked = myPicks[g.id];
-                  const homeWon = g.completed && g.homeScore > g.awayScore;
-                  const awayWon = g.completed && g.awayScore > g.homeScore;
+                  const pred = myPicks[g.id];
+                  const gamePoints = g.completed && pred ? scoreGamePrediction(pred, g.homeScore, g.awayScore) : null;
+                  const d = draft[g.id] ?? { home: "", away: "" };
                   return (
-                    <div key={g.id} className="card flex items-center justify-between gap-2">
-                      <button
-                        onClick={() => !g.completed && pick(g.id, g.away)}
-                        disabled={g.completed}
-                        className="flex-1 px-2 py-2 rounded-md text-xs font-semibold border text-center disabled:opacity-70"
-                        style={
-                          picked === g.away
-                            ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" }
-                            : { borderColor: "var(--border-mid)", color: awayWon ? "var(--green)" : "var(--text-secondary)" }
-                        }
-                      >
-                        {g.away}
-                        {g.completed && <div className="tabular-nums text-[10px] mt-0.5">{g.awayScore}</div>}
-                      </button>
-                      <span className="text-[10px] text-[var(--text-dim)]">@</span>
-                      <button
-                        onClick={() => !g.completed && pick(g.id, g.home)}
-                        disabled={g.completed}
-                        className="flex-1 px-2 py-2 rounded-md text-xs font-semibold border text-center disabled:opacity-70"
-                        style={
-                          picked === g.home
-                            ? { borderColor: "var(--gold)", background: "var(--gold-bg)", color: "var(--gold)" }
-                            : { borderColor: "var(--border-mid)", color: homeWon ? "var(--green)" : "var(--text-secondary)" }
-                        }
-                      >
-                        {g.home}
-                        {g.completed && <div className="tabular-nums text-[10px] mt-0.5">{g.homeScore}</div>}
-                      </button>
+                    <div key={g.id} className="card">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex-1 flex items-center gap-2 justify-end">
+                          <span className="text-xs font-semibold">{g.away}</span>
+                          {g.completed ? (
+                            <span className="tabular-nums text-sm font-bold w-8 text-center">{g.awayScore}</span>
+                          ) : (
+                            <input
+                              type="number"
+                              min={0}
+                              value={d.away}
+                              onChange={(e) => setDraftValue(g.id, "away", e.target.value)}
+                              className="w-12 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-1 py-1 text-sm text-center tabular-nums"
+                            />
+                          )}
+                        </div>
+                        <span className="text-[10px] text-[var(--text-dim)]">@</span>
+                        <div className="flex-1 flex items-center gap-2">
+                          {g.completed ? (
+                            <span className="tabular-nums text-sm font-bold w-8 text-center">{g.homeScore}</span>
+                          ) : (
+                            <input
+                              type="number"
+                              min={0}
+                              value={d.home}
+                              onChange={(e) => setDraftValue(g.id, "home", e.target.value)}
+                              className="w-12 bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-1 py-1 text-sm text-center tabular-nums"
+                            />
+                          )}
+                          <span className="text-xs font-semibold">{g.home}</span>
+                        </div>
+                      </div>
+                      {pred && (
+                        <div className="text-center text-[10px] text-[var(--text-dim)] mt-1.5">
+                          {pred.away}-{pred.home} getippt
+                          {gamePoints != null && (
+                            <span className={gamePoints > 0 ? "text-[var(--green)] font-bold ml-1" : "text-[var(--text-dim)] ml-1"}>
+                              · {gamePoints} {tp.pointsShort}
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </div>
                   );
                 })}
+              </div>
+              <div className="text-center">
+                <button
+                  onClick={saveAllPicks}
+                  disabled={saving}
+                  className="px-5 py-2.5 rounded-md text-sm font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-40"
+                >
+                  {tp.saveAll}
+                </button>
               </div>
             </>
           )}
@@ -322,7 +371,7 @@ export default function TippspielPage() {
                       <td className="font-semibold text-[var(--text-primary)]">
                         {row.name} {row.userId === userId && <span className="text-[var(--gold)] text-[10px]">{tp.you}</span>}
                       </td>
-                      <td className="text-right tabular-nums text-[var(--gold)] font-bold">{row.correct}</td>
+                      <td className="text-right tabular-nums text-[var(--gold)] font-bold">{row.points}</td>
                     </tr>
                   ))}
                 </tbody>

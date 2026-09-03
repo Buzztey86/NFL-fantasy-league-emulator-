@@ -280,11 +280,18 @@ create table if not exists public.tippspiel_picks (
   season_year integer not null,
   week integer not null,
   game_id text not null,
-  picked_team text not null,
+  picked_home_score integer not null,
+  picked_away_score integer not null,
   updated_at timestamptz not null default now(),
   primary key (user_id, season_year, week, game_id)
 );
 alter table public.tippspiel_picks enable row level security;
+
+-- Migration: falls die Tabelle schon mit der alten "Nur-Gewinner-Tippen"-Spalte
+-- existiert, hier auf konkrete Score-Tipps umstellen.
+alter table public.tippspiel_picks drop column if exists picked_team;
+alter table public.tippspiel_picks add column if not exists picked_home_score integer;
+alter table public.tippspiel_picks add column if not exists picked_away_score integer;
 
 -- Bewusst offen für SELECT (auch fremde Picks lesbar): das ist der Kern eines
 -- Tippspiel-Pools unter Freunden — reine Spielvorhersagen, keine sensiblen
