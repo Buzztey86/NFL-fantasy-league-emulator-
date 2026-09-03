@@ -300,3 +300,53 @@ drop policy if exists "anyone authenticated can view all picks" on public.tippsp
 create policy "anyone authenticated can view all picks" on public.tippspiel_picks for select using (auth.role() = 'authenticated');
 drop policy if exists "users manage their own picks" on public.tippspiel_picks;
 create policy "users manage their own picks" on public.tippspiel_picks for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+-- ── Admin-Bereich (Phase 8): nur für einen fest hinterlegten Account ─────────
+-- is_app_admin() prüft die E-Mail aus dem JWT — kein separates Rollen-System
+-- nötig für einen einzelnen Admin-Account. Die zusätzlichen Policies sind
+-- ADDITIV (Postgres verknüpft mehrere permissive Policies mit OR), sie
+-- schränken also den Zugriff für alle anderen Nutzer nicht ein.
+
+drop function if exists public.is_app_admin() cascade;
+create function public.is_app_admin() returns boolean
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select auth.jwt() ->> 'email' = 'bastey86@googlemail.com';
+$$;
+grant execute on function public.is_app_admin() to authenticated;
+
+drop policy if exists "admin full access to leagues" on public.leagues;
+create policy "admin full access to leagues" on public.leagues for all using (public.is_app_admin()) with check (public.is_app_admin());
+
+drop policy if exists "admin full access to league_members" on public.league_members;
+create policy "admin full access to league_members" on public.league_members for all using (public.is_app_admin()) with check (public.is_app_admin());
+
+drop policy if exists "admin full access to league_state" on public.league_state;
+create policy "admin full access to league_state" on public.league_state for all using (public.is_app_admin()) with check (public.is_app_admin());
+
+drop policy if exists "admin full access to season_state" on public.season_state;
+create policy "admin full access to season_state" on public.season_state for all using (public.is_app_admin()) with check (public.is_app_admin());
+
+drop policy if exists "admin full access to tippspiel_players" on public.tippspiel_players;
+create policy "admin full access to tippspiel_players" on public.tippspiel_players for all using (public.is_app_admin()) with check (public.is_app_admin());
+
+drop policy if exists "admin full access to tippspiel_picks" on public.tippspiel_picks;
+create policy "admin full access to tippspiel_picks" on public.tippspiel_picks for all using (public.is_app_admin()) with check (public.is_app_admin());
+
+-- Liste aller registrierten Accounts (E-Mail + Erstellungsdatum) — nur für
+-- den Admin sichtbar. auth.users ist normalerweise nicht clientseitig
+-- abfragbar; diese security-definer-Funktion öffnet gezielt nur diesen einen
+-- schmalen Ausschnitt, und nur wenn is_app_admin() zutrifft (sonst leer).
+drop function if exists public.admin_list_users();
+create function public.admin_list_users()
+returns table (user_id uuid, email text, created_at timestamptz)
+language sql
+security definer
+set search_path = public
+as $$
+  select id, email, created_at from auth.users where public.is_app_admin();
+$$;
+grant execute on function public.admin_list_users() to authenticated;

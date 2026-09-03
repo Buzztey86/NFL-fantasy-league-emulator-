@@ -1,11 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n/LanguageContext";
+import { supabase, supabaseConfigured } from "@/lib/supabase/client";
+
+const ADMIN_EMAIL = "bastey86@googlemail.com";
 
 export default function Home() {
   const { t } = useLang();
   const h = t.home;
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (!supabaseConfigured || !supabase) return;
+    supabase.auth.getUser().then(({ data }) => setIsAdmin(data.user?.email === ADMIN_EMAIL));
+  }, []);
 
   return (
     <main className="mx-auto max-w-[860px] px-6 py-10">
@@ -99,7 +109,17 @@ export default function Home() {
         </Link>
       </div>
 
-      <footer className="text-center text-[12px] text-[var(--text-ghost)] mt-16">{h.footer}</footer>
+      <footer className="text-center text-[12px] text-[var(--text-ghost)] mt-16">
+        {h.footer}
+        {isAdmin && (
+          <>
+            {" · "}
+            <Link href="/admin" className="underline">
+              Admin
+            </Link>
+          </>
+        )}
+      </footer>
     </main>
   );
 }
