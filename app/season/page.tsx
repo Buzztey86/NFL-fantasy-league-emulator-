@@ -240,7 +240,7 @@ export default function SeasonPage() {
                           </span>
                           <TeamBadge color={home?.color} name={home?.name} />
                         </div>
-                        <div className="px-3 text-sm font-bold text-[var(--text-primary)] tabular-nums">
+                        <div className="px-3 text-lg stat-number">
                           {played ? (
                             <>
                               <CountUp value={homeScore} decimals={1} /> – <CountUp value={awayScore} decimals={1} />
@@ -275,7 +275,7 @@ export default function SeasonPage() {
                     <div className="flex-1 flex justify-end pr-3">
                       <TeamBadge color={home?.color} name={home?.name} />
                     </div>
-                    <div className="px-3 text-sm font-bold text-[var(--text-primary)] tabular-nums">
+                    <div className="px-3 text-lg stat-number">
                       {played ? (
                         <>
                           <CountUp value={homeScore} decimals={1} /> – <CountUp value={awayScore} decimals={1} />

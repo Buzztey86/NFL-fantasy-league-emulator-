@@ -28,14 +28,21 @@ export function BottomNav() {
       {TABS.map(({ href, icon: Icon, key }) => {
         const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
         return (
-          <Link
-            key={href}
-            href={href}
-            className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2.5 transition-colors"
-            style={{ color: active ? "var(--gold)" : "var(--text-dim)" }}
-          >
-            <Icon size={20} strokeWidth={active ? 2.4 : 1.8} />
-            <span className="text-[10px] font-medium">{t.nav[key]}</span>
+          <Link key={href} href={href} className="flex-1 flex flex-col items-center justify-center gap-1 py-2.5">
+            <span
+              className="flex items-center justify-center rounded-full transition-all"
+              style={{
+                width: 40,
+                height: 26,
+                background: active ? "linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%)" : "transparent",
+                boxShadow: active ? "0 0 14px -2px rgba(245,158,11,0.7)" : "none",
+              }}
+            >
+              <Icon size={19} strokeWidth={active ? 2.6 : 1.8} color={active ? "#1c1103" : "var(--text-dim)"} />
+            </span>
+            <span className="text-[10px] font-medium" style={{ color: active ? "var(--gold)" : "var(--text-dim)" }}>
+              {t.nav[key]}
+            </span>
           </Link>
         );
       })}

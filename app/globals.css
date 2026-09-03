@@ -31,7 +31,7 @@
   --font-body: "Source Serif 4", Georgia, serif;
   --font-sans: "Inter", -apple-system, "Segoe UI", sans-serif;
 
-  --card-radius: 10px;
+  --card-radius: 18px;
 }
 
 @theme inline {
@@ -70,8 +70,9 @@ body {
 }
 
 body {
-  background: radial-gradient(ellipse 800px 500px at 15% -10%, rgba(245, 158, 11, 0.11), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 15%, rgba(139, 92, 246, 0.09), transparent 60%),
+  background: radial-gradient(ellipse 900px 600px at 10% -15%, rgba(245, 158, 11, 0.22), transparent 55%),
+    radial-gradient(ellipse 800px 600px at 105% 10%, rgba(139, 92, 246, 0.18), transparent 55%),
+    radial-gradient(ellipse 700px 500px at 50% 115%, rgba(239, 68, 68, 0.12), transparent 55%),
     linear-gradient(135deg, var(--bg-base) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
   background-attachment: fixed;
   font-family: var(--font-sans);
@@ -114,39 +115,78 @@ button:active {
   transform: scale(0.97);
 }
 
+@keyframes glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 22px rgba(245, 158, 11, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 32px rgba(245, 158, 11, 0.6));
+  }
+}
+
 .hero-gradient-text {
-  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 35%, #ef4444 70%, #8b5cf6 100%);
+  background: linear-gradient(100deg, #fde68a 0%, #f59e0b 30%, #f59e0b 55%, #fb923c 75%, #ef4444 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 22px rgba(245, 158, 11, 0.4));
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Signatur-Look für große Score-/Punkte-Anzeigen (Season-Scores, Lineup-Total,
+   Tippspiel-Punkte) — das, was jede moderne Fantasy-App als erstes zeigt. */
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.35));
 }
 
 .card {
-  background: linear-gradient(160deg, var(--bg-surface) 0%, rgba(255, 255, 255, 0.015) 100%);
+  position: relative;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05) 0%, var(--bg-surface) 40%, rgba(255, 255, 255, 0.015) 100%);
   border: 1px solid var(--border-subtle);
   border-radius: var(--card-radius);
   padding: 16px;
-  box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.05) inset, 0 10px 30px -12px rgba(0, 0, 0, 0.65);
   transition: all 0.25s ease;
 }
 
 .card-hover:hover {
-  background: var(--bg-surface-hover);
-  border-color: rgba(245, 158, 11, 0.35);
-  box-shadow: 0 8px 28px -8px rgba(0, 0, 0, 0.6), 0 0 20px -6px rgba(245, 158, 11, 0.2);
-  transform: translateY(-1px);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, var(--bg-surface-hover) 40%, rgba(255, 255, 255, 0.02) 100%);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.08) inset, 0 14px 36px -10px rgba(0, 0, 0, 0.7), 0 0 28px -4px rgba(245, 158, 11, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Leucht-Effekt auf allen primären Gold-CTAs — greift global über alle Seiten,
-   da diese Buttons konsistent bg-[var(--gold-bg)] verwenden. */
+/* Primäre Gold-CTAs: von getöntem Umriss auf satt gefüllten Gradient-Button
+   umgestellt — das größte einzelne Signal für "echtes Produkt" statt
+   Platzhalter-Buttons. Greift global über bg-[var(--gold-bg)], ohne dass
+   jede Datei einzeln angefasst werden musste. */
 button[class*="gold-bg"],
 a[class*="gold-bg"] {
-  box-shadow: 0 0 0 rgba(245, 158, 11, 0);
+  background-image: linear-gradient(135deg, #fcd34d 0%, #f59e0b 55%, #d97706 100%) !important;
+  background-color: transparent !important;
+  color: #1c1103 !important;
+  border-color: transparent !important;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px -3px rgba(245, 158, 11, 0.55);
 }
 button[class*="gold-bg"]:hover,
 a[class*="gold-bg"]:hover {
-  box-shadow: 0 0 22px -2px rgba(245, 158, 11, 0.45);
+  box-shadow: 0 6px 26px -3px rgba(245, 158, 11, 0.75);
+  transform: translateY(-1px);
+}
+button[class*="gold-bg"]:disabled {
+  opacity: 0.4;
+  transform: none;
+  box-shadow: none;
 }
 
 .eyebrow {

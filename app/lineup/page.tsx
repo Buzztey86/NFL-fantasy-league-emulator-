@@ -171,7 +171,7 @@ export default function LineupPage() {
 
           <div className="flex items-center justify-between mb-6">
             <span className="text-xs text-[var(--text-dim)]">{l.projTotal}</span>
-            <span className="text-sm font-bold text-[var(--gold)] tabular-nums">
+            <span className="text-2xl stat-number">
               <CountUp value={projTotal} decimals={1} />
             </span>
           </div>

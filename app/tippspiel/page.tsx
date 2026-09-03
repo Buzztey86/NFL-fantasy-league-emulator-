@@ -275,8 +275,13 @@ export default function TippspielPage() {
           ) : (
             <>
               {myWeekScore && myWeekScore.gamesScored > 0 && (
-                <p className="text-center text-xs text-[var(--gold)] mb-3 tabular-nums">
-                  <CountUp value={myWeekScore.points} /> {tp.pointsShort} ({myWeekScore.gamesScored} {t.season.gamesEvaluated})
+                <p className="text-center mb-3">
+                  <span className="text-2xl stat-number">
+                    <CountUp value={myWeekScore.points} />
+                  </span>
+                  <span className="text-xs text-[var(--text-dim)] ml-1.5">
+                    {tp.pointsShort} ({myWeekScore.gamesScored} {t.season.gamesEvaluated})
+                  </span>
                 </p>
               )}
               <div className="space-y-2 mb-4">
