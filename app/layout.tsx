@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Source_Serif_4, Inter } from "next/font/google";
+import { Space_Grotesk, Source_Serif_4, Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
@@ -10,10 +10,10 @@ import { BottomNav } from "@/components/BottomNav";
 import { ToastProvider } from "@/components/ToastProvider";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
-const playfair = Playfair_Display({
+const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["700", "900"],
+  weight: ["500", "600", "700"],
 });
 
 const sourceSerif = Source_Serif_4({
@@ -54,7 +54,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${playfair.variable} ${sourceSerif.variable} ${inter.variable} h-full`}>
+    <html lang="de" className={`${spaceGrotesk.variable} ${sourceSerif.variable} ${inter.variable} h-full`}>
       <body className="min-h-full antialiased">
         <ServiceWorkerRegister />
         <LanguageProvider>
