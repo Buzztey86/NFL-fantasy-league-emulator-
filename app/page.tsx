@@ -70,6 +70,20 @@ export default function Home() {
           <p className="text-sm text-[var(--text-secondary)]">{h.lineupDesc}</p>
         </Link>
 
+        <Link href="/tippspiel" className="card card-hover block">
+          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            {h.tippspielTitle}
+          </div>
+          <p className="text-sm text-[var(--text-secondary)]">{h.tippspielDesc}</p>
+        </Link>
+
+        <Link href="/teams" className="card card-hover block">
+          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            {h.teamsTitle}
+          </div>
+          <p className="text-sm text-[var(--text-secondary)]">{h.teamsDesc}</p>
+        </Link>
+
         <Link href="/activity" className="card card-hover block">
           <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
             {h.activityTitle}

@@ -18,6 +18,24 @@ export interface GameResult {
   completed: boolean;
 }
 
+/** Nur der Spielplan + Endstände, ohne Box Scores — schnell genug, um mehrere Wochen hintereinander abzufragen (z.B. fürs Tippspiel-Leaderboard). */
+export async function fetchScoreboard(season: number, week: number, seasonType: 1 | 2 = 2): Promise<GameResult[]> {
+  const scoreboard = await fetchJson(`${BASE}/scoreboard?dates=${season}&seasontype=${seasonType}&week=${week}`);
+  return (scoreboard.events ?? []).map((e: any) => {
+    const comp = e.competitions[0];
+    const home = comp.competitors.find((c: any) => c.homeAway === "home");
+    const away = comp.competitors.find((c: any) => c.homeAway === "away");
+    return {
+      id: e.id,
+      home: home.team.abbreviation,
+      away: away.team.abbreviation,
+      homeScore: Number(home.score) || 0,
+      awayScore: Number(away.score) || 0,
+      completed: Boolean(e.status?.type?.completed),
+    };
+  });
+}
+
 export interface WeekStatsResult {
   week: number;
   season: number;
@@ -181,21 +199,7 @@ function parseTeamDefense(summary: any, defenses: Record<string, DefenseStatLine
 }
 
 export async function fetchWeekStats(season: number, week: number, seasonType: 1 | 2 = 2): Promise<WeekStatsResult> {
-  const scoreboard = await fetchJson(`${BASE}/scoreboard?dates=${season}&seasontype=${seasonType}&week=${week}`);
-
-  const games: GameResult[] = (scoreboard.events ?? []).map((e: any) => {
-    const comp = e.competitions[0];
-    const home = comp.competitors.find((c: any) => c.homeAway === "home");
-    const away = comp.competitors.find((c: any) => c.homeAway === "away");
-    return {
-      id: e.id,
-      home: home.team.abbreviation,
-      away: away.team.abbreviation,
-      homeScore: Number(home.score) || 0,
-      awayScore: Number(away.score) || 0,
-      completed: Boolean(e.status?.type?.completed),
-    };
-  });
+  const games = await fetchScoreboard(season, week, seasonType);
 
   const players: Record<string, PlayerStatLine> = {};
   const kickers: Record<string, KickerStatLine> = {};

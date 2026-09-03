@@ -44,6 +44,7 @@ end $$;
 alter table public.league_state add column if not exists transactions jsonb not null default '[]'::jsonb;
 alter table public.league_state add column if not exists faab jsonb not null default '{}'::jsonb;
 alter table public.league_state add column if not exists ir_slots jsonb not null default '{}'::jsonb;
+alter table public.league_state add column if not exists tippspiel_picks jsonb not null default '{}'::jsonb;
 
 -- ── Season-State (Phase 2: Matchups, Scoring, Standings) ─────────────────────
 create table if not exists public.season_state (
