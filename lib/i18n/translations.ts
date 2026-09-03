@@ -288,6 +288,11 @@ export const translations = {
       computeLeaderboard: "Rangliste berechnen (alle Wochen)",
       computing: "Berechne alle Wochen…",
       totalCorrect: "Richtige Tipps",
+      chooseName: "Wie sollen wir dich in der Rangliste nennen?",
+      namePlaceholder: "z.B. Sebastian",
+      confirmName: "Los geht's",
+      you: "(du)",
+      players: "TEILNEHMER",
     },
   },
   en: {
@@ -579,6 +584,11 @@ export const translations = {
       computeLeaderboard: "Compute leaderboard (all weeks)",
       computing: "Computing all weeks…",
       totalCorrect: "Correct picks",
+      chooseName: "What should we call you on the leaderboard?",
+      namePlaceholder: "e.g. Sebastian",
+      confirmName: "Let's go",
+      you: "(you)",
+      players: "PLAYERS",
     },
   },
 };

@@ -16,7 +16,7 @@ export interface LeagueMemberRow {
 function defaultState(): LeagueState {
   const faab: Record<number, number> = {};
   for (const t of DEFAULT_TEAMS) faab[t.id] = STARTING_FAAB;
-  return { teams: DEFAULT_TEAMS, draftLog: [], transactions: [], faab, irSlots: {}, tippspielPicks: {}, updatedAt: new Date().toISOString() };
+  return { teams: DEFAULT_TEAMS, draftLog: [], transactions: [], faab, irSlots: {}, updatedAt: new Date().toISOString() };
 }
 
 interface Row {
@@ -26,7 +26,6 @@ interface Row {
   transactions: LeagueState["transactions"];
   faab: LeagueState["faab"];
   ir_slots: LeagueState["irSlots"];
-  tippspiel_picks: LeagueState["tippspielPicks"];
   updated_at: string;
 }
 
@@ -37,7 +36,6 @@ function rowToState(row: Row): LeagueState {
     transactions: row.transactions ?? [],
     faab: row.faab ?? {},
     irSlots: row.ir_slots ?? {},
-    tippspielPicks: row.tippspiel_picks ?? {},
     updatedAt: row.updated_at,
   };
 }
@@ -77,7 +75,6 @@ export function useLeagueState(leagueId: string | null) {
                 transactions: init.transactions,
                 faab: init.faab,
                 ir_slots: init.irSlots,
-                tippspiel_picks: init.tippspielPicks,
                 updated_at: init.updatedAt,
               });
               setState(init);
@@ -134,7 +131,6 @@ export function useLeagueState(leagueId: string | null) {
           transactions: withTimestamp.transactions,
           faab: withTimestamp.faab,
           ir_slots: withTimestamp.irSlots,
-          tippspiel_picks: withTimestamp.tippspielPicks,
           updated_at: withTimestamp.updatedAt,
         });
         if (saveError) setError(saveError.message);

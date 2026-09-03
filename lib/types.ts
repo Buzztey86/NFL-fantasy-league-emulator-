@@ -60,7 +60,6 @@ export interface LeagueState {
   transactions: Transaction[];
   faab: Record<number, number>; // teamId -> verbleibendes FAAB-Budget
   irSlots: Record<number, number | null>; // teamId -> Spieler-Rang auf IR (1 Slot pro Team)
-  tippspielPicks: Record<number, Record<number, Record<string, string>>>; // week -> teamId -> gameId -> getipptes Team-Kürzel
   updatedAt: string;
 }
 

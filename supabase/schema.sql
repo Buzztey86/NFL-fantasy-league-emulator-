@@ -44,7 +44,10 @@ end $$;
 alter table public.league_state add column if not exists transactions jsonb not null default '[]'::jsonb;
 alter table public.league_state add column if not exists faab jsonb not null default '{}'::jsonb;
 alter table public.league_state add column if not exists ir_slots jsonb not null default '{}'::jsonb;
-alter table public.league_state add column if not exists tippspiel_picks jsonb not null default '{}'::jsonb;
+-- Falls du das vorherige Skript (mit tippspiel_picks in league_state) schon
+-- ausgeführt hattest: hier wieder sauber entfernen, da das Tippspiel jetzt
+-- komplett unabhängig von der Fantasy-Liga läuft (siehe eigene Tabellen unten).
+alter table public.league_state drop column if exists tippspiel_picks;
 
 -- ── Season-State (Phase 2: Matchups, Scoring, Standings) ─────────────────────
 create table if not exists public.season_state (
@@ -255,3 +258,38 @@ begin
 end;
 $$;
 grant execute on function public.join_league(text, int, text, text) to authenticated;
+
+-- ── NFL-Tippspiel (Phase 7): komplett unabhängig von der Fantasy-Liga ────────
+-- Pro Google/Discord/Magic-Link-Account, nicht pro Fantasy-Team. Globale
+-- Rangliste über alle Nutzer der App hinweg, nicht auf eine Liga beschränkt.
+
+create table if not exists public.tippspiel_players (
+  user_id uuid primary key,
+  display_name text not null,
+  created_at timestamptz not null default now()
+);
+alter table public.tippspiel_players enable row level security;
+
+drop policy if exists "anyone authenticated can view display names" on public.tippspiel_players;
+create policy "anyone authenticated can view display names" on public.tippspiel_players for select using (auth.role() = 'authenticated');
+drop policy if exists "users manage their own display name" on public.tippspiel_players;
+create policy "users manage their own display name" on public.tippspiel_players for all using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+create table if not exists public.tippspiel_picks (
+  user_id uuid not null references public.tippspiel_players(user_id) on delete cascade,
+  season_year integer not null,
+  week integer not null,
+  game_id text not null,
+  picked_team text not null,
+  updated_at timestamptz not null default now(),
+  primary key (user_id, season_year, week, game_id)
+);
+alter table public.tippspiel_picks enable row level security;
+
+-- Bewusst offen für SELECT (auch fremde Picks lesbar): das ist der Kern eines
+-- Tippspiel-Pools unter Freunden — reine Spielvorhersagen, keine sensiblen
+-- Liga-/Team-Daten. Schreiben darf jeder nur für sich selbst.
+drop policy if exists "anyone authenticated can view all picks" on public.tippspiel_picks;
+create policy "anyone authenticated can view all picks" on public.tippspiel_picks for select using (auth.role() = 'authenticated');
+drop policy if exists "users manage their own picks" on public.tippspiel_picks;
+create policy "users manage their own picks" on public.tippspiel_picks for all using (user_id = auth.uid()) with check (user_id = auth.uid());
