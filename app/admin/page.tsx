@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { useToast } from "@/components/ToastProvider";
+import { fetchWeekStats } from "@/lib/nflStats";
+import { getRosterForTeam } from "@/lib/draftEngine";
+import { autoLineup } from "@/lib/lineup";
+import { computeTeamWeekScore } from "@/lib/seasonEngine";
+import type { LeagueState, SeasonState } from "@/lib/types";
 
 const ADMIN_EMAIL = "bastey86@googlemail.com";
 
@@ -41,6 +46,9 @@ export default function AdminPage() {
   const [members, setMembers] = useState<MemberRow[]>([]);
   const [tippspielPlayers, setTippspielPlayers] = useState<TippspielPlayerRow[]>([]);
   const [pickCounts, setPickCounts] = useState<Record<string, number>>({});
+  const [pullWeek, setPullWeek] = useState(1);
+  const [pulling, setPulling] = useState(false);
+  const [pullLog, setPullLog] = useState<string[]>([]);
 
   useEffect(() => {
     async function checkAuth() {
@@ -87,6 +95,61 @@ export default function AdminPage() {
     return users.find((u) => u.user_id === userId)?.email ?? userId.slice(0, 8) + "…";
   }
 
+  async function pullResultsForAllLeagues() {
+    if (!supabase) return;
+    setPulling(true);
+    setPullLog([]);
+    const log: string[] = [];
+
+    try {
+      // Die echten NFL-Stats sind für ALLE Ligen identisch — nur EINMAL abrufen,
+      // nicht pro Liga, das spart unnötige Requests.
+      const stats = await fetchWeekStats(2026, pullWeek);
+      const anyCompleted = stats.games.some((g) => g.completed);
+      if (!anyCompleted) {
+        log.push(`Woche ${pullWeek}: keine abgeschlossenen Spiele gefunden — abgebrochen.`);
+        setPullLog(log);
+        setPulling(false);
+        return;
+      }
+
+      for (const league of leagues) {
+        const { data: leagueStateRow } = await supabase.from("league_state").select("*").eq("id", league.id).maybeSingle();
+        const { data: seasonStateRow } = await supabase.from("season_state").select("*").eq("id", league.id).maybeSingle();
+        if (!leagueStateRow || !seasonStateRow) {
+          log.push(`${league.name}: übersprungen (keine Liga-/Season-Daten gefunden).`);
+          continue;
+        }
+
+        const teams: LeagueState["teams"] = leagueStateRow.teams;
+        const draftLog: LeagueState["draftLog"] = leagueStateRow.draft_log;
+        const newLineups: SeasonState["lineups"] = { ...seasonStateRow.lineups };
+        const newScores: SeasonState["weeklyScores"] = { ...seasonStateRow.weekly_scores };
+        newLineups[pullWeek] = newLineups[pullWeek] ?? {};
+        newScores[pullWeek] = newScores[pullWeek] ?? {};
+
+        for (const team of teams) {
+          const roster = getRosterForTeam(team.id, draftLog);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const lineup = newLineups[pullWeek][team.id] ?? (autoLineup(roster) as any);
+          newLineups[pullWeek][team.id] = lineup;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          newScores[pullWeek][team.id] = computeTeamWeekScore(lineup as any, roster, stats);
+        }
+
+        await supabase.from("season_state").update({ lineups: newLineups, weekly_scores: newScores }).eq("id", league.id);
+        log.push(`${league.name}: aktualisiert (${stats.games.filter((g) => g.completed).length} Spiele ausgewertet).`);
+      }
+
+      showToast(`Woche ${pullWeek} für ${leagues.length} Liga(en) gezogen.`);
+    } catch (e) {
+      log.push(`Fehler: ${e instanceof Error ? e.message : "Unbekannter Fehler"}`);
+    }
+
+    setPullLog(log);
+    setPulling(false);
+  }
+
   async function deleteLeague(league: LeagueRow) {
     if (!supabase) return;
     if (!confirm(`Liga "${league.name}" wirklich komplett löschen? Das entfernt auch alle Mitgliedschaften, den Draft und die Season-Daten. Nicht rückgängig zu machen.`)) return;
@@ -126,6 +189,41 @@ export default function AdminPage() {
         <p className="text-center text-sm text-[var(--text-dim)]">Lade Daten…</p>
       ) : (
         <div className="space-y-8">
+          <section className="card">
+            <h2 className="text-[var(--gold)] text-xs font-bold tracking-wide mb-2">ERGEBNISSE FÜR ALLE LIGEN ZIEHEN</h2>
+            <p className="text-xs text-[var(--text-dim)] mb-3">
+              Zieht die echten NFL-Stats einmal und schreibt sie in alle {leagues.length} Liga(en) — niemand muss mehr einzeln pullen.
+            </p>
+            <div className="flex items-center gap-2 flex-wrap mb-3">
+              <span className="text-xs text-[var(--text-dim)]">Woche</span>
+              <select
+                value={pullWeek}
+                onChange={(e) => setPullWeek(Number(e.target.value))}
+                className="bg-[var(--bg-surface)] border border-[var(--border-mid)] rounded-md px-2 py-1 text-xs"
+              >
+                {Array.from({ length: 18 }, (_, i) => i + 1).map((w) => (
+                  <option key={w} value={w}>
+                    {w}
+                  </option>
+                ))}
+              </select>
+              <button
+                onClick={pullResultsForAllLeagues}
+                disabled={pulling || leagues.length === 0}
+                className="px-4 py-1.5 rounded-md text-xs font-semibold border border-[var(--gold-border)] bg-[var(--gold-bg)] text-[var(--gold)] disabled:opacity-40"
+              >
+                {pulling ? "Ziehe…" : "Für alle Ligen ziehen"}
+              </button>
+            </div>
+            {pullLog.length > 0 && (
+              <div className="text-[11px] text-[var(--text-dim)] space-y-0.5 max-h-[160px] overflow-y-auto">
+                {pullLog.map((line, i) => (
+                  <div key={i}>{line}</div>
+                ))}
+              </div>
+            )}
+          </section>
+
           <section className="grid grid-cols-3 gap-3">
             <div className="card text-center">
               <div className="text-2xl font-black text-[var(--gold)] tabular-nums">{users.length}</div>
