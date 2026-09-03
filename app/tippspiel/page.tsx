@@ -6,6 +6,8 @@ import { supabase, supabaseConfigured } from "@/lib/supabase/client";
 import { fetchScoreboard, type GameResult } from "@/lib/nflStats";
 import { computeWeekScore, scoreGamePrediction, type ScorePrediction } from "@/lib/tippspiel";
 import { useToast } from "@/components/ToastProvider";
+import { CountUp } from "@/components/CountUp";
+import { motion } from "motion/react";
 import { useLang } from "@/lib/i18n/LanguageContext";
 
 const SEASON_YEAR = 2026;
@@ -274,7 +276,7 @@ export default function TippspielPage() {
             <>
               {myWeekScore && myWeekScore.gamesScored > 0 && (
                 <p className="text-center text-xs text-[var(--gold)] mb-3 tabular-nums">
-                  {myWeekScore.points} {tp.pointsShort} ({myWeekScore.gamesScored} {t.season.gamesEvaluated})
+                  <CountUp value={myWeekScore.points} /> {tp.pointsShort} ({myWeekScore.gamesScored} {t.season.gamesEvaluated})
                 </p>
               )}
               <div className="space-y-2 mb-4">
@@ -366,13 +368,21 @@ export default function TippspielPage() {
                 </thead>
                 <tbody>
                   {leaderboard.map((row, i) => (
-                    <tr key={row.userId} className="border-b border-[var(--border-inner)]">
+                    <motion.tr
+                      key={row.userId}
+                      className="border-b border-[var(--border-inner)]"
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.25, delay: Math.min(i * 0.03, 0.3) }}
+                    >
                       <td className="py-2 text-[var(--text-dim)]">{i + 1}</td>
                       <td className="font-semibold text-[var(--text-primary)]">
                         {row.name} {row.userId === userId && <span className="text-[var(--gold)] text-[10px]">{tp.you}</span>}
                       </td>
-                      <td className="text-right tabular-nums text-[var(--gold)] font-bold">{row.points}</td>
-                    </tr>
+                      <td className="text-right tabular-nums text-[var(--gold)] font-bold">
+                        <CountUp value={row.points} />
+                      </td>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>

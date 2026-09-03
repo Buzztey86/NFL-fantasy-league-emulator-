@@ -4,8 +4,22 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { supabase, supabaseConfigured } from "@/lib/supabase/client";
+import { SpotlightCard } from "@/components/SpotlightCard";
 
 const ADMIN_EMAIL = "bastey86@googlemail.com";
+
+function DashboardCard({ href, title, desc }: { href: string; title: string; desc: string }) {
+  return (
+    <Link href={href} className="block">
+      <SpotlightCard className="card card-hover">
+        <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
+          {title}
+        </div>
+        <p className="text-sm text-[var(--text-secondary)]">{desc}</p>
+      </SpotlightCard>
+    </Link>
+  );
+}
 
 export default function Home() {
   const { t } = useLang();
@@ -31,82 +45,17 @@ export default function Home() {
       </header>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Link href="/draft" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.draftTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.draftDesc}</p>
-        </Link>
-
-        <Link href="/setup" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.setupTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.setupDesc}</p>
-        </Link>
-
-        <Link href="/season" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.seasonTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.seasonDesc}</p>
-        </Link>
-
-        <Link href="/waivers" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.waiverTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.waiverDesc}</p>
-        </Link>
-
-        <Link href="/stats" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.statsTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.statsDesc}</p>
-        </Link>
-
-        <Link href="/roster" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.rosterTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.rosterDesc}</p>
-        </Link>
-
-        <Link href="/lineup" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.lineupTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.lineupDesc}</p>
-        </Link>
-
-        <Link href="/tippspiel" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.tippspielTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.tippspielDesc}</p>
-        </Link>
-
-        <Link href="/teams" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.teamsTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.teamsDesc}</p>
-        </Link>
-
-        <Link href="/activity" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.activityTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.activityDesc}</p>
-        </Link>
-
-        <Link href="/glossary" className="card card-hover block">
-          <div className="text-[var(--gold)] text-xs font-bold tracking-wide mb-1" style={{ fontFamily: "var(--font-display)" }}>
-            {h.glossaryTitle}
-          </div>
-          <p className="text-sm text-[var(--text-secondary)]">{h.glossaryDesc}</p>
-        </Link>
+        <DashboardCard href="/draft" title={h.draftTitle} desc={h.draftDesc} />
+        <DashboardCard href="/setup" title={h.setupTitle} desc={h.setupDesc} />
+        <DashboardCard href="/season" title={h.seasonTitle} desc={h.seasonDesc} />
+        <DashboardCard href="/waivers" title={h.waiverTitle} desc={h.waiverDesc} />
+        <DashboardCard href="/stats" title={h.statsTitle} desc={h.statsDesc} />
+        <DashboardCard href="/roster" title={h.rosterTitle} desc={h.rosterDesc} />
+        <DashboardCard href="/lineup" title={h.lineupTitle} desc={h.lineupDesc} />
+        <DashboardCard href="/tippspiel" title={h.tippspielTitle} desc={h.tippspielDesc} />
+        <DashboardCard href="/teams" title={h.teamsTitle} desc={h.teamsDesc} />
+        <DashboardCard href="/activity" title={h.activityTitle} desc={h.activityDesc} />
+        <DashboardCard href="/glossary" title={h.glossaryTitle} desc={h.glossaryDesc} />
       </div>
 
       <footer className="text-center text-[12px] text-[var(--text-ghost)] mt-16">

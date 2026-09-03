@@ -10,6 +10,7 @@ import { getCurrentRoster } from "@/lib/roster";
 import { autoLineup, LINEUP_SLOTS, SLOT_ELIGIBLE_POS, type Lineup } from "@/lib/lineup";
 import { useLang } from "@/lib/i18n/LanguageContext";
 import { isPlayoffWeek } from "@/lib/playoffs";
+import { CountUp } from "@/components/CountUp";
 import { useToast } from "@/components/ToastProvider";
 
 const TOTAL_WEEKS = 17;
@@ -170,7 +171,9 @@ export default function LineupPage() {
 
           <div className="flex items-center justify-between mb-6">
             <span className="text-xs text-[var(--text-dim)]">{l.projTotal}</span>
-            <span className="text-sm font-bold text-[var(--gold)] tabular-nums">{projTotal.toFixed(1)}</span>
+            <span className="text-sm font-bold text-[var(--gold)] tabular-nums">
+              <CountUp value={projTotal} decimals={1} />
+            </span>
           </div>
 
           <div className="text-center mb-6">

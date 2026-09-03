@@ -20,6 +20,7 @@ import { Tooltip } from "@/components/Tooltip";
 import { HoverRadar } from "@/components/HoverRadar";
 import { PlayerThumb } from "@/components/PlayerThumb";
 import { TeamBadge } from "@/components/TeamBadge";
+import { motion } from "motion/react";
 import { RADAR_AXES, RADAR_AXIS_TIPS } from "@/lib/radarAxes";
 import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { withMemberOwnership, resolveMyTeamId } from "@/lib/league/resolveTeams";
@@ -279,11 +280,17 @@ export default function DraftPage() {
               {[...draftLog]
                 .slice(-10)
                 .reverse()
-                .map((pick) => {
+                .map((pick, i) => {
                   const team = teams.find((t) => t.id === pick.teamId);
                   const player = getPlayerByRank(pick.playerRank);
                   return (
-                    <li key={pick.pickNumber} className="text-xs">
+                    <motion.li
+                      key={pick.pickNumber}
+                      className="text-xs"
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.25, delay: Math.min(i * 0.03, 0.2) }}
+                    >
                       <div className="flex justify-between">
                         <TeamBadge color={team?.color} name={team?.name} />
                         <span className="text-[var(--text-dim)]">#{pick.pickNumber}</span>
@@ -294,7 +301,7 @@ export default function DraftPage() {
                           &ldquo;{PERSONALITY_QUOTES[team.personality][lang]}&rdquo;
                         </div>
                       )}
-                    </li>
+                    </motion.li>
                   );
                 })}
             </ul>

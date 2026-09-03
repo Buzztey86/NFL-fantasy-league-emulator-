@@ -14,6 +14,7 @@ import { useLeagueContext } from "@/lib/league/LeagueContext";
 import { withMemberOwnership } from "@/lib/league/resolveTeams";
 import { getPlayoffSeeds, getPlayoffMatchupsForWeek, isPlayoffWeek, REGULAR_SEASON_CUTOFF_WEEK, type PlayoffMatchup } from "@/lib/playoffs";
 import { TeamBadge } from "@/components/TeamBadge";
+import { CountUp } from "@/components/CountUp";
 import { Trophy } from "lucide-react";
 
 const TOTAL_WEEKS = 17;
@@ -240,7 +241,13 @@ export default function SeasonPage() {
                           <TeamBadge color={home?.color} name={home?.name} />
                         </div>
                         <div className="px-3 text-sm font-bold text-[var(--text-primary)] tabular-nums">
-                          {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
+                          {played ? (
+                            <>
+                              <CountUp value={homeScore} decimals={1} /> – <CountUp value={awayScore} decimals={1} />
+                            </>
+                          ) : (
+                            "vs"
+                          )}
                         </div>
                         <div className="flex-1 flex items-center gap-1 pl-3">
                           <TeamBadge color={away?.color} name={away?.name} />
@@ -269,7 +276,13 @@ export default function SeasonPage() {
                       <TeamBadge color={home?.color} name={home?.name} />
                     </div>
                     <div className="px-3 text-sm font-bold text-[var(--text-primary)] tabular-nums">
-                      {played ? `${homeScore.toFixed(1)} – ${awayScore.toFixed(1)}` : "vs"}
+                      {played ? (
+                        <>
+                          <CountUp value={homeScore} decimals={1} /> – <CountUp value={awayScore} decimals={1} />
+                        </>
+                      ) : (
+                        "vs"
+                      )}
                     </div>
                     <div className="flex-1 pl-3">
                       <TeamBadge color={away?.color} name={away?.name} />
@@ -313,7 +326,9 @@ export default function SeasonPage() {
                   <td className="text-center">{s.w}</td>
                   <td className="text-center">{s.l}</td>
                   <td className="text-center">{s.t}</td>
-                  <td className="text-right text-[var(--text-secondary)]">{s.pf.toFixed(1)}</td>
+                  <td className="text-right text-[var(--text-secondary)] tabular-nums">
+                    <CountUp value={s.pf} decimals={1} />
+                  </td>
                   <td className="text-right text-[var(--text-dim)]">{s.pa.toFixed(1)}</td>
                 </tr>
               ))}
